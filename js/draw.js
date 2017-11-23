@@ -15,15 +15,20 @@
   };
 
 
-  var draw = function()
+  var draw = function(player, map)
   {
+    y = 100;
+    x = 300;
+
     ctx.clearRect(0, 0, 1000, 1000);
-    drawMap(300 + drawPos.xr,
-            100 + drawPos.yr);
-    player.draw(300, 100);
+    map.draw(x, y);
+    //drawMap(300 + drawPos.xr,
+    //        100 + drawPos.yr);
+    player.draw(x, y);
   }
 
 
+  /*
   var drawTile = function(x, y, yr, xr)
   {
     ctx.fillStyle = tile.style[map.data[yr][xr]];
@@ -72,3 +77,5 @@
       yr++;
     }
   };
+
+*/

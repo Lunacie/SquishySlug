@@ -1,4 +1,52 @@
 
+function Player()
+{
+  var player = {
+    x : 5,
+    y : 5,
+
+    update : function()
+    {
+      if (events.up)
+        this.y -= 0.1;
+      if (events.down)
+        this.y += 0.1;
+      if (events.left)
+        this.x -= 0.1;
+      if (events.right)
+        this.x += 0.1;
+    },
+
+    draw : function(ox, oy)
+    {
+      ctx.fillStyle = "red";
+      ctx.strokeStyle = "black";
+
+      x = ox + tile.size / 2;
+      y = oy + tile.size / 4;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x - 20, y + 200);
+      ctx.lineTo(x + 20, y + 200);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = "black";
+      ctx.strokeStyle = "white";
+      ctx.font = "30px Arial";
+      var pos = "x: " + this.x.toFixed(1) +
+               " y:" + this.y.toFixed(1);
+      ctx.fillText(pos, x - 50, y + 250);
+      ctx.strokeText(pos, x - 50, y + 250);
+    }
+
+
+  };
+  return player;
+};
+
+/*
 var player = {
   pos : {
     x : 5,
@@ -41,3 +89,4 @@ var player = {
     ctx.strokeText(pos, x - 50, y + 250);
   }
 };
+*/

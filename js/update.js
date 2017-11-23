@@ -1,10 +1,13 @@
 
 
-var update = function()
+var update = function(player)
 {
-  updateMap();
+  player.update();
+  //updateMap();
+  restoreEvents();
 };
 
+/*
 var drawPos = {
     xr : 0,
     yr : 0,
@@ -83,3 +86,4 @@ var updateMap = function()
   if (events.left)
     drawPos.updateLeft();
 }
+*/

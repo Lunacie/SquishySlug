@@ -8,19 +8,20 @@ if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
 
+  var player = Player();
+  var map = Map(player);
+
   var loop = function(timestamp)
   {
     var diff = timestamp - last;
 
-    update();
-    draw();
-    restoreEvents();
+    update(player);
+    draw(player, map);
 
     last = timestamp;
     window.requestAnimationFrame(loop);
   };
 
-  update();
   var last = 0;
   window.requestAnimationFrame(loop);
 }
