@@ -25,6 +25,7 @@
     //drawMap(300 + drawPos.xr,
     //        100 + drawPos.yr);
     player.draw(x, y);
+    map.drawOverlay();
   }
 
 

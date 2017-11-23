@@ -1,9 +1,9 @@
 
 
-var update = function(player)
+var update = function(player, map)
 {
   player.update();
-  //updateMap();
+  map.update();
   restoreEvents();
 };
 

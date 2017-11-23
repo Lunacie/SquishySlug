@@ -15,7 +15,7 @@ if (canvas && canvas.getContext)
   {
     var diff = timestamp - last;
 
-    update(player);
+    update(player, map);
     draw(player, map);
 
     last = timestamp;
