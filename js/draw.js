@@ -4,7 +4,7 @@
     size : 200,
 
     style : [
-      /* 0 */ "blue",
+      /* 0 */ "blue", // none
       /* 1 */ "yellow",
       /* 2 */ "orange",
       /* 3 */ "pink",

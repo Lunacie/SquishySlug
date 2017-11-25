@@ -35,8 +35,8 @@ function Map(player)
       half = (this.width / 2);
       var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      this._startX = this._player.x - left < 0 ? 0: this._player.x.toFixed(0) - left;
-      this._startY = this._player.y - top < 0 ? 0 : this._player.y.toFixed(0) - top;
+      this._startX = /*this._player.x - left < 0 ? 0:*/ this._player.x.toFixed(0) - left;
+      this._startY = /*this._player.y - top < 0 ? 0 :*/ this._player.y.toFixed(0) - top;
       this._fillMap();
     },
 
@@ -112,7 +112,12 @@ function Map(player)
       var x2 = this._startX;
       this._data[y] = [];
       for (x = 0; x < this.width; x++) {
-        this._data[y][x] = fullMap.data[y2][x2];
+        if (y2 < 0 || x2 < 0)
+          this._data[y][x] = 0;
+        else if (y2 >= fullMap.height || x2 >= fullMap.width)
+          this._data[y][x] = 0;
+        else
+          this._data[y][x] = fullMap.data[y2][x2];
         x2++;
       }
       y2++;
