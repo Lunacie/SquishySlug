@@ -47,17 +47,17 @@ function Player()
       ctx.fillStyle = "red";
       ctx.strokeStyle = "black";
 
-      var x = ox + tile.size / 2;
-      var y = oy + tile.size + tile.size / 20;
+      var x = ox + tiles.size / 2;
+      var y = oy + tiles.size + tiles.size / 20;
 
       // Player displacement: don't allow if map end
        if (this.x > 0) {
-        x += (this.x - parseInt(this.x)) * (tile.size / 2);
-        y += (this.x - parseInt(this.x)) * (tile.size / 4);
+        x += (this.x - parseInt(this.x)) * (tiles.size / 2);
+        y += (this.x - parseInt(this.x)) * (tiles.size / 4);
       }
       if (this.y > 0) {
-        x -= (this.y - parseInt(this.y)) * (tile.size / 2);
-        y += (this.y - parseInt(this.y)) * (tile.size / 4);
+        x -= (this.y - parseInt(this.y)) * (tiles.size / 2);
+        y += (this.y - parseInt(this.y)) * (tiles.size / 4);
       }
       ctx.beginPath();
       ctx.moveTo(x, y);

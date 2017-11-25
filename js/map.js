@@ -44,14 +44,14 @@ function Map(player)
       var x = 0;
       var y = 0;
       var yr = 0;
-      //ox += tile.size;
-      //oy += tile.size;
+      //ox += tiles.size;
+      //oy += tiles.size;
 
       for (var i = 0; i < this.height; i++)
       {
         this._drawCol(ox + x, oy + y, yr);
-        y += tile.size / 4;
-        x -= tile.size / 2;
+        y += tiles.size / 4;
+        x -= tiles.size / 2;
         yr++;
       }
     },
@@ -81,25 +81,25 @@ function Map(player)
         for (var j = 0; j < this.width; j++)
         {
           this._drawTile(xo + x, yo + y, yr, xr);
-          x += tile.size / 2;
-          y += tile.size / 4;
+          x += tiles.size / 2;
+          y += tiles.size / 4;
           xr += 1;
         }
     },
 
     _drawTile : function(x, y, yr, xr) {
-        ctx.fillStyle = tile.style[this._data[yr][xr]];
-        ctx.strokeStyle = tile.style[this._data[yr][xr]];
+        ctx.fillStyle = tiles.data[this._data[yr][xr]].style;
+        ctx.strokeStyle = tiles.data[this._data[yr][xr]].style;
 
         ctx.beginPath();
-        ctx.moveTo(x + tile.size / 2,
-                   y + tile.size / 2);
-        ctx.lineTo(x + tile.size,
-                   y + (tile.size / 4) * 3);
-        ctx.lineTo(x + tile.size / 2,
-                   y + tile.size);
+        ctx.moveTo(x + tiles.size / 2,
+                   y + tiles.size / 2);
+        ctx.lineTo(x + tiles.size,
+                   y + (tiles.size / 4) * 3);
+        ctx.lineTo(x + tiles.size / 2,
+                   y + tiles.size);
         ctx.lineTo(x,
-                   y + (tile.size / 4) * 3);
+                   y + (tiles.size / 4) * 3);
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
@@ -130,7 +130,7 @@ function Map(player)
     if (y < 0 || x < 0 ||
         y >= fullMap.height || x >= fullMap.width)
       return true;
-    return fullMap.data[y][x] == 0 ? true : false;
+    return tiles.data[fullMap.data[y][x]].collision;
   },
 
   };
