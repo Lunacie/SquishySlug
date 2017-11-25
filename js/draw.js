@@ -17,13 +17,11 @@
 
   var draw = function(player, map)
   {
-    y = 100;
+    y = 0;
     x = 300;
 
     ctx.clearRect(0, 0, 1000, 1000);
     map.draw(x, y);
-    //drawMap(300 + drawPos.xr,
-    //        100 + drawPos.yr);
     player.draw(x, y);
     map.drawOverlay();
   }

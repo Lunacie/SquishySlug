@@ -22,8 +22,14 @@ function Player()
       ctx.fillStyle = "red";
       ctx.strokeStyle = "black";
 
-      x = ox + tile.size / 2;
-      y = oy + tile.size / 4;
+      var x = ox + tile.size / 2;
+      var y = oy + tile.size / 10;
+
+      x += (this.x - parseInt(this.x)) * (tile.size / 2);
+      y += (this.x - parseInt(this.x)) * (tile.size / 4);
+      x -= (this.y - parseInt(this.y)) * (tile.size / 2);
+      y += (this.y - parseInt(this.y)) * (tile.size / 4);
+
       ctx.beginPath();
       ctx.moveTo(x, y);
       ctx.lineTo(x - 20, y + 200);

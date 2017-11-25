@@ -35,8 +35,8 @@ function Map(player)
       half = (this.width / 2);
       var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      this._startX = /*this._player.x - left < 0 ? 0:*/ this._player.x.toFixed(0) - left;
-      this._startY = /*this._player.y - top < 0 ? 0 :*/ this._player.y.toFixed(0) - top;
+      this._startX = parseInt(this._player.x) - left;
+      this._startY = parseInt(this._player.y) - top;
       this._fillMap();
     },
 
