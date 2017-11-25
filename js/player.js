@@ -2,19 +2,46 @@
 function Player()
 {
   var player = {
-    x : 5,
-    y : 5,
+    x : 5.00,
+    y : 5.00,
+    map : {},
 
     update : function()
     {
-      if (events.up)
-        this.y -= 0.1;
-      if (events.down)
+      var diff;
+      if (events.up){
+        diff = this.y - parseInt(this.y);
+          if (diff > 0.09 ||
+              (diff <= 0.09 &&
+              !this.map._hasCollision(this.x, this.y - 0.1)))
+                  this.y -= 0.1;
+        }
+
+      if (events.down) {
+        diff = this.y - parseInt(this.y);
+          if (diff < 0.8 ||
+              (diff >= 0.8 &&
+              !this.map._hasCollision(this.x, this.y + 1)))
         this.y += 0.1;
-      if (events.left)
+      }
+
+      if (events.left) {
+        diff = this.x - parseInt(this.x);
+        console.log("Diff : " + diff);
+          if (diff  > 0.1 ||
+              (diff  <= 0.1 &&
+              !this.map._hasCollision(this.x - 0.1, this.y)))
         this.x -= 0.1;
-      if (events.right)
+        console.log(this.x, this.y);
+      }
+
+      if (events.right) {
+        diff = this.x - parseInt(this.x);
+          if (diff < 0.8 ||
+              (diff >= 0.8 &&
+              !this.map._hasCollision(this.x + 1, this.y)))
         this.x += 0.1;
+      }
     },
 
     draw : function(ox, oy)
@@ -23,8 +50,9 @@ function Player()
       ctx.strokeStyle = "black";
 
       var x = ox + tile.size / 2;
-      var y = oy + tile.size / 10;
+      var y = oy + tile.size + tile.size / 20;
 
+      // Player displacement
       x += (this.x - parseInt(this.x)) * (tile.size / 2);
       y += (this.x - parseInt(this.x)) * (tile.size / 4);
       x -= (this.y - parseInt(this.y)) * (tile.size / 2);
@@ -45,7 +73,7 @@ function Player()
                " y:" + this.y.toFixed(1);
       ctx.fillText(pos, x - 50, y + 250);
       ctx.strokeText(pos, x - 50, y + 250);
-    }
+    },
 
 
   };
