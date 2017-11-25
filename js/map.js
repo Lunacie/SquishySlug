@@ -125,10 +125,11 @@ function Map(player)
   },
 
   _hasCollision : function (x, y) {
-    console.log(x, y);
     x = parseInt(x);
     y = parseInt(y);
-    console.log(x, y, fullMap.data[y][x]);
+    if (y < 0 || x < 0 ||
+        y >= fullMap.height || x >= fullMap.width)
+      return true;
     return fullMap.data[y][x] == 0 ? true : false;
   },
 

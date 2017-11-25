@@ -11,8 +11,8 @@ function Player()
       var diff;
       if (events.up){
         diff = this.y - parseInt(this.y);
-          if (diff > 0.09 ||
-              (diff <= 0.09 &&
+          if (diff > 0.1 ||
+              (diff <= 0.1 &&
               !this.map._hasCollision(this.x, this.y - 0.1)))
                   this.y -= 0.1;
         }
@@ -27,12 +27,10 @@ function Player()
 
       if (events.left) {
         diff = this.x - parseInt(this.x);
-        console.log("Diff : " + diff);
           if (diff  > 0.1 ||
               (diff  <= 0.1 &&
               !this.map._hasCollision(this.x - 0.1, this.y)))
         this.x -= 0.1;
-        console.log(this.x, this.y);
       }
 
       if (events.right) {
@@ -52,12 +50,15 @@ function Player()
       var x = ox + tile.size / 2;
       var y = oy + tile.size + tile.size / 20;
 
-      // Player displacement
-      x += (this.x - parseInt(this.x)) * (tile.size / 2);
-      y += (this.x - parseInt(this.x)) * (tile.size / 4);
-      x -= (this.y - parseInt(this.y)) * (tile.size / 2);
-      y += (this.y - parseInt(this.y)) * (tile.size / 4);
-
+      // Player displacement: don't allow if map end
+       if (this.x > 0) {
+        x += (this.x - parseInt(this.x)) * (tile.size / 2);
+        y += (this.x - parseInt(this.x)) * (tile.size / 4);
+      }
+      if (this.y > 0) {
+        x -= (this.y - parseInt(this.y)) * (tile.size / 2);
+        y += (this.y - parseInt(this.y)) * (tile.size / 4);
+      }
       ctx.beginPath();
       ctx.moveTo(x, y);
       ctx.lineTo(x - 20, y + 200);
