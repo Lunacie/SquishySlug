@@ -7,7 +7,7 @@
         collision : true,
       },
       /* 1 */ {
-        style : "yellow",
+        id : "floor_grass",
         collision : false,
       },
       /* 2 */ {

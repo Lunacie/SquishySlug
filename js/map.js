@@ -88,21 +88,27 @@ function Map(player)
     },
 
     _drawTile : function(x, y, yr, xr) {
-        ctx.fillStyle = tiles.data[this._data[yr][xr]].style;
-        ctx.strokeStyle = tiles.data[this._data[yr][xr]].style;
+        if (tiles.data[this._data[yr][xr]].style) {
+          ctx.fillStyle = tiles.data[this._data[yr][xr]].style;
+          ctx.strokeStyle = tiles.data[this._data[yr][xr]].style;
 
-        ctx.beginPath();
-        ctx.moveTo(x + tiles.size / 2,
-                   y + tiles.size / 2);
-        ctx.lineTo(x + tiles.size,
-                   y + (tiles.size / 4) * 3);
-        ctx.lineTo(x + tiles.size / 2,
-                   y + tiles.size);
-        ctx.lineTo(x,
-                   y + (tiles.size / 4) * 3);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(x + tiles.size / 2,
+                     y + tiles.size / 2);
+          ctx.lineTo(x + tiles.size,
+                     y + (tiles.size / 4) * 3);
+          ctx.lineTo(x + tiles.size / 2,
+                     y + tiles.size);
+          ctx.lineTo(x,
+                     y + (tiles.size / 4) * 3);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+        }
+      else if (tiles.data[this._data[yr][xr]].id) {
+        ctx.drawImage(document.getElementById(tiles.data[this._data[yr][xr]].id),
+                      x, y, tiles.size, tiles.size);
+      }
     },
 
   _fillMap : function() {
