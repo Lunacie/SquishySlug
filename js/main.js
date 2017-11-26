@@ -11,14 +11,22 @@ if (canvas && canvas.getContext)
   var player = Player();
   var map = Map(player);
 
+ var elapsed = 0;
+ var frames = 0;
   var loop = function(timestamp)
   {
     var diff = timestamp - last;
+    last = timestamp;
+    elapsed += diff;
+    frames += 1;
 
     update(player, map);
     draw(player, map);
 
-    last = timestamp;
+    if (elapsed >= 1000) {
+      fps = frames;
+      elapsed = 0; frames = 0;
+    }
     window.requestAnimationFrame(loop);
   };
 

@@ -71,6 +71,10 @@ function Map(player)
             ctx.fillText(val, x * 30, (y * 30) + 100);
         }
       }
+
+      ctx.fillStyle = "black";
+      ctx.strokeText("fps : " + fps, 0, 30);
+      ctx.fillText("fps : " + fps, 0, 30);
     },
 
     _drawCol : function(xo, yo, yr) {

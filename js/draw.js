@@ -1,5 +1,6 @@
 
   var ctx = null;
+  var fps = 0;
 
   var draw = function(player, map)
   {
