@@ -1,22 +1,4 @@
 
-
-var fullMap = {
-  data : [
-    [1, 1, 4, 4, 4, 4, 5, 5, 5, 4, 5],
-    [1, 1, 3, 4, 4, 4, 5, 5, 5, 3, 4],
-    [3, 2, 3, 4, 4, 4, 5, 5, 5, 5, 2],
-    [3, 3, 3, 1, 2, 3, 0, 2, 2, 3, 4],
-    [1, 1, 1, 4, 5, 2, 1, 2, 3, 4, 5],
-    [1, 1, 1, 2, 5, 6, 4, 1, 2, 3, 4],
-    [1, 1, 1, 5, 3, 4, 2, 3, 0, 5, 2],
-    [2, 2, 2, 1, 2, 3, 0, 2, 2, 3, 4],
-    [2, 2, 2, 4, 5, 0, 1, 2, 3, 4, 5],
-    [2, 2, 2, 1, 5, 3, 4, 1, 2, 3, 4],
-  ],
-    height : 10,
-    width : 10
-};
-
 function Map(player)
 {
   map = {
@@ -25,6 +7,7 @@ function Map(player)
 
     _player : player,
     _data : [],
+    _layers : [],
     _startY : 0,
     _startX : 0,
 
@@ -54,8 +37,20 @@ function Map(player)
         x -= tiles.size / 2;
         yr++;
       }
+      for (var l = 0; l < fullMap.layers.length; l++)
+      {
+        yr = 0; y = 0; x = 0;
+        for (var i = 0; i < this.height; i++)
+        {
+          this._drawCol(ox + x, oy + y, yr, l);
+          y += tiles.size / 4;
+          x -= tiles.size / 2;
+          yr++;
+        }
+      }
     },
 
+    /* TODO: Move this to UI obj */
     drawOverlay : function() {
       ctx.strokeStyle = "white";
       for (y = 0; y < fullMap.height; y++) {
@@ -77,24 +72,36 @@ function Map(player)
       ctx.fillText("fps : " + fps, 0, 30);
     },
 
-    _drawCol : function(xo, yo, yr) {
+    _drawCol : function(xo, yo, yr, layer) {
         var x = 0;
         var y = 0;
         var xr = 0;
 
         for (var j = 0; j < this.width; j++)
         {
-          this._drawTile(xo + x, yo + y, yr, xr);
+          this._drawTile(xo + x, yo + y, yr, xr, layer);
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;
         }
     },
 
-    _drawTile : function(x, y, yr, xr) {
-        if (tiles.data[this._data[yr][xr]].style) {
-          ctx.fillStyle = tiles.data[this._data[yr][xr]].style;
-          ctx.strokeStyle = tiles.data[this._data[yr][xr]].style;
+    _drawTile : function(x, y, yr, xr, layer) {
+      if (typeof layer !== 'undefined')
+      {
+        //if (this._player.yBlock + yr >= fullMap.height ||
+            //this._player.xBlock + xr >= fullMap.width)
+          //return;
+        var tile = tiles.data[this._layers[layer][yr][xr]];
+        y -= ((layer + 1) * tiles.size) / 2;
+      }
+      else
+        var tile = tiles.data[this._data[yr][xr]];
+      if (!tile.style && !tile.id)
+        return;
+      else if (tile.style) {
+          ctx.fillStyle = tile.style;
+          ctx.strokeStyle = tile.style;
 
           ctx.beginPath();
           ctx.moveTo(x + tiles.size / 2,
@@ -109,15 +116,16 @@ function Map(player)
           ctx.fill();
           ctx.stroke();
         }
-      else if (tiles.data[this._data[yr][xr]].id) {
-        ctx.drawImage(document.getElementById(tiles.data[this._data[yr][xr]].id),
+      else if (tile.id) {
+        ctx.drawImage(document.getElementById(tile.id),
                       x, y, tiles.size, tiles.size);
       }
     },
 
   _fillMap : function() {
-  var y2 = this._startY;
 
+  // fill map
+  var y2 = this._startY;
     for (y = 0; y < this.height; y++) {
       var x2 = this._startX;
       this._data[y] = [];
@@ -131,6 +139,28 @@ function Map(player)
         x2++;
       }
       y2++;
+    }
+
+    // layers
+    for (var l = 0; l < fullMap.layers.length; l++) {
+      var y2 = this._startY;
+      this._layers[l] = [];
+        for (y = 0; y < this.height; y++) {
+          var x2 = this._startX;
+          this._layers[l][y] = [];
+          for (x = 0; x < this.width; x++) {
+            if (y2 < 0 || x2 < 0)
+              this._layers[l][y][x] = 0;
+            else if (y2 >= fullMap.height || x2 >= fullMap.width)
+              this._layers[l][y][x] = 0;
+            else if (tiles.data[fullMap.data[y2][x2]].top)
+              this._layers[l][y][x] = tiles.data[fullMap.data[y2][x2]].top;
+            else
+              this._layers[l][y][x] = fullMap.layers[l][y2][x2];
+            x2++;
+          }
+          y2++;
+        }
     }
   },
 

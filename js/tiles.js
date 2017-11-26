@@ -3,7 +3,6 @@
 
     data : [
       /* 0 */ { // none
-        style : "blue",
         collision : true,
       },
       /* 1 */ {
@@ -17,6 +16,7 @@
       /* 3 */ {
       id : "tree_01_l00.svg",
       collision : true,
+      top : 7,
       },
       /* 4 */ {
       style : "black",
@@ -27,8 +27,12 @@
       collision : false,
       },
       /* 6 */ {
-      style : "white",
+      style : "blue",
       collision : false,
-      }
+      },
+      /* 7 */ {
+      id : "tree_01_l01.svg",
+      collision : true,
+      },
     ]
   };

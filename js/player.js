@@ -40,6 +40,9 @@ function Player()
               !this.map._hasCollision(this.x + 1, this.y)))
         this.x += 0.1;
       }
+
+      this.xBlock = parseInt(this.x);
+      this.yBlock = parseInt(this.y);
     },
 
     draw : function(ox, oy)
