@@ -131,19 +131,29 @@ function Map(player)
   _fillMap : function() {
 
   // fill map
-  for (z = 0; z < fullMap.data.length; z++) {
+  for (z = 0; z < fullMap.nbLayers; z++) {
     var y2 = this._startY;
-    this._data[z] = [];
+      this._data[z] = this._data[z] ? this._data[z] : [];
       for (y = 0; y < this.height; y++) {
         var x2 = this._startX;
-        this._data[z][y] = [];
+        this._data[z][y] = this._data[z][y] ? this._data[z][y] : [];
         for (x = 0; x < this.width; x++) {
           if (y2 < 0 || x2 < 0)
             this._data[z][y][x] = 0;
           else if (y2 >= fullMap.height || x2 >= fullMap.width)
             this._data[z][y][x] = 0;
           else
-            this._data[z][y][x] = fullMap.data[z][y2][x2];
+            {
+                // Auto-top blocks
+                if (z > 0 && tiles.data[this._data[z - 1][y][x]].top)
+                  this._data[z][y][x] = tiles.data[this._data[z - 1][y][x]].top;
+                // No auto top available
+                else if (z > 0)
+                  this._data[z][y][x] = 0;
+                // any other block + base layer
+                else
+                  this._data[z][y][x] = fullMap.data[z][y2][x2];
+            }
           x2++;
         }
         y2++;
