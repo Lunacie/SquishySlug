@@ -15,8 +15,8 @@
       collision : false,
       },
       /* 3 */ {
-      style : "pink",
-      collision : false,
+      id : "tree_01_l00.svg",
+      collision : true,
       },
       /* 4 */ {
       style : "black",
