@@ -9,6 +9,6 @@
 
     ctx.clearRect(0, 0, 1000, 1000);
     map.draw(x, y);
-    player.draw(x, y);
+    //player.draw(x, y);
     map.drawOverlay();
   }

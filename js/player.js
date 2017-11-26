@@ -4,6 +4,9 @@ function Player()
   var player = {
     x : 5.00,
     y : 5.00,
+
+    xBlock : 5,
+    yBlock : 5,
     map : {},
 
     update : function()
@@ -55,12 +58,12 @@ function Player()
 
       // Player displacement: don't allow if map end
        if (this.x > 0) {
-        x += (this.x - parseInt(this.x)) * (tiles.size / 2);
-        y += (this.x - parseInt(this.x)) * (tiles.size / 4);
+        x += (this.x - this.xBlock) * (tiles.size / 2);
+        y += (this.x - this.xBlock) * (tiles.size / 4);
       }
       if (this.y > 0) {
-        x -= (this.y - parseInt(this.y)) * (tiles.size / 2);
-        y += (this.y - parseInt(this.y)) * (tiles.size / 4);
+        x -= (this.y - this.yBlock) * (tiles.size / 2);
+        y += (this.y - this.yBlock) * (tiles.size / 4);
       }
       ctx.beginPath();
       ctx.moveTo(x, y);
@@ -69,14 +72,6 @@ function Player()
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
-
-      ctx.fillStyle = "black";
-      ctx.strokeStyle = "white";
-      ctx.font = "30px Arial";
-      var pos = "x: " + this.x.toFixed(1) +
-               " y:" + this.y.toFixed(1);
-      ctx.fillText(pos, x - 50, y + 250);
-      ctx.strokeText(pos, x - 50, y + 250);
     },
 
 
