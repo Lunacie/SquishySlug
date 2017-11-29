@@ -48,7 +48,7 @@ function Map(player)
             var val = fullMap.data[0][y][x];
             ctx.fillStyle = "black";
             if (y == this._player.yBlock && x == this._player.xBlock)
-                ctx.fillStyle = "orange";
+                ctx.fillStyle = "cyan";
             else if (y >= this._startY && y < this._startY + this.height &&
                 x >= this._startX && x < this._startX + this.width)
                       ctx.fillStyle = "red";

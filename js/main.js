@@ -8,7 +8,7 @@ if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
 
-  var player = Player();
+  var player = new Player();
   var map = Map(player);
 
  var elapsed = 0;

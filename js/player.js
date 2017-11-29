@@ -1,15 +1,14 @@
 
 function Player()
 {
-  var player = {
-    x : 5.00,
-    y : 5.00,
+    this.x = 5.00;
+    this.y = 5.00;
 
-    xBlock : 5,
-    yBlock : 5,
-    map : {},
+    this.xBlock = 5;
+    this.yBlock = 5;
+    this.map = {};
 
-    update : function()
+    this.update = function()
     {
       var diff;
       if (events.up){
@@ -46,9 +45,10 @@ function Player()
 
       this.xBlock = parseInt(this.x);
       this.yBlock = parseInt(this.y);
-    },
+    };
 
-    draw : function(ox, oy)
+
+    this.draw = function(ox, oy)
     {
       ctx.fillStyle = "red";
       ctx.strokeStyle = "black";
@@ -72,9 +72,7 @@ function Player()
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
-    },
-
-
-  };
-  return player;
+    };
 };
+
+Player.prototype = new Character();
