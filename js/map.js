@@ -13,16 +13,24 @@ function Map(player)
     _timestamp : 0,
 
     update : function() {
+      //console.log(this._startY);
       var half = (this.height / 2);
       var top = half - half.toFixed(0) ? half.toFixed(0) : half;
 
       half = (this.width / 2);
       var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      this._startX = parseInt(this._player.x) - left;
-      this._startY = parseInt(this._player.y) - top;
-      this._fillMap();
+      if ((this._player.yBlock - 1 <= this._startY ) ||
+          (this._player.xBlock -1 <= this._startX ) ||
+          (this._player.yBlock + 1 >= this._startY + this.height ) ||
+          (this._player.xBlock + 1 >= this._startX + this.width)) {
+          //console.log("in");
+        this._startX = parseInt(this._player.x) - left;
+        this._startY = parseInt(this._player.y) - top;
+        this._fillMap();
+      }
     },
+
 
     draw : function(ox, oy) {
       var x = 0;
@@ -162,28 +170,6 @@ function Map(player)
         y2++;
       }
     }
- /*
-    // layers
-    for (var l = 0; l < fullMap.layers.length; l++) {
-      var y2 = this._startY;
-      this._layers[l] = [];
-        for (y = 0; y < this.height; y++) {
-          var x2 = this._startX;
-          this._layers[l][y] = [];
-          for (x = 0; x < this.width; x++) {
-            if (y2 < 0 || x2 < 0)
-              this._layers[l][y][x] = 0;
-            else if (y2 >= fullMap.height || x2 >= fullMap.width)
-              this._layers[l][y][x] = 0;
-            else if (tiles.data[fullMap.data[y2][x2]].top)
-              this._layers[l][y][x] = tiles.data[fullMap.data[y2][x2]].top;
-            else
-              this._layers[l][y][x] = fullMap.layers[l][y2][x2];
-            x2++;
-          }
-          y2++;
-        }
-    } */
   },
 
   _hasCollision : function (x, y) {
