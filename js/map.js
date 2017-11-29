@@ -10,6 +10,7 @@ function Map(player)
     _layers : [],
     _startY : 0,
     _startX : 0,
+    _timestamp : 0,
 
     update : function() {
       var half = (this.height / 2);
@@ -68,8 +69,8 @@ function Map(player)
       ctx.font = "30px Arial";
       var pos = "x: " + this._player.x.toFixed(1) +
                " y:" + this._player.y.toFixed(1);
-      ctx.fillText(pos, 350, 450);
-      ctx.strokeText(pos, 350, 450);
+      ctx.fillText(pos, 350, 470);
+      ctx.strokeText(pos, 350, 470);
     },
 
     _drawCol : function(xo, yo, yr) {
@@ -83,7 +84,7 @@ function Map(player)
             this._drawTile(xo + x, yo + y, yr, xr, l);
           }
           if (this._player.xBlock == xr + this._startX && this._player.yBlock == yr + this._startY)
-            this._player.draw(300, 0);
+            this._player.draw(xo + x, yo + y);
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;

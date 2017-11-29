@@ -2,7 +2,7 @@
   var ctx = null;
   var fps = 0;
 
-  var draw = function(player, map)
+  var draw = function(player, map, timestamp)
   {
     y = 0;
     x = 300;

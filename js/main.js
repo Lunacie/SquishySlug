@@ -20,7 +20,7 @@ if (canvas && canvas.getContext)
     elapsed += diff;
     frames += 1;
 
-    update(player, map);
+    update(player, map, diff);
     draw(player, map);
 
     if (elapsed >= 1000) {
