@@ -2,8 +2,8 @@
 function Map(player)
 {
   map = {
-    width : 6,
-    height : 6,
+    width : 5,
+    height : 5,
 
     _player : player,
     _data : [],

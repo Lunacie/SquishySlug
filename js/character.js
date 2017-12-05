@@ -9,20 +9,38 @@ function Character ()
   this.xBlock = 5;
   this.yBlock = 5;
 
+  this.direction = 0;
+  this.walking = false;
+
   this.image = null;
   this.elapsed = 0;
-  this.stage = 0;
+  this.stage = 14;
 
-  this.update = function(time)
+  this.actions = [false, false, false];
+
+  this.update = function(time, walking)
   {
-    this.elapsed += time;
-    if (this.elapsed >= 150) {
-      this.elapsed = 0;
-      this.stage = this.stage >= 4 ? 0 : this.stage + 1;
-      this.stage = 0;
-    }
+    this.walking = walking;
+
+      if (this.stage == 14 && this._hasAction(3))
+        this.stage = 0;
+      else if ((this.stage >= 13 || this.stage == 6) && this._hasAction(0))
+        this.stage = 14;
+      else if (this.stage >= 13)
+        this.stage = 0;
+      else
+        this.stage += 1;
+
     //console.log(time);
   }
+
+  this._hasAction = function(nb)
+  {
+    var ret = 0;
+    for (var i = 0; i < 3; i++)
+      ret += this.actions[i] ? 1 : 0;
+    return ret == nb;
+  };
 
   this.draw = function(ox, oy)
   {
@@ -53,10 +71,8 @@ function Character ()
       }
     }
     else
-      ctx.drawImage(this.image, 20 + (110 * this.stage), 350, 110 , 250,
+      ctx.drawImage(this.image, (65 * this.stage), 150 * this.direction, 65 , 150,
                     x, y, tiles.size / 3 , tiles.size / 1.6);
-
-
     /*
     ctx.beginPath();
     ctx.moveTo(x, y);
