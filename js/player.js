@@ -25,7 +25,7 @@ function Player()
         this.walking = true;
         diff = this.y - parseInt(this.y);
           if (diff < 0.8 ||
-              (diff >= 0.8 &&
+              (diff >= 0.8  &&
               !this.map._hasCollision(this.x, this.y + 1)))
         this.y += 0.05;
       }

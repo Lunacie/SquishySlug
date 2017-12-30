@@ -34,14 +34,6 @@ function Character ()
     //console.log(time);
   }
 
-  this._hasAction = function(nb)
-  {
-    var ret = 0;
-    for (var i = 0; i < 3; i++)
-      ret += this.actions[i] ? 1 : 0;
-    return ret == nb;
-  };
-
   this.draw = function(ox, oy)
   {
     ctx.fillStyle = "red";
@@ -64,15 +56,45 @@ function Character ()
 
     if (!this.image) {
       this.image = new Image();
-      this.image.src = this.sprites;
+      this.image.src = "assets/vectors/char02.svg";
       this.image.onload = function () {
-        ctx.drawImage(this, 20, 20, 110 , 250,
-                      x, y, tiles.size / 3 , tiles.size / 1.6);
-      }
+      this.oWidth = this.width;
+      this.oHeight = this.height;
+      //ctx.drawImage(this, (width * this.stage), height * this.direction, width , height,
+      //              x, y, tiles.size / 3 , tiles.size / 1.6);
+    }
     }
     else
-      ctx.drawImage(this.image, (65 * this.stage), 150 * this.direction, 65 , 150,
-                    x, y, tiles.size / 3 , tiles.size / 1.6);
+    {
+    //ctx_char01.drawImage(this.image, 0, 0, 1000, 600);
+    /*ctx.drawImage(canvas_char01,             // source image
+                    (1000 / 15) * this.stage,     // source offset x
+                    (600 / 4) * this.direction,
+                    1000 / 15,
+                    600 / 4,
+                    x, y,
+                    tiles.size / 3 ,       // dest width
+                    tiles.size / 1.6     //dest height
+                  );*/
+
+        var ratioW = window.innerWidth / canvas.width;
+        var ratioH = window.innerHeight / canvas.height;
+        //var element = document.getElementById('char02');
+        var element = this.image;
+
+        //console.log(element.width, element.height);
+        ctx.drawImage(element,             // source image
+                        0,//(element.width / 15) * this.stage,     // source offset x
+                        0,//(element.height / 4) * this.direction,
+                        element.width * 10,
+                        element.height * 10,
+                        x, y,
+                        (tiles.size / 3) * ratioH,       // dest width
+                        (tiles.size / 1.6) * ratioH     //dest height
+                        );
+
+}
+
     /*
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -82,6 +104,15 @@ function Character ()
     ctx.fill();
     ctx.stroke();
     */
+  };
+
+
+  this._hasAction = function(nb)
+  {
+    var ret = 0;
+    for (var i = 0; i < 3; i++)
+      ret += this.actions[i] ? 1 : 0;
+    return ret == nb;
   };
 
 }
