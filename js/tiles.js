@@ -14,7 +14,7 @@
       collision : false,
       },
       /* 3 */ {
-      id : "tree_01_l00.svg",
+      id : "tree_01_l00",
       collision : true,
       top : 7,
       },
@@ -31,7 +31,7 @@
       collision : false,
       },
       /* 7 */ {
-      id : "tree_01_l01.svg",
+      id : "tree_01_l01",
       collision : true,
       },
     ]

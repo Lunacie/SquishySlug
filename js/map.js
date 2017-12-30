@@ -2,8 +2,8 @@
 function Map(player)
 {
   map = {
-    width : 5,
-    height : 5,
+    width : 10,
+    height : 10,
 
     _player : player,
     _data : [],
@@ -68,17 +68,26 @@ function Map(player)
       }
 
       ctx.fillStyle = "black";
-      ctx.strokeText("fps : " + fps, 0, 30);
-      ctx.fillText("fps : " + fps, 0, 30);
+      var text = "fps : " + fps;
+      ctx.strokeText(text, 0, 30);
+      ctx.fillText(text, 0, 30);
 
+      text = "screen ratio : " + ratio.toFixed(2);
+      ctx.strokeText(text, 120, 30);
+      ctx.fillText(text, 120, 30);
+
+      ctx.font = "20px Arial";
+      text = '(' + canvas.width + 'x' + canvas.height + ')';
+      ctx.strokeText(text, 380, 30);
+      ctx.fillText(text, 380, 30);
 
       ctx.fillStyle = "black";
       ctx.strokeStyle = "white";
       ctx.font = "30px Arial";
-      var pos = "x: " + this._player.x.toFixed(1) +
+      text = "x: " + this._player.x.toFixed(1) +
                " y:" + this._player.y.toFixed(1);
-      ctx.fillText(pos, 350, 470);
-      ctx.strokeText(pos, 350, 470);
+      ctx.fillText(text, 350, 470);
+      ctx.strokeText(text, 350, 470);
     },
 
     _drawCol : function(xo, yo, yr) {

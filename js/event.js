@@ -11,6 +11,13 @@ var restoreEvents = function()
 }
 restoreEvents();
 
+window.addEventListener('resize', function(event){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+ ratio = canvas.width / canvas.height;
+});
+
 document.addEventListener("keydown", function(event)
 {
   events.up = (event.keyCode == 87 || event.keyCode == 38) ?
