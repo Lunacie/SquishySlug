@@ -16,6 +16,14 @@ window.addEventListener('resize', function(event){
   canvas.height = window.innerHeight;
 
  ratio = canvas.width / canvas.height;
+ // apply scale per breakpoint
+ for (var i = 0; i < breakpoints.length; i++) {
+   var e = breakpoints[i];
+   if (e.scale != 1 && ratio >= e.min && ratio < e.max) {
+       ctx.scale(e.scale * ratio, e.scale * ratio);
+       break;
+     }
+ };
 });
 
 document.addEventListener("keydown", function(event)

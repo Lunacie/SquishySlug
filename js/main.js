@@ -13,9 +13,8 @@ canvas.height = window.innerHeight;
 if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
+  
   ratio = canvas.width / canvas.height;
-
-
   // apply scale per breakpoint
   for (var i = 0; i < breakpoints.length; i++) {
     var e = breakpoints[i];
