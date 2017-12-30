@@ -56,44 +56,18 @@ function Character ()
 
     if (!this.image) {
       this.image = new Image();
-      this.image.src = "assets/vectors/char02.svg";
+      this.image.src = this.sprites;
       this.image.onload = function () {
-      this.oWidth = this.width;
-      this.oHeight = this.height;
-      //ctx.drawImage(this, (width * this.stage), height * this.direction, width , height,
-      //              x, y, tiles.size / 3 , tiles.size / 1.6);
-    }
+      }
     }
     else
     {
-    //ctx_char01.drawImage(this.image, 0, 0, 1000, 600);
-    /*ctx.drawImage(canvas_char01,             // source image
-                    (1000 / 15) * this.stage,     // source offset x
-                    (600 / 4) * this.direction,
-                    1000 / 15,
-                    600 / 4,
-                    x, y,
-                    tiles.size / 3 ,       // dest width
-                    tiles.size / 1.6     //dest height
-                  );*/
-
         var ratioW = window.innerWidth / canvas.width;
         var ratioH = window.innerHeight / canvas.height;
-        //var element = document.getElementById('char02');
         var element = this.image;
-
-        //console.log(element.width, element.height);
-        ctx.drawImage(element,             // source image
-                        0,//(element.width / 15) * this.stage,     // source offset x
-                        0,//(element.height / 4) * this.direction,
-                        element.width * 10,
-                        element.height * 10,
-                        x, y,
-                        (tiles.size / 3) * ratioH,       // dest width
-                        (tiles.size / 1.6) * ratioH     //dest height
-                        );
-
-}
+        ctx.drawImage(this.image,
+                      x, y, tiles.size / 3, tiles.size / 1.6);
+    }
 
     /*
     ctx.beginPath();
