@@ -2,7 +2,12 @@
 function Player()
 {
     this.map = {};
-    this.sprites = "assets/vectors/char01.svg";
+    this.sprites = [
+      "assets/vectors/char01_right.svg",
+      "assets/vectors/char01_left.svg",
+      "assets/vectors/char01_down.svg",
+      "assets/vectors/char01_up.svg",
+    ];
 
     this.update = function(time)
     {

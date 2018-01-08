@@ -4,7 +4,7 @@ function Character ()
   this.x = 5.00;
   this.y = 5.00;
 
-  this.sprites = "assets/vectors/char01.svg";
+  //this.sprites = "assets/vectors/char01_right.svg";
 
   this.xBlock = 5;
   this.yBlock = 5;
@@ -12,7 +12,7 @@ function Character ()
   this.direction = 0;
   this.walking = false;
 
-  this.image = null;
+  this.images = [];
   this.elapsed = 0;
   this.stage = 14;
 
@@ -54,19 +54,19 @@ function Character ()
     }
 
 
-    if (!this.image) {
-      this.image = new Image();
-      this.image.src = this.sprites;
-      this.image.onload = function () {
+    if (!this.images[this.direction]) {
+      this.images[this.direction] = new Image();
+      this.images[this.direction].src = this.sprites[this.direction];
+      this.images[this.direction].onload = function () {
       }
     }
     else
     {
         var ratioW = window.innerWidth / canvas.width;
         var ratioH = window.innerHeight / canvas.height;
-        var element = this.image;
-        ctx.drawImage(this.image,
-                      x, y, tiles.size / 3, tiles.size / 1.6);
+        var element = this.images[this.direction];
+        ctx.drawImage(element,
+                      x, y, (tiles.size / 3) * -1, tiles.size / 1.6);
     }
 
     /*
