@@ -27,7 +27,7 @@
       collision : false,
       },
       /* 6 */ {
-      style : "blue",
+      style : "cyan",
       collision : false,
       },
       /* 7 */ {

@@ -12,7 +12,7 @@ function Player()
     this.update = function(time)
     {
        this.elapsed += time;
-        if (this.elapsed < 25)
+        if (this.elapsed < 30)
           return;
 
       if (events.up){

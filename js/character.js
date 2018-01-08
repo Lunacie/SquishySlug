@@ -39,8 +39,9 @@ function Character ()
     ctx.fillStyle = "red";
     ctx.strokeStyle = "black";
 
-    var x = oy; var y = oy;
-    var x = ox + tiles.size / 3;
+    //var x = oy - tiles.size / 2 ;
+    var y = oy;
+    var x = ox + tiles.size / 1.5;
     //var y = oy + tiles.size + tiles.size / 2;
 
     // Player displacement: don't allow if map end

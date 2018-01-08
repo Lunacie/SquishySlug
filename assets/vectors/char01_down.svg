@@ -287,80 +287,24 @@
 	    transform-origin: 20% 40%;
 	    transform: translate(40%, 0%)  rotateZ(0deg);
 	  }
-	  49% {
-	    transform-origin: 20% 40%;
-	    transform: translate(40%, 0%)  rotateZ(0deg);
-	  }
-	  60% {
-	    transform-origin: 20% 40%;
-	    transform: translate(40%, 0%)  rotateZ(0deg);
-	  }
-	  70% {
-	    transform-origin: 20% 40%;
-	    transform: translate(40%, 0%)  rotateZ(0deg);
-	  }
-	  80% {
-	    transform-origin: 20% 40%;
-	    transform: translate(40%, 0%)  rotateZ(0deg);
-	  }
-	  90% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(0deg);
-	  }
 	}
 	@keyframes arm_back_bot {
 	  0% { transform: translateX(0);}
-	  14% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(20deg);
-	  }
-	  21% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(30deg);
-	  }
-	  28% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(33deg);
-	  }
-	  35% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(20deg);
-	  }
 	  42% {
 	    transform-origin: 20% 40%;
 	    transform: translate(100%, 0%)  rotateZ(20deg);
 	  }
-	  49% {
-	    transform-origin: 20% 40%;
-	    transform: translate(100%, 0%)  rotateZ(10deg);
-	  }
-	  60% {
-	    transform-origin: 20% 40%;
-	    transform: translate(100%, 0%)  rotateZ(-20deg);
-	  }
-	  70% {
-	    transform-origin: 20% 40%;
-	    transform: translate(100%, 0%)  rotateZ(-20deg);
-	  }
-	  80% {
-	    transform-origin: 20% 40%;
-	    transform: translate(100%, 0%)  rotateZ(-20deg);
-	  }
-	  90% {
-	    transform-origin: 20% 40%;
-	    transform: translate(0%, 0%)  rotateZ(10deg);
-	  }
 	}
 	@keyframes arm_front_top {
 	  0% { transform: translateX(0);}
-	  30% {
+	  45% {
 	    transform-origin: 20% 40%;
 	    transform: translate(-20%, -5%)  rotateZ(20deg);
 	  }
 	}
 	@keyframes arm_front_bot {
 	  0% { transform: translateX(0);}
-	  30% {
+	  45% {
 	    transform-origin: 20% 40%;
 	    transform: translate(-130%, -5%)  rotateZ(50deg);
 	  }
