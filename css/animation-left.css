@@ -2,15 +2,15 @@
 	@keyframes leg_back_top {
 	  0% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-10%, -10%) rotateZ(10deg);
+	      transform: translate(0%, -10%) rotateZ(0deg);
 	  }
 	  15% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-10%, -10%) rotateZ(10deg);
+	      transform: translate(-10%, -10%) rotateZ(-20deg);
 	  }
 	  30% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-10%, -10%) rotateZ(0deg);
+	      transform: translate(5%, -10%) rotateZ(-20deg);
 	  }
 	  45% {
 	      transform-origin: 20% 40%;
@@ -32,15 +32,15 @@
 	@keyframes leg_back_bot {
 	    0% {
 	        transform-origin: 20% 40%;
-	        transform: translate(-20%, -30%) rotateZ(60deg);
+	        transform: translate(-10%, -30%) rotateZ(60deg);
 	    }
 	    15% {
 	        transform-origin: 20% 40%;
-	        transform: translate(-30%, -40%) rotateZ(100deg);
+	        transform: translate(-0%, -40%) rotateZ(70deg);
 	    }
 	    30% {
 	        transform-origin: 20% 40%;
-	        transform: translate(-20%, 0%) rotateZ(60deg);
+	        transform: translate(10%, 0%) rotateZ(60deg);
 	    }
 	    45% {
 	        transform-origin: 20% 40%;
@@ -66,11 +66,11 @@
 	  }
 	  15% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-245%, 5%) rotateZ(60deg);
+	      transform: translate(-105%, 5%) rotateZ(60deg);
 	  }
 	  30% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-140%, 80%) rotateZ(40deg);
+	      transform: translate(-110%, 80%) rotateZ(40deg);
 	  }
 	  45% {
 	      transform-origin: 20% 40%;
@@ -98,11 +98,11 @@
 	  }
 	  15% {
 	      transform-origin: 20% 40%;
-	      transform: translate(10%, 0%) rotateZ(-20deg);
+	      transform: translate(10%, 0%) rotateZ(-10deg);
 	  }
 	  30% {
 	      transform-origin: 20% 40%;
-	      transform: translate(0%, 0%) rotateZ(-0deg);
+	      transform: translate(10%, 0%) rotateZ(-10deg);
 	  }
 	  45% {
 	      transform-origin: 20% 40%;
@@ -114,7 +114,7 @@
 	  }
 	  70% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-10%, -10%) rotateZ(20deg);
+	      transform: translate(-0%, -10%) rotateZ(0deg);
 	  }
 	  80% {
 	      transform-origin: 20% 40%;
@@ -133,7 +133,7 @@
 	  }
 	  30% {
 	      transform-origin: 20% 40%;
-	      transform: translate(50%, 0%) rotateZ(-40deg);
+	      transform: translate(60%, 0%) rotateZ(-10deg);
 	  }
 	  45% {
 	      transform-origin: 20% 40%;
@@ -145,7 +145,7 @@
 	  }
 	  70% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-100%, -10%) rotateZ(20deg);
+	      transform: translate(-10%, -10%) rotateZ(0deg);
 	  }
 	  80% {
 	      transform-origin: 20% 40%;
@@ -164,7 +164,7 @@
 	  }
 	  30% {
 	      transform-origin: 20% 40%;
-	      transform: translate(80%, -10%) rotateZ(-40deg);
+	      transform: translate(50%, 30%) rotateZ(-40deg);
 	  }
 	  45% {
 	      transform-origin: 20% 40%;
@@ -176,7 +176,7 @@
 	  }
 	  70% {
 	      transform-origin: 20% 40%;
-	      transform: translate(-100%, -10%) rotateZ(-20deg);
+	      transform: translate(-10%, -40%) rotateZ(20deg);
 	  }
 	  80% {
 	      transform-origin: 20% 40%;
