@@ -15,6 +15,13 @@
         break;
       }
     };
+    x = 0; y = 0;
+
+    //x  += (map.width / 2) * (tiles.size / 4);
+    //y  -= (map.height / 2) * (tiles.size / 4);
+    x += canvas.width / (2);
+    y -= canvas.height / (2 / ratio);
+    console.log("width : ", x);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx_char01.clearRect(0, 0, canvas.width, canvas.height);

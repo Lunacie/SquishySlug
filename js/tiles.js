@@ -1,5 +1,5 @@
   var tiles = {
-    size : 200,
+    initSize : 250,
 
     data : [
       /* 0 */ { // none
@@ -36,3 +36,4 @@
       },
     ]
   };
+tiles.size = tiles.initSize;

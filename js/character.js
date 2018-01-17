@@ -1,8 +1,8 @@
 
 function Character ()
 {
-  this.x = 5.00;
-  this.y = 5.00;
+  this.x = 10.00;
+  this.y = 10.00;
 
   //this.sprites = "assets/vectors/char01_right.svg";
 

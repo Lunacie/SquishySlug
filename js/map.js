@@ -14,23 +14,56 @@ function Map(player)
 
     update : function() {
       //console.log(this._startY);
+
+      var updated = this.updateRatio();
+
       var half = (this.height / 2);
       var top = half - half.toFixed(0) ? half.toFixed(0) : half;
 
       half = (this.width / 2);
       var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      if ((this._player.yBlock - 1 <= this._startY ) ||
+      if (updated ||/*
+          ((this._player.yBlock - 1 <= this._startY ) ||
           (this._player.xBlock -1 <= this._startX ) ||
           (this._player.yBlock + 1 >= this._startY + this.height ) ||
-          (this._player.xBlock + 1 >= this._startX + this.width)) {
-          //console.log("in");
+          (this._player.xBlock + 1 >= this._startX + this.width))) { */
+          ((this._player.yBlock - 1 <= this.height / 4 ) ||
+          (this._player.xBlock - 1 <= this.width / 4 ) ||
+          (this._player.yBlock + 1 >= this.height - (this.height / 4)) ||
+          (this._player.xBlock + 1 >= this.width - (this.width / 4 )))) {
         this._startX = parseInt(this._player.x) - left;
         this._startY = parseInt(this._player.y) - top;
         this._fillMap();
       }
     },
 
+    updateRatio : function() {
+      var oldX = this.width;
+      var oldY = this.height;
+
+      if (ratio < 1) {
+      this.height = (canvas.height / (tiles.size)) * 3;
+      this.height = parseInt(this.height);
+      //this.height = canvas.height / (tiles.size / 2);
+      //this.height = parseInt(this.height);
+      this.width = this.height;
+      }
+      else {
+      this.width = (canvas.width / (tiles.size )) * 3;
+      this.width = parseInt(this.width);
+      //this.height = canvas.height / (tiles.size / 2);
+      //this.height = parseInt(this.height);
+      this.height = this.width;
+      }
+
+
+      console.log(ratio);
+      console.log(canvas.width, tiles.size, "=", this.width);
+      console.log(canvas.height, tiles.size, "=", this.height);
+
+      return oldX != this.width || oldY != this.height ? true : false;
+    },
 
     draw : function(ox, oy) {
       var x = 0;
@@ -113,6 +146,9 @@ function Map(player)
           //this._player.xBlock + xr >= fullMap.width)
         //return;
       var tile = tiles.data[this._data[layer][yr][xr]];
+      if (!tile){
+        console.log(this._data[0]);
+        return;}
       if (layer > 0)
         y -= (layer * tiles.size) / 2;
       if (!tile.style && !tile.id)
@@ -150,6 +186,12 @@ function Map(player)
 
   _fillMap : function() {
 
+  // init fullMap first time
+  if (!fullMap.height) {
+    fullMap.height = fullMap.data[0].length;
+    fullMap.width = fullMap.data[0][0].length;
+  }
+
   // fill map
   for (z = 0; z < fullMap.nbLayers; z++) {
     var y2 = this._startY;
@@ -179,6 +221,7 @@ function Map(player)
         y2++;
       }
     }
+    console.log("init", this._data[0]);
   },
 
   _hasCollision : function (x, y) {

@@ -13,9 +13,13 @@ restoreEvents();
 
 window.addEventListener('resize', function(event){
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.height = window.innerHeight
 
+ tiles.size = tiles.initSize;
  ratio = canvas.width / canvas.height;
+ if (ratio < 1)
+   tiles.size *= 2;
+ /*
  // apply scale per breakpoint
  for (var i = 0; i < breakpoints.length; i++) {
    var e = breakpoints[i];
@@ -24,6 +28,7 @@ window.addEventListener('resize', function(event){
        break;
      }
  };
+ */
 });
 
 document.addEventListener("keydown", function(event)

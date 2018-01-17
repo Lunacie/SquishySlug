@@ -13,8 +13,11 @@ canvas.height = window.innerHeight;
 if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
-  
+
   ratio = canvas.width / canvas.height;
+  if (ratio < 1)
+    tiles.size *= 2;
+  /*
   // apply scale per breakpoint
   for (var i = 0; i < breakpoints.length; i++) {
     var e = breakpoints[i];
@@ -22,7 +25,7 @@ if (canvas && canvas.getContext)
         ctx.scale(e.scale * ratio, e.scale * ratio);
         break;
       }
-  };
+  };*/
 
   var player = new Player();
   var map = Map(player);
