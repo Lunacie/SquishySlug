@@ -45,22 +45,13 @@ function Map(player)
       if (ratio < 1) {
       this.height = (canvas.height / (tiles.size)) * 3;
       this.height = parseInt(this.height);
-      //this.height = canvas.height / (tiles.size / 2);
-      //this.height = parseInt(this.height);
       this.width = this.height;
       }
       else {
       this.width = (canvas.width / (tiles.size )) * 3;
       this.width = parseInt(this.width);
-      //this.height = canvas.height / (tiles.size / 2);
-      //this.height = parseInt(this.height);
       this.height = this.width;
       }
-
-
-      console.log(ratio);
-      console.log(canvas.width, tiles.size, "=", this.width);
-      console.log(canvas.height, tiles.size, "=", this.height);
 
       return oldX != this.width || oldY != this.height ? true : false;
     },
@@ -146,9 +137,8 @@ function Map(player)
           //this._player.xBlock + xr >= fullMap.width)
         //return;
       var tile = tiles.data[this._data[layer][yr][xr]];
-      if (!tile){
-        console.log(this._data[0]);
-        return;}
+      if (!tile)
+        return;
       if (layer > 0)
         y -= (layer * tiles.size) / 2;
       if (!tile.style && !tile.id)
@@ -221,7 +211,6 @@ function Map(player)
         y2++;
       }
     }
-    console.log("init", this._data[0]);
   },
 
   _hasCollision : function (x, y) {

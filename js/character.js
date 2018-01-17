@@ -15,13 +15,20 @@ function Character ()
   this.images = [];
   this.elapsed = 0;
   this.stage = 14;
+  this.state = "idle";
 
   this.actions = [false, false, false];
 
   this.update = function(time, walking)
   {
-    this.walking = walking;
+      this.walking = walking;
 
+      if (walking)
+        this.state = "walk";
+      else if (this._hasAction(0))
+        this.state = "idle";
+
+      /*
       if (this.stage == 14 && this._hasAction(3))
         this.stage = 0;
       else if ((this.stage >= 13 || this.stage == 6) && this._hasAction(0))
@@ -29,7 +36,7 @@ function Character ()
       else if (this.stage >= 13)
         this.stage = 0;
       else
-        this.stage += 1;
+        this.stage += 1;*/
 
     //console.log(time);
   }
@@ -55,17 +62,19 @@ function Character ()
     }
 
 
-    if (!this.images[this.direction]) {
-      this.images[this.direction] = new Image();
-      this.images[this.direction].src = this.sprites[this.direction];
-      this.images[this.direction].onload = function () {
+    this.images[this.state] = this.images[this.state] || [];
+    if (!this.images[this.state][this.direction]) {
+      this.images[this.state][this.direction] = new Image();
+      this.images[this.state][this.direction].src =
+                             this.sprites[this.state][this.direction];
+      this.images[this.state][this.direction].onload = function () {
       }
     }
     else
     {
         var ratioW = window.innerWidth / canvas.width;
         var ratioH = window.innerHeight / canvas.height;
-        var element = this.images[this.direction];
+        var element = this.images[this.state][this.direction];
         ctx.drawImage(element,
                       x, y, (tiles.size / 3) * -1, tiles.size / 1.6);
     }
