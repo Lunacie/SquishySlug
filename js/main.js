@@ -10,6 +10,9 @@ var offCanvas = document.getElementById('offCanvas');
 var canvas_char01 = document.getElementById('canvas_char01');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+canvas.addEventListener("click", eventCanvasClicked);
+offCanvas.width = window.innerWidth;
+offCanvas.height = window.innerHeight;
 
 if (canvas && canvas.getContext)
 {

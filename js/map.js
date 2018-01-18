@@ -52,6 +52,8 @@ function Map(player)
       this.width = parseInt(this.width);
       this.height = this.width;
       }
+      this.width = this.width > fullMap.width ? fullMap.width : this.width;
+      this.height = this.height > fullMap.height ? fullMap.height : this.height;
 
       return oldX != this.width || oldY != this.height ? true : false;
     },
@@ -63,6 +65,7 @@ function Map(player)
       //ox += tiles.size;
       //oy += tiles.size;
 
+      tileColorHex = 0x000000;
       for (var i = 0; i < this.height; i++)
       {
         this._drawCol(ox + x, oy + y, yr);
@@ -133,46 +136,92 @@ function Map(player)
     },
 
     _drawTile : function(x, y, yr, xr, layer) {
-      //if (this._player.yBlock + yr >= fullMap.height ||
-          //this._player.xBlock + xr >= fullMap.width)
-        //return;
       var tile = tiles.data[this._data[layer][yr][xr]];
       if (!tile)
         return;
       if (layer > 0)
         y -= (layer * tiles.size) / 2;
+
+      var offColor = "000000" + tileColorHex.toString(16);
+      offColor = "#" + offColor.slice(-6);
+
       if (!tile.style && !tile.id)
         return;
+
+      // if has no image, draw simple tile
       else if (tile.style) {
+          // on screen
           ctx.fillStyle = tile.style;
           ctx.strokeStyle = tile.style;
+          this._drawTilePoly(x, y, ctx);
 
-          ctx.beginPath();
-          ctx.moveTo(x + tiles.size / 2,
-                     y + tiles.size / 2);
-          ctx.lineTo(x + tiles.size,
-                     y + (tiles.size / 4) * 3);
-          ctx.lineTo(x + tiles.size / 2,
-                     y + tiles.size);
-          ctx.lineTo(x,
-                     y + (tiles.size / 4) * 3);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
+          // off screen
+          offColor = tile.floor ? offColor : "#FFFFFF";
+          ctxOff.fillStyle = offColor;
+          ctxOff.strokeStyle = ctxOff.fillStyle;
+          this._drawTilePoly(x, y, ctxOff);
         }
+      // else draw image
       else if (tile.id) {
-        ctx.drawImage(document.getElementById(tile.id),
-                      x, y, tiles.size, tiles.size);
-      }
+        if (!tile.image)
+          this._loadImage(tile, offColor);
+        else {
+          // on screen
+          var element = tile.image.on;
+          ctx.drawImage(element,
+                        x, y, tiles.size, tiles.size);
 
-      /* // Display tile coords
-      ctx.fillStyle = "black";
-      ctx.strokeStyle = "white";
-      ctx.font = "20px Arial";
-      var pos = this._startX + xr + "," + this._startY + yr;
-      ctx.fillText(pos, x, y);
-      // ctx.strokeText(pos, x, y); */
+          // off screen
+          if (tile.floor) {
+            ctxOff.fillStyle = offColor;
+            ctxOff.strokeStyle = ctxOff.fillStyle;
+            this._drawTilePoly(x, y, ctxOff);
+          }
+          else {
+          element = tile.image.off;
+          ctxOff.drawImage(element,
+                        x, y, tiles.size, tiles.size);
+          }
+        }
+      }
+      if (layer == 0)
+        tileColorHex += 0x000001;
     },
+
+  _loadImage : function(tile, offColor) {
+    $.get("/assets/vectors/" + tile.id + ".svg", function(svgXml) {
+        tile.image = {};
+        // on screen
+        tile.image.on = new Image();
+        var str = (new XMLSerializer).serializeToString(svgXml);
+        tile.image.on.src = "data:image/svg+xml;charset=utf-8," + str;
+
+        // offscreen
+        offColor = tile.floor ? offColor : "#FFFFFF";
+        tile.image.off = new Image();
+        var str = (new XMLSerializer).serializeToString(svgXml);
+        var off = str.replace(/fill(.*);/g,'fill:'+offColor+';');
+        off = off.replace(/stroke(.*);/g,'stroke:'+offColor+';');
+        off = off.replace(/fill-opacity(.*);/g,'fill-opacity:'+offColor+';');
+        off = off.replace(/opacity(.*);/g,'opacity:1;');
+        tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
+    });
+  },
+
+  _drawTilePoly: function(x, y, context) {
+    context.beginPath();
+    context.moveTo(x + tiles.size / 2,
+               y + tiles.size / 2);
+    context.lineTo(x + tiles.size,
+               y + (tiles.size / 4) * 3);
+    context.lineTo(x + tiles.size / 2,
+               y + tiles.size);
+    context.lineTo(x,
+               y + (tiles.size / 4) * 3);
+    context.closePath();
+    context.fill();
+    context.stroke();
+  },
 
   _fillMap : function() {
 
