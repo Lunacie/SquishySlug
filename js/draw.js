@@ -11,7 +11,12 @@
     //x  += (map.width / 2) * (tiles.size / 4);
     //y  -= (map.height / 2) * (tiles.size / 4);
     x += canvas.width / (2);
-    y -= canvas.height / (2 / ratio);
+    //y -= canvas.height / (2 / ratio);
+    if (ratio >= 1)
+      tmp = (map.height * tiles.size) / (3 * ratio);
+    else
+      tmp = (map.height * tiles.size) / (4 / ratio);
+    y -= tmp;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);

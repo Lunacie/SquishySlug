@@ -20,8 +20,13 @@ if (canvas && canvas.getContext)
   ctxOff = offCanvas.getContext('2d');
 
   ratio = canvas.width / canvas.height;
-  if (ratio < 1)
-    tiles.size *= 2;
+   if (canvas.height > 3000 || canvas.width > 3000)
+     tiles.size *= 3;
+   else if (ratio < 1)
+    tiles.size *= 1.7;
+
+  //if (ratio < 1 || (ratio > 1 && canvas.width > 2000))
+  //  tiles.size *= 1.7;
   /*
   // apply scale per breakpoint
   for (var i = 0; i < breakpoints.length; i++) {

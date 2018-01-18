@@ -19,8 +19,10 @@ window.addEventListener('resize', function(event){
 
  tiles.size = tiles.initSize;
  ratio = canvas.width / canvas.height;
- if (ratio < 1)
-   tiles.size *= 2;
+ if (canvas.height > 3000 || canvas.width > 3000)
+   tiles.size *= 3;
+ else if (ratio < 1)
+  tiles.size *= 1.7;
  /*
  // apply scale per breakpoint
  for (var i = 0; i < breakpoints.length; i++) {
@@ -76,7 +78,7 @@ function eventCanvasClicked(event) {
   var row = 0;
   var col = 0;
   var rest = val;
-  
+
   for (rest = val; rest - map.width >= 0; rest -= (map.width))
     row += 1;
   col = val % map.width;
