@@ -189,7 +189,7 @@ function Map(player)
     },
 
   _loadImage : function(tile, offColor) {
-    $.get("/assets/vectors/" + tile.id + ".svg", function(svgXml) {
+    $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         tile.image = {};
         // on screen
         tile.image.on = new Image();
