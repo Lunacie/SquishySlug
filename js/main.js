@@ -6,6 +6,7 @@
 window.onload = function() {
 
 var canvas = document.getElementById('canvas');
+var offCanvas = document.getElementById('offCanvas');
 var canvas_char01 = document.getElementById('canvas_char01');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -13,6 +14,7 @@ canvas.height = window.innerHeight;
 if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
+  ctxOff = offCanvas.getContext('2d');
 
   ratio = canvas.width / canvas.height;
   if (ratio < 1)

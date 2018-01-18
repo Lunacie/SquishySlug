@@ -1,6 +1,7 @@
 
   var ctx = null;
   var fps = 0;
+  var currentColorHex = 0xF9C6F2;
 
   var draw = function(player, map, timestamp)
   {
@@ -12,6 +13,7 @@
     y -= canvas.height / (2 / ratio);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctxOff.clearRect(0, 0, canvas.width, canvas.height);
     //ctx_char01.clearRect(0, 0, canvas.width, canvas.height);
     map.draw(x, y);
     //player.draw(x, y);
