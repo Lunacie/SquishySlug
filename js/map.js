@@ -28,10 +28,10 @@ function Map(player)
           (this._player.xBlock -1 <= this._startX ) ||
           (this._player.yBlock + 1 >= this._startY + this.height ) ||
           (this._player.xBlock + 1 >= this._startX + this.width))) { */
-          ((this._player.yBlock - 1 <= this.height / 4 ) ||
-          (this._player.xBlock - 1 <= this.width / 4 ) ||
-          (this._player.yBlock + 1 >= this.height - (this.height / 4)) ||
-          (this._player.xBlock + 1 >= this.width - (this.width / 4 )))) {
+          ((this._player.yBlock - 1 < this.height / 4 ) ||
+          (this._player.xBlock - 1 < this.width / 4 ) ||
+          (this._player.yBlock + 1 > this.height - (this.height / 4)) ||
+          (this._player.xBlock + 1 > this.width - (this.width / 4 )))) {
         this._startX = parseInt(this._player.x) - left;
         this._startY = parseInt(this._player.y) - top;
         this._fillMap();
