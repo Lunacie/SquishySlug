@@ -19,6 +19,9 @@ function Player()
 
     this.update = function(time)
     {
+      if (events.click)
+        this.__proto__.destination = events.click;
+      
        this.elapsed += time;
         if (this.elapsed < 30)
           return;

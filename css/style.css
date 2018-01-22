@@ -1,10 +1,4 @@
-#canvas {
-  position : absolute;
-  top : 0;
-  left : 0;
-}
-
-#offCanvas {
+.canvas {
   position : absolute;
   top : 0;
   left : 0;

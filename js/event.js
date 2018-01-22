@@ -7,6 +7,7 @@ var restoreEvents = function()
     left : false,
     down : false,
     right : false,
+    click : null
   };
 }
 restoreEvents();
@@ -72,18 +73,18 @@ function eventCanvasClicked(event) {
                                 pixelData[1],
                                 pixelData[2]);
   //var hex = "#" + (val).toString(16).slice(-6);
-  console.log(map);
   if (val == 0xFFFFFF)
     return;
   var row = 0;
   var col = 0;
-  var rest = val;
-
-  for (rest = val; rest - map.width >= 0; rest -= (map.width))
+  for (var rest = val; rest - map.width >= 0; rest -= (map.width))
     row += 1;
   col = val % map.width;
-  console.log("row", row);
-  console.log("col", col);
+
+  events.click = {
+    x : map._startX + col,
+    y : map._startY + row
+  };
 };
 
 function getEventLocation(element, event) {
