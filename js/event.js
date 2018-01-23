@@ -1,4 +1,6 @@
 
+var CLICK_EVENT_DEBUG = false;
+
 var events = {};
 var restoreEvents = function()
 {
@@ -75,16 +77,38 @@ function eventCanvasClicked(event) {
   //var hex = "#" + (val).toString(16).slice(-6);
   if (val == 0xFFFFFF)
     return;
+  if (CLICK_EVENT_DEBUG)
+    console.log("EVENT val", val);
   var row = 0;
   var col = 0;
-  for (var rest = val; rest - map.width >= 0; rest -= (map.width))
+  if (CLICK_EVENT_DEBUG)
+    console.log("EVENT map width",  map.width);
+  var width = map.width;
+  if (map._startX <= 0)
+    width = map.width + map._startX;
+  width = fullMap.width;
+  //else if (map._startX > 0)
+  //  var width = map.width - map._startX;
+  if (CLICK_EVENT_DEBUG)
+    console.log("EVENT revised map width",  width);
+  for (var rest = val; rest - width  >= 0; rest -= (width))
     row += 1;
-  col = val % map.width;
+  if (CLICK_EVENT_DEBUG)
+    console.log("EVENT rest",  rest);
+  col = val % width;
+
 
   events.click = {
-    x : map._startX + col,
-    y : map._startY + row
+    x : col,
+    y : row,
   };
+
+  if (CLICK_EVENT_DEBUG) {
+    console.log("EVENT offset",  map._startX,  map._startY);
+    console.log("EVENT col/row", col, row);
+    console.log("EVENT", events.click);
+    console.log("EVENT ------------");
+  }
 };
 
 function getEventLocation(element, event) {

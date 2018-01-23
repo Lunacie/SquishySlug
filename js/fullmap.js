@@ -71,6 +71,19 @@ function FullMap() {
       getNode : function(x, y) {
         return this._graph[y][x];
       },
+
+      clear : function() {
+        for (var y = 0; y < this._graph.length; y++) {
+          for (var x = 0; x < this._graph[y].length; x++) {
+            this._graph[y][x].prev = null;
+            this._graph[y][x].distance = "infinite";
+            this._graph[y][x].start = false;
+          //delete this._graph[y][x].prev;
+          //delete this._graph[y][x].distance;
+          //delete this._graph[y][x].start;
+          }
+        }
+      },
   };
   map._buildGraph();
   console.log(map);

@@ -17,6 +17,7 @@
     else
       tmp = (map.height * tiles.size) / (4 / ratio);
     y -= tmp;
+    y+= 500;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
