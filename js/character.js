@@ -11,7 +11,7 @@ function Character ()
   this.walking = false;
   this.images = [];
   this.elapsed = 0;
-  this.walkUnitSize = 0.50;
+  this.walkUnitSize = 0.050;
   this.walkUnit = {
     x : 0,
     y : 0
@@ -122,6 +122,8 @@ function Character ()
     // image ready to draw
     else {
       var element = this.images[this.state][this.direction].on;
+      this.x2d = x;
+      this.y2d = y;
       ctx.drawImage(element,
                     x, y, (tiles.size / 3) * -1, tiles.size / 1.6);
 
