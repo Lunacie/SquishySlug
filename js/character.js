@@ -25,9 +25,9 @@ function Character ()
   this.update = function(time, walking)
   {
       if (this.destination) {
-          //console.log(this.destination);
           if (!this._path)
             this._path = this._buildPath();
+
           if (this._path && !this._steps) {
             this._steps = this._getAutomation(this._path);
             this._path.shift()
@@ -44,6 +44,14 @@ function Character ()
       else if (this._hasAction(0))
         this.state = "idle";
   }
+
+  this.setDestination = function(destination, direction) {
+    this._path = null;
+    this._steps = null;
+    this.destination = destination;
+    this.direction = direction;
+  }
+
 
   this._automate = function() {
 

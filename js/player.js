@@ -27,7 +27,7 @@ function Player()
       this.walking = true;
 
       if (events.up){
-        this.direction = 3;
+        this.__proto__.setDestination(null, 3);
         diff = this.y - parseInt(this.y);
         if (diff > 0.1 ||
             (diff <= 0.1 &&
@@ -37,7 +37,7 @@ function Player()
         }
 
       else if (events.down) {
-        this.direction = 2;
+        this.__proto__.setDestination(null, 2);
         diff = this.y - parseInt(this.y);
         if (diff < 0.8 ||
             (diff >= 0.8  &&
@@ -47,7 +47,7 @@ function Player()
       }
 
       else if (events.left) {
-        this.direction = 1;
+        this.__proto__.setDestination(null, 1);
         diff = this.x - parseInt(this.x);
         if (diff  > 0.1 ||
             (diff  <= 0.1 &&
@@ -57,7 +57,7 @@ function Player()
       }
 
       else if (events.right) {
-        this.direction = 0;
+        this.__proto__.setDestination(null, 0);
         diff = this.x - parseInt(this.x);
         if (diff < 0.8 ||
             (diff >= 0.8 &&
@@ -72,7 +72,7 @@ function Player()
 
 
       if (events.click) {
-        this.__proto__.destination = events.click;
+        this.__proto__.setDestination(events.click, 0);
         events.click = null;
       }
       this.__proto__.update(time, this.walking);
