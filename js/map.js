@@ -113,16 +113,9 @@ function Map(player)
         fmY += this._startY;
       }
 
-
       var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
       //var offColor = "000000" + tileColorHex.toString(16);
       offColor = "#" + offColor.slice(-6);
-
-      // TODO: Move this to UI object
-      ctxOff.font = "30px Arial";
-      var text = "["+fmY+"]["+fmX+"]";
-      var textSizeY = (tiles.size / 2) + 80;
-      var textSizeX = (tiles.size / 2) - 20;
 
       if (!tile.style && !tile.id)
         return;
@@ -139,10 +132,7 @@ function Map(player)
           ctxOff.fillStyle = offColor;
           ctxOff.strokeStyle = ctxOff.fillStyle;
           this._drawTilePoly(x, y, ctxOff);
-          ctxOff.fillStyle = "white";
-          ctxOff.fillText(text, x + textSizeX, y + textSizeY);
-          ctxOff.font = "20px Arial";
-          ctxOff.fillText(offColor, x + textSizeX - 10, y + textSizeY + 20);
+          debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
         }
       // else draw image
       else if (tile.id) {
@@ -159,10 +149,7 @@ function Map(player)
             ctxOff.fillStyle = offColor;
             ctxOff.strokeStyle = ctxOff.fillStyle;
             this._drawTilePoly(x, y, ctxOff);
-            ctxOff.fillStyle = "white";
-            ctxOff.fillText(text, x + textSizeX, y + textSizeY);
-            ctxOff.font = "20px Arial";
-            ctxOff.fillText(offColor, x + textSizeX - 10, y + textSizeY + 20);
+            debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
           }
           else {
           element = tile.image.off;
@@ -210,48 +197,6 @@ function Map(player)
     context.stroke();
   },
 
-
-    /* TODO: Move this to UI obj */
-    drawOverlay : function() {
-      ctx.strokeStyle = "white";
-      for (y = 0; y < fullMap.height; y++) {
-        for (x = 0; x < fullMap.width; x++) {
-
-            var val = fullMap.data[0][y][x];
-            ctx.fillStyle = "black";
-            if (y == this._player.yBlock && x == this._player.xBlock)
-                ctx.fillStyle = "cyan";
-            else if (y >= this._startY && y < this._startY + this.height &&
-                x >= this._startX && x < this._startX + this.width)
-                      ctx.fillStyle = "red";
-
-            ctx.strokeText(val, x * 30, (y * 30) + 100);
-            ctx.fillText(val, x * 30, (y * 30) + 100);
-        }
-      }
-
-      ctx.fillStyle = "black";
-      var text = "fps : " + fps;
-      ctx.strokeText(text, 0, 30);
-      ctx.fillText(text, 0, 30);
-
-      text = "screen ratio : " + ratio.toFixed(2);
-      ctx.strokeText(text, 120, 30);
-      ctx.fillText(text, 120, 30);
-
-      ctx.font = "20px Arial";
-      text = '(' + canvas.width + 'x' + canvas.height + ')';
-      ctx.strokeText(text, 380, 30);
-      ctx.fillText(text, 380, 30);
-
-      ctx.fillStyle = "black";
-      ctx.strokeStyle = "white";
-      ctx.font = "30px Arial";
-      text = "x: " + this._player.x.toFixed(1) +
-               " y:" + this._player.y.toFixed(1);
-      ctx.fillText(text, 350, 470);
-      ctx.strokeText(text, 350, 470);
-    },
 
 
   _fillMap : function() {

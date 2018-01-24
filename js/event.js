@@ -53,10 +53,12 @@ document.addEventListener("keydown", function(event)
     if (canvas.style.display == "none") {
       canvas.style.display = "inherit";
       offCanvas.style.display = "none";
+      debugOverlay.toggleDrawMode();
     }
     else {
       canvas.style.display = "none";
       offCanvas.style.display = "inherit";
+      debugOverlay.toggleDrawMode();
     }
   }
 
@@ -66,8 +68,8 @@ document.addEventListener("keydown", function(event)
   //console.log(events);
 });
 
+function eventCanvasClicked(event, element) {
 
-function eventCanvasClicked(event) {
   var eventLocation = getEventLocation(this, event);
   var pixelData = ctxOff.getImageData(eventLocation.x, eventLocation.y,
                                       1, 1).data;
@@ -128,7 +130,7 @@ function getElementPosition(obj) {
         } while (obj = obj.offsetParent);
         return { x: curleft, y: curtop };
     }
-    return undefined;
+    return null;
 }
 
 function rgbToHex(r, g, b) {

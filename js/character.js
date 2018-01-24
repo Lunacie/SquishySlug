@@ -50,6 +50,8 @@ function Character ()
     this._steps = null;
     this.destination = destination;
     this.direction = direction;
+    this.state = "idle";
+    this._shiftActions(false);
   }
 
 

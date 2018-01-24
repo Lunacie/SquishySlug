@@ -3,21 +3,34 @@
   var ratioW = 1;
   var ratioH = 1;
 
+  var player = new Player();
+  var map = Map(player);
+  var debugOverlay = new DebugOverlay(map, player);
+
+
 window.onload = function() {
 
 var canvas = document.getElementById('canvas');
-var offCanvas = document.getElementById('offCanvas');
-var canvas_char01 = document.getElementById('canvas_char01');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvas.addEventListener("click", eventCanvasClicked);
+
+var offCanvas = document.getElementById('offCanvas');
 offCanvas.width = window.innerWidth;
 offCanvas.height = window.innerHeight;
+
+var debugCanvas = document.getElementById('debugCanvas');
+debugCanvas.width = window.innerWidth;
+debugCanvas.height = window.innerHeight;
+debugCanvas.addEventListener("click", eventCanvasClicked);
+
 
 if (canvas && canvas.getContext)
 {
   ctx = canvas.getContext('2d');
   ctxOff = offCanvas.getContext('2d');
+  ctxDebug = debugCanvas.getContext('2d');
+  debugOverlay.setContext(ctxDebug);
 
   ratio = canvas.width / canvas.height;
    if (canvas.height > 3000 || canvas.width > 3000)
@@ -37,8 +50,6 @@ if (canvas && canvas.getContext)
       }
   };*/
 
-  var player = new Player();
-  var map = Map(player);
 
  var elapsed = 0;
  var frames = 0;
@@ -49,8 +60,8 @@ if (canvas && canvas.getContext)
     elapsed += diff;
     frames += 1;
 
-    update(player, map, diff);
-    draw(player, map);
+    update(player, map, debugOverlay, diff);
+    draw(player, map, debugOverlay);
 
     if (elapsed >= 1000) {
       fps = frames;
