@@ -2,16 +2,16 @@
 var DEBUG_MODE_COORDS = 0;
 var DEBUG_MODE_INFO = 1;
 
-function DebugOverlay (map, player)
+function DebugOverlay (map, player, npcs)
 {
   this._map = map;
   this._player = player;
-  this._ctx = ctx;
-
+  this._npcs = npcs;
+  this._ctx = null;
   this._mode = DEBUG_MODE_INFO;
 
   this.update = function() {
-
+    
   };
 
   this.draw = function() {
@@ -56,6 +56,11 @@ function DebugOverlay (map, player)
           else if (y >= this._map._startY && y < this._map._startY + this._map.height &&
                    x >= this._map._startX && x < this._map._startX + this._map.width)
               ctxDebug.fillStyle = "red";
+
+          for (var i = 0; i < this._npcs.length; i++) {
+            if (y == this._npcs[i].yBlock && x == this._npcs[i].xBlock)
+                ctxDebug.fillStyle = "green";
+          }
 
           ctxDebug.strokeText(val, x * 30, (y * 30) + 100);
           ctxDebug.fillText(val, x * 30, (y * 30) + 100);

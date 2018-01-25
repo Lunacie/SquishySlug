@@ -1,11 +1,12 @@
 
-function Map(player)
+function Map(player, characters)
 {
   map = {
     width : 10,
     height : 10,
 
     _player : player,
+    _characters : characters,
     _data : [],
     _layers : [],
     _startY : 0,
@@ -88,12 +89,48 @@ function Map(player)
           for (var l = 0; l < this._data.length; l++) {
             this._drawTile(xo + x, yo + y, yr, xr, l);
           }
-          if (this._player.xBlock == xr + this._startX && this._player.yBlock == yr + this._startY)
-            this._player.draw(xo + x, yo + y);
+
+          var tileMap = this._buildTileMap(xr, yr);
+
+          var xt = 0;
+          var yt = 0;
+          for (yt = 0; yt < 10; yt++) {
+            for (xt = 0; xt < 10; xt++) {
+                for (var i = 0; i < tileMap[yt][xt].length; i++) {
+                  tileMap[yt][xt][i].draw(xo + x, yo + y);
+                }
+            }
+          }
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;
         }
+    },
+
+    _buildTileMap : function(xr, yr) {
+      var tileMap = [];
+
+      var realX = this._startX < 0 ? xr : xr + this._startX;
+      var realY = this._startY < 0 ? yr : yr + this._startY;
+      var characters = fullMap.getCharacters(realX, realY);
+      var xt = 0;
+      var yt = 0;
+      for (yt = 0; yt < 10; yt++) {
+        tileMap[yt] = [];
+        for (xt = 0; xt < 10; xt++) {
+            tileMap[yt][xt] = [];
+            for (var i = 0; i < characters.length; i++) {
+              if (characters[i].internalBlock.x >= xt &&
+                  characters[i].internalBlock.x < xt + 1 &&
+                  characters[i].internalBlock.y >= yt &&
+                  characters[i].internalBlock.y < yt + 1)
+                  {
+                tileMap[yt][xt].push(characters[i]);
+              }
+            }
+        }
+      }
+      return tileMap;
     },
 
     _drawTile : function(x, y, yr, xr, layer) {
@@ -238,7 +275,7 @@ function Map(player)
     }
   },
 
-  _hasCollision : function (x, y) {
+  hasCollision : function (x, y) {
     x = parseInt(x);
     y = parseInt(y);
     if (y < 0 || x < 0 ||

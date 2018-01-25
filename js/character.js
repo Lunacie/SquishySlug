@@ -1,12 +1,14 @@
 
 var SHOW_DIJKSTRA_DEBUG = false;
+var characterCount = 0;
 
-function Character ()
+function Character (x, y)
 {
-  this.x = 10.00;
-  this.y = 10.00;
-  this.xBlock = 10;
-  this.yBlock = 10;
+  this.x = x;
+  this.y = y;
+  this.id = characterCount;
+  this.xBlock = x;
+  this.yBlock = y;
   this.direction = 0;
   this.walking = false;
   this.images = [];
@@ -22,8 +24,33 @@ function Character ()
   this._steps = null;
   this.actions = [false, false, false];
 
-  this.update = function(time, walking)
+  characterCount += 1;
+
+  this.sprites = {
+    "idle" : [
+      "assets/vectors/char01_right.svg",
+      "assets/vectors/char01_left.svg",
+      "assets/vectors/char01_down.svg",
+      "assets/vectors/char01_up.svg"
+    ],
+    "walk" : [
+      "assets/vectors/char01_right_walk.svg",
+      "assets/vectors/char01_left_walk.svg",
+      "assets/vectors/char01_down_walk.svg",
+      "assets/vectors/char01_up_walk.svg",
+    ]
+  };
+
+  this.setCoords = function(x, y) {
+    this.x = x;
+    this.y = y;
+    console.log(this);
+  }
+
+  this.updateCharacter = function(time)
   {
+      fullMap.removeCharacter(this.id, this.xBlock, this.yBlock);
+
       if (this.destination) {
           if (!this._path)
             this._path = this._buildPath();
@@ -43,15 +70,16 @@ function Character ()
         this.state = "walk";
       else if (this._hasAction(0))
         this.state = "idle";
+
+      fullMap.addCharacter(this, this.xBlock, this.yBlock);
   }
+
 
   this.setDestination = function(destination, direction) {
     this._path = null;
     this._steps = null;
     this.destination = destination;
     this.direction = direction;
-    this.state = "idle";
-    this._shiftActions(false);
   }
 
 
@@ -108,12 +136,18 @@ function Character ()
   }
 
   this._updatePosition = function() {
+    if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y))
+      return;
     this.x += this.walkUnit.x;
     this.y += this.walkUnit.y;
     this.xBlock = parseInt(this.x);
     this.yBlock = parseInt(this.y);
     this.walkUnit.x = 0;
     this.walkUnit.y = 0;
+    this.internalBlock = {
+      x : (this.x - this.xBlock) * 10,
+      y : (this.y - this.yBlock) * 10
+    };
   }
 
   this.draw = function(ox, oy)

@@ -49,7 +49,8 @@ function FullMap() {
             this._graph[y][x] = {
               value : this.data[0][y][x],
               x : x,
-              y : y
+              y : y,
+              characters : [],
             }
           }
         }
@@ -78,15 +79,29 @@ function FullMap() {
             this._graph[y][x].prev = null;
             this._graph[y][x].distance = "infinite";
             this._graph[y][x].start = false;
-          //delete this._graph[y][x].prev;
-          //delete this._graph[y][x].distance;
-          //delete this._graph[y][x].start;
+            }
+        }
+      },
+
+      addCharacter : function(character, x, y) {
+        this._graph[y][x].characters.push(character);
+      },
+
+      getCharacters : function(x, y) {
+        return this._graph[y][x].characters;
+      },
+
+      removeCharacter : function(id, x, y) {
+        for (var i = 0; i < this._graph[y][x].characters.length; i++) {
+          if (this._graph[y][x].characters[i].id == id) {
+            this._graph[y][x].characters.splice(i, 1);
+            return;
           }
         }
       },
+
   };
   map._buildGraph();
-  console.log(map);
   return map;
 };
 var fullMap = FullMap();

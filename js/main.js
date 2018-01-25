@@ -3,9 +3,13 @@
   var ratioW = 1;
   var ratioH = 1;
 
-  var player = new Player();
-  var map = Map(player);
-  var debugOverlay = new DebugOverlay(map, player);
+var player = new Player(10, 10);
+var characters = [];
+characters.push(player);
+characters.push(new Npc(14, 10));
+
+var map = Map(player, characters);
+var debugOverlay = new DebugOverlay(map, player, characters);
 
 
 window.onload = function() {
@@ -60,8 +64,8 @@ if (canvas && canvas.getContext)
     elapsed += diff;
     frames += 1;
 
-    update(player, map, debugOverlay, diff);
-    draw(player, map, debugOverlay);
+    update(characters, map, debugOverlay, diff);
+    draw(characters, map, debugOverlay);
 
     if (elapsed >= 1000) {
       fps = frames;

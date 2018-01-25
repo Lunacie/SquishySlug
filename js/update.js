@@ -1,8 +1,10 @@
 
 
-var update = function(player, map, debugOv, time)
+var update = function(characters, map, debugOv, time)
 {
-  player.update(time);
+  for (var i = 0; i < characters.length; i++) {
+    characters[i].update(time);
+  }
   map.update();
   debugOv.update();
 

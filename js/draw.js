@@ -6,10 +6,11 @@
   var x2d = 0;
   var y2d = 0;
 
-  var draw = function(player, map, debugOv, timestamp)
+  var draw = function(characters, map, debugOv, timestamp)
   {
     var x = x2d;
     var y = y2d;
+    var player = characters[0];
 
     //console.log("map : ", map.width, map.height);
     //console.log("player : ", player.x2d, player.y2d );
@@ -34,5 +35,4 @@
 
     map.draw(x, y - (tiles.size * 3));
     debugOv.draw(x, y - (tiles.size * 3));
-    //map.drawOverlay();
   }
