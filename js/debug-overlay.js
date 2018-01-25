@@ -11,7 +11,7 @@ function DebugOverlay (map, player, npcs)
   this._mode = DEBUG_MODE_INFO;
 
   this.update = function() {
-    
+
   };
 
   this.draw = function() {
@@ -51,17 +51,19 @@ function DebugOverlay (map, player, npcs)
 
           var val = fullMap.data[0][y][x];
           ctxDebug.fillStyle = "black";
-          if (y == this._player.yBlock && x == this._player.xBlock)
-              ctxDebug.fillStyle = "cyan";
-          else if (y >= this._map._startY && y < this._map._startY + this._map.height &&
+          if (y >= this._map._startY && y < this._map._startY + this._map.height &&
                    x >= this._map._startX && x < this._map._startX + this._map.width)
               ctxDebug.fillStyle = "red";
 
-          for (var i = 0; i < this._npcs.length; i++) {
-            if (y == this._npcs[i].yBlock && x == this._npcs[i].xBlock)
-                ctxDebug.fillStyle = "green";
+          var characters = fullMap.getCharacters(x, y);
+          if (characters.length)
+              ctxDebug.fillStyle = "green";
+          for (var i = 0; i < characters.length; i++) {
+            if (characters[i].id == 0) {
+              ctxDebug.fillStyle = "cyan";
+              break;
+            }
           }
-
           ctxDebug.strokeText(val, x * 30, (y * 30) + 100);
           ctxDebug.fillText(val, x * 30, (y * 30) + 100);
       }

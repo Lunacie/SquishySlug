@@ -1,5 +1,7 @@
 
 var SHOW_DIJKSTRA_DEBUG = false;
+var ACTION_STATE_IDLE = 0;
+var ACTION_STATE_WALK = 1;
 var characterCount = 0;
 
 function Character (x, y)
@@ -10,7 +12,6 @@ function Character (x, y)
   this.xBlock = x;
   this.yBlock = y;
   this.direction = 0;
-  this.walking = false;
   this.images = [];
   this.elapsed = 0;
   this.walkUnitSize = 0.050;
@@ -18,7 +19,7 @@ function Character (x, y)
     x : 0,
     y : 0
   };
-  this.state = "idle";
+  this.state = ACTION_STATE_IDLE;
   this.destination = null;
   this._path = null;
   this._steps = null;
@@ -26,20 +27,20 @@ function Character (x, y)
 
   characterCount += 1;
 
-  this.sprites = {
-    "idle" : [
+  this.sprites = [
+    [
       "assets/vectors/char01_right.svg",
       "assets/vectors/char01_left.svg",
       "assets/vectors/char01_down.svg",
       "assets/vectors/char01_up.svg"
     ],
-    "walk" : [
+    [
       "assets/vectors/char01_right_walk.svg",
       "assets/vectors/char01_left_walk.svg",
       "assets/vectors/char01_down_walk.svg",
       "assets/vectors/char01_up_walk.svg",
     ]
-  };
+  ];
 
   this.setCoords = function(x, y) {
     this.x = x;
@@ -67,9 +68,9 @@ function Character (x, y)
       this._updatePosition();
 
       if (this._hasAction(1))
-        this.state = "walk";
+        this.state = ACTION_STATE_WALK;
       else if (this._hasAction(0))
-        this.state = "idle";
+        this.state = ACTION_STATE_IDLE;
 
       fullMap.addCharacter(this, this.xBlock, this.yBlock);
   }
@@ -100,7 +101,7 @@ function Character (x, y)
     }
 
     this._shiftActions(true);
-    this.state = "walk";
+    this.state = ACTION_STATE_WALK;
 
     if (this._steps[0] == "up") {
       this.walkUnit.y = this.walkUnitSize * -1;
@@ -132,7 +133,7 @@ function Character (x, y)
       this._path = null;
       this._steps = null;
       this.destination = null;
-      this.state = "idle";
+      this.state = ACTION_STATE_IDLE;
   }
 
   this._updatePosition = function() {
@@ -249,13 +250,11 @@ function Character (x, y)
 
   this._backtrackPath = function(neighbour) {
       var path = [];
-      //var copy = Object.assign({}, fullMap.getNode(neighbour.x, neighbour.y));
       var copy = fullMap.getNode(neighbour.x, neighbour.y);
       path.unshift(copy);
       do {
         if (!copy.prev)
           break;
-        //copy = Object.assign({}, fullMap.getNode(copy.prev.x, copy.prev.y));
         copy = fullMap.getNode(copy.prev.x, copy.prev.y);
         path.unshift(copy);
       } while (copy);

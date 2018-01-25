@@ -12,47 +12,41 @@ function Player(x, y) // inherits Character
           return;
         this.elapsed = 0;
 
+      var walking = false;
+
       if (events.up){
         this.setDestination(null, 3);
         diff = this.y - parseInt(this.y);
-        /*if (diff > 0.1 ||
-            (diff <= 0.1 &&
-            !this.map._hasCollision(this.x, this.y - 0.1)))*/
-                  this.walkUnit.y = this.walkUnitSize * -1;
+        this.walkUnit.y = this.walkUnitSize * -1;
+        walking = true;
         events.up = false;
         }
 
       else if (events.down) {
         this.setDestination(null, 2);
         diff = this.y - parseInt(this.y);
-        /*if (diff < 0.8 ||
-            (diff >= 0.8  &&
-            !this.map._hasCollision(this.x, this.y + 1)))*/
-              this.walkUnit.y = this.walkUnitSize ;
+        this.walkUnit.y = this.walkUnitSize ;
+        walking = true;
         events.down = false;
       }
 
       else if (events.left) {
         this.setDestination(null, 1);
         diff = this.x - parseInt(this.x);
-        /*if (diff  > 0.1 ||
-            (diff  <= 0.1 &&
-            !this.map._hasCollision(this.x - 0.1, this.y)))*/
-              this.walkUnit.x = this.walkUnitSize * -1 ;
-         events.left = false;
+        this.walkUnit.x = this.walkUnitSize * -1 ;
+        walking = true;
+        events.left = false;
       }
 
       else if (events.right) {
         this.setDestination(null, 0);
         diff = this.x - parseInt(this.x);
-        /*if (diff < 0.8 ||
-            (diff >= 0.8 &&
-            !this.map._hasCollision(this.x + 1, this.y)))*/
-              this.walkUnit.x = this.walkUnitSize;
+        walking = true;
+        this.walkUnit.x = this.walkUnitSize;
         events.right = false;
       }
 
-      this._shiftActions(this.walking);
+      this._shiftActions(walking);
 
 
       if (events.click) {

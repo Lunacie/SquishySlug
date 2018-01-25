@@ -91,7 +91,6 @@ function Map(player, characters)
           }
 
           var tileMap = this._buildTileMap(xr, yr);
-
           var xt = 0;
           var yt = 0;
           for (yt = 0; yt < 10; yt++) {
@@ -101,6 +100,7 @@ function Map(player, characters)
                 }
             }
           }
+          
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;
