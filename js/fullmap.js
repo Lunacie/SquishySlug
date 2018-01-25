@@ -88,7 +88,9 @@ function FullMap() {
       },
 
       getCharacters : function(x, y) {
-        return this._graph[y][x].characters;
+        if (this._graph[y][x])
+          return this._graph[y][x].characters;
+        return [];
       },
 
       removeCharacter : function(id, x, y) {
