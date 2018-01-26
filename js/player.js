@@ -49,6 +49,7 @@ function Player(x, y) // inherits Character
       this._shiftActions(walking);
 
 
+
       if (events.click) {
         this.setDestination(events.click, 0);
         events.click = null;

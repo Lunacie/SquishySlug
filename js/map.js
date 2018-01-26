@@ -28,14 +28,14 @@ function Map(player, characters)
       if (ratio < 1)
         offset = 2
       if (updated ||/*
-          ((this._player.yBlock - 1 <= this._startY ) ||
-          (this._player.xBlock -1 <= this._startX ) ||
-          (this._player.yBlock + 1 >= this._startY + this.height ) ||
-          (this._player.xBlock + 1 >= this._startX + this.width))) { */
-          ((this._player.yBlock - 1 - this._startY < this.height / offset ) ||
-          (this._player.xBlock -1 - this._startX < this.width / offset ) ||
-          (this._player.yBlock + 1 - this._startY > this.height - (this.height / offset)) ||
-          (this._player.xBlock + 1 - this._startX > this.width - (this.width / offset )))) {
+          ((this._player.block.y - 1 <= this._startY ) ||
+          (this._player.block.x -1 <= this._startX ) ||
+          (this._player.block.y + 1 >= this._startY + this.height ) ||
+          (this._player.block.x + 1 >= this._startX + this.width))) { */
+          ((this._player.block.y - 1 - this._startY < this.height / offset ) ||
+          (this._player.block.x -1 - this._startX < this.width / offset ) ||
+          (this._player.block.y + 1 - this._startY > this.height - (this.height / offset)) ||
+          (this._player.block.x + 1 - this._startX > this.width - (this.width / offset )))) {
         this._startX = parseInt(this._player.x) - left;
         this._startY = parseInt(this._player.y) - top;
         this._fillMap();

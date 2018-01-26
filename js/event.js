@@ -1,6 +1,4 @@
 
-var CLICK_EVENT_DEBUG = false;
-
 var events = {};
 var restoreEvents = function()
 {
@@ -67,72 +65,3 @@ document.addEventListener("keydown", function(event)
   //console.log(event);
   //console.log(events);
 });
-
-function eventCanvasClicked(event, element) {
-
-  var eventLocation = getEventLocation(this, event);
-  var pixelData = ctxOff.getImageData(eventLocation.x, eventLocation.y,
-                                      1, 1).data;
-  var val = 000000 + rgbToHex(pixelData[0],
-                                pixelData[1],
-                                pixelData[2]);
-  //var hex = "#" + (val).toString(16).slice(-6);
-  if (val == 0xFFFFFF)
-    return;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT val", val);
-  var row = 0;
-  var col = 0;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT map width",  map.width);
-  var width = map.width;
-  if (map._startX <= 0)
-    width = map.width + map._startX;
-  width = fullMap.width;
-  //else if (map._startX > 0)
-  //  var width = map.width - map._startX;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT revised map width",  width);
-  for (var rest = val; rest - width  >= 0; rest -= (width))
-    row += 1;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT rest",  rest);
-  col = val % width;
-
-
-  events.click = {
-    x : col,
-    y : row,
-  };
-
-  if (CLICK_EVENT_DEBUG) {
-    console.log("EVENT offset",  map._startX,  map._startY);
-    console.log("EVENT col/row", col, row);
-    console.log("EVENT", events.click);
-    console.log("EVENT ------------");
-  }
-};
-
-function getEventLocation(element, event) {
-    var pos = getElementPosition(element);
-    return {
-    	x: (event.pageX - pos.x),
-      y: (event.pageY - pos.y)
-    };
-}
-
-function getElementPosition(obj) {
-    var curleft = 0, curtop = 0;
-    if (obj.offsetParent) {
-        do {
-            curleft += obj.offsetLeft;
-            curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-        return { x: curleft, y: curtop };
-    }
-    return null;
-}
-
-function rgbToHex(r, g, b) {
-    return ((r << 16) | (g << 8) | b);
-}

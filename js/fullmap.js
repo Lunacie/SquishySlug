@@ -102,6 +102,19 @@ function FullMap() {
         }
       },
 
+
+      getCharacter : function(id) {
+        for (var y = 0; y < this._graph.length; y++) {
+          for (var x = 0; x < this._graph[y].length; x++) {
+            for (var i = 0; i < this._graph[y][x].characters.length; i++) {
+              if (this._graph[y][x].characters[i].id == id)
+                return this._graph[y][x].characters[i];
+            }
+          }
+        }
+        return null;
+      },
+
   };
   map._buildGraph();
   return map;

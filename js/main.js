@@ -3,10 +3,10 @@
   var ratioW = 1;
   var ratioH = 1;
 
-var player = new Player(5, 5);
+var player = new Player(10, 10);
 var characters = [];
 characters.push(player);
-characters.push(new Npc(14, 10));
+characters.push(new Npc(12, 12));
 
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);

@@ -1,7 +1,6 @@
 
   var ctx = null;
   var fps = 0;
-  var currentColorHex = 0xF9C6F2;
   var tileColorHex = 0x000000;
   var x2d = 0;
   var y2d = 0;

@@ -2,15 +2,24 @@
 var SHOW_DIJKSTRA_DEBUG = false;
 var ACTION_STATE_IDLE = 0;
 var ACTION_STATE_WALK = 1;
+var DIRECTION_RIGHT = 0;
+var DIRECTION_LEFT = 1;
+var DIRECTION_DOWN = 2;
+var DIRECTION_UP = 3;
+
+var characterColorHex = 0xF9C6F2;
 var characterCount = 0;
 
 function Character (x, y)
 {
   this.id = characterCount++;
+  this.hexColor = characterColorHex + this.id;
   this.x = x;
   this.y = y;
-  this.xBlock = x;
-  this.yBlock = y;
+  this.block = {
+    x : x,
+    y : y
+  };
   this.direction = 0;
   this.images = [];
   this.elapsed = 0;
@@ -21,6 +30,7 @@ function Character (x, y)
   };
   this.state = ACTION_STATE_IDLE;
   this.destination = null;
+  this.direction = DIRECTION_RIGHT;
   this._path = null;
   this._steps = null;
   this.actions = [false, false, false];
@@ -40,15 +50,10 @@ function Character (x, y)
     ]
   ];
 
-  this.setCoords = function(x, y) {
-    this.x = x;
-    this.y = y;
-    console.log(this);
-  }
 
   this.updateCharacter = function(time)
   {
-      fullMap.removeCharacter(this.id, this.xBlock, this.yBlock);
+      fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
           if (!this._path)
@@ -70,7 +75,7 @@ function Character (x, y)
       else if (this._hasAction(0))
         this.state = ACTION_STATE_IDLE;
 
-      fullMap.addCharacter(this, this.xBlock, this.yBlock);
+      fullMap.addCharacter(this, this.block.x, this.block.y);
   }
 
 
@@ -87,39 +92,39 @@ function Character (x, y)
     if (!this._path || !this._path.length)
       return this._clearAutomation();
 
-    //console.log("curent : ["+this.yBlock+"]["+this.xBlock+"]");
+    //console.log("curent : ["+this.block.y+"]["+this.block.x+"]");
     //console.log("target : ["+this._path[0].y+"]["+this._path[0].x+"]");
 
-    if (this.xBlock == this._path[0].x &&
-        this.yBlock == this._path[0].y) {
+    if (this.block.x == this._path[0].x &&
+        this.block.y == this._path[0].y) {
           this._path.shift();
           this._steps.shift();
-          if (!this._path.length)
+          if (!this._path.length) {
+            if (this.destination.direction)
+              this.direction = this.destination.direction;
+            if (this.destination.displacement) {
+              this.x += this.destination.displacement.x;
+              this.y += this.destination.displacement.y;
+            }
             return this._clearAutomation();
+          }
     }
 
     this._shiftActions(true);
     this.state = ACTION_STATE_WALK;
+    this.direction = this._steps[0];
 
-    if (this._steps[0] == "up") {
+    if (this._steps[0] == DIRECTION_UP)
       this.walkUnit.y = this.walkUnitSize * -1;
-      this.direction = 3;
-    }
-    if (this._steps[0] == "down") {
+    if (this._steps[0] == DIRECTION_DOWN)
       this.walkUnit.y = this.walkUnitSize;
-      this.direction = 2;
-    }
-    if (this._steps[0] == "left") {
+    if (this._steps[0] == DIRECTION_LEFT)
       this.walkUnit.x = this.walkUnitSize * -1;
-      this.direction = 1;
-    }
-    if (this._steps[0] == "right") {
+    if (this._steps[0] == DIRECTION_RIGHT)
       this.walkUnit.x = this.walkUnitSize;
-      this.direction = 0;
-    }
 
     if (SHOW_DIJKSTRA_DEBUG) {
-      console.log("current : ", this.xBlock, this.yBlock);
+      console.log("current : ", this.block.x, this.block.y);
       console.log(this._path[0]);
       console.log(this._steps[0]);
       console.log(this.walkUnit);
@@ -139,13 +144,13 @@ function Character (x, y)
       return;
     this.x += this.walkUnit.x;
     this.y += this.walkUnit.y;
-    this.xBlock = parseInt(this.x);
-    this.yBlock = parseInt(this.y);
+    this.block.x = parseInt(this.x);
+    this.block.y = parseInt(this.y);
     this.walkUnit.x = 0;
     this.walkUnit.y = 0;
     this.internalBlock = {
-      x : (this.x - this.xBlock) * 10,
-      y : (this.y - this.yBlock) * 10
+      x : (this.x - this.block.x) * 10,
+      y : (this.y - this.block.y) * 10
     };
   }
 
@@ -186,13 +191,13 @@ function Character (x, y)
     if (SHOW_DIJKSTRA_DEBUG)
       console.log("DESTINATION:" , this.destination);
 
-    if (this.destination.x == this.xBlock &&
-      this.destination.y == this.yBlock)
+    if (this.destination.x == this.block.x &&
+      this.destination.y == this.block.y)
       return null;
 
     fullMap.clear();
     //console.log(fullMap);
-    var current = fullMap.getNode(this.xBlock, this.yBlock);
+    var current = fullMap.getNode(this.block.x, this.block.y);
     current.prev = null;
     current.start = true;
     current.distance = 0;
@@ -284,10 +289,10 @@ function Character (x, y)
    this._getAutomation = function(path) {
     var steps = [];
     for (var i = 1; i < path.length; i++) {
-      steps[i - 1] = path[i].x > path[i - 1].x ? "right" : steps[i - 1];
-      steps[i - 1] = path[i].x < path[i - 1].x ? "left" : steps[i - 1];
-      steps[i - 1] = path[i].y < path[i - 1].y ? "up" : steps[i - 1];
-      steps[i - 1] = path[i].y > path[i - 1].y ? "down" : steps[i - 1];
+      steps[i - 1] = path[i].x > path[i - 1].x ? DIRECTION_RIGHT : steps[i - 1];
+      steps[i - 1] = path[i].x < path[i - 1].x ? DIRECTION_LEFT : steps[i - 1];
+      steps[i - 1] = path[i].y < path[i - 1].y ? DIRECTION_UP : steps[i - 1];
+      steps[i - 1] = path[i].y > path[i - 1].y ? DIRECTION_DOWN : steps[i - 1];
     }
     return steps;
   };
@@ -305,7 +310,7 @@ function Character (x, y)
 
       //off canvas
       if (!char.images.offHexColor)
-        char.images.offHexColor = currentColorHex++;
+        char.images.offHexColor = char.hexColor;
       char.images[char.state][char.direction].off = new Image();
       var off = str.replace(/fill(.*);/g,'fill:#'+char.images.offHexColor.toString(16)+';');
       //console.log(off);
@@ -320,12 +325,12 @@ function Character (x, y)
 
     // Player displacement: don't allow if map end
      if (this.x > 0) {
-      x += (this.x - this.xBlock) * (tiles.size / 2.14);
-      y += (this.x - this.xBlock) * (tiles.size / 4.14);
+      x += (this.x - this.block.x) * (tiles.size / 2.14);
+      y += (this.x - this.block.x) * (tiles.size / 4.14);
     }
     if (this.y > 0) {
-      x -= (this.y - this.yBlock) * (tiles.size / 2.14);
-      y += (this.y - this.yBlock) * (tiles.size / 4.14);
+      x -= (this.y - this.block.y) * (tiles.size / 2.14);
+      y += (this.y - this.block.y) * (tiles.size / 4.14);
     }
     return {'x': x, 'y':  y};
   }
