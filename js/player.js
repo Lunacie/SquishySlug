@@ -19,7 +19,6 @@ function Player(x, y) // inherits Character
         diff = this.y - parseInt(this.y);
         this.walkUnit.y = this.walkUnitSize * -1;
         walking = true;
-        events.up = false;
         }
 
       else if (events.down) {
@@ -27,7 +26,6 @@ function Player(x, y) // inherits Character
         diff = this.y - parseInt(this.y);
         this.walkUnit.y = this.walkUnitSize ;
         walking = true;
-        events.down = false;
       }
 
       else if (events.left) {
@@ -35,7 +33,6 @@ function Player(x, y) // inherits Character
         diff = this.x - parseInt(this.x);
         this.walkUnit.x = this.walkUnitSize * -1 ;
         walking = true;
-        events.left = false;
       }
 
       else if (events.right) {
@@ -43,9 +40,12 @@ function Player(x, y) // inherits Character
         diff = this.x - parseInt(this.x);
         walking = true;
         this.walkUnit.x = this.walkUnitSize;
-        events.right = false;
       }
 
+      events.up = false;
+      events.down = false;
+      events.right = false;
+      events.left = false;
       this._shiftActions(walking);
 
 
