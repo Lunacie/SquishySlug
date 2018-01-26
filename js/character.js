@@ -6,9 +6,9 @@ var characterCount = 0;
 
 function Character (x, y)
 {
+  this.id = characterCount++;
   this.x = x;
   this.y = y;
-  this.id = characterCount;
   this.xBlock = x;
   this.yBlock = y;
   this.direction = 0;
@@ -24,8 +24,6 @@ function Character (x, y)
   this._path = null;
   this._steps = null;
   this.actions = [false, false, false];
-
-  characterCount += 1;
 
   this.sprites = [
     [

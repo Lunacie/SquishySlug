@@ -100,7 +100,7 @@ function Map(player, characters)
                 }
             }
           }
-          
+
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;
@@ -110,8 +110,8 @@ function Map(player, characters)
     _buildTileMap : function(xr, yr) {
       var tileMap = [];
 
-      var realX = this._startX < 0 ? xr : xr + this._startX;
-      var realY = this._startY < 0 ? yr : yr + this._startY;
+      var realX = xr + this._startX;
+      var realY = yr + this._startY;
       var characters = fullMap.getCharacters(realX, realY);
       var xt = 0;
       var yt = 0;
