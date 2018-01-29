@@ -70,7 +70,7 @@ function Character (x, y)
       }
 
       this._updatePosition();
-      this.state = this._machineState.update();
+      this.state = this._machineState.update(time)
 
       fullMap.addCharacter(this, this.block.x, this.block.y);
   }
@@ -88,6 +88,15 @@ function Character (x, y)
         if (this._props[i].type == type) {
           this._props.splice(i, 1);
           break;
+        }
+      }
+  }
+
+  this.removeAllPropsByType = function(type) {
+      for (var i = 0; i < this._props.length; i++) {
+        if (this._props[i].type == type) {
+          this._props.splice(i, 1);
+          i -= 1;
         }
       }
   }
@@ -156,6 +165,7 @@ function Character (x, y)
       this._steps = null;
       this.destination = null;
       this.state = ACTION_STATE_IDLE;
+      this._machineState.setState(ACTION_STATE_IDLE);
   }
 
   this._updatePosition = function() {

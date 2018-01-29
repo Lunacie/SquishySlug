@@ -11,8 +11,9 @@ function MachineState(actor) {
   this._actor2 = null;
   this._trigger = null;
   this._start = {x : 0, y : 0}
+  this._elapsed = 0;
 
-  this.update = function() {
+  this.update = function(time) {
 
     this._checkForStateChanges();
 
@@ -21,19 +22,38 @@ function MachineState(actor) {
         this.state = ACTION_STATE_WALK;
       else if (this._hasAction(0))
         this.state = ACTION_STATE_IDLE;
+
+
+      if (this._actor.id != 0 && this.state == ACTION_STATE_IDLE) {
+          this._getNextNpcState();
+      }
     }
 
-    this._tick += 1;
+    this._elapsed += time;
     return this.state;
+  };
+
+  this._getNextNpcState = function() {
+    if (this._elapsed < 5000)
+      return;
+    // npc Roam
+    var destination = {
+      x : 14,
+      y : 10
+    };
+    this._actor.setDestination(destination, 0);
   };
 
 
     this.triggerState = function(trigger, actor2) {
       if (trigger.actor) {
+          if (trigger.actor2 &&
+              this._actorIsTooFar(trigger.actor, trigger.actor2))
+            return;
         if (trigger.actor == this._actor) {
+          this._actor2 = actor2;
           this.state = trigger.state;
           this._trigger = trigger;
-          this._actor2 = actor2;
           this._start = {
             x : this._actor2.x,
             y : this._actor2.y
@@ -44,12 +64,18 @@ function MachineState(actor) {
         else
           trigger.actor._machineState.triggerState(trigger, this._actor);
       }
+      this._elapsed = 0;
     }
+
+    this.setState = function(state) {
+      this.state = state;
+      this._elapsed = 0;
+    };
 
 
     this.removeState = function(state) {
       if (state == ACTION_STATE_CONVERSATION)
-        this._actor.removeProp(PROP_TYPE_SPEECH);
+        this._actor.removeAllPropsByType(PROP_TYPE_SPEECH);
       this.state = ACTION_STATE_IDLE;
     }
 
@@ -57,17 +83,22 @@ function MachineState(actor) {
     this._checkForStateChanges = function() {
       if (this.state == ACTION_STATE_CONVERSATION) {
           // change to idle if player is a rude mf and left mid conversation
-          if (this._actor2.x == this._start.x &&
-              this._actor2.y == this._start.y)
-                return;
-          var diffX = this._actor2.x - this._actor.x;
-          diffX = diffX < 0 ? diffX * -1 : diffX;
-          var diffY = this._actor2.y - this._actor.y;
-          diffY = diffY < 0 ? diffY * -1 : diffY;
-          if (diffX +  diffY > 2) {
-            this.removeState(ACTION_STATE_CONVERSATION);
+          if (!(this._actor2.x == this._start.x &&
+              this._actor2.y == this._start.y)) {
+              if (this._actorIsTooFar(this._actor, this._actor2))
+                this.removeState(ACTION_STATE_CONVERSATION);
           }
       }
+    }
+
+    this._actorIsTooFar = function(actor, actor2) {
+      var diffX = actor2.x - actor.x;
+      diffX = diffX < 0 ? diffX * -1 : diffX;
+      var diffY = actor2.y - actor.y;
+      diffY = diffY < 0 ? diffY * -1 : diffY;
+      if (diffX +  diffY > 2)
+        return true;
+      return false;
     }
 
     this._hasAction = function(nb)
