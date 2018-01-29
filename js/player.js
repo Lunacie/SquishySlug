@@ -4,6 +4,7 @@ function Player(x, y) // inherits Character
     Character.call(this, x, y);
 
     this.map = {};
+    this.elapsed = 0;
 
     this.update = function(time)
     {

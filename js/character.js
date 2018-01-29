@@ -1,7 +1,5 @@
 
 var SHOW_DIJKSTRA_DEBUG = false;
-var ACTION_STATE_IDLE = 0;
-var ACTION_STATE_WALK = 1;
 var DIRECTION_RIGHT = 0;
 var DIRECTION_LEFT = 1;
 var DIRECTION_DOWN = 2;
@@ -22,19 +20,19 @@ function Character (x, y)
   };
   this.direction = 0;
   this.images = [];
-  this.elapsed = 0;
   this.walkUnitSize = 0.050;
   this.walkUnit = {
     x : 0,
     y : 0
   };
   this.state = ACTION_STATE_IDLE;
+  this._machineState = new MachineState(this);
   this.destination = null;
   this.direction = DIRECTION_RIGHT;
   this._path = null;
   this._steps = null;
-  this.actions = [false, false, false];
-
+  this._props = [
+  ];
   this.sprites = [
     [
       "assets/vectors/char01_right.svg",
@@ -69,11 +67,7 @@ function Character (x, y)
       }
 
       this._updatePosition();
-
-      if (this._hasAction(1))
-        this.state = ACTION_STATE_WALK;
-      else if (this._hasAction(0))
-        this.state = ACTION_STATE_IDLE;
+      this.state = this._machineState.update();
 
       fullMap.addCharacter(this, this.block.x, this.block.y);
   }
@@ -84,6 +78,19 @@ function Character (x, y)
     this._steps = null;
     this.destination = destination;
     this.direction = direction;
+  }
+
+  this.removeProp = function(type) {
+      for (var i = 0; i < this._props.length; i++) {
+        if (this._props[i].type == type) {
+          this._props.splice(i, 1);
+          break;
+        }
+      }
+  }
+
+  this.addProp = function(type) {
+    this._props.push(new Prop(type));
   }
 
 
@@ -106,6 +113,9 @@ function Character (x, y)
               this.x += this.destination.displacement.x;
               this.y += this.destination.displacement.y;
             }
+            if (this.destination.trigger)
+              this._machineState.triggerState(this.destination.trigger);
+
             return this._clearAutomation();
           }
     }
@@ -153,34 +163,6 @@ function Character (x, y)
       y : (this.y - this.block.y) * 10
     };
   }
-
-  this.draw = function(ox, oy)
-  {
-    var y = oy;
-    var x = ox + tiles.size / 1.5;
-    var disp = this._getDisplacement(x, y);
-    x = disp.x;
-    y = disp.y;
-
-    this.images[this.state] = this.images[this.state] || [];
-    // no image
-    if (!this.images[this.state][this.direction]) {
-      this._loadImage();
-    }
-    // image ready to draw
-    else {
-      var element = this.images[this.state][this.direction].on;
-      this.x2d = x;
-      this.y2d = y;
-      ctx.drawImage(element,
-                    x, y, (tiles.size / 3) * -1, tiles.size / 1.6);
-
-      element = this.images[this.state][this.direction].off;
-      ctxOff.drawImage(element,
-                    x, y, (tiles.size / 3) * -1, tiles.size / 1.6);
-    }
-  };
-
   this._buildPath = function() {
     var path = [];
     var queue = [];
@@ -297,9 +279,50 @@ function Character (x, y)
     return steps;
   };
 
+
+    this.draw = function(ox, oy)
+    {
+      var y = oy;
+      var x = ox + tiles.size / 1.5;
+      var disp = this._getDisplacement(x, y);
+      x = disp.x;
+      y = disp.y;
+
+      this.images[this.state] = this.images[this.state] || [];
+      // no image
+      if (!this.images[this.state][this.direction]) {
+        this._loadImage();
+      }
+      // image ready to draw
+      else {
+        var element = this.images[this.state][this.direction].on;
+        var width = (tiles.size / 3) * -1;
+        var height = tiles.size / 1.6;
+        this.x2d = x;
+        this.y2d = y;
+        ctx.drawImage(element,
+                      x, y, width, height);
+        this._drawProps(x, y, width, height);
+
+        element = this.images[this.state][this.direction].off;
+        ctxOff.drawImage(element,
+                      x, y, width, height);
+      }
+    };
+
+  this._drawProps = function(x, y, width, height) {
+    for (var i = 0; i < this._props.length; i++) {
+      this._props[i].draw(x, y, width, height);
+    }
+  }
+
   this._loadImage = function () {
     var char = this;
-    $.get(this.sprites[this.state][this.direction], function(svgXml) {
+    var path = this.sprites[this.state];
+    if (!path)
+      path = this.sprites[ACTION_STATE_IDLE];
+    path = path[this.direction];
+    $.get(path, function(svgXml) {
       char.images[char.state][char.direction] = {};
 
       // on canvas
@@ -336,17 +359,8 @@ function Character (x, y)
   }
 
 
-  this._hasAction = function(nb)
-  {
-    var ret = 0;
-    for (var i = 0; i < this.actions.length; i++)
-      ret += this.actions[i] ? 1 : 0;
-    return ret == nb;
-  };
-
   this._shiftActions = function(value) {
-    this.actions.shift();
-    this.actions[this.actions.length] = value;
-  };
+    this._machineState._shiftActions(value);
+  }
 
 }
