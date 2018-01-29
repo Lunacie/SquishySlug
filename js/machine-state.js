@@ -10,6 +10,7 @@ function MachineState(actor) {
   this._actor = actor;
   this._actor2 = null;
   this._trigger = null;
+  this._start = {x : 0, y : 0}
 
   this.update = function() {
 
@@ -22,6 +23,7 @@ function MachineState(actor) {
         this.state = ACTION_STATE_IDLE;
     }
 
+    this._tick += 1;
     return this.state;
   };
 
@@ -32,6 +34,10 @@ function MachineState(actor) {
           this.state = trigger.state;
           this._trigger = trigger;
           this._actor2 = actor2;
+          this._start = {
+            x : this._actor2.x,
+            y : this._actor2.y
+          };
           if (trigger.state ==  ACTION_STATE_CONVERSATION)
             this._actor.addProp(PROP_TYPE_SPEECH);
         }
@@ -51,6 +57,9 @@ function MachineState(actor) {
     this._checkForStateChanges = function() {
       if (this.state == ACTION_STATE_CONVERSATION) {
           // change to idle if player is a rude mf and left mid conversation
+          if (this._actor2.x == this._start.x &&
+              this._actor2.y == this._start.y)
+                return;
           var diffX = this._actor2.x - this._actor.x;
           diffX = diffX < 0 ? diffX * -1 : diffX;
           var diffY = this._actor2.y - this._actor.y;

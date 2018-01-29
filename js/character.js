@@ -54,8 +54,11 @@ function Character (x, y)
       fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
-          if (!this._path)
+          if (!this._path) {
             this._path = this._buildPath();
+            if (!this._path)
+              this._automate();
+          }
 
           if (this._path && !this._steps) {
             this._steps = this._getAutomation(this._path);
@@ -96,8 +99,14 @@ function Character (x, y)
 
   this._automate = function() {
 
-    if (!this._path || !this._path.length)
+    if (!this._path || !this._path.length) {
+      if (this.destination && this.destination.trigger) {
+        if (this.destination.direction)
+          this.direction = this.destination.direction;
+        this._machineState.triggerState(this.destination.trigger);
+      }
       return this._clearAutomation();
+    }
 
     //console.log("curent : ["+this.block.y+"]["+this.block.x+"]");
     //console.log("target : ["+this._path[0].y+"]["+this._path[0].x+"]");
