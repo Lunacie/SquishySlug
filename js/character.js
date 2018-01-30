@@ -14,13 +14,15 @@ function Character (x, y)
   this.hexColor = characterColorHex + this.id;
   this.x = x;
   this.y = y;
+  this.time = 0;
   this.block = {
     x : x,
     y : y
   };
   this.direction = 0;
   this.images = [];
-  this.walkUnitSize = 0.050;
+  this.walkUnitSize = 0.025;
+  this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
     y : 0
@@ -69,12 +71,12 @@ function Character (x, y)
             this._automate();
       }
 
+      this._scaleWalkPace();
       this._updatePosition();
       this.state = this._machineState.update(time)
 
       fullMap.addCharacter(this, this.block.x, this.block.y);
   }
-
 
   this.setDestination = function(destination, direction) {
     this._path = null;
@@ -104,7 +106,6 @@ function Character (x, y)
   this.addProp = function(type) {
     this._props.push(new Prop(type));
   }
-
 
   this._automate = function() {
 
@@ -168,11 +169,22 @@ function Character (x, y)
       this._machineState.setState(ACTION_STATE_IDLE);
   }
 
+
+  this._scaleWalkPace = function() {
+    // pace  |   fps
+    //  1    |    60
+    //  60   |    1
+    if (fps)
+      this._walkPaceScale = 60 / fps;
+  };
+
   this._updatePosition = function() {
     if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y))
       return;
-    this.x += this.walkUnit.x;
-    this.y += this.walkUnit.y;
+      if (this.id == 0)
+      console.log(fps, this.walkUnit.x, this._walkPaceScale, this.walkUnit.x * this._walkPaceScale);
+    this.x += (this.walkUnit.x * this._walkPaceScale);
+    this.y += (this.walkUnit.y * this._walkPaceScale);
     this.block.x = parseInt(this.x);
     this.block.y = parseInt(this.y);
     this.walkUnit.x = 0;

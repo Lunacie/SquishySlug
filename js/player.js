@@ -11,7 +11,8 @@ function Player(x, y) // inherits Character
        this.elapsed += time;
         if (this.elapsed < 30)
           return;
-        this.elapsed = 0;
+
+       this.elapsed = 0;
 
       var walking = false;
 
