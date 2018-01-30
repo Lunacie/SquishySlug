@@ -15,15 +15,19 @@
     //console.log("player : ", player.x2d, player.y2d );
     //console.log("canvas : ", canvas.width, canvas.height, canvas.height / 2 );
 
+    var speed = 10;
+    if (fps)
+      speed *= (60 / fps);
+
     if (player.y2d > (canvas.height / 2) + 100)
-      y -= 10;
+      y -= speed;
     else if (player.y2d < (canvas.height / 2) - 100)
-      y += 10;
+      y += speed;
 
     if (player.x2d > (canvas.width / 2) + 200)
-      x -= 10;
+      x -= speed;
     else if (player.x2d < (canvas.width / 2) - 200)
-      x += 10;
+      x += speed;
 
     y2d = y;
     x2d = x;

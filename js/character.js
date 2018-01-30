@@ -171,9 +171,6 @@ function Character (x, y)
 
 
   this._scaleWalkPace = function() {
-    // pace  |   fps
-    //  1    |    60
-    //  60   |    1
     if (fps)
       this._walkPaceScale = 60 / fps;
   };
@@ -181,8 +178,6 @@ function Character (x, y)
   this._updatePosition = function() {
     if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y))
       return;
-      if (this.id == 0)
-      console.log(fps, this.walkUnit.x, this._walkPaceScale, this.walkUnit.x * this._walkPaceScale);
     this.x += (this.walkUnit.x * this._walkPaceScale);
     this.y += (this.walkUnit.y * this._walkPaceScale);
     this.block.x = parseInt(this.x);
