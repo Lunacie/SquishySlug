@@ -6,7 +6,7 @@
 var player = new Player(10, 10);
 var characters = [];
 characters.push(player);
-characters.push(new Npc(12, 12));
+characters.push(new Npc(12, 12, SPECIES_CAT));
 
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);

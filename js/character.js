@@ -14,6 +14,7 @@ function Character (x, y)
   this.hexColor = characterColorHex + this.id;
   this.x = x;
   this.y = y;
+  this._species = SPECIES_BUNNY;
   this.time = 0;
   this.block = {
     x : x,
@@ -35,21 +36,6 @@ function Character (x, y)
   this._steps = null;
   this._props = [
   ];
-  this.sprites = [
-    [
-      "assets/vectors/char01_right.svg",
-      "assets/vectors/char01_left.svg",
-      "assets/vectors/char01_down.svg",
-      "assets/vectors/char01_up.svg"
-    ],
-    [
-      "assets/vectors/char01_right_walk.svg",
-      "assets/vectors/char01_left_walk.svg",
-      "assets/vectors/char01_down_walk.svg",
-      "assets/vectors/char01_up_walk.svg",
-    ]
-  ];
-
 
   this.updateCharacter = function(time)
   {
@@ -317,7 +303,7 @@ function Character (x, y)
       this.images[this.state] = this.images[this.state] || [];
       // no image
       if (!this.images[this.state][this.direction]) {
-        this._loadImage();
+        (new ImageLoader).load(this);
       }
       // image ready to draw
       else {
@@ -340,32 +326,6 @@ function Character (x, y)
     for (var i = 0; i < this._props.length; i++) {
       this._props[i].draw(x, y, width, height);
     }
-  }
-
-  this._loadImage = function () {
-    var char = this;
-    var path = this.sprites[this.state];
-    if (!path)
-      path = this.sprites[ACTION_STATE_IDLE];
-    path = path[this.direction];
-    $.get(path, function(svgXml) {
-      char.images[char.state][char.direction] = {};
-
-      // on canvas
-      char.images[char.state][char.direction].on = new Image();
-      var str = (new XMLSerializer).serializeToString(svgXml);
-      char.images[char.state][char.direction].on.src =
-                             "data:image/svg+xml;charset=utf-8," + str;
-
-      //off canvas
-      if (!char.images.offHexColor)
-        char.images.offHexColor = char.hexColor;
-      char.images[char.state][char.direction].off = new Image();
-      var off = str.replace(/fill(.*);/g,'fill:#'+char.images.offHexColor.toString(16)+';');
-      //console.log(off);
-      char.images[char.state][char.direction].off.src =
-                             "data:image/svg+xml;charset=utf-8," + off;
-    });
   }
 
   this._getDisplacement = function (x, y) {

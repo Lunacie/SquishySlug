@@ -38,7 +38,7 @@ function MachineState(actor) {
       return;
     // npc Roam
     var destination = {
-      x : 14,
+      x : 12,
       y : 10
     };
     this._actor.setDestination(destination, 0);
