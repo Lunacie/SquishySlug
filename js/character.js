@@ -44,8 +44,9 @@ function Character (x, y)
       if (this.destination) {
           if (!this._path) {
             this._path = this._buildPath();
-            if (!this._path)
+            if (!this._path) {
               this._automate();
+            }
           }
 
           if (this._path && !this._steps) {
@@ -94,8 +95,8 @@ function Character (x, y)
   }
 
   this._automate = function() {
-
     if (!this._path || !this._path.length) {
+      // if character reached destination and needs to face direction
       if (this.destination && this.destination.trigger) {
         if (this.destination.direction)
           this.direction = this.destination.direction;
@@ -152,6 +153,7 @@ function Character (x, y)
       this._steps = null;
       this.destination = null;
       this.state = ACTION_STATE_IDLE;
+      this._shiftActions(false, 3);
       this._machineState.setState(ACTION_STATE_IDLE);
   }
 
@@ -345,8 +347,11 @@ function Character (x, y)
   }
 
 
-  this._shiftActions = function(value) {
-    this._machineState._shiftActions(value);
+  this._shiftActions = function(value, amount) {
+    if (!amount)
+      amount = 1;
+    for (var i = 0; i < amount; i++)
+      this._machineState._shiftActions(value);
   }
 
 }

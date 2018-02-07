@@ -66,6 +66,10 @@
 
        char.images[char.state][char.direction].on = new Image();
 
+       if (char.id == 2 &&
+         char.direction == DIRECTION_RIGHT) {
+           console.log(this._svgXml);
+       }
        this._clearDefault();
        this._normalizeSpecies(char._species);
        this._applySpecies[char._species](this);
@@ -102,9 +106,7 @@
          var element = this._svgXml.getElementById(this.addons[i]);
          if (element) {
            element.id = this.speciesStr[0] + this.addons[i];
-           console.log(element);
-
-         }
+           }
        }
      }
 
@@ -149,7 +151,6 @@
        },
        // cat
        function(loader)  {
-         console.log(loader._svgXml);
          var shared = [
            // from bunny
            [ "head", "neck", "chest", "nose",
