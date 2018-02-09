@@ -42,6 +42,7 @@
       "neck",
       "nose",
       "ear", "ear_x5F_back", "ear_x5F_front",
+      "antennas", "wings",  
       "hair", "hair_x5F_back", "hair_x5F_front",
       "chest", "top",
       "hip_x5F_front", "hip_x5F_back"

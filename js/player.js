@@ -2,7 +2,7 @@
 function Player(x, y) // inherits Character
 {
     Character.call(this, x, y);
-    //this._species = SPECIES_ELEPHANT;
+    //this._species = SPECIES_INSECT;
 
     this.map = {};
     this.elapsed = 0;

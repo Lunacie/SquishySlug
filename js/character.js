@@ -34,8 +34,7 @@ function Character (x, y)
   this.direction = DIRECTION_RIGHT;
   this._path = null;
   this._steps = null;
-  this._props = [
-  ];
+  this._props = [];
 
   this.updateCharacter = function(time)
   {
