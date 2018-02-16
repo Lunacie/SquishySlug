@@ -29,6 +29,13 @@ function LoadManager(characters, tiles) {
             this._characters[i].images[0].length != 4)
             return false;
       }
+
+      for (var i = 0; i < this._tiles.data.length; i++) {
+        var tile = this._tiles.data[i];
+        if (tile.id && !tile.image)
+          return false;
+      }
+
       return true;
     };
 

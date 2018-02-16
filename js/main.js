@@ -1,4 +1,4 @@
-var DEBUG = 1;
+var DEBUG = 0;
 var ratio = 1;
 var ratioW = 1;
 var ratioH = 1;

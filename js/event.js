@@ -17,6 +17,8 @@ window.addEventListener('resize', function(event){
   canvas.height = window.innerHeight
   offCanvas.width = window.innerWidth;
   offCanvas.height = window.innerHeight;
+  debugCanvas.width = window.innerWidth;
+  debugCanvas.height = window.innerHeight;
 
   ui.resize(window.innerWidth, window.innerHeight);
 
@@ -26,16 +28,7 @@ window.addEventListener('resize', function(event){
    tiles.size *= 3;
  else if (ratio < 1)
   tiles.size *= 1.7;
- /*
- // apply scale per breakpoint
- for (var i = 0; i < breakpoints.length; i++) {
-   var e = breakpoints[i];
-   if (e.scale != 1 && ratio >= e.min && ratio < e.max) {
-       ctx.scale(e.scale * ratio, e.scale * ratio);
-       break;
-     }
- };
- */
+
 });
 
 document.addEventListener("keydown", function(event)
