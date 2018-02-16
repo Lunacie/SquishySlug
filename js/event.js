@@ -16,7 +16,9 @@ window.addEventListener('resize', function(event){
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight
   offCanvas.width = window.innerWidth;
-  offCanvas.height = window.innerHeight
+  offCanvas.height = window.innerHeight;
+
+  ui.resize(window.innerWidth, window.innerHeight);
 
  tiles.size = tiles.initSize;
  ratio = canvas.width / canvas.height;

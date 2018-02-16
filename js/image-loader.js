@@ -42,46 +42,48 @@
       "neck",
       "nose",
       "ear", "ear_x5F_back", "ear_x5F_front",
-      "antennas", "wings",  
+      "antennas", "wings",
       "hair", "hair_x5F_back", "hair_x5F_front",
       "chest", "top",
       "hip_x5F_front", "hip_x5F_back"
     ];
 
-     this.load = function (char) {
-       var path = this.sprites[char.state];
+     this.load = function (char, state, direction) {
+      state = state || char.state;
+      direction = direction || char.direction;
+       var path = this.sprites[state];
        if (!path)
          path = this.sprites[ACTION_STATE_IDLE];
-       path = path[char.direction];
+       path = path[direction];
        var loader = this;
        $.get(path, function(svgXml) {
          loader._svgXml = svgXml;
-         char.images[char.state][char.direction] = {};
-         loader._loadOnCanvasImage(char);
-         loader._loadOffCanvasImage(char);
+         char.images[state][direction] = {};
+         loader._loadOnCanvasImage(char, state, direction);
+         loader._loadOffCanvasImage(char, state, direction);
        });
      }
 
 
-     this._loadOnCanvasImage = function(char) {
 
-       char.images[char.state][char.direction].on = new Image();
+     this._loadOnCanvasImage = function(char, state, direction) {
 
-       if (char.id == 2 &&
-         char.direction == DIRECTION_RIGHT) {
-           console.log(this._svgXml);
-       }
+       char.images[state][direction].on = new Image();
+
+
+
        this._clearDefault();
        this._normalizeSpecies(char._species);
        this._applySpecies[char._species](this);
        this._removeOthers(char._species);
+
        //if (char.state == ACTION_STATE_WALK)
          //this._appendWalkAnimations(char.direction);
 
        //console.log(this._svgXml);
        var str = (new XMLSerializer).serializeToString(this._svgXml);
        this._serialized = str;
-       char.images[char.state][char.direction].on.src =
+       char.images[state][direction].on.src =
                               "data:image/svg+xml;charset=utf-8," + str;
      }
 
@@ -189,14 +191,14 @@
        },
      ]
 
-     this._loadOffCanvasImage = function(char) {
+     this._loadOffCanvasImage = function(char, state, direction) {
 
        if (!char.images.offHexColor)
          char.images.offHexColor = char.hexColor;
-       char.images[char.state][char.direction].off = new Image();
+       char.images[state][direction].off = new Image();
        var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
                  char.images.offHexColor.toString(16) + ';');
-       char.images[char.state][char.direction].off.src =
+       char.images[state][direction].off.src =
                               "data:image/svg+xml;charset=utf-8," + off;
 
      }

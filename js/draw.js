@@ -37,5 +37,6 @@
     ctxDebug.clearRect(0, 0, canvas.width, canvas.height);
 
     map.draw(x, y - (tiles.size * 3));
-    debugOv.draw(x, y - (tiles.size * 3));
+    if (DEBUG)
+      debugOv.draw(x, y - (tiles.size * 3));
   }

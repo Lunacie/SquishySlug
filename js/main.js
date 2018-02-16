@@ -1,7 +1,7 @@
-  var DEBUG = 1;
-  var ratio = 1;
-  var ratioW = 1;
-  var ratioH = 1;
+var DEBUG = 1;
+var ratio = 1;
+var ratioW = 1;
+var ratioH = 1;
 
 var player = new Player(10, 10);
 var characters = [];
@@ -13,6 +13,7 @@ characters.push(new Npc(8, 10, SPECIES_INSECT));
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);
 
+var ui = new UI();
 
 window.onload = function() {
 
@@ -30,6 +31,9 @@ debugCanvas.width = window.innerWidth;
 debugCanvas.height = window.innerHeight;
 debugCanvas.addEventListener("click", eventCanvasClicked);
 
+ui.init();
+ui.resize(window.innerWidth, window.innerHeight);
+
 
 if (canvas && canvas.getContext)
 {
@@ -44,18 +48,9 @@ if (canvas && canvas.getContext)
    else if (ratio < 1)
     tiles.size *= 1.7;
 
-  //if (ratio < 1 || (ratio > 1 && canvas.width > 2000))
-  //  tiles.size *= 1.7;
-  /*
-  // apply scale per breakpoint
-  for (var i = 0; i < breakpoints.length; i++) {
-    var e = breakpoints[i];
-    if (e.scale != 1 && ratio >= e.min && ratio < e.max) {
-        ctx.scale(e.scale * ratio, e.scale * ratio);
-        break;
-      }
-  };*/
 
+ var loadManager = new LoadManager(characters, tiles);
+ loadManager.load();
 
  var elapsed = 0;
  var frames = 0;
@@ -66,7 +61,7 @@ if (canvas && canvas.getContext)
     elapsed += diff;
     frames += 1;
 
-    update(characters, map, debugOverlay, diff);
+    update(characters, map, ui, loadManager, debugOverlay, diff);
     draw(characters, map, debugOverlay);
 
     if (elapsed >= 1000) {

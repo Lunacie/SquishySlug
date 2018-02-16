@@ -329,6 +329,10 @@ function Character (x, y)
     }
   }
 
+  this.loadImage = function(action, direction) {
+      (new ImageLoader).load(this, action, direction);
+  }
+
   this._getDisplacement = function (x, y) {
     y -= tiles.size / 10;
     x -= tiles.size / 10;
