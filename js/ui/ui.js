@@ -14,7 +14,9 @@ function UI() {
       $("#loading.screen"),
       $("#main.screen").click(eventCanvasClicked)
     ];
-
+    console.log($("#footer").children());
+    $("#footer").click(eventCanvasClicked);
+    $("#header").click(eventCanvasClicked);
   }
 
   this.update = function(loadManager) {

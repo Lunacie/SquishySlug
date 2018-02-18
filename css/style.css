@@ -47,6 +47,40 @@ body {
   color : #6D316C;
 }
 
+#nav {
+  position : absolute;
+  width : 50%;
+  height : 200px;
+  top : 40%;
+  right : 0;
+}
+#nav ul {
+  list-style : none;
+  position : absolute;
+  right : 40px;
+  width : 100%;
+  display : block;
+ }
+#nav ul li {
+  min-height : 2.5em;
+  max-height : 2.5em;
+  line-height : 2.5em;
+}
+#nav ul a { text-decoration : none }
+#nav ul li .text {
+  color : white;
+  font-family: 'News Cycle', sans-serif;
+  font-size : 1em;
+  text-align: right;
+}
+#nav ul li .icon { width : 50px;}
+#nav ul li .icon.on {display : none}
+#nav ul li .icon.off { display : inline }
+#nav ul li:hover .icon.off,  #nav ul li.selected .icon.off {display : none}
+#nav ul li:hover .icon.on, #nav ul li.selected .icon.on { display : inline }
+#nav ul li .text { visibility : hidden; }
+#nav ul li:hover .text, #nav ul li.selected .text { visibility : visible; }
+
 #footer {
   width: 100%;
   height : 60px;
@@ -58,6 +92,61 @@ body {
   font-family: 'News Cycle', sans-serif;
   font-size : 0.8em;
 }
+#footer p.copy {
+  position : absolute;
+  bottom : 0;
+}
 #footer #social {
   float : right;
+}
+#footer #social img {
+  width : 30px;
+  height : 30px;
+}
+
+@media only screen and (max-width: 1024px) {
+  #main #header , #logo{
+    height : 60px;
+  }
+  #header #logo h1 {
+    line-height : 2em;
+    font-size : 2em;
+  }
+
+  #nav ul li .text { font-size : 3em; }
+  #nav ul li {
+    min-height : 4em;
+    max-height : 4em;
+  }
+  #footer p {
+    font-size : 1.5em;
+  }
+  #footer {
+    height : 7em;
+  }
+  #footer #social img {
+    width : 50px;
+    height : 50px;
+  }
+
+}
+
+@media only screen and (max-height: 600px) {  #nav ul li .text { font-size : 3em; }
+  #nav ul li .text { font-size : 1.7em; }
+  #nav ul li {
+    min-height : 2em;
+    max-height : 2em;
+  }
+  #nav { top : 40%; }
+  #footer {
+    height : 4.4em;
+  }
+  #footer #social img {
+    width : 30px;
+    height : 30px;
+  }
+  #loading img.big {
+    top : 25%;
+    left : 35%;
+  }
 }
