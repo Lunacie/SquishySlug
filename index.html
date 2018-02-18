@@ -4,6 +4,7 @@
    <head>
       <title>Squishy Slug</title>
 <link href="https://fonts.googleapis.com/css?family=News+Cycle|Ubuntu|Ubuntu+Mono" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,16 +32,18 @@
 
       <link rel="stylesheet" href="css/style.css"></link>
       <link rel="stylesheet" href="css/animations.css"></link>
+      <link rel="stylesheet" href="css/animation-menu.css"></link>
 
    </head>
 
 
    <body id="body" class="" style="margin:0; padding:0">
-
           <canvas id="offCanvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="canvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="debugCanvas" class="canvas" width="1000" height="600"></canvas>
-          <div id="loading" class="screen container">
+
+        <div id="loading" class="screen container">
+
             <img src="assets/ui/loading.svg" class="hidden-md-down small" width="10%"/>
             <img src="assets/ui/loading.svg" class="hidden-lg-up big" width="25%"/>
 
@@ -55,30 +58,40 @@
             </div>
           </div>
 
-        <div id="nav" class="nav">
+          <svg id="menu-open" version="1.1" class="hidden-lg-up"
+              viewBox="0 0 516.8 439.4" enable-background="new 0 0 516.8 439.4" xml:space="preserve">
+             <rect id="l1" x="1.6" y="2.4" width="479" height="79"/>
+             <rect id="l2" x="1.6" y="122.4" width="479" height="79"/>
+             <rect id="l3" x="1.6" y="242.4" width="479" height="79"/>
+             <rect id="l4" x="1.6" y="362.4" width="479" height="79"/>
+          </svg>
+
+
+        <div id="nav-overlay" class="hidden-lg-up"></div>
+        <div id="nav">
           <ul>
-              <a href="#"><li class="row">
+              <a href="#"><li class="row about selected">
                   <span class="text col-10"> About</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-planet.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row">
+              <a href="#"><li class="row road">
                   <span class="text col-10"> The road, so far</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-galaxy.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row">
+              <a href="#"><li class="row projects">
                   <span class="text col-10"> Projects</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-orbit.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row">
+              <a href="#"><li class="row contact">
                   <span class="text col-10"> Contact</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-sun.svg" alt="about"/>
@@ -105,5 +118,8 @@
 
           </div>
 
+
+
         </body>
+
 </html>

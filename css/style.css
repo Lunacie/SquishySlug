@@ -1,7 +1,13 @@
-html, body { margin : 0; padding : 0 }
+html, body {
+  margin : 0; padding : 0;
+  position : fixed;
+  overflow : hidden;
+  width : 100%; height : 100%;
+}
 body {
   background : #6D316C;
 }
+#wrapper { }
 
 .canvas, .screen {
   position : absolute;
@@ -30,14 +36,13 @@ body {
   left : 35%;
 }
 
-#main { display : none }
+#main { display : none; z-index: 1 }
 #main #header , #logo{
   margin-left :  auto;
   margin-right : auto;
   background : white;
   height : 50px;
 }
-
 #header #logo h1 {
   line-height : 2em;
   margin-left : -30px;
@@ -46,18 +51,35 @@ body {
   font-size : 1.4em;
   color : #6D316C;
 }
+#menu-open {
+  width : 50px;
+  position : absolute;
+  top : 10px;
+  right : 40px;
+  z-index: 1
+}
 
+#nav-overlay {
+  width : 0px;
+  height : 100vh;
+  background : rgba(255, 255, 255, 0.2);
+  position : absolute;
+  top : 0;
+  right : 0px;
+  z-index: 0;
+}
 #nav {
   position : absolute;
-  width : 50%;
+  width : 200px;
   height : 200px;
   top : 40%;
-  right : 0;
+  right : 60px;
+  display : none;
+  z-index : 2;
 }
 #nav ul {
   list-style : none;
   position : absolute;
-  right : 40px;
   width : 100%;
   display : block;
  }
@@ -104,7 +126,7 @@ body {
   height : 30px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 990px) {
   #main #header , #logo{
     height : 60px;
   }
@@ -113,11 +135,18 @@ body {
     font-size : 2em;
   }
 
+  #nav {
+    width : 400px;
+    top : 10%;
+    right : -500px;
+  }
   #nav ul li .text { font-size : 3em; }
   #nav ul li {
     min-height : 4em;
     max-height : 4em;
   }
+  #nav ul li .text { visibility : visible; }
+
   #footer p {
     font-size : 1.5em;
   }
@@ -137,7 +166,7 @@ body {
     min-height : 2em;
     max-height : 2em;
   }
-  #nav { top : 40%; }
+  #nav { top : 15%; }
   #footer {
     height : 4.4em;
   }

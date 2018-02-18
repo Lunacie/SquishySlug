@@ -3,6 +3,8 @@ var ratio = 1;
 var ratioW = 1;
 var ratioH = 1;
 
+
+
 var player = new Player(10, 10);
 var characters = [];
 characters.push(player);

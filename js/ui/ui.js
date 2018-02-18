@@ -14,9 +14,33 @@ function UI() {
       $("#loading.screen"),
       $("#main.screen").click(eventCanvasClicked)
     ];
-    console.log($("#footer").children());
     $("#footer").click(eventCanvasClicked);
-    $("#header").click(eventCanvasClicked);
+    $("#menu-open").click(this._toggleMenu);
+  }
+
+  this._toggleMenu = function() {
+    var open = true;
+      for (var i = 1; i <= 4; i++) {
+        var element = $("#menu-open #l" + i);
+        var clone = element.clone(true);
+        if (clone.hasClass("menu-open")) {
+          clone.removeClass("menu-open").addClass("menu-close");
+          open = false;
+        }
+        else if (clone.hasClass("menu-close"))
+          clone.removeClass("menu-close").addClass("menu-open");
+        else
+          clone.addClass("menu-open");
+        element.replaceWith(clone);
+      }
+      if (open) {
+        $("#nav").animate({"right" : "50px"}, 1000);
+        $("#nav-overlay").animate({"width" : "500px"}, 1000);
+      }
+      else {
+        $("#nav-overlay").animate({"width" : "0px"}, 1000);
+        $("#nav").animate({"right" : "-500px"}, 1000);
+      }
   }
 
   this.update = function(loadManager) {
@@ -36,11 +60,13 @@ function UI() {
   }
 
   this._displayScreen = function() {
-      var delay = 0;
-      if (this._last == UI_STATE_LOADING)
-        delay = 1000;
-
       this.resize(window.innerWidth, window.innerHeight);
+
+      var delay = 0;
+      if (this._last == UI_STATE_LOADING) {
+        delay = 1000;
+        $("#nav").delay(delay).fadeIn(500);
+      }
       this._screens[this._state].delay(delay).fadeIn(500);
   }
 
