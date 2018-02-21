@@ -303,32 +303,42 @@
 
 
 	#foot_x5F_front {
+		transform-box: fill-box;
 	  animation : foot_front 1.5s linear infinite;
 	}
 	#foot_x5F_back {
+		transform-box: fill-box;
 	  animation : foot_back 1.5s linear infinite;
 	}
 	#leg_x5F_back_x5F_top {
+		transform-box: fill-box;
 	  animation : leg_back_top 1.5s linear infinite;
 	}
 	#leg_x5F_back_x5F_bot{
+		transform-box: fill-box;
 	  animation : leg_back_bot 1.5s linear infinite;
 	}
 	#leg_x5F_front_x5F_bot{
+		transform-box: fill-box;
 	  animation : leg_front_bot 1.5s linear infinite;
 	}
 	#leg_x5F_front_x5F_top{
+		transform-box: fill-box;
 	  animation : leg_front_top 1.5s linear infinite;
 	}
 	#arm_x5F_back_x5F_top {
+		transform-box: fill-box;
 	  animation : arm_back_top 1.5s linear infinite;
 	}
 	#arm_x5F_back_x5F_bot {
+		transform-box: fill-box;
 	  animation : arm_back_bot 1.5s linear infinite;
 	}
 	#arm_x5F_front_x5F_top {
+		transform-box: fill-box;
 	  animation : arm_front_top 1.5s linear infinite;
 	}
 	#arm_x5F_front_x5F_bot {
+		transform-box: fill-box;
 	  animation : arm_front_bot 1.5s linear infinite;
 	}

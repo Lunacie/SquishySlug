@@ -899,46 +899,55 @@
 
 
 #foot_x5F_front {
+  transform-box: fill-box;
   -webkit-animation : foot_front 1.5s linear infinite;
           animation : foot_front 1.5s linear infinite;
 }
 #foot_x5F_back {
+  transform-box: fill-box;
   -webkit-animation : foot_back 1.5s linear infinite;
           animation : foot_back 1.5s linear infinite;
 }
 #leg_x5F_back_x5F_top {
+  transform-box: fill-box;
   -webkit-animation : leg_back_top 1.5s linear infinite;
           animation : leg_back_top 1.5s linear infinite;
 }
 #leg_x5F_back_x5F_bot{
+  transform-box: fill-box;
   -webkit-animation : leg_back_bot 1.5s linear infinite;
           animation : leg_back_bot 1.5s linear infinite;
 }
 #leg_x5F_front_x5F_bot{
+  transform-box: fill-box;
   -webkit-animation : leg_front_bot 1.5s linear infinite;
           animation : leg_front_bot 1.5s linear infinite;
 }
 #leg_x5F_front_x5F_top{
+  transform-box: fill-box;
   -webkit-animation : leg_front_top 1.5s linear infinite;
           animation : leg_front_top 1.5s linear infinite;
 }
 #arm_x5F_back_x5F_top {
+  transform-box: fill-box;
   -webkit-animation : arm_back_top 1.5s linear infinite;
           animation : arm_back_top 1.5s linear infinite;
 }
 #arm_x5F_back_x5F_bot {
+  transform-box: fill-box;
   -webkit-animation : arm_back_bot 1.5s linear infinite;
           animation : arm_back_bot 1.5s linear infinite;
 }
 #arm_x5F_front_x5F_top {
+  transform-box: fill-box;
   -webkit-animation : arm_front_top 1.5s linear infinite;
           animation : arm_front_top 1.5s linear infinite;
 }
 #arm_x5F_front_x5F_bot {
+  transform-box: fill-box;
   -webkit-animation : arm_front_bot 1.5s linear infinite;
           animation : arm_front_bot 1.5s linear infinite;
 }
-
 </style>
 <g id="CAT_x2F_BUNNY">
 	<circle id="tail" class="st0" cx="38.7" cy="102.7" r="6.5"/>
