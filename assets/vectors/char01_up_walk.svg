@@ -88,7 +88,7 @@
 	      -webkit-transform-origin: 100% 40%;
 	              transform-origin: 100% 40%;
 	      -webkit-transform: translate(20%, 10%) rotateZ(-0deg);
-	              transform: translate(20%, 10%) rotateZ(-0deg);
+	              transform: translate(150px, 10%) rotateZ(-0deg);
 	  }
 	  30% {
 	      -webkit-transform-origin: 100% 40%;

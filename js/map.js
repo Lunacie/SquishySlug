@@ -178,7 +178,6 @@ function Map(player, characters)
         else {
           // on screen
           var element = tile.image.on;
-          console.log(tiles.size);
           if (element.loaded)
             ctx.drawImage(element,
                       x, y, tiles.size, tiles.size);

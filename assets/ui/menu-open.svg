@@ -184,38 +184,47 @@
 	}
 }
 
-	#l1.menu-open {
-	  -webkit-animation : l1-animation 1.5s linear forwards;
-	          animation : l1-animation 1.5s linear forwards;
-	}
-	#l1.menu-close {
-	  -webkit-animation : l1-animation 1.5s linear forwards reverse;
-	          animation : l1-animation 1.5s linear forwards reverse;
-	}
-	#l2.menu-open {
-	  -webkit-animation : l2-animation 1.5s linear forwards;
-	          animation : l2-animation 1.5s linear forwards;
-	}
-	#l2.menu-close {
-	  -webkit-animation : l2-animation 1.5s linear forwards reverse;
-	          animation : l2-animation 1.5s linear forwards reverse;
-	}
-	#l3.menu-open {
-	  -webkit-animation : l3-animation 1.5s linear forwards;
-	          animation : l3-animation 1.5s linear forwards;
-	}
-	#l3.menu-close {
-	  -webkit-animation : l3-animation 1.5s linear forwards reverse;
-	          animation : l3-animation 1.5s linear forwards reverse;
-	}
-	#l4.menu-open {
-	  -webkit-animation : l4-animation 1.5s linear forwards;
-	          animation : l4-animation 1.5s linear forwards;
-	}
-	#l4.menu-close {
-	  -webkit-animation : l4-animation 1.5s linear forwards reverse;
-	          animation : l4-animation 1.5s linear forwards reverse;
-	}
+		#l1.menu-open {
+		  transform-box: fill-box;
+		  -webkit-animation : l1-animation 1.5s linear forwards;
+		          animation : l1-animation 1.5s linear forwards;
+		}
+		#l1.menu-close {
+		  transform-box: fill-box;
+		  -webkit-animation : l1-animation 1.5s linear forwards reverse;
+		          animation : l1-animation 1.5s linear forwards reverse;
+		}
+		#l2.menu-open {
+		  transform-box: fill-box;
+		  -webkit-animation : l2-animation 1.5s linear forwards;
+		          animation : l2-animation 1.5s linear forwards;
+		}
+		#l2.menu-close {
+		  transform-box: fill-box;
+		  -webkit-animation : l2-animation 1.5s linear forwards reverse;
+		          animation : l2-animation 1.5s linear forwards reverse;
+		}
+		#l3.menu-open {
+		  transform-box: fill-box;
+		  -webkit-animation : l3-animation 1.5s linear forwards;
+		          animation : l3-animation 1.5s linear forwards;
+		}
+		#l3.menu-close {
+		  transform-box: fill-box;
+		  -webkit-animation : l3-animation 1.5s linear forwards reverse;
+		          animation : l3-animation 1.5s linear forwards reverse;
+		}
+		#l4.menu-open {
+		  transform-box: fill-box;
+		  -webkit-animation : l4-animation 1.5s linear forwards;
+		          animation : l4-animation 1.5s linear forwards;
+		}
+		#l4.menu-close {
+		  transform-box: fill-box;
+		  -webkit-animation : l4-animation 1.5s linear forwards reverse;
+		          animation : l4-animation 1.5s linear forwards reverse;
+		}
+
 </style>
 <g id="Layer_1">
 	<rect id="l1" x="1.6" y="2.4" width="479" height="79"/>

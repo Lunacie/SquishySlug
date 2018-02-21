@@ -84,7 +84,8 @@ function FullMap() {
       },
 
       addCharacter : function(character, x, y) {
-        this._graph[y][x].characters.push(character);
+        if (this._graph[y] && this._graph[y][x] && this._graph[y][x].characters)
+          this._graph[y][x].characters.push(character);
       },
 
       getCharacters : function(x, y) {
