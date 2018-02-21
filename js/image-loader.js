@@ -80,6 +80,7 @@
 
        //console.log(this._svgXml);
        var str = (new XMLSerializer).serializeToString(this._svgXml);
+       str = str.replace(/#/g, "%23");
        this._serialized = str;
        char.images[state][direction].on.onload = function() {
         char.images[state][direction].on.loaded = true;
