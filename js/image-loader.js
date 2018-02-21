@@ -70,8 +70,6 @@
 
        char.images[state][direction].on = new Image();
 
-
-
        this._clearDefault();
        this._normalizeSpecies(char._species);
        this._applySpecies[char._species](this);
@@ -83,6 +81,9 @@
        //console.log(this._svgXml);
        var str = (new XMLSerializer).serializeToString(this._svgXml);
        this._serialized = str;
+       char.images[state][direction].on.onload = function() {
+        char.images[state][direction].on.loaded = true;
+       }
        char.images[state][direction].on.src =
                               "data:image/svg+xml;charset=utf-8," + str;
      }
@@ -198,6 +199,9 @@
        char.images[state][direction].off = new Image();
        var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
                  char.images.offHexColor.toString(16) + ';');
+       char.images[state][direction].off.onload = function() {
+        char.images[state][direction].off.loaded = true;
+       }
        char.images[state][direction].off.src =
                               "data:image/svg+xml;charset=utf-8," + off;
 

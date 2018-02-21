@@ -313,14 +313,16 @@ function Character (x, y)
         var height = tiles.size / 1.6;
         this.x2d = x;
         this.y2d = y;
-        ctx.drawImage(element,
-                      x, y, width, height);
+        if (element.loaded)
+          ctx.drawImage(element,
+                        x, y, width, height);
         this._drawProps(x, y, width, height);
 
         element = this.images[this.state][this.direction].off;
-        ctxOff.drawImage(element,
-                      x, y, width, height);
-      }
+        if (element.loaded)
+          ctxOff.drawImage(element,
+                        x, y, width, height);
+        }
     };
 
   this._drawProps = function(x, y, width, height) {

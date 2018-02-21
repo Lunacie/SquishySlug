@@ -178,8 +178,10 @@ function Map(player, characters)
         else {
           // on screen
           var element = tile.image.on;
-          ctx.drawImage(element,
-                        x, y, tiles.size, tiles.size);
+          console.log(tiles.size);
+          if (element.loaded)
+            ctx.drawImage(element,
+                      x, y, tiles.size, tiles.size);
 
           // off screen
           if (tile.floor) {
@@ -190,7 +192,8 @@ function Map(player, characters)
           }
           else {
           element = tile.image.off;
-          ctxOff.drawImage(element,
+          if (element.loaded)
+            ctxOff.drawImage(element,
                         x, y, tiles.size, tiles.size);
           }
         }
@@ -205,6 +208,10 @@ function Map(player, characters)
         // on screen
         tile.image.on = new Image();
         var str = (new XMLSerializer).serializeToString(svgXml);
+        str = str.replace(/#/g, "%23");
+        tile.image.on.onload = function() {
+          tile.image.on.loaded = true;
+        }
         tile.image.on.src = "data:image/svg+xml;charset=utf-8," + str;
 
         // offscreen
@@ -215,6 +222,9 @@ function Map(player, characters)
         off = off.replace(/stroke(.*);/g,'stroke:'+offColor+';');
         off = off.replace(/fill-opacity(.*);/g,'fill-opacity:'+offColor+';');
         off = off.replace(/opacity(.*);/g,'opacity:1;');
+        tile.image.off.onload = function() {
+          tile.image.off.loaded = true;
+        }
         tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
     });
   },
