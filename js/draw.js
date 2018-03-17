@@ -11,24 +11,19 @@
     var y = y2d;
     var player = characters[0];
 
-    //console.log("map : ", map.width, map.height);
-    //console.log("player : ", player.x2d, player.y2d );
-    //console.log("canvas : ", canvas.width, canvas.height, canvas.height / 2 );
-
     var speed = 10;
     if (fps)
       speed *= (60 / fps);
 
     if (player.y2d > (canvas.height / 2) + 100)
-      y -= speed;
+      y -= speed * 2;
     else if (player.y2d < (canvas.height / 2) - 100)
-      y += speed;
+      y += speed * 2;
 
     if (player.x2d > (canvas.width / 2) + 200)
-      x -= speed;
+      x -= speed * 2;
     else if (player.x2d < (canvas.width / 2) - 200)
-      x += speed;
-
+      x += speed * 2;
     y2d = y;
     x2d = x;
 
@@ -39,4 +34,5 @@
     map.draw(x, y - (tiles.size * 3));
     if (DEBUG)
       debugOv.draw(x, y - (tiles.size * 3));
+
   }

@@ -37,6 +37,10 @@
    </head>
 
    <body id="body" class="">
+
+     <div id="tab"></div>
+
+     <div>
           <canvas id="offCanvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="canvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="debugCanvas" class="canvas" width="1000" height="600"></canvas>
@@ -48,16 +52,18 @@
 
         </div>
 
+
+
           <div id="main" class="screen container">
             <div id="header" class="row">
-              <div id="logo" class="col-5 col-md-3 row">
+              <div id="logo" class="col-6 col-lg-3 row">
                 <img src="assets/ui/logo-slug.svg" alt="squishySlug" class="col-4" width="" height="48px"/>
                 <h1 class="col-8">squishySlug</h1>
               </div>
             </div>
           </div>
 
-          <svg id="menu-open" version="1.1" class="hidden-lg-up"
+          <svg id="menu-open" version="1.1" class="hidden-lg-up align-middle"
               viewBox="0 0 516.8 439.4" enable-background="new 0 0 516.8 439.4" xml:space="preserve">
              <rect id="l1" x="1.6" y="2.4" width="479" height="79"/>
              <rect id="l2" x="1.6" y="122.4" width="479" height="79"/>
@@ -66,31 +72,32 @@
           </svg>
 
 
+
         <div id="nav-overlay" class="hidden-lg-up"></div>
         <div id="nav">
           <ul>
-              <a href="#"><li class="row about selected">
+              <a href="#" class="open-tab-btn tab-1"><li class="row about">
                   <span class="text col-10"> About</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-planet.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row road">
+              <a href="#" class="open-tab-btn tab-2"><li class="row road">
                   <span class="text col-10"> The road, so far</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-galaxy.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row projects">
+              <a href="#" class="open-tab-btn tab-3"><li class="row projects">
                   <span class="text col-10"> Projects</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-orbit.svg" alt="about"/>
                     <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
                   </span>
               </li></a>
-              <a href="#"><li class="row contact">
+              <a href="#" class="open-tab-btn tab-5"><li class="row contact">
                   <span class="text col-10"> Contact</span>
                   <span class="icons col-2">
                      <img class="icon on" src="assets/ui/nav-sun.svg" alt="about"/>
@@ -118,7 +125,7 @@
           </div>
 
 
-
+          </div>
         </body>
 
 </html>

@@ -12,25 +12,6 @@ var restoreEvents = function()
 }
 restoreEvents();
 
-window.addEventListener('resize', function(event){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight
-  offCanvas.width = window.innerWidth;
-  offCanvas.height = window.innerHeight;
-  debugCanvas.width = window.innerWidth;
-  debugCanvas.height = window.innerHeight;
-
-  ui.resize(window.innerWidth, window.innerHeight);
-
- tiles.size = tiles.initSize;
- ratio = canvas.width / canvas.height;
- if (canvas.height > 3000 || canvas.width > 3000)
-   tiles.size *= 3;
- else if (ratio < 1)
-  tiles.size *= 1.7;
-
-});
-
 document.addEventListener("keydown", function(event)
 {
   events.up = (event.keyCode == 87 || event.keyCode == 38) ?
@@ -46,11 +27,13 @@ document.addEventListener("keydown", function(event)
     if (canvas.style.display == "none") {
       canvas.style.display = "inherit";
       offCanvas.style.display = "none";
+      offCanvas.style.visibility = "hidden";
       debugOverlay.toggleDrawMode();
     }
     else {
       canvas.style.display = "none";
       offCanvas.style.display = "inherit";
+      offCanvas.style.visibility = "visible";
       debugOverlay.toggleDrawMode();
     }
   }

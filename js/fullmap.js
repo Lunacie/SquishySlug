@@ -95,6 +95,8 @@ function FullMap() {
       },
 
       removeCharacter : function(id, x, y) {
+        if (!this._graph[y] || !this._graph[y][x] || !this._graph[y][x].characters)
+          return;
         for (var i = 0; i < this._graph[y][x].characters.length; i++) {
           if (this._graph[y][x].characters[i].id == id) {
             this._graph[y][x].characters.splice(i, 1);

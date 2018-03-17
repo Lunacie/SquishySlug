@@ -2,9 +2,18 @@
 var UI_STATE_LOADING = 0;
 var UI_STATE_MAIN = 1;
 
+var UI_TAB_NONE = 0;
+var UI_TAB_ABOUT = 1;
+var UI_TAB_ROAD = 2;
+var UI_TAB_PROJECTS = 3;
+var UI_TAB_PROJECT = 4;
+var UI_TAB_CONTACT = 5;
+
 function UI() {
   this._state = UI_STATE_LOADING;
   this._last = UI_STATE_LOADING;
+  this._tab = UI_TAB_NONE;
+  this._morphing = false;
   this._screens = [];
   this._width = "100%";
   this._height = "100vh";
@@ -16,6 +25,162 @@ function UI() {
     ];
     $("#footer").click(eventCanvasClicked);
     $("#menu-open").click(this._toggleMenu);
+
+    $(".open-tab-btn").click(this._openTab);
+
+    $(window).resize(this.resizeCanvas);
+    //window.addEventListener('resize', );
+  }
+
+  this._getTabId = function(classes) {
+    var id = 0;
+    for (var i = 0; i < classes.length; i++) {
+      if (classes[i].startsWith("tab-")) {
+        return classes[i].substring(4);
+      }
+    }
+  }
+
+
+  this.isMorphing = function() {
+    return this._morphing;
+  }
+
+  this._openTab = function(event) {
+    if (ui._morphing)
+      return;
+
+    var id = ui._getTabId(event.currentTarget.classList);
+    if (id == ui._tab) {
+      $('.tab-'+ui._tab+' li').removeClass('selected');
+      ui._tab = UI_TAB_NONE;
+      return ui._closeTabAnimation();
+    }
+    // TODO : reopen tab
+    else if (ui._tab && id != ui._tab) {
+        $('.tab-'+ui._tab+' li').removeClass('selected');
+        ui._tab = UI_TAB_NONE;
+        return ui._closeTabAnimation();
+    }
+
+    ui._tab = id;
+    $('.tab-'+id+' li').addClass('selected');
+    ui._openTabAnimation();
+  };
+
+  this._openTabAnimation = function() {
+    ui._morphing = true;
+    ui._blurCanvas(10, 10);
+    var width = 840;
+    $("#tab").animate({'width' : width + 'px'}, 1000);
+    var element = $("#canvas");
+    $("#canvas").animate({
+        'width' : (element.width() - width) + 'px',
+        'left' : width + 'px'
+      }, {
+        'duration': 1000,
+        'complete' : function() {
+          ui._blurCanvas(0, 0);
+          ui._morphing = false;
+          ui.resizeCanvas();
+        }});
+    $("#header").fadeOut(1000);
+  }
+
+
+    this._blurCanvas = function(radius, margin) {
+      var element = $("#canvas");
+      var width = 840;
+      if (!margin)
+        margin = 10;
+
+      var css = this._getBlurAnimation(radius, margin, true);
+      //$('#offCanvas').animate(css, 200);
+      $('#canvas').animate(css, {
+          duration : 200,
+          step : function() {
+            element.css({
+              'filter' : 'blur('+this.blurRadius+'px)',
+              '-webkit-filter': 'blur('+this.blurRadius+'px)',
+              '-moz-filter' : 'blur('+this.blurRadius+'px)'
+            });
+          },
+          complete : function() {
+            element.css({
+              'filter' : 'blur('+radius+'px)',
+              '-webkit-filter': 'blur('+radius+'px)',
+              '-moz-filter' : 'blur('+radius+'px)'
+            });
+            if (radius) {
+              css = {
+                'margin-left' : '0px',
+                'margin-top' : '0px'
+              };
+              element.animate(css, 10);
+              //$('#offCanvas').animate(css, 10);
+            }
+          }
+        });
+    }
+
+    this._getBlurAnimation = function(radius, margin) {
+      css = {};
+      css.blurRadius = radius + 'px';
+
+      if (radius && !margin) {
+        css.width = (parseInt(element.css('width')) + 200) + 'px';
+        css.height =  (parseInt(element.css('height')) + 200) + 'px';
+        css['margin-left'] = '-'+margin+'px';
+        css['margin-top'] = '-'+margin+'px';
+      }
+      else if (!radius && !margin) {
+        css.width = (window.innerWidth - 840) + 'px';
+        css.height = (window.innerHeight) + 'px';
+      }
+      return css;
+    }
+
+    this._closeTabAnimation = function() {
+
+        ui._morphing = true;
+        ui._blurCanvas(10, 0);
+        $("#tab").animate({'width' :  '0px'}, 1000);
+        var width = window.innerWidth;
+        $("#canvas").animate({
+            'width' : width + 'px',
+            'left' : '0px'
+          }, {
+            'duration': 500,
+            'complete' : function() {
+              ui._blurCanvas(0, 0);
+              ui.resizeCanvas();
+              ui._morphing = false;
+             }
+          });
+        $("#header").fadeIn(1000);
+    }
+
+  this.getTabWidth = function() {
+    return $("#tab").width();
+  }
+
+  this.resizeCanvas = function() {
+      var tabWidth = ui.getTabWidth();
+      canvas.width = window.innerWidth - tabWidth;
+      canvas.height = window.innerHeight
+      offCanvas.width = window.innerWidth - tabWidth;
+      offCanvas.height = window.innerHeight;
+      debugCanvas.width = window.innerWidth - tabWidth;
+      debugCanvas.height = window.innerHeight;
+
+      ui.resize(window.innerWidth, window.innerHeight);
+
+     tiles.size = tiles.initSize;
+     ratio = canvas.width / canvas.height;
+     if (canvas.height > 3000 || canvas.width > 3000)
+       tiles.size *= 3;
+     else if (ratio < 1)
+      tiles.size *= 1.7;
   }
 
   this._toggleMenu = function() {

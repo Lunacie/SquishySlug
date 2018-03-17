@@ -107,7 +107,7 @@ function getClickEventFloor(val) {
 
 function getEventLocation(element, event) {
   return {
-    x : event.pageX, y : event.pageY
+    x : event.pageX -  ui.getTabWidth(), y : event.pageY
   }
 }
 
