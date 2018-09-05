@@ -28,6 +28,8 @@ function UI() {
 
     $(".open-tab-btn").click(this._openTab);
 
+    $(".tab-content").hide();
+
     $(window).resize(this.resizeCanvas);
     //window.addEventListener('resize', );
   }
@@ -63,13 +65,14 @@ function UI() {
       ui._tab = id;
       $('.tab-'+id+' li').addClass('selected');
       ui._closeTabAnimation();
-      return ui._openTabAnimation(true);
+      return ui._openTabAnimation(id, true);
     }
 
     // Else, simply open tab
     ui._tab = id;
     $('.tab-'+id+' li').addClass('selected');
-    ui._openTabAnimation();
+    $('div[data-id="'+id+'"]').show();
+    ui._openTabAnimation(id);
   };
 
 
@@ -144,7 +147,7 @@ function UI() {
       $("#header").fadeIn(1000);
     }
 
-    this._openTabAnimation = function(reopen = false) {
+    this._openTabAnimation = function(id, reopen = false) {
       ui._morphing = true;
       ui._blurCanvas(10, 10);
       let width = 840;
@@ -154,6 +157,7 @@ function UI() {
       let baseWidth = window.innerWidth;
       if (!reopen)
         baseWidth = element.width();
+
       $("#canvas").animate({
           'width' : (baseWidth - width) + 'px',
           'left' : left + 'px'
@@ -163,7 +167,12 @@ function UI() {
             ui._blurCanvas(0, 0);
             ui._morphing = false;
             ui.resizeCanvas();
-          }});
+          },
+          start : function () {
+            $(".tab-content").hide();
+            $('div[data-id="'+id+'"]').show();
+          }
+        });
       $("#header").fadeOut(1000);
     }
 
