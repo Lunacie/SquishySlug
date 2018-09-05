@@ -51,46 +51,26 @@ function UI() {
       return;
 
     var id = ui._getTabId(event.currentTarget.classList);
+    // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = UI_TAB_NONE;
       return ui._closeTabAnimation();
     }
-    // TODO : reopen tab
+    // Reopen tab
     else if (ui._tab && id != ui._tab) {
-
-      console.log("reopen tab");
-      /*
-        ui._tab = id;
-        $('.tab-'+id+' li').addClass('selected');
-        ui._openTabAnimation();
-      */
-      return ui._reopenTabAnimation();
+      $('.tab-'+ui._tab+' li').removeClass('selected');
+      ui._tab = id;
+      $('.tab-'+id+' li').addClass('selected');
+      ui._closeTabAnimation();
+      return ui._openTabAnimation(true);
     }
 
+    // Else, simply open tab
     ui._tab = id;
     $('.tab-'+id+' li').addClass('selected');
     ui._openTabAnimation();
   };
-
-  this._openTabAnimation = function() {
-    ui._morphing = true;
-    ui._blurCanvas(10, 10);
-    var width = 840;
-    $("#tab").animate({'width' : width + 'px'}, 1000);
-    var element = $("#canvas");
-    $("#canvas").animate({
-        'width' : (element.width() - width) + 'px',
-        'left' : width + 'px'
-      }, {
-        'duration': 1000,
-        'complete' : function() {
-          ui._blurCanvas(0, 0);
-          ui._morphing = false;
-          ui.resizeCanvas();
-        }});
-    $("#header").fadeOut(1000);
-  }
 
 
     this._blurCanvas = function(radius, margin) {
@@ -145,37 +125,38 @@ function UI() {
       return css;
     }
 
-    this._closeTabAnimation = function() {
-
-        ui._morphing = true;
-        ui._blurCanvas(10, 0);
-        $("#tab").animate({'width' :  '0px'}, 1000);
-        var width = window.innerWidth;
-        $("#canvas").animate({
-            'width' : width + 'px',
-            'left' : '0px'
-          }, {
-            'duration': 500,
-            'complete' : function() {
-              ui._blurCanvas(0, 0);
-              ui.resizeCanvas();
-              ui._morphing = false;
-             }
-          });
-        $("#header").fadeIn(1000);
+  this._closeTabAnimation = function() {
+      ui._morphing = true;
+      ui._blurCanvas(10, 0);
+      $("#tab").animate({'width' :  '0px'}, 1000);
+      var width = window.innerWidth;
+      $("#canvas").animate({
+          'width' : width + 'px',
+          'left' : '0px'
+        }, {
+          'duration': 500,
+          'complete' : function() {
+            ui._blurCanvas(0, 0);
+            ui.resizeCanvas();
+            ui._morphing = false;
+           }
+        });
+      $("#header").fadeIn(1000);
     }
 
-
-    this._reopenTabAnimation = function() {
-      this._closeTabAnimation();
-
+    this._openTabAnimation = function(reopen = false) {
       ui._morphing = true;
       ui._blurCanvas(10, 10);
-      var width = 840;
+      let width = 840;
       $("#tab").animate({'width' : width + 'px'}, 1000);
+      var element = $("#canvas");
+      let left = width;
+      let baseWidth = window.innerWidth;
+      if (!reopen)
+        baseWidth = element.width();
       $("#canvas").animate({
-          'width' : (window.innerWidth - width) + 'px',
-          'left' : width  + 'px'
+          'width' : (baseWidth - width) + 'px',
+          'left' : left + 'px'
         }, {
           'duration': 1000,
           'complete' : function() {
@@ -183,9 +164,8 @@ function UI() {
             ui._morphing = false;
             ui.resizeCanvas();
           }});
-
       $("#header").fadeOut(1000);
-  }
+    }
 
 
   this.getTabWidth = function() {
