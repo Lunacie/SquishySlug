@@ -58,9 +58,14 @@ function UI() {
     }
     // TODO : reopen tab
     else if (ui._tab && id != ui._tab) {
-        $('.tab-'+ui._tab+' li').removeClass('selected');
-        ui._tab = UI_TAB_NONE;
-        return ui._closeTabAnimation();
+
+      console.log("reopen tab");
+      /*
+        ui._tab = id;
+        $('.tab-'+id+' li').addClass('selected');
+        ui._openTabAnimation();
+      */
+      return ui._reopenTabAnimation();
     }
 
     ui._tab = id;
@@ -159,6 +164,29 @@ function UI() {
           });
         $("#header").fadeIn(1000);
     }
+
+
+    this._reopenTabAnimation = function() {
+      this._closeTabAnimation();
+
+      ui._morphing = true;
+      ui._blurCanvas(10, 10);
+      var width = 840;
+      $("#tab").animate({'width' : width + 'px'}, 1000);
+      $("#canvas").animate({
+          'width' : (window.innerWidth - width) + 'px',
+          'left' : width  + 'px'
+        }, {
+          'duration': 1000,
+          'complete' : function() {
+            ui._blurCanvas(0, 0);
+            ui._morphing = false;
+            ui.resizeCanvas();
+          }});
+
+      $("#header").fadeOut(1000);
+  }
+
 
   this.getTabWidth = function() {
     return $("#tab").width();

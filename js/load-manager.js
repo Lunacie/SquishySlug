@@ -35,7 +35,6 @@ function LoadManager(characters, tiles) {
         if (tile.id && !tile.image)
           return false;
       }
-
       return true;
     };
 
