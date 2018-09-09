@@ -9,7 +9,7 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
-function UI() {
+function UI(player) {
   this._state = UI_STATE_LOADING;
   this._last = UI_STATE_LOADING;
   this._tab = UI_TAB_NONE;
@@ -17,8 +17,11 @@ function UI() {
   this._screens = [];
   this._width = "100%";
   this._height = "100vh";
+  this._sentOrder = false;
 
-  this.init = function() {
+  this.init = function(player) {
+
+    this._player = player;
     this._screens = [
       $("#loading.screen"),
       $("#main.screen").click(eventCanvasClicked)
@@ -57,6 +60,7 @@ function UI() {
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = UI_TAB_NONE;
+      ui._reopen = false;
       return ui._closeTabAnimation();
     }
     // Reopen tab
@@ -65,14 +69,18 @@ function UI() {
       ui._tab = id;
       $('.tab-'+id+' li').addClass('selected');
       ui._closeTabAnimation();
-      return ui._openTabAnimation(id, true);
-    }
+      ui._reopen = true;
+      return ui._player.sendOrder();
+      //return ui._openTabAnimation(id);
+  }
 
-    // Else, simply open tab
+    // Else, just open tab
     ui._tab = id;
     $('.tab-'+id+' li').addClass('selected');
     $('div[data-id="'+id+'"]').show();
-    ui._openTabAnimation(id);
+    ui._reopen = false;
+    ui._player.sendOrder();
+    //ui._openTabAnimation(id);
   };
 
 
@@ -147,11 +155,12 @@ function UI() {
       $("#header").fadeIn(1000);
     }
 
-    this._openTabAnimation = function(id, reopen = false) {
+    this._openTabAnimation = function(id) {
+      let reopen = this._reopen;
       ui._morphing = true;
       ui._blurCanvas(10, 10);
       let width = 840;
-      $("#tab").animate({'width' : width + 'px'}, 1000);
+      $("#tab").animate({'width' : width  + 'px'}, 1000);
       var element = $("#canvas");
       let left = width;
       let baseWidth = window.innerWidth;
@@ -232,7 +241,15 @@ function UI() {
           this._state = UI_STATE_MAIN;
           this._displayScreen();
         }
+
+    this._checkOrderStatus();
   }
+
+  this._checkOrderStatus = function() {
+    if (this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
+      ui._openTabAnimation(this._tab);
+    }
+  };
 
   this._removeScreen = function() {
     var delay = 1000;

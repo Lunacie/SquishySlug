@@ -5,6 +5,15 @@ var DIRECTION_LEFT = 1;
 var DIRECTION_DOWN = 2;
 var DIRECTION_UP = 3;
 
+let ORDER_TEST = {
+  x : 11,
+  y : 11
+};
+
+let ORDER_STATUS_NONE = 0;
+let ORDER_STATUS_RECEIVED = 1;
+let ORDER_STATUS_SUCCESS = 2;
+
 var characterColorHex = 0xF9C6F2;
 var characterCount = 0;
 
@@ -35,6 +44,7 @@ function Character (x, y)
   this._path = null;
   this._steps = null;
   this._props = [];
+  this._orderStatus = ORDER_STATUS_NONE;
 
   this.updateCharacter = function(time)
   {
@@ -57,14 +67,37 @@ function Character (x, y)
             this._automate();
       }
 
+      this._updateOrderStatus();
       this._scaleWalkPace();
       this._updatePosition();
-      this.state = this._machineState.update(time)
+      this.state = this._machineState.update(time);
+
 
       fullMap.addCharacter(this, this.block.x, this.block.y);
   }
 
-  this.setDestination = function(destination, direction) {
+
+  this.sendOrder = function() {
+    this._orderStatus = ORDER_STATUS_RECEIVED;
+    this.setDestination(ORDER_TEST);
+  };
+
+  this._updateOrderStatus = function() {
+    if (!this.destination &&
+        this._orderStatus == ORDER_STATUS_RECEIVED) {
+          this._orderStatus = ORDER_STATUS_SUCCESS;
+    }
+  }
+
+  this.checkOrderStatus = function() {
+    if (this._orderStatus == ORDER_STATUS_SUCCESS) {
+      this._orderStatus = ORDER_STATUS_NONE;
+      return ORDER_STATUS_SUCCESS;
+    }
+    return this._orderStatus;
+  }
+
+  this.setDestination = function(destination, direction = 3) {
     this._path = null;
     this._steps = null;
     this.destination = destination;

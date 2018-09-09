@@ -15,6 +15,9 @@ body {
   z-index : 3;
   position : absolute;
   overflow : hidden;
+  max-width : 840px;
+  margin : 0;
+  padding : 0;
 }
 
 .canvas, .screen {
