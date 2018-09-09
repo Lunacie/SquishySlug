@@ -28,6 +28,10 @@ body {
   height : 100vh;
   padding : 0;
 }
+#canvas-container {
+  background : black;
+}
+
 #offCanvas { visibility : hidden }
 
 #loading.screen {

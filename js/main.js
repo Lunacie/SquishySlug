@@ -33,7 +33,7 @@ debugCanvas.width = window.innerWidth;
 debugCanvas.height = window.innerHeight;
 debugCanvas.addEventListener("click", eventCanvasClicked);
 
-ui.init(player);
+ui.init(player, canvas);
 ui.resize(window.innerWidth, window.innerHeight);
 
 

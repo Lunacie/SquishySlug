@@ -14,14 +14,22 @@ function UI(player) {
   this._last = UI_STATE_LOADING;
   this._tab = UI_TAB_NONE;
   this._morphing = false;
+  this._loading = false;
   this._screens = [];
   this._width = "100%";
   this._height = "100vh";
   this._sentOrder = false;
+  this._initDimensions = {
+    width : 0, height : 0
+  }
+  this._elapsed = 0;
+  this._lastTime = 0;
 
-  this.init = function(player) {
+  this.init = function(player, canvas) {
 
     this._player = player;
+    this._initDimensions.width = $(canvas).width();
+    this._initDimensions.height = $(canvas).height();
     this._screens = [
       $("#loading.screen"),
       $("#main.screen").click(eventCanvasClicked)
@@ -52,8 +60,18 @@ function UI(player) {
   }
 
   this._openTab = function(event) {
+    console.log(ui._elapsed, ui._lastTime);
+    if (ui._elapsed - ui._lastTime < 3000 && ui._lastTime != 0) {
+      return ;
+    }
+    ui._lastTime = ui._elapsed
+
     if (ui._morphing)
       return;
+
+    $("#loading").stop();
+    $("#loading").fadeIn(200);
+    ui._loading = true;
 
     var id = ui._getTabId(event.currentTarget.classList);
     // Close tab
@@ -140,16 +158,16 @@ function UI(player) {
       ui._morphing = true;
       ui._blurCanvas(10, 0);
       $("#tab").animate({'width' :  '0px'}, 1000);
-      var width = window.innerWidth;
+      //var width = window.innerWidth;
+      var width = this._initDimensions.width;
       $("#canvas").animate({
           'width' : width + 'px',
           'left' : '0px'
         }, {
-          'duration': 500,
+          'duration': 1000,
           'complete' : function() {
             ui._blurCanvas(0, 0);
             ui.resizeCanvas();
-            ui._morphing = false;
            }
         });
       $("#header").fadeIn(1000);
@@ -160,7 +178,7 @@ function UI(player) {
       ui._morphing = true;
       ui._blurCanvas(10, 10);
       let width = 840;
-      $("#tab").animate({'width' : width  + 'px'}, 1000);
+      $("#tab").animate({'width' : width + 'px'}, 1000);
       var element = $("#canvas");
       let left = width;
       let baseWidth = window.innerWidth;
@@ -174,7 +192,6 @@ function UI(player) {
           'duration': 1000,
           'complete' : function() {
             ui._blurCanvas(0, 0);
-            ui._morphing = false;
             ui.resizeCanvas();
           },
           start : function () {
@@ -192,7 +209,20 @@ function UI(player) {
 
   this.resizeCanvas = function() {
       var tabWidth = ui.getTabWidth();
-      canvas.width = window.innerWidth - tabWidth;
+      if (this._tab == UI_TAB_NONE) {
+        tabWidth = 0;
+        //$("#tab").width();
+      }
+
+      /*canvas.width = window.innerWidth - tabWidth;
+      canvas.height = window.innerHeight
+      offCanvas.width = window.innerWidth - tabWidth;
+      offCanvas.height = window.innerHeight;
+      debugCanvas.width = window.innerWidth - tabWidth;
+      debugCanvas.height = window.innerHeight;*/
+
+      canvas.width = this._initDimensions.width - tabWidth;
+      console.log(canvas.width, tabWidth);
       canvas.height = window.innerHeight
       offCanvas.width = window.innerWidth - tabWidth;
       offCanvas.height = window.innerHeight;
@@ -200,6 +230,12 @@ function UI(player) {
       debugCanvas.height = window.innerHeight;
 
       ui.resize(window.innerWidth, window.innerHeight);
+
+
+      this._morphing = false;
+      $("#loading").stop();
+      $("#loading").delay(1000).fadeOut(2000);
+
 
      tiles.size = tiles.initSize;
      ratio = canvas.width / canvas.height;
@@ -234,7 +270,11 @@ function UI(player) {
       }
   }
 
-  this.update = function(loadManager) {
+  this.update = function(loadManager, time) {
+
+    this.time = time;
+    this._elapsed += time;
+
     if (this._state == UI_STATE_LOADING &&
         loadManager.isComplete()) {
           this._removeScreen();
