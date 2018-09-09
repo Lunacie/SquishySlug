@@ -60,8 +60,7 @@ function UI(player) {
   }
 
   this._openTab = function(event) {
-    console.log(ui._elapsed, ui._lastTime);
-    if (ui._elapsed - ui._lastTime < 3000 && ui._lastTime != 0) {
+    if (ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
       return ;
     }
     ui._lastTime = ui._elapsed
@@ -69,16 +68,15 @@ function UI(player) {
     if (ui._morphing)
       return;
 
-    $("#loading").stop();
-    $("#loading").fadeIn(200);
-    ui._loading = true;
-
     var id = ui._getTabId(event.currentTarget.classList);
     // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = UI_TAB_NONE;
       ui._reopen = false;
+      $("#loading").stop();
+      $("#loading").fadeIn(200);
+      ui._loading = true;
       return ui._closeTabAnimation();
     }
     // Reopen tab
@@ -223,13 +221,13 @@ function UI(player) {
 
       canvas.width = this._initDimensions.width - tabWidth;
       console.log(canvas.width, tabWidth);
-      canvas.height = window.innerHeight
-      offCanvas.width = window.innerWidth - tabWidth;
-      offCanvas.height = window.innerHeight;
-      debugCanvas.width = window.innerWidth - tabWidth;
-      debugCanvas.height = window.innerHeight;
+      canvas.height = this._initDimensions.height;
+      offCanvas.width = this._initDimensions.width - tabWidth;
+      offCanvas.height = this._initDimensions.height;
+      debugCanvas.width = this._initDimensions.width - tabWidth;
+      debugCanvas.height = this._initDimensions.height;
 
-      ui.resize(window.innerWidth, window.innerHeight);
+      ui.resize(this._initDimensions.width, this._initDimensions.height);
 
 
       this._morphing = false;
@@ -287,6 +285,9 @@ function UI(player) {
 
   this._checkOrderStatus = function() {
     if (this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
+      $("#loading").stop();
+      $("#loading").fadeIn(200);
+      ui._loading = true;
       ui._openTabAnimation(this._tab);
     }
   };
