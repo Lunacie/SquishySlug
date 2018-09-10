@@ -72,7 +72,7 @@ body {
   position : absolute;
   top : 10px;
   right : 40px;
-  z-index: 1
+  z-index: 7
 }
 #menu-open	#l1, #l2, #l3, #l4 { fill:#6D316C; }
 
@@ -83,7 +83,7 @@ body {
   position : absolute;
   top : 0;
   right : 0px;
-  z-index: 0;
+  z-index: 3;
 }
 #nav {
   position : absolute;
@@ -92,7 +92,7 @@ body {
   top : 40%;
   right : 60px;
   display : none;
-  z-index : 2;
+  z-index : 4;
 }
 #nav ul {
   list-style : none;
@@ -136,12 +136,17 @@ body {
   position : absolute;
   bottom : 0;
 }
-#footer #social {
-  float : right;
+#footer .social {
+  position : absolute;
+  bottom : 0;
+  right : 0;
+  z-index : 6;
 }
-#footer #social img {
+#footer .social i {
   width : 30px;
   height : 30px;
+  color : white;
+  font-size : 2rem;
 }
 
 @media only screen and (max-width: 990px) {
@@ -174,9 +179,11 @@ body {
   #footer {
     height : 7em;
   }
-  #footer #social img {
+  #footer .social i {
     width : 50px;
     height : 50px;
+    color : white;
+    font-size : 3rem;
   }
 
 }
@@ -191,9 +198,11 @@ body {
   #footer {
     height : 4.4em;
   }
-  #footer #social img {
+  #footer .social i {
     width : 30px;
     height : 30px;
+    color : white;
+    font-size : 2.3rem;
   }
   #loading img.big {
     top : 25%;

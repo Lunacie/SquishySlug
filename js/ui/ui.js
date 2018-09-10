@@ -9,6 +9,8 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
+var TAB_WIDTH = 840;
+
 function UI(player) {
   this._state = UI_STATE_LOADING;
   this._last = UI_STATE_LOADING;
@@ -64,9 +66,11 @@ function UI(player) {
       return ;
     }
     ui._lastTime = ui._elapsed
-
     if (ui._morphing)
       return;
+
+    if ($("#nav-overlay").width())
+      ui._toggleMenu();
 
     var id = ui._getTabId(event.currentTarget.classList);
     // Close tab
@@ -102,7 +106,7 @@ function UI(player) {
 
     this._blurCanvas = function(radius, margin) {
       var element = $("#canvas");
-      var width = 840;
+      var width = TAB_WIDTH;
       if (!margin)
         margin = 10;
 
@@ -146,7 +150,7 @@ function UI(player) {
         css['margin-top'] = '-'+margin+'px';
       }
       else if (!radius && !margin) {
-        css.width = (window.innerWidth - 840) + 'px';
+        css.width = (window.innerWidth - TAB_WIDTH) + 'px';
         css.height = (window.innerHeight) + 'px';
       }
       return css;
@@ -155,7 +159,10 @@ function UI(player) {
   this._closeTabAnimation = function() {
       ui._morphing = true;
       ui._blurCanvas(10, 0);
+
+
       $("#tab").animate({'width' :  '0px'}, 1000);
+      this._toggleSocials(false);
       //var width = window.innerWidth;
       var width = this._initDimensions.width;
       $("#canvas").animate({
@@ -171,11 +178,27 @@ function UI(player) {
       $("#header").fadeIn(1000);
     }
 
+    this._toggleSocials = function(open) {
+      if (open) {
+        let right = window.innerWidth - TAB_WIDTH;
+        $(".social").animate({'margin-right' :  right + 'px'}, 1000);
+        $(".social p").delay(1000).css('color', '#6D316C');
+        $(".social i").delay(1000).css('color', '#6D316C');
+      }
+      else {
+        $(".social").animate({'margin-right' :  '0px'}, 1000);
+        $(".social p").delay(1000).css('color', '#FFFFFF');
+        $(".social i").delay(1000).css('color', '#FFFFFF');
+      }
+    };
+
     this._openTabAnimation = function(id) {
       let reopen = this._reopen;
       ui._morphing = true;
       ui._blurCanvas(10, 10);
-      let width = 840;
+      let width = TAB_WIDTH;
+
+      this._toggleSocials(true);
       $("#tab").animate({'width' : width + 'px'}, 1000);
       var element = $("#canvas");
       let left = width;
@@ -207,20 +230,10 @@ function UI(player) {
 
   this.resizeCanvas = function() {
       var tabWidth = ui.getTabWidth();
-      if (this._tab == UI_TAB_NONE) {
+      if (this._tab == UI_TAB_NONE)
         tabWidth = 0;
-        //$("#tab").width();
-      }
-
-      /*canvas.width = window.innerWidth - tabWidth;
-      canvas.height = window.innerHeight
-      offCanvas.width = window.innerWidth - tabWidth;
-      offCanvas.height = window.innerHeight;
-      debugCanvas.width = window.innerWidth - tabWidth;
-      debugCanvas.height = window.innerHeight;*/
 
       canvas.width = this._initDimensions.width - tabWidth;
-      console.log(canvas.width, tabWidth);
       canvas.height = this._initDimensions.height;
       offCanvas.width = this._initDimensions.width - tabWidth;
       offCanvas.height = this._initDimensions.height;
@@ -228,7 +241,6 @@ function UI(player) {
       debugCanvas.height = this._initDimensions.height;
 
       ui.resize(this._initDimensions.width, this._initDimensions.height);
-
 
       this._morphing = false;
       $("#loading").stop();
@@ -244,6 +256,8 @@ function UI(player) {
   }
 
   this._toggleMenu = function() {
+    if (ui._tab != UI_TAB_NONE)
+      $("#nav-overlay").css("background", "rgba(109,49,108, 0.3)");
     var open = true;
       for (var i = 1; i <= 4; i++) {
         var element = $("#menu-open #l" + i);
