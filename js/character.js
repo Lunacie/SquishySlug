@@ -45,6 +45,7 @@ function Character (x, y)
   this._steps = null;
   this._props = [];
   this._orderStatus = ORDER_STATUS_NONE;
+  this.ui = null;
 
   this.updateCharacter = function(time)
   {
@@ -74,6 +75,11 @@ function Character (x, y)
 
 
       fullMap.addCharacter(this, this.block.x, this.block.y);
+  }
+
+
+  this.initInteraction = function(actor2) {
+      ui.sendOrder(this._interaction);
   }
 
 

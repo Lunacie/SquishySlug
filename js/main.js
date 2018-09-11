@@ -4,6 +4,7 @@ var ratioW = 1;
 var ratioH = 1;
 
 
+var ui = new UI();
 
 var player = new Player(10, 10);
 var characters = [];
@@ -15,7 +16,6 @@ characters.push(new Npc(8, 10, SPECIES_INSECT));
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);
 
-var ui = new UI();
 
 window.onload = function() {
 

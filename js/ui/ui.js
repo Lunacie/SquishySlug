@@ -30,8 +30,10 @@ function UI(player) {
   this.init = function(player, canvas) {
 
     this._player = player;
+    this._player.ui = this;
     this._initDimensions.width = $(canvas).width();
     this._initDimensions.height = $(canvas).height();
+    this._orderId = 0;
     this._screens = [
       $("#loading.screen"),
       $("#main.screen").click(eventCanvasClicked)
@@ -56,10 +58,16 @@ function UI(player) {
     }
   }
 
-
   this.isMorphing = function() {
     return this._morphing;
   }
+
+
+  this.sendOrder = function(id) {
+    this._orderId = id;
+    this._openTab(null);
+  };
+
 
   this._openTab = function(event) {
     if (ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
@@ -72,7 +80,10 @@ function UI(player) {
     if ($("#nav-overlay").width())
       ui._toggleMenu();
 
-    var id = ui._getTabId(event.currentTarget.classList);
+    if (event)
+      var id = ui._getTabId(event.currentTarget.classList);
+    else
+      var id = ui._orderId;
     // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
@@ -184,11 +195,13 @@ function UI(player) {
         $(".social").animate({'margin-right' :  right + 'px'}, 1000);
         $(".social p").delay(1000).css('color', '#6D316C');
         $(".social i").delay(1000).css('color', '#6D316C');
+        $("p.copy").delay(1000).css('color', '#6D316C');
       }
       else {
         $(".social").animate({'margin-right' :  '0px'}, 1000);
         $(".social p").delay(1000).css('color', '#FFFFFF');
         $(".social i").delay(1000).css('color', '#FFFFFF');
+        $("p.copy").delay(1000).css('color', '#FFFFFF');
       }
     };
 

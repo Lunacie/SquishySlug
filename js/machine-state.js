@@ -58,8 +58,10 @@ function MachineState(actor) {
             x : this._actor2.x,
             y : this._actor2.y
           };
-          if (trigger.state ==  ACTION_STATE_CONVERSATION)
+          if (trigger.state ==  ACTION_STATE_CONVERSATION) {
             this._actor.addProp(PROP_TYPE_SPEECH);
+            this._actor.initInteraction(this._actor2);
+          }
         }
         else
           trigger.actor._machineState.triggerState(trigger, this._actor);

@@ -11,6 +11,7 @@ function Npc(x, y, species) // inherits Character
   this.direction = DIRECTION_DOWN;
   this.state = ACTION_STATE_IDLE;
   this._species = species;
+  this._interaction = species;
 
 
   this.update = this.updateCharacter;
