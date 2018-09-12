@@ -46,9 +46,13 @@ function Character (x, y)
   this._props = [];
   this._orderStatus = ORDER_STATUS_NONE;
   this.ui = null;
+  this._time = 0;
+  this._elapsedSinceStep = 0;
 
   this.updateCharacter = function(time)
   {
+      this._time += time;
+
       fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
@@ -150,6 +154,7 @@ function Character (x, y)
         this.block.y == this._path[0].y) {
           this._path.shift();
           this._steps.shift();
+
           if (!this._path.length) {
             if (this.destination.direction)
               this.direction = this.destination.direction;
@@ -162,6 +167,11 @@ function Character (x, y)
 
             return this._clearAutomation();
           }
+    }
+    else {  
+        this._elapsedSinceStep = this._time;
+        if (this.id == 2)
+          console.log(this._elapsedSinceStep);
     }
 
     this._shiftActions(true);

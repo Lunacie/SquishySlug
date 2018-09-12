@@ -9,7 +9,7 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
-var TAB_WIDTH = 840;
+var TAB_WIDTH = 640;
 
 function UI(player) {
   this._state = UI_STATE_LOADING;
@@ -62,12 +62,10 @@ function UI(player) {
     return this._morphing;
   }
 
-
   this.sendOrder = function(id) {
     this._orderId = id;
     this._openTab(null);
   };
-
 
   this._openTab = function(event) {
     if (ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
@@ -192,7 +190,8 @@ function UI(player) {
     this._toggleSocials = function(open) {
       if (open) {
         let right = window.innerWidth - TAB_WIDTH;
-        $(".social").animate({'margin-right' :  right + 'px'}, 1000);
+        $(".social").animate({'margin-right' :  right - 90 + 'px'}, 1000);
+        $("#tab-svg").animate({'left' :  TAB_WIDTH - 3 + 'px'}, 1000);
         $(".social p").delay(1000).css('color', '#6D316C');
         $(".social i").delay(1000).css('color', '#6D316C');
         $("p.copy").delay(1000).css('color', '#6D316C');
@@ -202,6 +201,7 @@ function UI(player) {
         $(".social p").delay(1000).css('color', '#FFFFFF');
         $(".social i").delay(1000).css('color', '#FFFFFF');
         $("p.copy").delay(1000).css('color', '#FFFFFF');
+        $("#tab-svg").animate({'left' : '-100px'}, 1000);
       }
     };
 
@@ -246,6 +246,11 @@ function UI(player) {
       if (this._tab == UI_TAB_NONE)
         tabWidth = 0;
 
+/*
+      if (!this._initDimensions) {
+        alert(this._player);
+        location.reload();
+      }*/
       canvas.width = this._initDimensions.width - tabWidth;
       canvas.height = this._initDimensions.height;
       offCanvas.width = this._initDimensions.width - tabWidth;
