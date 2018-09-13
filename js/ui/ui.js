@@ -42,6 +42,7 @@ function UI(player) {
     $("#menu-open").click(this._toggleMenu);
 
     $(".open-tab-btn").click(this._openTab);
+    $("#tab-close").click(this._closeTab);
 
     $(".tab-content").hide();
 
@@ -111,6 +112,26 @@ function UI(player) {
     ui._player.sendOrder();
     //ui._openTabAnimation(id);
   };
+
+  this._closeTab = function() {
+      if (ui._elapsed - ui._lastTime < 2700 && ui._lastTime != 0) {
+        return ;
+      }
+      ui._lastTime = ui._elapsed
+      if (ui._morphing)
+        return;
+
+      if ($("#nav-overlay").width())
+        ui._toggleMenu();
+
+        $('.tab-'+ui._tab+' li').removeClass('selected');
+        ui._tab = UI_TAB_NONE;
+        ui._reopen = false;
+        $("#loading").stop();
+        $("#loading").fadeIn(200);
+        ui._loading = true;
+        return ui._closeTabAnimation();
+  }
 
 
     this._blurCanvas = function(radius, margin) {
@@ -190,8 +211,9 @@ function UI(player) {
     this._toggleSocials = function(open) {
       if (open) {
         let right = window.innerWidth - TAB_WIDTH;
-        $(".social").animate({'margin-right' :  right - 90 + 'px'}, 1000);
-        $("#tab-svg").animate({'left' :  TAB_WIDTH - 3 + 'px'}, 1000);
+        $(".social").animate({'margin-right' :  right - 40 + 'px'}, 1000);
+        $("#tab-svg").animate({'left' :  TAB_WIDTH  + 'px'}, 1000);
+        $("#tab-close").animate({'left' :  TAB_WIDTH - 30 + 'px'}, 1000);
         $(".social p").delay(1000).css('color', '#6D316C');
         $(".social i").delay(1000).css('color', '#6D316C');
         $("p.copy").delay(1000).css('color', '#6D316C');
@@ -202,6 +224,7 @@ function UI(player) {
         $(".social i").delay(1000).css('color', '#FFFFFF');
         $("p.copy").delay(1000).css('color', '#FFFFFF');
         $("#tab-svg").animate({'left' : '-100px'}, 1000);
+        $("#tab-close").animate({'left' : '-30px'}, 1000);
       }
     };
 

@@ -63,6 +63,7 @@ if (canvas && canvas.getContext)
     elapsed += diff;
     frames += 1;
 
+
     update(characters, map, ui, loadManager, debugOverlay, diff);
     draw(characters, map, debugOverlay);
 

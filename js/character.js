@@ -31,7 +31,7 @@ function Character (x, y)
   };
   this.direction = 0;
   this.images = [];
-  this.walkUnitSize = 0.025;
+  this.walkUnitSize = 0.045;
   this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
@@ -168,7 +168,7 @@ function Character (x, y)
             return this._clearAutomation();
           }
     }
-    else {  
+    else {
         this._elapsedSinceStep = this._time;
         if (this.id == 2)
           console.log(this._elapsedSinceStep);
