@@ -37,10 +37,7 @@ function MachineState(actor) {
     if (this._elapsed < 5000)
       return;
     // npc Roam
-    var destination = {
-      x : 12,
-      y : 10
-    };
+    let destination = map.getRandomDestination();
     this._actor.setDestination(destination, 0);
   };
 

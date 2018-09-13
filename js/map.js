@@ -62,6 +62,10 @@ function Map(player, characters)
       return oldX != this.width || oldY != this.height ? true : false;
     },
 
+    getRandomDestination : function() {
+      return fullMap.getRandomDestination();
+    },
+
     draw : function(ox, oy) {
       var x = 0;
       var y = 0;

@@ -69,6 +69,23 @@ function FullMap() {
         }
       },
 
+      getRandomDestination : function() {
+        let collision = true;
+        let x = y = 0;
+        do {
+          let width = this._graph[0].length;
+          let height = this._graph.length;
+          x = Math.floor(Math.random() * width);
+          y = Math.floor(Math.random() * height);
+          collision = tiles.data[this._graph[y][x].value].collision;
+        } while (collision == true)
+        //console.log(x, y);
+        return {
+          x : x,
+          y : y
+        }
+      },
+
       getNode : function(x, y) {
         return this._graph[y][x];
       },

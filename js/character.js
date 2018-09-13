@@ -168,12 +168,13 @@ function Character (x, y)
             return this._clearAutomation();
           }
     }
-    else {
+//TODO : fix stuck npcs bug
+/*    else {
         this._elapsedSinceStep = this._time;
         if (this.id == 2)
           console.log(this._elapsedSinceStep);
     }
-
+*/
     this._shiftActions(true);
     this.state = ACTION_STATE_WALK;
     this.direction = this._steps[0];
