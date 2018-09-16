@@ -1,4 +1,5 @@
 
+
 var UI_STATE_LOADING = 0;
 var UI_STATE_MAIN = 1;
 
@@ -12,6 +13,7 @@ var UI_TAB_CONTACT = 5;
 var TAB_WIDTH = 640;
 
 function UI(player) {
+  this.tabs = new Tab();
   this._state = UI_STATE_LOADING;
   this._last = UI_STATE_LOADING;
   this._tab = UI_TAB_NONE;
@@ -31,6 +33,7 @@ function UI(player) {
 
     this._player = player;
     this._player.ui = this;
+    this.tabs.init();
     this._initDimensions.width = $(canvas).width();
     this._initDimensions.height = $(canvas).height();
     this._orderId = 0;
@@ -112,12 +115,18 @@ function UI(player) {
     // Else, just open tab
     ui._tab = id;
     $('.tab-'+id+' li').addClass('selected');
-    $('div[data-id="'+id+'"]').show();
+    ui._prepareTab(id);
     ui._reopen = false;
     ui._tabToOpen = id;
     ui._player.sendOrder(id);
     //ui._openTabAnimation(id);
   };
+
+  this._prepareTab = function(id) {
+    ui.tabs.update(id);
+    let element = $('div[data-id="'+id+'"]');
+    element.show();
+  }
 
   this._closeTab = function() {
       if (ui._elapsed - ui._lastTime < 2700 && ui._lastTime != 0) {

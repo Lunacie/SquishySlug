@@ -3,7 +3,6 @@ var ratio = 1;
 var ratioW = 1;
 var ratioH = 1;
 
-
 var ui = new UI();
 
 var player = new Player(10, 10);
@@ -11,7 +10,7 @@ var characters = [];
 characters.push(player);
 characters.push(new Npc(12, 12, SPECIES_CAT));
 characters.push(new Npc(13, 10, SPECIES_ELEPHANT));
-characters.push(new Npc(8, 10, SPECIES_INSECT));
+characters.push(new Npc(10, 10, SPECIES_INSECT));
 
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);

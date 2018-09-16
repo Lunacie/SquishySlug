@@ -10,6 +10,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+
       <script type="text/javascript" src="js/props.js"></script>
       <script type="text/javascript" src="js/machine-state.js"></script>
       <script type="text/javascript" src="js/image-loader.js"></script>
@@ -25,6 +26,8 @@
       <script type="text/javascript" src="js/tiles.js"></script>
       <script type="text/javascript" src="js/load-manager.js"></script>
       <script type="text/javascript" src="js/debug-overlay.js"></script>
+      <script type="text/javascript" src="js/ui/projects.js"></script>
+      <script type="text/javascript" src="js/ui/tab.js"></script>
       <script type="text/javascript" src="js/ui/ui.js"></script>
       <script type="text/javascript" src="js/draw.js"></script>
       <script type="text/javascript" src="js/update.js"></script>
@@ -43,8 +46,32 @@
          <div class="tab-content" data-id="1"> About
          </div>
          <div class="tab-content" data-id="2"> Road </div>
-         <div class="tab-content" data-id="3"> Projects </div>
-         <div class="tab-content" data-id="4"> Project </div>
+         <div class="tab-content" data-id="3">
+            Projects
+            <div class="row">
+              <div>
+
+              <button type="button" class="btn btn-primary type" data-type="fullstack">FullStack</button>
+              <button type="button" class="btn btn-primary type" data-type="backend">Backend</button>
+              <button type="button" class="btn btn-primary type" data-type="frontend">Frontend</button>
+              <button type="button" class="btn btn-primary type" data-type="graphicdesign">Graphic Design</button>
+            </div>
+
+            <div>
+              <button type="button" class="btn btn-info year" data-year="2018">2018</button>
+              <button type="button" class="btn btn-info year" data-year="2017">2017</button>
+              <button type="button" class="btn btn-info year" data-year="2016">2016</button>
+            </div>
+            </div>
+            <div id="gallery" class="row">
+
+
+
+            </div>
+          </div>
+         <div class="tab-content" data-id="4">
+
+          </div>
          <div class="tab-content" data-id="5"> Contact </div>
        </div>
      </div>
