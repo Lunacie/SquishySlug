@@ -5,10 +5,6 @@ var DIRECTION_LEFT = 1;
 var DIRECTION_DOWN = 2;
 var DIRECTION_UP = 3;
 
-let ORDER_TEST = {
-  x : 11,
-  y : 11
-};
 
 let ORDER_STATUS_NONE = 0;
 let ORDER_STATUS_RECEIVED = 1;
@@ -31,7 +27,8 @@ function Character (x, y)
   };
   this.direction = 0;
   this.images = [];
-  this.walkUnitSize = 0.045;
+  //this.walkUnitSize = 0.015;
+  this.walkUnitSize = 0.035;
   this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
@@ -81,15 +78,90 @@ function Character (x, y)
       fullMap.addCharacter(this, this.block.x, this.block.y);
   }
 
+  this.interupt = function() {
+    this._roaming = false;
+    console.log("interupt");
+    console.log(this.state);
+    this.state = ACTION_STATE_IDLE;
+    this._machineState.setState(ACTION_STATE_IDLE);
+  }
 
   this.initInteraction = function(actor2) {
       ui.sendOrder(this._interaction);
   }
 
+  this._stopWalking = function() {
+    this._roaming = false;
+    this.destination = null;
+    this._path = null;
+    this._direction = null;
+    this._steps = null;
+    this.state = ACTION_STATE_IDLE;
+    this._machineState.setState(ACTION_STATE_IDLE);
+    //player._machineState.setState(ACTION_STATE_CONVERSATION);
+  }
 
-  this.sendOrder = function() {
+  this.getDestinationTriggerInteraction = function() {
+     let npc = this;
+     npc._stopWalking();
+      var x = npc.block.x;
+      var y = npc.block.y;
+      var disp = {x : 0, y : 0};
+      if (npc.direction == DIRECTION_UP) {
+        var face = DIRECTION_DOWN;
+        y -= 1;
+        if (player.y - npc.y < 0.1)
+          disp.y -= 0.01;
+      }
+      if (npc.direction == DIRECTION_DOWN) {
+        var face = DIRECTION_UP;
+        y += 1;
+        if (npc.y - player.y < 0.1)
+          disp.y += 0.01;
+      }
+      if (npc.direction == DIRECTION_LEFT) {
+        var face = DIRECTION_RIGHT;
+        x -= 1;
+        if (player.y - npc.y < 0.1)
+          disp.x -= 0.01;
+      }
+      if (npc.direction == DIRECTION_RIGHT) {
+        var face = DIRECTION_LEFT;
+        x += 1
+        if (npc.y - player.y < 0.1)
+          disp.x += 0.01;
+      }
+      var destination = {
+        x : x,
+        y : y,
+        direction : face,
+        displacement : disp,
+        trigger : {
+          state : ACTION_STATE_CONVERSATION,
+          actor : npc,
+          actor2 : player
+        }
+      };
+      return destination;
+  };
+
+  this.sendOrder = function(id) {
     this._orderStatus = ORDER_STATUS_RECEIVED;
-    this.setDestination(ORDER_TEST);
+    let target = fullMap.getCharacter(id);
+    //console.log(target);
+    //target.interupt();
+    this._roaming = false;
+    this.setDestination(target.getDestinationTriggerInteraction());
+  };
+
+  this.freeNpc = function(id) {
+    let target = fullMap.getCharacter(id);
+    if (!target)
+      return;
+    target._machineState.removeState(ACTION_STATE_CONVERSATION);
+    target.state = ACTION_STATE_IDLE;
+    target._machineState.setState(ACTION_STATE_IDLE);
+    target._roaming = true;
   };
 
   this._updateOrderStatus = function() {
@@ -112,6 +184,7 @@ function Character (x, y)
     this._steps = null;
     this.destination = destination;
     this.direction = direction;
+    //this._machineState.setState(ACTION_STATE_IDLE);
   }
 
   this.removeProp = function(type) {
@@ -203,7 +276,7 @@ function Character (x, y)
       this.destination = null;
       this.state = ACTION_STATE_IDLE;
       this._shiftActions(false, 3);
-      this._machineState.setState(ACTION_STATE_IDLE);
+      //this._machineState.setState(ACTION_STATE_IDLE);
   }
 
 

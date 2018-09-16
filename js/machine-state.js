@@ -37,31 +37,42 @@ function MachineState(actor) {
     if (this._elapsed < 5000)
       return;
     // npc Roam
-    let destination = map.getRandomDestination();
-    this._actor.setDestination(destination, 0);
+    if (this._actor._roaming == true) {
+      let destination = map.getRandomDestination();
+      this._actor.state = ACTION_STATE_WALK;
+      this.setState(ACTION_STATE_WALK);
+      this._actor.setDestination(destination, 0);
+    }
   };
 
 
     this.triggerState = function(trigger, actor2) {
       if (trigger.actor) {
           if (trigger.actor2 &&
-              this._actorIsTooFar(trigger.actor, trigger.actor2))
+              this._actorIsTooFar(trigger.actor, trigger.actor2)) {
+              player.freeNpc();
             return;
+          }
         if (trigger.actor == this._actor) {
           this._actor2 = actor2;
           this.state = trigger.state;
+          this._actor._machineState.state = trigger.state;
+          //console.log("state : "); console.log(this._actor);
           this._trigger = trigger;
           this._start = {
             x : this._actor2.x,
             y : this._actor2.y
           };
           if (trigger.state ==  ACTION_STATE_CONVERSATION) {
+            //this._actor._machineState.state = ACTION_STATE_CONVERSATION;
             this._actor.addProp(PROP_TYPE_SPEECH);
             this._actor.initInteraction(this._actor2);
           }
         }
-        else
+        else{
+          //console.log("pre trigger state");console.log(trigger);
           trigger.actor._machineState.triggerState(trigger, this._actor);
+        }
       }
       this._elapsed = 0;
     }
@@ -73,8 +84,10 @@ function MachineState(actor) {
 
 
     this.removeState = function(state) {
-      if (state == ACTION_STATE_CONVERSATION)
-        this._actor.removeAllPropsByType(PROP_TYPE_SPEECH);
+      if (state == ACTION_STATE_CONVERSATION) {
+        for (let i = 0; i < characters.length; i++)
+          characters[i].removeAllPropsByType(PROP_TYPE_SPEECH);
+      }
       this.state = ACTION_STATE_IDLE;
     }
 
@@ -84,8 +97,10 @@ function MachineState(actor) {
           // change to idle if player is a rude mf and left mid conversation
           if (!(this._actor2.x == this._start.x &&
               this._actor2.y == this._start.y)) {
-              if (this._actorIsTooFar(this._actor, this._actor2))
+              if (this._actorIsTooFar(this._actor, this._actor2)) {
                 this.removeState(ACTION_STATE_CONVERSATION);
+                this._actor._roaming = true;
+              }
           }
       }
     }

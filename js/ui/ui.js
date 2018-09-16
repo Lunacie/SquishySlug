@@ -86,6 +86,7 @@ function UI(player) {
     // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
+      ui._player.freeNpc(ui._tab);
       ui._tab = UI_TAB_NONE;
       ui._reopen = false;
       $("#loading").stop();
@@ -95,12 +96,15 @@ function UI(player) {
     }
     // Reopen tab
     else if (ui._tab && id != ui._tab) {
+      ui._player.freeNpc(id);
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = id;
       $('.tab-'+id+' li').addClass('selected');
       ui._closeTabAnimation();
+      $("#loading").stop();
+      $("#loading").fadeIn(200);
       ui._reopen = true;
-      return ui._player.sendOrder();
+      return ui._player.sendOrder(id);
       //return ui._openTabAnimation(id);
   }
 
@@ -109,7 +113,7 @@ function UI(player) {
     $('.tab-'+id+' li').addClass('selected');
     $('div[data-id="'+id+'"]').show();
     ui._reopen = false;
-    ui._player.sendOrder();
+    ui._player.sendOrder(id);
     //ui._openTabAnimation(id);
   };
 
@@ -125,6 +129,7 @@ function UI(player) {
         ui._toggleMenu();
 
         $('.tab-'+ui._tab+' li').removeClass('selected');
+        ui._player.freeNpc(ui._tab);
         ui._tab = UI_TAB_NONE;
         ui._reopen = false;
         $("#loading").stop();
@@ -191,7 +196,7 @@ function UI(player) {
       ui._blurCanvas(10, 0);
 
 
-      $("#tab").animate({'width' :  '0px'}, 1000);
+      $("#tab").animate({'width' :  '0px', 'left' : '-64px'}, 1000);
       this._toggleSocials(false);
       //var width = window.innerWidth;
       var width = this._initDimensions.width;
@@ -212,7 +217,7 @@ function UI(player) {
       if (open) {
         let right = window.innerWidth - TAB_WIDTH;
         $(".social").animate({'margin-right' :  right - 40 + 'px'}, 1000);
-        $("#tab-svg").animate({'left' :  TAB_WIDTH  + 'px'}, 1000);
+        $("#tab-svg").animate({'left' :  TAB_WIDTH   + 'px'}, 1000);
         $("#tab-close").animate({'left' :  TAB_WIDTH - 30 + 'px'}, 1000);
         $(".social p").delay(1000).css('color', '#6D316C');
         $(".social i").delay(1000).css('color', '#6D316C');
@@ -235,7 +240,7 @@ function UI(player) {
       let width = TAB_WIDTH;
 
       this._toggleSocials(true);
-      $("#tab").animate({'width' : width + 'px'}, 1000);
+      $("#tab").animate({'width' : width + 'px', left : 0}, 1000);
       var element = $("#canvas");
       let left = width;
       let baseWidth = window.innerWidth;

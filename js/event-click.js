@@ -27,45 +27,7 @@ function getClickEventNpc(val) {
   var npc = fullMap.getCharacter(val - characterColorHex);
   if (!npc)
     return null;
-  var x = npc.block.x;
-  var y = npc.block.y;
-  var disp = {x : 0, y : 0};
-  if (npc.direction == DIRECTION_UP) {
-    var face = DIRECTION_DOWN;
-    y -= 1;
-    if (player.y - npc.y < 0.1)
-      disp.y -= 0.01;
-  }
-  if (npc.direction == DIRECTION_DOWN) {
-    var face = DIRECTION_UP;
-    y += 1;
-    if (npc.y - player.y < 0.1)
-      disp.y += 0.01;
-  }
-  if (npc.direction == DIRECTION_LEFT) {
-    var face = DIRECTION_RIGHT;
-    x -= 1;
-    if (player.y - npc.y < 0.1)
-      disp.x -= 0.01;
-  }
-  if (npc.direction == DIRECTION_RIGHT) {
-    var face = DIRECTION_LEFT;
-    x += 1
-    if (npc.y - player.y < 0.1)
-      disp.x += 0.01;
-  }
-  var destination = {
-    x : x,
-    y : y,
-    direction : face,
-    displacement : disp,
-    trigger : {
-      state : ACTION_STATE_CONVERSATION,
-      actor : npc,
-      actor2 : player
-    }
-  };
-  return destination;
+  return npc.getDestinationTriggerInteraction();
 }
 
 function getClickEventFloor(val) {
