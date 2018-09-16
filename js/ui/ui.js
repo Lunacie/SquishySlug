@@ -104,6 +104,7 @@ function UI(player) {
       $("#loading").stop();
       $("#loading").fadeIn(200);
       ui._reopen = true;
+      ui._tabToOpen = id;
       return ui._player.sendOrder(id);
       //return ui._openTabAnimation(id);
   }
@@ -113,6 +114,7 @@ function UI(player) {
     $('.tab-'+id+' li').addClass('selected');
     $('div[data-id="'+id+'"]').show();
     ui._reopen = false;
+    ui._tabToOpen = id;
     ui._player.sendOrder(id);
     //ui._openTabAnimation(id);
   };
@@ -218,7 +220,7 @@ function UI(player) {
         let right = window.innerWidth - TAB_WIDTH;
         $(".social").animate({'margin-right' :  right - 40 + 'px'}, 1000);
         $("#tab-svg").animate({'left' :  TAB_WIDTH   + 'px'}, 1000);
-        $("#tab-close").animate({'left' :  TAB_WIDTH - 30 + 'px'}, 1000);
+        $("#tab-close").delay(2000).fadeIn(100);
         $(".social p").delay(1000).css('color', '#6D316C');
         $(".social i").delay(1000).css('color', '#6D316C');
         $("p.copy").delay(1000).css('color', '#6D316C');
@@ -229,7 +231,7 @@ function UI(player) {
         $(".social i").delay(1000).css('color', '#FFFFFF');
         $("p.copy").delay(1000).css('color', '#FFFFFF');
         $("#tab-svg").animate({'left' : '-100px'}, 1000);
-        $("#tab-close").animate({'left' : '-30px'}, 1000);
+        $("#tab-close").fadeOut(100);
       }
     };
 
@@ -348,7 +350,7 @@ function UI(player) {
       $("#loading").stop();
       $("#loading").fadeIn(200);
       ui._loading = true;
-      ui._openTabAnimation(this._tab);
+      ui._openTabAnimation(this._tabToOpen);
     }
   };
 

@@ -12,7 +12,7 @@ function Npc(x, y, species) // inherits Character
   this.state = ACTION_STATE_IDLE;
   this._species = species;
   this._interaction = species;
-  this._roaming = true;
+  this._roaming = false;
 
 
   this._roam = function() {
