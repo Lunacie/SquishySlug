@@ -38,9 +38,20 @@
       },
       /* 8 */ {
       id : "floor_sand_water_SE",
-      collision : false,
+      floor : true
+      },
+      /* 9 */ {
+      id : "water_shallow_SE",
+      collision : true,
+      },
+      /* 10 */ {
+      id : "water_shallow_SW",
       floor : true,
-      }
+      },
+      /* 11 */ {
+      id : "floor_sand_water_SW",
+      collision : true
+      },
     ]
   };
 tiles.size = tiles.initSize;
