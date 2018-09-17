@@ -366,7 +366,7 @@ function UI(player) {
   this._removeScreen = function() {
     var delay = 1000;
     if (this._state == UI_STATE_LOADING)
-      delay = 1000;
+      delay = 3000;
     this._screens[this._state].delay(delay).fadeOut(500);
   }
 
