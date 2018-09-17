@@ -28,6 +28,29 @@ function FullMap() {
       height : 0,
       width : 0,
       nbLayers : 2,
+      hexMap : [],
+
+      _init : function() {
+          let tileColorHex = 0x000001;
+          for (y = 0; y < this.data[0].length; y++) {
+            let line = [];
+            for (x = 0; x < this.data[0][y].length; x++) {
+                if (tiles.data[this.data[0][y][x]].collision)
+                  line.push(0x000000);
+                else
+                  line.push(tileColorHex);
+                tileColorHex += 0x000001;
+            }
+            this.hexMap.push(line);
+          }
+      },
+
+      getHex : function(y, x) {
+        if (!this.hexMap[y] || !this.hexMap[y][x]) {
+          return 0x000000;
+        }
+        return this.hexMap[y][x];
+      },
 
       _buildGraph : function() {
         this._graph = {};
@@ -136,6 +159,7 @@ function FullMap() {
       },
 
   };
+  map._init();
   map._buildGraph();
   return map;
 };

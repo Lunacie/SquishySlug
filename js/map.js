@@ -7,6 +7,7 @@ function Map(player, characters)
 
     _player : player,
     _characters : characters,
+    _hexMap : [],
     _data : [],
     _layers : [],
     _startY : 0,
@@ -157,8 +158,8 @@ function Map(player, characters)
         fmX += this._startX;
         fmY += this._startY;
       }
-
-      var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
+      var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
+      //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
       //var offColor = "000000" + tileColorHex.toString(16);
       offColor = "#" + offColor.slice(-6);
 

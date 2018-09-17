@@ -27,9 +27,9 @@ function Character (x, y)
   };
   this.direction = 0;
   this.images = [];
-  //this.walkUnitSize = 0.015;
+  this.walkUnitSize = 0.015;
   //this.walkUnitSize = 0.025;
-  this.walkUnitSize = 0.045;
+  //this.walkUnitSize = 0.045;
   this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
