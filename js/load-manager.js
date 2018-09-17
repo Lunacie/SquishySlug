@@ -19,7 +19,28 @@ function LoadManager(characters, tiles) {
         }
       }
     }
+
+
+    // for each tile
+    this._loadTiles();
   };
+
+  this._loadTiles = function() {
+    for (let i = 0; i < tiles.data.length; i++) {
+      let tile = tiles.data[i];
+        $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
+            tile.image = {};
+            // on screen
+            tile.image.on = new Image();
+            var str = (new XMLSerializer).serializeToString(svgXml);
+            str = str.replace(/#/g, "%23");
+            tile.image.on.onload = function() {
+              tile.image.on.loaded = true;
+            }
+            tile.image.on.src = "data:image/svg+xml;charset=utf-8," + str;
+        });
+  }
+}
 
 
     this.isComplete = function() {

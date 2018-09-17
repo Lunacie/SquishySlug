@@ -28,7 +28,8 @@ function Character (x, y)
   this.direction = 0;
   this.images = [];
   //this.walkUnitSize = 0.015;
-  this.walkUnitSize = 0.025;
+  //this.walkUnitSize = 0.025;
+  this.walkUnitSize = 0.045;
   this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
@@ -49,6 +50,10 @@ function Character (x, y)
   this.updateCharacter = function(time)
   {
       this._time += time;
+
+      //console.log(tiles.data);
+      if (!loadManager.isComplete())
+        return;
 
       fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
@@ -286,8 +291,9 @@ function Character (x, y)
   };
 
   this._updatePosition = function() {
-    if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y))
+    if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y)) {
       return;
+    }
     this.x += (this.walkUnit.x * this._walkPaceScale);
     this.y += (this.walkUnit.y * this._walkPaceScale);
     this.block.x = parseInt(this.x);
@@ -338,7 +344,9 @@ function Character (x, y)
   };
 
   this._evaluateNeighbour = function(neighbour, element, queue) {
-    if (neighbour && neighbour.value == 3) { // is tree
+    if (neighbour && !tiles.data[neighbour.value])
+      console.log(tiles.data);
+    if (neighbour && tiles.data[neighbour.value].collision) { // is obstacle
       if (SHOW_DIJKSTRA_DEBUG) {
       console.log("  Evaluating neighbour [" + neighbour.y + "][" + neighbour.x + "]");
       console.log("     is obstacle. Skipping.");

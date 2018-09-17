@@ -12,7 +12,6 @@ function Tab() {
       if (this._tabs[i])
         this._tabs[i].init();
     }
-  this._current
   }
 
   this.update = function(id) {

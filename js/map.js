@@ -67,6 +67,10 @@ function Map(player, characters)
     },
 
     draw : function(ox, oy) {
+
+      if (!loadManager.isComplete())
+        return;
+
       var x = 0;
       var y = 0;
       var yr = 0;
@@ -177,7 +181,7 @@ function Map(player, characters)
         }
       // else draw image
       else if (tile.id) {
-        if (!tile.image)
+        if (!tile.image.off)
           this._loadImage(tile, offColor);
         else {
           // on screen
@@ -206,17 +210,7 @@ function Map(player, characters)
     },
 
   _loadImage : function(tile, offColor) {
-    $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
-        tile.image = {};
-        // on screen
-        tile.image.on = new Image();
-        var str = (new XMLSerializer).serializeToString(svgXml);
-        str = str.replace(/#/g, "%23");
-        tile.image.on.onload = function() {
-          tile.image.on.loaded = true;
-        }
-        tile.image.on.src = "data:image/svg+xml;charset=utf-8," + str;
-
+      $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         // offscreen
         offColor = tile.floor ? offColor : "#FFFFFF";
         tile.image.off = new Image();

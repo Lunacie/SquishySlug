@@ -11,7 +11,7 @@
         floor : true,
       },
       /* 2 */ {
-      style : "orange",
+      id : "floor_sand",
       collision : false,
       floor : true,
       },
@@ -21,24 +21,26 @@
       top : 7,
       },
       /* 4 */ {
-      style : "black",
-      collision : false,
-      floor : true,
+      id : "stone",
+      collision : true,
       },
       /* 5 */ {
-      style : "green",
-      collision : false,
-      floor : true,
+      id : "stone_2",
+      collision : true,
       },
-      /* 6 */ {
-      style : "cyan",
-      collision : false,
-      floor : true,
+      /* 6*/ {
+      id : "water",
+      collision : true,
       },
       /* 7 */ {
       id : "tree_01_l01",
       collision : true,
       },
+      /* 8 */ {
+      id : "floor_sand_water_SE",
+      collision : false,
+      floor : true,
+      }
     ]
   };
 tiles.size = tiles.initSize;

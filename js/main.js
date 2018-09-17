@@ -8,9 +8,12 @@ var ui = new UI();
 var player = new Player(10, 10);
 var characters = [];
 characters.push(player);
-characters.push(new Npc(12, 12, SPECIES_CAT));
-characters.push(new Npc(13, 10, SPECIES_ELEPHANT));
+characters.push(new Npc(10, 10, SPECIES_CAT));
+characters.push(new Npc(10, 10, SPECIES_ELEPHANT));
 characters.push(new Npc(10, 10, SPECIES_INSECT));
+
+var loadManager = new LoadManager(characters, tiles);
+loadManager.load();
 
 var map = Map(player, characters);
 var debugOverlay = new DebugOverlay(map, player, characters);
@@ -49,9 +52,6 @@ if (canvas && canvas.getContext)
    else if (ratio < 1)
     tiles.size *= 1.7;
 
-
- var loadManager = new LoadManager(characters, tiles);
- loadManager.load();
 
  var elapsed = 0;
  var frames = 0;
