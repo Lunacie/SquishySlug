@@ -46,11 +46,11 @@
       },
       /* 10 */ {
       id : "water_shallow_SW",
-      floor : true,
+      collision : true,
       },
       /* 11 */ {
       id : "floor_sand_water_SW",
-      collision : true
+      floor : true
       },
     ]
   };
