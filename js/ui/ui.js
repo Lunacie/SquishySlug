@@ -10,7 +10,7 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
-var TAB_WIDTH = 940;
+var TAB_WIDTH = 840;
 
 function UI(player) {
   this.tabs = new Tab();
@@ -227,20 +227,14 @@ function UI(player) {
     this._toggleSocials = function(open) {
       if (open) {
         let right = window.innerWidth - TAB_WIDTH;
-        $(".social").animate({'margin-right' :  right + 'px'}, 1000);
-        $("#tab-svg").animate({'left' :  TAB_WIDTH   + 'px'}, 1000);
-        $("#tab-close").delay(2000).fadeIn(100);
-        $(".social p").delay(1000).css('color', '#6D316C');
-        $(".social i").delay(1000).css('color', '#6D316C');
+        $("#footer .social").fadeOut(1000);
+        //$("#tab-svg").animate({'left' :  TAB_WIDTH - 100   + 'px'}, 1000);
         $("p.copy").delay(1000).css('color', '#6D316C');
       }
       else {
-        $(".social").animate({'margin-right' :  '0px'}, 1000);
-        $(".social p").delay(1000).css('color', '#FFFFFF');
-        $(".social i").delay(1000).css('color', '#FFFFFF');
+        $("#footer .social").fadeIn(1000);
         $("p.copy").delay(1000).css('color', '#FFFFFF');
-        $("#tab-svg").animate({'left' : '-100px'}, 1000);
-        $("#tab-close").fadeOut(100);
+        //$("#tab-svg").animate({'left' : '-100px'}, 1000);
       }
     };
 

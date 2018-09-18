@@ -26,10 +26,7 @@ body {
   z-index : 3;
 }
 #tab-close {
-  position : absolute;
-  left : 850px;
   z-index : 3;
-  display : none;
   width : auto;
   height : auto;
   font-weight: lighter;
@@ -40,6 +37,15 @@ body {
 
 #tab-content {
   background : white;
+  margin : 0;
+}
+
+.tab-content {
+  min-height : 85vh;
+}
+
+#tab-footer .social{
+  color : #6D316C;
 }
 
 .canvas, .screen {
@@ -175,7 +181,6 @@ body {
   #tab { font-size : 2.3rem; }
   #tab-close {
     font-size : 4rem;
-    margin-left : -30px
   }
   #tab-svg { margin-left : -3px}
 

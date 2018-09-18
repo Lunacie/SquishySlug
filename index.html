@@ -42,11 +42,17 @@
    <body id="body" class="">
 
      <div id="tab" class="row">
-       <div id="tab-content" class="col-12 container pt-3 pb-5 px-5">
-         <div class="tab-content py-5" data-id="1"> About
+
+       <div id="tab-content" class="col-12 container pt-3 pb-5 px-5 row">
+
+        <div id="tab-header" class="col-12 row">
+          <button id="tab-close" class="mt-3 col-1 offset-sm-11" >x</button>
+        </div>
+
+         <div class="tab-content py-5 col-12" data-id="1"> About
          </div>
-         <div class="tab-content py-5" data-id="2"> Road </div>
-         <div class="tab-content py-5" data-id="3">
+         <div class="tab-content py-5 col-12" data-id="2"> Road </div>
+         <div class="tab-content py-5 col-12" data-id="3">
             Projects
             <div class="row">
               <div>
@@ -70,18 +76,29 @@
 
             </div>
           </div>
-         <div class="tab-content py-5" data-id="4">
+         <div class="tab-content py-5 col-12" data-id="4">
 
           </div>
-         <div class="tab-content py-5" data-id="5"> Contact </div>
+         <div class="tab-content py-5 col-12" data-id="5"> Contact </div>
+
+
+         <div id="tab-footer" class="col-12 row">
+          <div class="social col-5 offset-7 col-md-4 offset-md-9">
+            <p class="mb-0 ">Follow the Slug</p>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-linkedin"></i>
+          </div>
+        </div>
+
        </div>
+
      </div>
 
 
 <svg id="tab-svg" class="hidden-md-down" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="auto" fill="#ffffff">
 	  <path d="M0 60 L60 60 L0 0 Z"></path>
 </svg>
-<button id="tab-close" class="mt-3" >x</button>
   <!--
        <svg version="1.1" id="tab-svg"
           width="100px"
@@ -109,7 +126,7 @@
             <div id="header" class="row">
               <div id="logo" class="col-6 col-lg-3 row my-1">
                 <img src="assets/ui/logo-slug.svg" alt="squishySlug" class="col-4" width="" height="48px"/>
-                <h1 class="col-8">squishySlug v0.2</h1>
+                <h1 class="col-8">squishySlug v0.3</h1>
               </div>
             </div>
           </div>
