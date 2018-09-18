@@ -27,7 +27,7 @@ body {
 }
 #tab-close {
   position : absolute;
-  left : 750px;
+  left : 850px;
   z-index : 3;
   display : none;
   width : auto;
