@@ -290,8 +290,10 @@ function Character (x, y)
       this._walkPaceScale = 60 / fps;
   };
 
+
   this._updatePosition = function() {
     if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y)) {
+      this._collisionBump();
       return;
     }
     this.x += (this.walkUnit.x * this._walkPaceScale);
@@ -410,6 +412,25 @@ function Character (x, y)
       console.log("    Distance is now : " + neighbour.distance +
                 " Prev is now : [" + element.y + "][" + element.x + "]");
     return neighbour;
+  };
+
+  this._collisionBump = function() {
+    if (this.walkUnit.x < 0) {
+      this.block.x += 1;
+      this.x += 0.5;
+    }
+    else if (this.walkUnit.x > 0) {
+      this.block.x -= 1;
+      this.x -= 0.5;
+    }
+    if (this.walkUnit.y < 0) {
+      this.block.y += 1;
+      this.y += 0.5;
+    }
+    else if (this.walkUnit.y > 0) {
+      this.block.y -= 1;
+      this.y -= 0.5;
+    }
   };
 
    this._getAutomation = function(path) {
