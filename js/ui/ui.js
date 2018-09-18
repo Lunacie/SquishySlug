@@ -10,7 +10,7 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
-var TAB_WIDTH = 840;
+var TAB_WIDTH = 940;
 
 function UI(player) {
   this.tabs = new Tab();
