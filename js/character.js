@@ -431,6 +431,8 @@ function Character (x, y)
       this.block.y -= 1;
       this.y -= 0.5;
     }
+    if (this.isNpc)
+      this._clearAutomation();
   };
 
    this._getAutomation = function(path) {

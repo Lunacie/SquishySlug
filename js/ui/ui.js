@@ -221,7 +221,7 @@ function UI(player) {
             ui.resizeCanvas();
            }
         });
-      $("#header").fadeIn(1000);
+      //$("#header").fadeIn(1000);
     }
 
     this._toggleSocials = function(open) {
@@ -266,7 +266,7 @@ function UI(player) {
             $('div[data-id="'+id+'"]').show();
           }
         });
-      $("#header").fadeOut(1000);
+      //$("#header").fadeOut(1000);
     }
 
 
@@ -324,12 +324,14 @@ function UI(player) {
         element.replaceWith(clone);
       }
       if (open) {
-        $("#nav").animate({"right" : "50px"}, 1000);
+        $(".nav.mobile").show();
+        $(".nav.mobile").animate({"right" : "50px"}, 1000);
         $("#nav-overlay").animate({"width" : "500px"}, 1000);
       }
       else {
+        $(".nav.mobile").hide();
         $("#nav-overlay").animate({"width" : "0px"}, 1000);
-        $("#nav").animate({"right" : "-500px"}, 1000);
+        $(".nav.mobile").animate({"right" : "-500px"}, 1000);
       }
   }
 
@@ -371,6 +373,7 @@ function UI(player) {
       if (this._last == UI_STATE_LOADING) {
         delay = 1000;
         $("#nav").delay(delay).fadeIn(500);
+          $("#header").delay(3000).fadeIn(3000);
       }
       this._screens[this._state].delay(delay).fadeIn(500);
   }

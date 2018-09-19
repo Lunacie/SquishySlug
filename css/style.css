@@ -29,6 +29,7 @@ body {
   z-index : 3;
   width : auto;
   height : auto;
+  max-width : 70px;
   font-weight: lighter;
   background: white;
   border: 1px solid lightgray;
@@ -40,8 +41,12 @@ body {
   margin : 0;
 }
 
+#tab-header {
+  max-height : 150px;
+}
+
 .tab-content {
-  min-height : 60vh;
+  min-height : 80vh;
 }
 
 #tab-footer .social{
@@ -82,9 +87,13 @@ body {
 
 #main { display : none; z-index: 1 }
 #main #header , #logo{
-  margin-left :  auto;
-  margin-right : auto;
   background : white;
+}
+#header {
+  z-index : 6;
+  background : white;
+  display: none;
+  position : absolute;
 }
 #header #logo h1 {
   line-height : 2em;
@@ -103,6 +112,7 @@ body {
 }
 #menu-open	#l1, #l2, #l3, #l4 { fill:#6D316C; }
 
+#header .nav ul a {display : inline}
 #nav-overlay {
   width : 0px;
   height : 100vh;
@@ -112,40 +122,56 @@ body {
   right : 0px;
   z-index: 3;
 }
-#nav {
+.nav.mobile {
   position : absolute;
-  width : 200px;
+  /*width : 200px;
   height : 200px;
-  top : 40%;
+  top : 40%;*/
   right : 60px;
   display : none;
   z-index : 4;
 }
-#nav ul {
+.nav.mobile ul {
   list-style : none;
   position : absolute;
   width : 100%;
   display : block;
  }
-#nav ul li {
+.nav.mobile ul li {
   min-height : 2.5em;
   max-height : 2.5em;
   line-height : 2.5em;
 }
-#nav ul a { text-decoration : none }
-#nav ul li .text {
+.nav ul a { text-decoration : none }
+.nav.mobile ul li .text {
   color : white;
   font-family: 'News Cycle', sans-serif;
   font-size : 1em;
   text-align: right;
 }
-#nav ul li .icon { width : 50px;}
-#nav ul li .icon.on {display : none}
-#nav ul li .icon.off { display : inline }
-#nav ul li:hover .icon.off,  #nav ul li.selected .icon.off {display : none}
-#nav ul li:hover .icon.on, #nav ul li.selected .icon.on { display : inline }
-#nav ul li .text { visibility : hidden; }
-#nav ul li:hover .text, #nav ul li.selected .text { visibility : visible; }
+.nav ul li .icon { width : 50px;}
+.nav:not(.mobile) ul li span.text {
+  color : #6D316C;
+}
+.nav:not(.mobile) ul li .icon.on {
+  margin-top : -10px;
+}
+.nav:not(.mobile) ul li.road .icon.on {
+  margin-top : -8px;
+}
+.nav:not(.mobile) ul li.about .icon.on {
+  margin-top : -3px;
+}
+.nav:not(.mobile) ul li .icon.off {
+  margin-top : -2px;
+}
+
+.nav ul li .icon.on {display : none}
+.nav ul li .icon.off { display : inline }
+.nav ul li:hover .icon.off,  .nav ul li.selected .icon.off {display : none}
+.nav ul li:hover .icon.on, .nav ul li.selected .icon.on { display : inline }
+/*.nav.mobile ul li .text { visibility : hidden; }*/
+.nav ul li:hover .text, .nav ul li.selected .text { visibility : visible; }
 
 #footer {
   width: 100%;
@@ -176,13 +202,31 @@ body {
   font-size : 2rem;
 }
 
-@media only screen and (max-width: 990px) {
+.pull-left { float : left };
+.pull-right { float : right };
+
+
+@media (min-width: 990px) {
+  #header {
+    max-height : 63px;
+  }
+}
+
+@media (max-width: 990px) {
 
   #tab { font-size : 2.3rem; }
   #tab-close {
     font-size : 4rem;
+    max-height : 100px;
   }
-  #tab-svg { margin-left : -3px}
+  #tab-svg { margin-left : -3px ;}
+
+  #header {
+    min-height : 100px;
+    height : 100px;
+    max-height : 100px !important;
+  }
+
 
   #header #logo h1 {
     line-height : 1.4em;
@@ -192,17 +236,21 @@ body {
     height : 95px;
   }
 
-  #nav {
+  .nav {
     width : 400px;
     top : 17%;
     right : -500px;
   }
-  #nav ul li .text { font-size : 3em; }
-  #nav ul li {
+    .nav ul li .icon {
+      width: 100px;
+      margin-top : -10px;
+  }
+  .nav.mobile ul li .text { font-size : 3em; }
+  .nav ul li {
     min-height : 4em;
     max-height : 4em;
   }
-  #nav ul li .text { visibility : visible; }
+  .nav ul li .text { visibility : visible; }
 
   #footer p {
     font-size : 2rem;
@@ -219,14 +267,15 @@ body {
 
 }
 
-@media only screen and (max-height: 600px) {
-  #nav ul li .text { font-size : 3em; }
-  #nav ul li .text { font-size : 1.7em; }
-  #nav ul li {
+@media (max-height: 600px) {
+
+  .nav ul li .text { font-size : 3em; }
+  .nav ul li .text { font-size : 1.7em; }
+  .nav ul li {
     min-height : 2em;
     max-height : 2em;
   }
-  #nav { top : 15%; }
+  .nav { top : 15%; }
   #tab { font-size : 2.3rem; }
   #footer {
     height : 4.4em;
