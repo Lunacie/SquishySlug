@@ -110,7 +110,9 @@ function FullMap() {
       },
 
       getNode : function(x, y) {
-        return this._graph[y][x];
+        if (this._graph[y] && this._graph[y][x])
+          return this._graph[y][x];
+        return null;
       },
 
       clear : function() {

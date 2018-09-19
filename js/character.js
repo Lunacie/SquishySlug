@@ -324,6 +324,8 @@ function Character (x, y)
     fullMap.clear();
     //console.log(fullMap);
     var current = fullMap.getNode(this.block.x, this.block.y);
+    if (!current)
+      return null;
     current.prev = null;
     current.start = true;
     current.distance = 0;

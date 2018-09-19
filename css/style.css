@@ -42,7 +42,7 @@ body {
 }
 
 #tab-header {
-  max-height : 150px;
+  max-height : 200px;
 }
 
 .tab-content {
@@ -105,7 +105,12 @@ body {
   margin-left : -30px;
   font-family: 'Ubuntu Mono', monospace;
   font-weight : bold;
+  color : #6D316C;
   font-size : 1.4em;
+}
+#tab-content h2 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight : bold;
   color : #6D316C;
 }
 #menu-open {
@@ -195,7 +200,7 @@ body {
 }
 #footer p.copy {
   position : absolute;
-  bottom : 0;
+  bottom : 0px;
 }
 #footer .social {
   position : absolute;
@@ -232,10 +237,13 @@ body {
   .tab-content {
     margin-top : -200px;
   }
+  .tab-content button { font-size : 2.3rem}
+  #tab h2 { font-size : 4rem}
   #tab { font-size : 2.3rem; }
   #tab-close {
     font-size : 4rem;
     max-height : 100px;
+    margin-top : 50px !important;
   }
   #tab-svg { margin-left : -3px ;}
 
