@@ -21,6 +21,10 @@ function Character (x, y)
   this.y = y;
   this._species = SPECIES_BUNNY;
   this.time = 0;
+  this.initBlock = {
+    x : x,
+    y : y
+  };
   this.block = {
     x : x,
     y : y
@@ -290,6 +294,16 @@ function Character (x, y)
       this._walkPaceScale = 60 / fps;
   };
 
+  this._characterIsBlocked = function(block) {
+    let node = fullMap.data[0][block.y][block.x];
+    if (!node || tiles.data[node].collision == true) {
+      this.block.x = this.initBlock.x;
+      this.block.y = this.initBlock.y;
+      this.x = this.initBlock.x;
+      this.y = this.initBlock.y;
+    }
+  }
+
 
   this._updatePosition = function() {
     if (ret = map.hasCollision(this.x + this.walkUnit.x, this.y + this.walkUnit.y)) {
@@ -324,6 +338,9 @@ function Character (x, y)
     fullMap.clear();
     //console.log(fullMap);
     var current = fullMap.getNode(this.block.x, this.block.y);
+    // failsafe for when npcs are being idiots
+    if (this._characterIsBlocked(current))
+      return null;
     if (!current)
       return null;
     current.prev = null;

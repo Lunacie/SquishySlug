@@ -113,6 +113,10 @@ body {
   font-weight : bold;
   color : #6D316C;
 }
+#tab-content p {
+  font-family: 'News Cycle', sans-serif;
+}
+#tab-content #gallery { overflow-y: scroll;}
 #menu-open {
   width : 90px;
   position : absolute;
