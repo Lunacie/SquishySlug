@@ -340,6 +340,11 @@ function UI(player) {
     this.time = time;
     this._elapsed += time;
 
+    if (ratio < 1)
+      TAB_WIDTH = 840;
+    else
+      TAB_WIDTH = 640;
+
     if (this._state == UI_STATE_LOADING &&
         loadManager.isComplete()) {
           this._removeScreen();

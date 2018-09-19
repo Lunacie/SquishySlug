@@ -47,8 +47,13 @@ body {
 
 .tab-content {
   min-height : 80vh;
+  margin-top : -70px;
 }
 
+#tab-footer {
+  position: absolute;
+  bottom : 0;
+}
 #tab-footer .social{
   color : #6D316C;
 }
@@ -165,6 +170,9 @@ body {
 .nav:not(.mobile) ul li .icon.off {
   margin-top : -2px;
 }
+.nav:not(.mobile) ul li {
+  max-height : 64px;
+}
 
 .nav ul li .icon.on {display : none}
 .nav ul li .icon.off { display : inline }
@@ -206,14 +214,24 @@ body {
 .pull-right { float : right };
 
 
+
+
+
 @media (min-width: 990px) {
   #header {
-    max-height : 63px;
+    max-height : 63px !important;
+  }
+  #tab-close {
+    margin-top : -200px !important;
   }
 }
 
 @media (max-width: 990px) {
 
+
+  .tab-content {
+    margin-top : -200px;
+  }
   #tab { font-size : 2.3rem; }
   #tab-close {
     font-size : 4rem;
