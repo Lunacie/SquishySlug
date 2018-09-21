@@ -155,10 +155,10 @@ function Character (x, y)
   };
 
   this.sendOrder = function(id) {
-    console.log(id);
+    //console.log(id);
     this._orderStatus = ORDER_STATUS_RECEIVED;
-    let target = fullMap.getCharacter(id);
-    console.log(target);
+    let target = characters[id];
+    //console.log(target);
     //target.interupt();
     this._roaming = false;
     this.setDestination(target.getDestinationTriggerInteraction());

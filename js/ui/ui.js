@@ -356,6 +356,11 @@ function UI(player) {
     this._checkOrderStatus();
   }
 
+  this.setTabToOpen = function(id){
+    this._tabToOpen = id;
+    this._orderId = id;
+  }
+
   this._checkOrderStatus = function() {
     if (this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
       $("#loading").stop();

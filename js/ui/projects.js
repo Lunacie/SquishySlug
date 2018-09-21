@@ -6,7 +6,8 @@ function Projects() {
       image : "squishyslug.jpg",
       title : "The SquishySlug Portfolio",
       year: 2018,
-      tech : "html,js,graphic,bootstrap"
+      tech : "html,js,graphic,bootstrap",
+      npc : 5
     },
     {
       image : "logo.jpg",
@@ -207,9 +208,17 @@ function Projects() {
   this.init = function() {
     $('button.year').click(this._toggleYear);
     $('button.tech').click(this._toggleTech);
+    $('#gallery').on("click", "a", function() {
+      ui.sendOrder($(this).data('npc'));
+      projects_tab.setProject($(this).data('project'));
+    });
     this._current = [];
     for (let i = 0; i < this._data.length; i++)
       this._current.push(i);
+  }
+
+  this.setProject = function(id) {
+    console.log("project id = " + id);
   }
 
   this._refresh = function() {
@@ -294,7 +303,8 @@ function Projects() {
     let tooltip = '<div class="project-title">' + this._data[this._current[i]].title + '</div>';
     let image = '<img src="'+  this._path +
                 this._data[this._current[i]].image  + '"/>';
-    return '<a class="col-11 col-md-6 mb-3">' + image + tooltip + "</a>";
+    return '<a data-npc="'+this._data[this._current[i]].npc + '" ' +
+              'data-project="'+i+'" class="col-11 col-md-6 mb-3">' + image + tooltip + "</a>";
   }
 }
 let projects_tab = new Projects();

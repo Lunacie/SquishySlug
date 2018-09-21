@@ -3,7 +3,9 @@ var SPECIES_BUNNY = 0;
 var SPECIES_CAT = 1;
 var SPECIES_ELEPHANT = 2;
 var SPECIES_INSECT = 3;
+
 var STATIC_MAIL = 4;
+var STATIC_SLUG = 5;
 
 function Npc(x, y, species, isStatic = false) // inherits Character
 {

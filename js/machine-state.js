@@ -34,7 +34,7 @@ function MachineState(actor) {
   };
 
   this._getNextNpcState = function() {
-    if (this._elapsed < 5000)
+    if (this._elapsed < 10000)
       return;
     // npc Roam
     if (this._actor._roaming == true) {

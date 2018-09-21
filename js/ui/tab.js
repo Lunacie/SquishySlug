@@ -5,11 +5,13 @@ function Tab() {
     null,
     null,
     projects_tab,
+    null,
+    project_tab
   ]
 
   this.init = function() {
   for (let i = 0 ; i < this._tabs.length; i++) {
-      if (this._tabs[i])
+      if (this._tabs[i] && this._tabs[i].init)
         this._tabs[i].init();
     }
   }
