@@ -4,162 +4,194 @@ function Projects() {
   this._data = [
     {
       image : "squishyslug.jpg",
+      title : "The SquishySlug Portfolio",
       year: 2018,
       tech : "html,js,graphic,bootstrap"
     },
     {
       image : "logo.jpg",
+      title : "SquishySlug Logo",
       year : 2018,
       tech : "graphic"
     },
     {
       image : "telstra.jpg",
+      title : "Dev Portal website for Telstra",
       year : 2018,
       tech : "html,js,cms,api,bootstrap"
     },
     {
       image : "firegeeks.jpg",
+      title : "d3.js work for APIgeeks",
       year : 2018,
       tech : "html,js"
     },
     {
       image : "octopusroom.jpg",
       year : 2018,
+      title : "3d graphics for indie game",
       tech : "graphic,3d"
     },
     {
       image : "octopus.jpg",
       year : 2018,
+      title : "Chara-design for indie game",
       tech : "graphic,3d"
     },
     {
       image : "challenge.jpg",
       year : 2017,
+      title : "Newsletter + mailling system",
       tech : "php,cms,python,api"
     },
     {
       image : "recommendation.jpg",
+      title : "Recommendation Engine",
       year : 2017,
       tech : "software,python,api"
     },
     {
       image : "leezairapi.jpg",
+      title : "API research + crawling software",
       year : 2017,
       tech : "software,node,api"
     },
     {
       image : "leezairpage.jpg",
       year : 2016,
+      title : "Html/Css integration from design",
       tech : "html,bootstrap"
     },
     {
       image : "leezairlisting.jpg",
+      title : "Built a Marketplace in Angular",
       year : 2016,
       tech : "html,bootstrap,api,angular"
     },
     {
       image : "mf.jpg",
+      title : "Blog Migration + design integration",
       year : 2016,
-      tech : "html"
+      tech : "html,cms"
     },
     {
       image : "89n.jpg",
+      title : "Html/css integration from Design",
       year : 2016,
       tech : "html"
     },
     {
       image : "voxel.jpg",
+      title : "Open-source 3D voxel engine",
       year : 2016,
       tech : "c,software"
     },
     {
       image : "fetchfood.jpg",
+      title : "Web crawler + website and design",
       year : 2015,
       tech : "html,c,js,graphic"
     },
     {
       image : "hellotravel.jpg",
+      title : "Travel Website + Design",
       year : 2015,
       tech : "html,php,graphic"
     },
     {
       image : "lapothicaire.jpg",
+      title : "E-commerce Vapeshop + Design",
       year : 2015,
-      tech : "html,php,graphic,js"
+      tech : "html,php,graphic,js,c"
     },
     {
       image : "coachoral.jpg",
+      title : "Website + Design",
       year : 2015,
       tech : "html,php,graphic"
     },
     {
       image : "guidevoyages.jpg",
+      title : "Website with member area + Design",
       year : 2014,
       tech : "html,php,graphic,js"
     },
     {
       image : "spectrum.jpg",
+      title : "Old portfolio, implementation + design",
       year : 2014,
       tech : "graphic,html,js,php"
     },
     {
       image : "spectrum2.jpg",
+      title : "Old Portfolio contact page",
       year : 2014,
       tech : "graphic,html,js,php"
     },
     {
       image : "rattrapage.jpg",
+      title : "Website + 3D Design",
       year : 2014,
       tech : "html,php,graphic,3d"
     },
     {
       image : "snape.jpg",
+      title : "Environment design + Photomanipulation",
       year : 2014,
       tech : "graphic"
     },
     {
       image : "kerrigan.jpg",
       year : 2014,
+      title : "Digital Painting",
       tech : "graphic"
     },
     {
       image : "entreprendre.jpg",
+      title : "Website + Members Area + backend",
       year : 2014,
       tech : "html,php"
     },
     {
       image : "zoe.jpg",
       year : 2013,
+      title : "Digital Painting",
       tech : "graphic"
     },
     {
       image : "minecraft.jpg",
       year : 2013,
+      title : "Kit graphique",
       tech : "html,graphic"
     },
     {
       image : "kitgraphiquearea.jpg",
       year : 2013,
+      title : "Site de vente de kits graphiques",
       tech : "html,php,graphic"
     },
     {
       image : "mutex.jpg",
       year : 2013,
+      title : "Mutex related project + design",
       tech : "software,c,graphic"
     },
     {
       image : "anime.jpg",
       year : 2009,
+      title : "Digital Painting + Environment Design",
       tech : "graphic"
     },
     {
       image : "host.jpg",
       year : 2009,
+      title : "Kit Graphique",
       tech : "graphic,html"
     },
     {
       image : "maintenance.jpg",
       year : 2009,
+      title : "Kit graphique",
       tech : "graphic,html"
     },
   ];
@@ -259,9 +291,10 @@ function Projects() {
   }
 
   this._getImage = function(i) {
+    let tooltip = '<div class="project-title">' + this._data[this._current[i]].title + '</div>';
     let image = '<img src="'+  this._path +
                 this._data[this._current[i]].image  + '"/>';
-    return '<a class="col-11 col-md-6 mb-3">' + image + "</a>";
+    return '<a class="col-11 col-md-6 mb-3">' + image + tooltip + "</a>";
   }
 }
 let projects_tab = new Projects();

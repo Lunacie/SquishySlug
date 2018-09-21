@@ -119,6 +119,21 @@ body {
 #tab-content #gallery { overflow-y: scroll;
   max-height : 550px;
 }
+#tab-content #gallery a:hover .project-title{
+  display : block
+}
+#tab-content #gallery .project-title{
+    min-height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    margin-top: -50px;
+    z-index: 12;
+    position: absolute;
+    width: 90%;
+    padding-top: 10px;
+    padding-left: 5px;
+    display: none;
+}
 #menu-open {
   width : 90px;
   position : absolute;
@@ -252,6 +267,12 @@ body {
     margin-top : 50px !important;
   }
   #tab-svg { margin-left : -3px ;}
+
+
+  #tab-content #gallery .project-title{
+      display:block !important;
+      margin-top: 0px;
+  }
 
   #header {
     min-height : 100px;
