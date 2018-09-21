@@ -45,10 +45,18 @@ function LoadManager(characters, tiles) {
 
     this.isComplete = function() {
       for (var i = 0; i < this._characters.length; i++) {
-        var images = this._characters[i].images;
-        if (this._characters[i].images[0].length != 4 ||
-            this._characters[i].images[0].length != 4)
+        if (this._characters[i]._static) {
+          var images = this._characters[i].images;
+          if (!images)
             return false;
+        }
+        else {
+          var images = this._characters[i].images[0];
+          if (images.length != 4 ||
+              images.length != 4)
+              return false;
+        }
+        return true;
       }
 
       for (var i = 0; i < this._tiles.data.length; i++) {

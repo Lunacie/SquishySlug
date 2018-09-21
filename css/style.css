@@ -183,6 +183,9 @@ body {
 .nav ul li .icon { width : 50px;}
 .nav:not(.mobile) ul li span.text {
   color : #6D316C;
+}.nav:not(.mobile) ul {
+  position : absolute;
+  right : 0;
 }
 .nav:not(.mobile) ul li .icon.on {
   margin-top : -10px;
@@ -270,8 +273,9 @@ body {
 
 
   #tab-content #gallery .project-title{
-      display:block !important;
+      display : block;
       margin-top: 0px;
+      position : relative;
   }
 
   #header {

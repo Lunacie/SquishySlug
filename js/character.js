@@ -31,8 +31,8 @@ function Character (x, y)
   };
   this.direction = 0;
   this.images = [];
-  this.walkUnitSize = 0.015;
-  //this.walkUnitSize = 0.025;
+  //this.walkUnitSize = 0.015;
+  this.walkUnitSize = 0.025;
   //this.walkUnitSize = 0.045;
   this._walkPaceScale = 1;
   this.walkUnit = {
@@ -155,9 +155,10 @@ function Character (x, y)
   };
 
   this.sendOrder = function(id) {
+    console.log(id);
     this._orderStatus = ORDER_STATUS_RECEIVED;
     let target = fullMap.getCharacter(id);
-    //console.log(target);
+    console.log(target);
     //target.interupt();
     this._roaming = false;
     this.setDestination(target.getDestinationTriggerInteraction());
@@ -170,7 +171,8 @@ function Character (x, y)
     target._machineState.removeState(ACTION_STATE_CONVERSATION);
     target.state = ACTION_STATE_IDLE;
     target._machineState.setState(ACTION_STATE_IDLE);
-    target._roaming = true;
+    if (!target._static)
+      target._roaming = true;
   };
 
   this._updateOrderStatus = function() {
@@ -474,14 +476,20 @@ function Character (x, y)
       x = disp.x;
       y = disp.y;
 
-      this.images[this.state] = this.images[this.state] || [];
+      if (!this._static)
+        this.images[this.state] = this.images[this.state] || [];
       // no image
-      if (!this.images[this.state][this.direction]) {
+      if ((!this._static && !this.images[this.state][this.direction]) ||
+           this._static && !this.images){
         (new ImageLoader).load(this);
       }
+
       // image ready to draw
       else {
-        var element = this.images[this.state][this.direction].on;
+        if (this._static)
+          var element = this.images.on;
+        else
+          var element = this.images[this.state][this.direction].on;
         var width = (tiles.size / 3) * -1;
         var height = tiles.size / 1.6;
         this.x2d = x;
@@ -489,9 +497,13 @@ function Character (x, y)
         if (element.loaded)
           ctx.drawImage(element,
                         x, y, width, height);
-        this._drawProps(x, y, width, height);
+        if (!this._static)
+          this._drawProps(x, y, width, height);
 
-        element = this.images[this.state][this.direction].off;
+        if (this._static)
+          element = this.images.off;
+        else
+          element = this.images[this.state][this.direction].off;
         if (element.loaded)
           ctxOff.drawImage(element,
                         x, y, width, height);

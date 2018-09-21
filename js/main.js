@@ -11,6 +11,7 @@ characters.push(player);
 characters.push(new Npc(10, 11, SPECIES_CAT));
 characters.push(new Npc(12, 10, SPECIES_ELEPHANT));
 characters.push(new Npc(10, 7, SPECIES_INSECT));
+characters.push(new Npc(8, 10, STATIC_MAIL, true));
 
 var loadManager = new LoadManager(characters, tiles);
 loadManager.load();

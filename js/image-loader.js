@@ -15,6 +15,9 @@
        "assets/vectors/char01_up_walk.svg",
      ]
    ];
+   this.statics = [
+     "assets/vectors/mail.svg"
+   ]
     this.speciesStr = [
       "BUNNY_x5F_", "CAT_x5F_", "ELEPHANT_x5F_", "INSECT_x5F_"
     ];
@@ -49,16 +52,25 @@
     ];
 
      this.load = function (char, state, direction) {
-      state = state || char.state;
-      direction = direction || char.direction;
-       var path = this.sprites[state];
-       if (!path)
-         path = this.sprites[ACTION_STATE_IDLE];
-       path = path[direction];
+       var path = null;
+      if (!char._static) {
+        state = state || char.state;
+        direction = direction || char.direction;
+         path = this.sprites[state];
+         if (!path)
+           path = this.sprites[ACTION_STATE_IDLE];
+         path = path[direction];
+       }
+       else {
+         path = this.statics[char._species - 4];
+       }
        var loader = this;
        $.get(path, function(svgXml) {
          loader._svgXml = svgXml;
-         char.images[state][direction] = {};
+         if (!char._static)
+           char.images[state][direction] = {};
+         else
+           char.images = {};
          loader._loadOnCanvasImage(char, state, direction);
          loader._loadOffCanvasImage(char, state, direction);
        });
@@ -68,6 +80,8 @@
 
      this._loadOnCanvasImage = function(char, state, direction) {
 
+       // Character or NPC
+       if (!char._static) {
        char.images[state][direction].on = new Image();
 
        this._clearDefault();
@@ -87,6 +101,19 @@
        }
        char.images[state][direction].on.src =
                               "data:image/svg+xml;charset=utf-8," + str;
+        }
+
+        // Static object
+        else {
+           char.images.on = new Image();
+           var str = (new XMLSerializer).serializeToString(this._svgXml);
+           str = str.replace(/#/g, "%23");
+           this._serialized = str;
+           char.images.on.onload = function() {
+            char.images.on.loaded = true;
+           }
+           char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;
+        }
      }
 
      this._appendWalkAnimations = function(direction) {
@@ -195,17 +222,31 @@
 
      this._loadOffCanvasImage = function(char, state, direction) {
 
-       if (!char.images.offHexColor)
-         char.images.offHexColor = char.hexColor;
-       char.images[state][direction].off = new Image();
-       var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
-                 char.images.offHexColor.toString(16) + ';');
-       char.images[state][direction].off.onload = function() {
-        char.images[state][direction].off.loaded = true;
-       }
-       char.images[state][direction].off.src =
-                              "data:image/svg+xml;charset=utf-8," + off;
-
+       // Character or NPC
+       if (!char._static) {
+         if (!char.images.offHexColor)
+           char.images.offHexColor = char.hexColor;
+         char.images[state][direction].off = new Image();
+         var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
+                   char.images.offHexColor.toString(16) + ';');
+         char.images[state][direction].off.onload = function() {
+          char.images[state][direction].off.loaded = true;
+         }
+         char.images[state][direction].off.src =
+                                "data:image/svg+xml;charset=utf-8," + off;
+      }
+       // Static Object
+       else {
+         if (!char.images.offHexColor)
+           char.images.offHexColor = char.hexColor;
+         char.images.off = new Image();
+         var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
+                   char.images.offHexColor.toString(16) + ';');
+         char.images.off.onload = function() {
+          char.images.off.loaded = true;
+         }
+         char.images.off.src = "data:image/svg+xml;charset=utf-8," + off;
+      }
      }
 
  }
