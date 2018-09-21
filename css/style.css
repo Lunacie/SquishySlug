@@ -116,7 +116,9 @@ body {
 #tab-content p {
   font-family: 'News Cycle', sans-serif;
 }
-#tab-content #gallery { overflow-y: scroll;}
+#tab-content #gallery { overflow-y: scroll;
+  max-height : 550px;
+}
 #menu-open {
   width : 90px;
   position : absolute;

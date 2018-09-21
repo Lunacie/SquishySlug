@@ -343,7 +343,7 @@ function UI(player) {
     if (ratio < 1)
       TAB_WIDTH = 840;
     else
-      TAB_WIDTH = 640;
+      TAB_WIDTH = 740;
 
     if (this._state == UI_STATE_LOADING &&
         loadManager.isComplete()) {
