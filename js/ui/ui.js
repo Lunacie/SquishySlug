@@ -108,6 +108,7 @@ function UI(player) {
       $("#loading").fadeIn(200);
       ui._reopen = true;
       ui._tabToOpen = id;
+      ui._prepareTab(id);
       return ui._player.sendOrder(id);
       //return ui._openTabAnimation(id);
   }
