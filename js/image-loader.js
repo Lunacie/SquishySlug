@@ -230,6 +230,8 @@
          char.images[state][direction].off = new Image();
          var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
                    char.images.offHexColor.toString(16) + ';');
+          off = off.replace(/opacity(.*);/g,'opacity:1;');
+
          char.images[state][direction].off.onload = function() {
           char.images[state][direction].off.loaded = true;
          }
@@ -243,6 +245,8 @@
          char.images.off = new Image();
          var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
                    char.images.offHexColor.toString(16) + ';');
+          off = off.replace(/opacity(.*);/g,'opacity:1;');
+
          char.images.off.onload = function() {
           char.images.off.loaded = true;
          }

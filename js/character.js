@@ -17,6 +17,7 @@ function Character (x, y)
 {
   this.id = characterCount++;
   this.hexColor = characterColorHex + this.id;
+
   this.x = x;
   this.y = y;
   this._species = SPECIES_BUNNY;
