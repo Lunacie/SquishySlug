@@ -1,13 +1,29 @@
 
 function Projects() {
-  this._path = "assets/projects/";
+  this._path = "assets/projects/thumbnails/";
   this._data = [
     {
       image : "squishyslug.jpg",
       title : "The SquishySlug Portfolio",
       year: 2018,
       tech : "html,js,graphic,bootstrap",
-      npc : 5
+      npc : 5,
+      description : `
+      The SquishySlug portfolio is a <b>2d isometric minigame</b> (that is still in
+      its alpha stage),
+      in which the player can walk around Squishyslug Island
+      and talk to its inhabitant as a mean of navigation.
+      It is browser based, built in <b>js+jquery</b> and uses <b>bootstrap4</b>
+      for its UI. It is drawing <b>css animated svg</b> on a <b>canvas</b>,
+      and uses a hidden canvas for click detection.<br/>
+      Each tile uses has its own hexcode which is then computed
+      into a destination.<br/>
+      All characters have AIs that use a <b>Dijkstra algorithm</b> which
+      allow them to always find the closest path to their destination.<br/>
+      The project is open source : <a href="https://github.com/Lunacie/SquishySlug/">
+      https://github.com/Lunacie/SquishySlug</a>
+
+      `
     },
     {
       image : "logo.jpg",
@@ -218,7 +234,12 @@ function Projects() {
   }
 
   this.setProject = function(id) {
-    console.log("project id = " + id);
+    this.projectId = id;
+    project_tab._id = id;
+  }
+
+  this.getProject = function(id) {
+    return this._data[id];
   }
 
   this._refresh = function() {

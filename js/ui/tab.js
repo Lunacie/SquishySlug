@@ -19,7 +19,8 @@ function Tab() {
   this.update = function(id) {
     if (this._tabs[id - 1] && this._tabs[id - 1].update) {
       this._tabs[id - 1].update();
-      return this._tabs[id - 1].getContent();
+      if (this._tabs[id - 1].getContent)
+        return this._tabs[id - 1].getContent();
     }
   }
 

@@ -49,6 +49,9 @@ body {
   min-height : 80vh;
   margin-top : -70px;
 }
+.tab-content p.project-description {
+  overflow-y : "scroll"
+}
 
 #tab-footer {
   position: absolute;

@@ -98,7 +98,8 @@ function UI(player) {
       return ui._closeTabAnimation();
     }
     // Reopen tab
-    else if (ui._tab && id != ui._tab) {
+    else if ((ui._tab || $("#tab").width() > 0) &&
+              id != ui._tab) {
       ui._player.freeNpc(id);
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = id;
