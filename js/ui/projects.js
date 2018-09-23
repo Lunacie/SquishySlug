@@ -70,13 +70,26 @@ function Projects() {
       image : "firegeeks.jpg",
       title : "Html/css page integration from design",
       year : 2018,
-      tech : "html,js"
+      tech : "html,js",
+      npc : 9,
+      description : `
+      I worked on the integration from a design for several pages
+      of the Firegeeks website using <b>html/css</b> and <b>Bootstrap4</b>.
+      with branding company
+      <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.
+      `
     },
     {
       image : "octopusroom.jpg",
       year : 2018,
       title : "3d graphics for indie game",
-      tech : "graphic,3d"
+      tech : "graphic,3d",
+      npc : 10,
+      description : `
+      This scene was built for an indie video game.
+      All the 3d assets were modelized on <b>Blender</b>,
+      and the textures and normal and specular maps using <b>Photoshop</b>.
+      `
     },
     {
       image : "octopus.jpg",

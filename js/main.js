@@ -16,6 +16,8 @@ characters.push(new Npc(5, 4, STATIC_SLUG, true));
 characters.push(new Npc(11, 4, STATIC_LOGO, true));
 characters.push(new Npc(6, 11, STATIC_TELSTRA, true));
 characters.push(new Npc(6, 3, STATIC_D3QB, true));
+characters.push(new Npc(4, 12, STATIC_FIREGEEKS, true));
+characters.push(new Npc(13, 13, STATIC_OCTOPUSROOM, true));
 
 var loadManager = new LoadManager(characters, tiles);
 loadManager.load();

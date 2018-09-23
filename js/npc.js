@@ -9,6 +9,8 @@ var STATIC_SLUG = 5;
 var STATIC_LOGO = 6;
 var STATIC_TELSTRA = 7;
 var STATIC_D3QB = 8;
+var STATIC_FIREGEEKS = 9;
+var STATIC_OCTOPUSROOM = 10;
 
 function Npc(x, y, species, isStatic = false) // inherits Character
 {
