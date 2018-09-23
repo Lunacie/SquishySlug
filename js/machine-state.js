@@ -100,6 +100,10 @@ function MachineState(actor) {
               if (this._actorIsTooFar(this._actor, this._actor2)) {
                 this.removeState(ACTION_STATE_CONVERSATION);
                 this._actor._roaming = true;
+                for (let i = 0 ; i < characters.length; i++) {
+                  if (characters[i]._static)
+                    characters[i]._roaming = false;
+                }
               }
           }
       }

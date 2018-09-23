@@ -18,6 +18,7 @@
    this.statics = [
      "assets/vectors/mail.svg",
      "assets/vectors/slug.svg",
+     "assets/vectors/logo.svg",
    ]
     this.speciesStr = [
       "BUNNY_x5F_", "CAT_x5F_", "ELEPHANT_x5F_", "INSECT_x5F_"

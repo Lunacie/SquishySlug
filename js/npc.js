@@ -6,6 +6,7 @@ var SPECIES_INSECT = 3;
 
 var STATIC_MAIL = 4;
 var STATIC_SLUG = 5;
+var STATIC_LOGO = 6;
 
 function Npc(x, y, species, isStatic = false) // inherits Character
 {
@@ -21,6 +22,7 @@ function Npc(x, y, species, isStatic = false) // inherits Character
     this._roaming = true;
   else
     this._roaming = false;
+
 
 
 

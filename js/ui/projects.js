@@ -20,16 +20,20 @@ function Projects() {
       into a destination.<br/>
       All characters have AIs that use a <b>Dijkstra algorithm</b> which
       allow them to always find the closest path to their destination.<br/>
-      The project is open source : <a href="https://github.com/Lunacie/SquishySlug/">
+      The project is open source : <a target="_blank" href="https://github.com/Lunacie/SquishySlug/">
       https://github.com/Lunacie/SquishySlug</a>
-
       `
     },
     {
       image : "logo.jpg",
       title : "SquishySlug Logo",
       year : 2018,
-      tech : "graphic"
+      tech : "graphic",
+      npc : 6,
+      description : `
+      This project involved the creation of <b>sketching</b> for the
+      SquishySlug logo and its vectorization using <b>Illustrator</b>.
+      `
     },
     {
       image : "telstra.jpg",
@@ -225,8 +229,8 @@ function Projects() {
     $('button.year').click(this._toggleYear);
     $('button.tech').click(this._toggleTech);
     $('#gallery').on("click", "a", function() {
-      ui.sendOrder($(this).data('npc'));
       projects_tab.setProject($(this).data('project'));
+      ui.sendOrder($(this).data('npc'));
     });
     this._current = [];
     for (let i = 0; i < this._data.length; i++)
@@ -237,7 +241,6 @@ function Projects() {
     this.projectId = id;
     project_tab._id = id;
   }
-
   this.getProject = function(id) {
     return this._data[id];
   }

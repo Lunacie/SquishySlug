@@ -86,6 +86,10 @@ function UI(player) {
       var id = ui._getTabId(event.currentTarget.classList);
     else
       var id = ui._orderId;
+    var npc = id;
+    if (id > 5) {
+      id = 5;
+    }
     // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
@@ -110,7 +114,7 @@ function UI(player) {
       ui._reopen = true;
       ui._tabToOpen = id;
       ui._prepareTab(id);
-      return ui._player.sendOrder(id);
+      return ui._player.sendOrder(npc);
       //return ui._openTabAnimation(id);
   }
 
@@ -120,7 +124,7 @@ function UI(player) {
     ui._prepareTab(id);
     ui._reopen = false;
     ui._tabToOpen = id;
-    ui._player.sendOrder(id);
+    ui._player.sendOrder(npc);
     //ui._openTabAnimation(id);
   };
 

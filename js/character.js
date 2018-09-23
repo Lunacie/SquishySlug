@@ -152,6 +152,8 @@ function Character (x, y)
           actor2 : player
         }
       };
+      if (npc._species >= STATIC_SLUG)
+        projects_tab.setProject(npc._species - STATIC_SLUG);
       return destination;
   };
 
@@ -172,8 +174,11 @@ function Character (x, y)
     target._machineState.removeState(ACTION_STATE_CONVERSATION);
     target.state = ACTION_STATE_IDLE;
     target._machineState.setState(ACTION_STATE_IDLE);
-    if (!target._static)
-      target._roaming = true;
+    target._roaming = true;
+    for (let i = 0 ; i < characters.length; i++) {
+      if (characters[i]._static)
+        characters[i]._roaming = false;
+    }
   };
 
   this._updateOrderStatus = function() {
