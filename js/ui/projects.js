@@ -232,6 +232,9 @@ function Projects() {
       projects_tab.setProject($(this).data('project'));
       ui.sendOrder($(this).data('npc'));
     });
+    $('.btn-back-projects').click(function() {
+        ui.sendOrder(SPECIES_INSECT);
+    });
     this._current = [];
     for (let i = 0; i < this._data.length; i++)
       this._current.push(i);
