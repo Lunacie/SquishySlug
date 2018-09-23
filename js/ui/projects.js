@@ -52,8 +52,23 @@ function Projects() {
       `
     },
     {
-      image : "firegeeks.jpg",
+      image : "d3qb.jpg",
       title : "d3.js work for APIgeeks",
+      year : 2018,
+      tech : "html,js,api",
+      npc: 8,
+      description : `
+      I participated on a project with Australian branding company
+      <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>
+      and <a href="https://github.com/apigeek" target="_blank">APIgeeks</a>
+      building a crime statistic display system based on data from the
+      <a href="https://www.nsw.gov.au/" target="_blank">Australian NSW governement</a>.<br/>
+      The project called d3qb was using <b>d3.js</b> to build advanced graphs.
+      `
+    },
+    {
+      image : "firegeeks.jpg",
+      title : "Html/css page integration from design",
       year : 2018,
       tech : "html,js"
     },

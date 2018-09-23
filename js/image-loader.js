@@ -20,6 +20,7 @@
      "assets/vectors/slug.svg",
      "assets/vectors/logo.svg",
      "assets/vectors/telstra.svg",
+     "assets/vectors/d3qb.svg",
    ]
     this.speciesStr = [
       "BUNNY_x5F_", "CAT_x5F_", "ELEPHANT_x5F_", "INSECT_x5F_"
