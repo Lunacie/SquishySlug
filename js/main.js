@@ -14,6 +14,7 @@ characters.push(new Npc(10, 7, SPECIES_INSECT));
 characters.push(new Npc(8, 10, STATIC_MAIL, true));
 characters.push(new Npc(5, 4, STATIC_SLUG, true));
 characters.push(new Npc(11, 4, STATIC_LOGO, true));
+characters.push(new Npc(6, 11, STATIC_TELSTRA, true));
 
 var loadManager = new LoadManager(characters, tiles);
 loadManager.load();

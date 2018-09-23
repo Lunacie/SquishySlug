@@ -39,7 +39,17 @@ function Projects() {
       image : "telstra.jpg",
       title : "Dev Portal website for Telstra",
       year : 2018,
-      tech : "html,js,cms,api,bootstrap"
+      tech : "html,js,cms,api,bootstrap",
+      npc : 7,
+      description : `
+      I participated in the development of a dev portal for the
+      Australian ISP <a href="https://www.telstra.com.au/" target="_blank">Telstra</a> with
+      Australian branding company <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
+      The project included building an authentification system using their
+      <b>sms API</b>, as well as miscellaneous tasks.<br/>
+      The whole project is built using the cms <b>Drupal</b>.<br/>
+      The site can be visited here : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
+      `
     },
     {
       image : "firegeeks.jpg",

@@ -7,6 +7,7 @@ var SPECIES_INSECT = 3;
 var STATIC_MAIL = 4;
 var STATIC_SLUG = 5;
 var STATIC_LOGO = 6;
+var STATIC_TELSTRA = 7;
 
 function Npc(x, y, species, isStatic = false) // inherits Character
 {
