@@ -222,11 +222,11 @@ function Projects() {
       I then wrote a <b>node.js</b> script to make those data exploitable by the existing system.
       `,
       descriptionFR : `
-      I worked on this project for Australian travel startup Leezair.
-      The project consisted in researching mutiple potential data sources,
-      such as <b>XML and REST APIs</b>. Some of the data required <b>data scrapping</b>
-      in order to be extracted.<br/>
-      I then wrote a <b>node.js</b> script to make those data exploitable by the existing system.
+      J'ai travaille sur ce projet pour la startup de voyage Leezair.
+      Le projet consistait un inspecter de multiples potentielles sources de donnees,
+      telles que des <b>APIs XML et REST</b>. Extraction de certaines donnees necessitait du <b>data scrapping</b>
+      .<br/>
+      J'ai ensuite ecrit un script <b>node.js</b> pour rendre ces donnees exploitable par les systeme existant.
       `
     },
     {
@@ -240,7 +240,12 @@ function Projects() {
       Invision designs</a> which I then integrated into multiple webpages using <b>html, css and
       bootstrap3</b>.<br/>
       <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
-
+      `,
+      descriptionFR : `
+      Des designs <a href="https://www.invisionapp.com/" target="_blank">
+      Invision</a> m'ont ete fournis. Je les ai ensuite integres en plusieurs pages web <b>html, css avec
+      bootstrap3</b>.<br/>
+      <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
       `
     },
     {
@@ -254,6 +259,13 @@ function Projects() {
       Leezair in <b>javascript and Angular 1.5</b> All the data was coming from and sent to the existing API.
       I also integrated the pages from <a href="https://www.invisionapp.com/" target="_blank">
       Invision designs</a> I was provided with in <b>/css bootstrap3</b>.<br/>
+      <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
+      `,
+      descriptionFR : `
+      J'ai construit le "list an experience" formflow pour la startup de voyages
+      Leezair en <b>javascript et Angular 1.5</b> Toutes les donnees etaient echangees avec une API existante.
+      J'ai egalement integres les <a href="https://www.invisionapp.com/" target="_blank">
+      designs Invisions</a> qui m'ont ete fournis en <b>html/css et bootstrap3</b>.<br/>
       <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
       `
     },
@@ -269,6 +281,13 @@ function Projects() {
       The mission also included integrating the new design I was provided
       as a psd file into a <b>responsive html/css SquareSpace template</b>.<br/>
       <a href="https://www.manageflitter.com/blog/">https://www.manageflitter.com/blog/</a>
+      `,
+      descriptionFR : `
+      Cette mission consistait en une migration de blog depuis le csm <b>drupal6</b> vers
+      <b>SquareSpace</b>.<br/>
+      Cette mission comprennait egalement l'integration d'un design fournit sous la forme
+      d'un fichier psd, en une <b>template SquareSpace responsive html/css</b>.<br/>
+      <a href="https://www.manageflitter.com/blog/">https://www.manageflitter.com/blog/</a>
       `
     },
     {
@@ -280,6 +299,10 @@ function Projects() {
       description : `
       I was provided with a psd design I then made into a responsive
       webpage using <b>html/css</b>.<br/>
+      <a href="http://89n.com/" target="_blank">http://89n.com/</a>
+      `,
+      descriptionFR : `
+      On m'a fournit un fichier psd d'un design que j'ai ensuite integre en <b>html/css responsive</b>.<br/>
       <a href="http://89n.com/" target="_blank">http://89n.com/</a>
       `
     },
