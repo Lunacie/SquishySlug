@@ -23,6 +23,7 @@
      "assets/vectors/d3qb.svg",
      "assets/vectors/firegeeks.svg",
      "assets/vectors/octopusroom.svg",
+     "assets/vectors/octopus.svg",
    ]
     this.speciesStr = [
       "BUNNY_x5F_", "CAT_x5F_", "ELEPHANT_x5F_", "INSECT_x5F_"

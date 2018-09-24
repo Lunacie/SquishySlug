@@ -44,6 +44,16 @@ function UI(player) {
     $("#footer").click(eventCanvasClicked);
     $("#menu-open").click(this._toggleMenu);
 
+    $(".fr").hide();
+    $(".flag-fr").click(function() {
+      $(".fr").show();
+      $(".en").hide();
+    });
+    $(".flag-en").click(function() {
+      $(".en").show();
+      $(".fr").hide();
+    });
+
     $(".open-tab-btn").click(this._openTab);
     $("#tab-close").click(this._closeTab);
 

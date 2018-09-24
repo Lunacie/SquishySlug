@@ -8,6 +8,12 @@ body {
   background : #17BEC7;
 }
 
+.flag {
+  width : 50px;
+  cursor : pointer;
+  z-index : 14;
+}
+
 #tab {
   width: 0px;
   height : 100vh;
@@ -46,11 +52,12 @@ body {
 }
 
 .tab-content {
-  min-height : 80vh;
+  min-height : 70vh;
   margin-top : -70px;
 }
-.tab-content p.project-description {
-  overflow-y : "scroll"
+.tab-content .project-description-container {
+  overflow-y : scroll;
+  max-height : 200px;
 }
 
 #tab-footer {
@@ -188,6 +195,7 @@ body {
   color : #6D316C;
 }.nav:not(.mobile) ul {
   position : absolute;
+  width : 80%;
   right : 0;
 }
 .nav:not(.mobile) ul li .icon.on {
@@ -261,6 +269,10 @@ body {
 @media (max-width: 990px) {
 
 
+.flag {
+  width : 80px;
+}
+
   .tab-content {
     margin-top : -200px;
   }
@@ -274,6 +286,9 @@ body {
   }
   #tab-svg { margin-left : -3px ;}
 
+  .tab-content .project-description-container {
+    max-height : 400px;
+  }
 
   #tab-content #gallery .project-title{
       display : block;

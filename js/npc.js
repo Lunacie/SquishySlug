@@ -11,6 +11,7 @@ var STATIC_TELSTRA = 7;
 var STATIC_D3QB = 8;
 var STATIC_FIREGEEKS = 9;
 var STATIC_OCTOPUSROOM = 10;
+var STATIC_OCTOPUS = 11;
 
 function Npc(x, y, species, isStatic = false) // inherits Character
 {

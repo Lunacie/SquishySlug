@@ -303,6 +303,13 @@ function Character (x, y)
   };
 
   this._characterIsBlocked = function(block) {
+    if (!block) {
+      this.block.x = this.initBlock.x;
+      this.block.y = this.initBlock.y;
+      this.x = this.initBlock.x;
+      this.y = this.initBlock.y;
+      return;
+    }
     let node = fullMap.data[0][block.y][block.x];
     if (!node || tiles.data[node].collision == true) {
       this.block.x = this.initBlock.x;
