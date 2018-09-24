@@ -22,6 +22,19 @@ function Projects() {
       allow them to always find the closest path to their destination.<br/>
       The project is open source : <a target="_blank" href="https://github.com/Lunacie/SquishySlug/">
       https://github.com/Lunacie/SquishySlug</a>
+      `,
+      descriptionFR : `
+      Le portfolio SquishySlug est un <b>mini jeu 2d isometrique</b> (toujours en alpha),
+      dans lequel le joueur peut se ballader dans Squishyslug Island
+      et parler a ses habitants pour permettre la navigation.
+      Il tourne sur navigateur, et est construit en <b>js+jquery</b> et utilise <b>bootstrap4</b>
+      pour son IU. Il dessine des <b>svg animes via css</b> sur un <b>canvas</b>,
+      et utilise un canvas masque pour la detection des clicks.<br/>
+      Chaque tile utilise son propre hexcode qui est ensuite traduit en une destination.<br/>
+      Tous les personnages ont des IAs qui utilisent un <b>algorithme de Dijkstra</b>
+      Ce qui leur permet de toujours trouver le chemin le plus court jusqu'a leur destination.<br/>
+      Le projet est open source : <a target="_blank" href="https://github.com/Lunacie/SquishySlug/">
+      https://github.com/Lunacie/SquishySlug</a>
       `
     },
     {
@@ -33,6 +46,10 @@ function Projects() {
       description : `
       This project involved the creation of <b>sketching</b> for the
       SquishySlug logo and its vectorization using <b>Illustrator</b>.
+      `,
+      descriptionFR : `
+      Ce projet se compose d'un <b>sketch</b> pour le logo
+      de SquishySlug et de sa vectorization a l'aide <b>Illustrator</b>.
       `
     },
     {
@@ -49,6 +66,15 @@ function Projects() {
       <b>sms API</b>, as well as miscellaneous tasks.<br/>
       The whole project is built using the cms <b>Drupal</b>.<br/>
       The site can be visited here : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
+      `,
+      descriptionFR : `
+      J'ai participe au developement d'un dev portal pour le FAI Australien
+      <a href="https://www.telstra.com.au/" target="_blank">Telstra</a> avec
+      la compagnie Australienne de branding <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
+      Le projet compronait l'implementation d'un system d'authentification a l'aide de leur
+      <b>API de sms</b>, ainsi que diverses taches.<br/>
+      Le projet entier est batit sur le cms <b>Drupal</b>.<br/>
+      Le site peut etre visite ici : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
       `
     },
     {
@@ -64,6 +90,14 @@ function Projects() {
       building a crime statistic display system based on data from the
       <a href="https://www.nsw.gov.au/" target="_blank">Australian NSW governement</a>.<br/>
       The project called d3qb was using <b>d3.js</b> to build advanced graphs.
+      `,
+      descriptionFR : `
+      J'ai participe a un projet avec la compagnie de branding Australienne
+      <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>
+      et <a href="https://github.com/apigeek" target="_blank">APIgeeks</a>
+      a la construction d'un system d'affichage de statistiques de crimes base sur les donnees issues du
+      <a href="https://www.nsw.gov.au/" target="_blank">gouvernement Australien de l'etat du NSW</a>.<br/>
+      Le projet s'appelait d3qb etait une surcouche de <b>d3.js</b> pour construire des graphiques avances.
       `
     },
     {
@@ -77,6 +111,12 @@ function Projects() {
       of the Firegeeks website using <b>html/css</b> and <b>Bootstrap4</b>.
       with branding company
       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.
+      `,
+      descriptionFR : `
+      A partir d'un design qui m'a ete fournit, j'ai realise l'integration de
+      plusieurs pages du site FireGeeks en <b>html/css</b> et <b>Bootstrap4</b>.
+      avec la compagnie de branding
+      <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.
       `
     },
     {
@@ -89,6 +129,11 @@ function Projects() {
       This scene was built for an indie video game.
       All the 3d assets were modelized on <b>Blender</b>,
       and the textures and normal and specular maps using <b>Photoshop</b>.
+      `,
+      descriptionFR : `
+      Cette scene a ete realisee pour un jeu video indie.
+      Tous les modeles 3d ont ete realises sous <b>Blender</b>,
+      et les textures et maps normales et specular sous <b>Photoshop</b>.
       `
     },
     {
@@ -102,6 +147,12 @@ function Projects() {
       A first mockup of the characters was first made using <b>Photoshop</b>,
       then all the characters were made into fully rigged and animated 3d models
       on <b>Blender</b>.
+      `,
+      descriptionFR : `
+      Voici un projet de chara-design pour un jeu video indie.
+      J'ai realise un premier sketch des personnages sur <b>Photoshop</b>,
+      avant de realiser des modeles 3d avec squelettes et animations
+      sur <b>Blender</b>.
       `
     },
     {
@@ -117,6 +168,14 @@ function Projects() {
       I built a <b>python</b> script that would use the mailgun <b>API</b>
       to build target groups to which I then used in the newsletter mailing system I
       implemented as a wordpress plugin.
+      `,
+      descriptionFR : `
+      Challenge consulting est un projet base sur le cms
+      <b>wordpress</b>. sur lequel j'ai travaille avec la compagnie de branding
+      <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
+      J'ai ecrit un script <b>python</b> qui utilise <b>l'API</b> de Mailgun
+      pour construire des groupes cibles que j'ai ensuite utilise dans un mailing system que
+      j'ai implemente en un plugin wordpress.
       `
     },
     {
@@ -136,6 +195,17 @@ function Projects() {
       <a href="https://github.com/Lunacie/cos-similarity-recommendations" target="_blank">
       https://github.com/Lunacie/cos-similarity-recommendations
       </a>
+      `,
+      descriptionFR : `
+      Ce projet est un prototype pour un <b>moteur de recommendations</b> que
+      j'ai designe et implemente en <b>python</b> pour la startup Australienne Leezair.
+      Il recupere tout d'abbord des donnees de differentes sources, puis les serialize en features vectors.<br/>
+      J'ai ensuite utilise une <b>cosine similarities</b> pour faire des recommendations
+      bases sur les features vectors extraits des donnees des produits et servis
+      par une <b>API Django</b>.<br/>
+      <a href="https://github.com/Lunacie/cos-similarity-recommendations" target="_blank">
+      https://github.com/Lunacie/cos-similarity-recommendations
+      </a>
       `
     },
     {
@@ -145,6 +215,13 @@ function Projects() {
       npc : 14,
       tech : "software,node,api",
       description : `
+      I worked on this project for Australian travel startup Leezair.
+      The project consisted in researching mutiple potential data sources,
+      such as <b>XML and REST APIs</b>. Some of the data required <b>data scrapping</b>
+      in order to be extracted.<br/>
+      I then wrote a <b>node.js</b> script to make those data exploitable by the existing system.
+      `,
+      descriptionFR : `
       I worked on this project for Australian travel startup Leezair.
       The project consisted in researching mutiple potential data sources,
       such as <b>XML and REST APIs</b>. Some of the data required <b>data scrapping</b>
