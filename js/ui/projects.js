@@ -327,7 +327,23 @@ function Projects() {
     <li>Implementation of an <b>octree</b> to optimize rendering and get higher fps at runtime <br/></li>
     </ul>
     <a href="https://github.com/Lunacie/Worlds" target="_blank">https://github.com/Lunacie/Worlds</a>
-  `
+  `,
+  descriptionFR : `
+Ce projet en chantier est un jeu + <b>un moteur voxel 3d</b> qui render la carte au runtime.<br/>
+<ul>
+<li>Implementation d'un client graphique en utilisant <b>openGL</b></li>
+<li>Management des evenements claviers, souris, system et expose</li>
+<li>Parsing de fichier syntax .obj pour permettre l'affichage polygonal d'objets 3d complexes a l'aide de tris</li>
+<li>Parsing de fichier au format .mtl pour permettre l'extraction de ressources telles que des textures 2D</li>
+<li>Parsing de format .tgv compresse et decompresse pour l'implementation de maps diffuse, spectrales, et
+normales</li>
+<li>Implementation d'un moteur voxel graphique basique. Malgres le moteur voxel, les maps sont rendues
+en polygones</li>
+<li>Implementation d'un <b>algorithme de frustrum culling </b> pour optimiser le rendering et obtenir un fps plus eleve au runtime </li>
+<li>Implementation  d'<b>octree</b> pour optimiser le rendering et obtenir un fps plus eleve au runtime <br/></li>
+</ul>
+<a href="https://github.com/Lunacie/Worlds" target="_blank">https://github.com/Lunacie/Worlds</a>
+`
     },
     {
       image : "fetchfood.jpg",
@@ -347,6 +363,19 @@ function Projects() {
       resulting data through http to an <b>AJAX</b> script called from one of the search page.</li>
       <li>Development of FetchFood front-end </li>
       </ul>
+      `,
+      descriptionFR : `
+      Ce projet est un web service wui permet aux utilisateurs de chercher et de comparer des recettes a l'aide d'un <b>crawler http</b><br/>
+      <ul>
+      <li>Background Illustration : J'ai realise l'illustration de l'arriere plan sur <b>photoshop</b> en integrant diverses images de nourriture</li>
+      <li> Design de la template web sur <b>adobe Photoshop</b>. Integration depuis un .psd en <b>html et css</b></li>
+      <li>Implementation d'un <b>web crawler http qui tourne sur linux</b>, qui visite des sites de cuisine, a la recherches de differentes
+           version d'une recette specifique; Extraction des donnees a partir des pages html telles que les ingredients, instructions et
+      photos</li>
+      <li>Implementation d'un projet web .so dumboServer qui fait tourner un processus de crawler http process et retourne
+      les donnees via http a un script <b>AJAX</b> appelle depuis l'une des pages de recherche.</li>
+      <li>Developement du front-end de FetchFood</li>
+      </ul>
       `
     },
     {
@@ -365,6 +394,16 @@ function Projects() {
       I also made it so that the website is 100% duplicable to be sold multiple times.<br/>
       Each time a new website was sold, I would design it on <b>photoshop</b> and then update the
       template in <b>html/css</b>
+      `,
+      descriptionFR : `
+      J'ai adapte ce site a partir d'un site existant pour le rendre facilement duplicable.<br/>
+      C'est un site de voyage/locations qui fonctionne sur un systeme d'affiliations.
+      J'ai fait en sorte que le proprietaire du site puisse facilement changer ses donnees d'affiliation dan le panel admin
+      de facon a pouvoir gagner un revenu sur chaque vente. Les ventes sont gerees par les differents programmes
+      auquels le proprietaire du site est affilie.<br/>
+      J'ai egalement fait en sorte que les site soit 100% duplicable de maniere a ce qu'il puisse etre vendu de mutiples fois.<br/>
+      Chaque fois qu'un site etait vendu, j'en refaisais le design sur <b>photoshop</b> puis mettais a jour la
+      template <b>html/css</b>
       `
     },
     {
@@ -398,6 +437,31 @@ function Projects() {
         <li>Deployment of the web project on distant Debian running dumboServer over ssh</li>
         </ul>
       `,
+      descriptionFR : `
+      Ce projet est un site web e-commerce pour un vapostore Francais.<br/>
+      <ul>
+        <li>Design de la template web sur  adobe Photoshop. Integration depuis un .psd en html/css</li>
+        <li>Design du logo sur adobe Illustrator</li>
+        <li>Programming et compilation d'un .so (librarie dynamique) pour le projet</li>
+        <li>L'implementation de l'e-commerce comprend :</li>
+             <ul>
+             <li> L'affichage des items par categories, marques</li>
+             <li>Construction d'un menu "a branches" bases sur les relations parents/enfants des items du menu</li>
+             <li>L'integration des items, marques, stocks and categories a partir du logiciel de caisse “Artifact” comprennait :</li>
+                <ul><li>La synchronization des donnees par API via ftp</li>
+                    <li>Les items etaient exportes depuis le logiciel des caisse au format XML format, ce qui a requit
+        l'implementation d'un programme qui parsait le XML pour extraire les donnees et ensuite les formater en INSERT and or UPDATE sql requests.
+        </li>
+                    <li>Automation de la sychronisation des fichier sql generes pour permettre la synchronisation des donnees entre le web server et le logiciel de caisse</li>
+                </ul>
+             <li>Systeme de caddie de caisse en utilisant des dumboServer cookies</li>
+             <li>Prise en charge des commandes en ligne</li>
+             <li>Back office</li>
+             <li>Integration de methodes de paiement a l'aide de Paypal</li>
+        </ul>
+        <li>Deploiement du project web sur un server Debian distant qui faisait tourner un dumboServer via ssh</li>
+        </ul>
+      `,
       tech : "html,php,graphic,js,c"
     },
     {
@@ -408,6 +472,10 @@ function Projects() {
       description : `
         This is a website I made from scratch in php for a coaching company. I first made the design on photoshop, integrated it using html/css.<br/>
         Then I added features such as a contact and signup forms built in php.
+      `,
+      descriptionFR : `
+        Ce site a ete realise de zero en php pour une compagnie de coaching. J'ai d'abord realise le design sur photoshop, puis integre en html/css.<br/>
+        J'ai ensuite ajoute des fonctionnalites telles que des formulaires de contacte and d'inscription en php.
       `,
       tech : "html,php,graphic"
     },
@@ -421,6 +489,12 @@ function Projects() {
       Then users willing to by the books can browse through the announces using a search engine I made based on multiple criteron.
       There are also fully working user accounts so that people can handle their personnal informations and announces. The admin can handle accounts as well as announces.
       I also made the design from scratch on photoshop and integrated it using html/css and jquery
+      `,
+      descriptionFR : `
+      Ceci est un site sur lequel les utilisateurs peuvent vendre des guides de voyages d'occasion en ecrivant simplement une annonce.
+      Les utilisateurs a la recherche d'un guide peuvent naviguer les annonces grace au systeme de recherche que j'ai implemente base sur de nombreux criteres.
+      Il y a egalement un gestion complete des comptes utilisateurs pour que chacun puisse gerer ses informations personnelles et ses annonces. L'administrateur peut manager les comptes et les annonces.
+      J'ai egalement realise le design sur  photoshop et integre en html/css et jquery.
       `,
       tech : "html,php,graphic,js"
     },
@@ -437,6 +511,15 @@ function Projects() {
       The full background is visible on the right side.
       <br/>
       Then I powered it so that the content (images and text) is loaded from mysql databases.
+      `,
+      description : `
+      Ceci est l'ancienne version de mon portfolio. Il a par la suite ete remplace par SquishySlug Island.<br/>
+      J'ai d'abord realise un paysage vertical sur photoshop en utilisant des technique des matte painting et de photomanipulation.
+           J'ai ensuite fait en sorte que le background defile quand l'utilisateur scroll. L'arriere plan ne defile pas aussi vite que le premier plan pour creer une reelle impression de profondeur. Le but etant de jouer avec le parallax d'une maniere interessante, pour une fois.
+      <br/>
+      L'arriere plan entier est visible a la droite de l'image.
+      <br/>
+      J'ai ensuite fait en sorte que les contenu (images et texte) soit charge depuis des bases de donnees mysql.
       `,
       tech : "graphic,html,js,php"
     },
