@@ -512,7 +512,7 @@ en polygones</li>
       <br/>
       Then I powered it so that the content (images and text) is loaded from mysql databases.
       `,
-      description : `
+      descriptionFR : `
       Ceci est l'ancienne version de mon portfolio. Il a par la suite ete remplace par SquishySlug Island.<br/>
       J'ai d'abord realise un paysage vertical sur photoshop en utilisant des technique des matte painting et de photomanipulation.
            J'ai ensuite fait en sorte que le background defile quand l'utilisateur scroll. L'arriere plan ne defile pas aussi vite que le premier plan pour creer une reelle impression de profondeur. Le but etant de jouer avec le parallax d'une maniere interessante, pour une fois.
@@ -534,6 +534,11 @@ en polygones</li>
      I first made the background on Blender, a 3D modelling tool, then I made the graphic design on photoshop, when I was done, I integrated it all using html/css<br/>
      Then, I made a database and powered the page using php/mysql so that users could signup to the contest.
       `,
+      descriptionFR :`
+     J'ai realise ce site pour une competition en ligne pour etudiants.<br/>
+     I made the background on Blender, un outil de modelisation 3D, ensuite j'ai realise le design graphique sur photoshop, une fois celui ci termine, j'ai integre la page en html/css<br/>
+      A l'aide de php/mysql j'ai fait en sorte que les utilisateurs puissent participer au concours.
+      `,
       tech : "html,php,graphic,3d"
     },
     {
@@ -546,6 +551,11 @@ en polygones</li>
       hundred pictures from across the web to render this picture
       from this place that only existed in my mind until then.
       `,
+      descriptionFR : `
+      Ceci est une scene photomanipulee cree sur photoshop a partir d'une centaine
+      de photographies trouvees sur le web pour la realisation de cette piece qui jusque la,
+      n'existait que dans ma tete.
+      `,
       tech : "graphic"
     },
     {
@@ -556,6 +566,9 @@ en polygones</li>
       tech : "graphic",
       description : `
       This is a digital paiting I started of Kerrigan from Starcraft Heart of the Swarm using photoshop.
+      `,
+      descriptionFR : `
+      Une peinture digitale de Kerrigan, Starcraft Heart of the Swarm sur photoshop.
       `
     },
     {
@@ -567,6 +580,10 @@ en polygones</li>
        This is a website I made in php for an online contest. There is an account system as well as multiple forms pages.<br/>
        The admin can access the different files and accounts through the admin panel I built.
       `,
+      descriptionFR :  `
+       J'ai realise ce site pour un concours en ligne. Il y a un systeme de compte ainsi qu'une multitude de pages de formulaires.<br/>
+       L'admin peut acceder aux differents fichiers et comptes a travers le panel d'administration que j'ai implemente.
+      `,
       tech : "html,php"
     },
     {
@@ -577,6 +594,9 @@ en polygones</li>
       tech : "graphic",
       description : `
       This is a digital painting I made of Zoe from Little Big Adventure using photoshop.
+      `,
+      descriptionFR : `
+      Une peinture digitale de Zoe de Little Big Adventure sur photoshop.
       `
     },
     {
@@ -590,6 +610,12 @@ en polygones</li>
       Then, I integrated it into a html css page and put the finish product into an archive so
       that anyone willing to promote their Minecraft server could download it, fill up the text, and have a working website.<br/>
       I used to sell it on my own web template e-commerce.
+      `,
+      descriptionFR : `
+      Un kit graphique leger et colore que j'ai realise pour un serveur Minecraft sur photoshop.<br/>
+      je l'ai ensuite integre en une page html/css et mit le produit finit dans une archive pour que
+      n'importe quelle personne cherchant a creer un site pour son serveur minecraft n'ai qu'a remplir le texte et avoir un site web fonctionnel.<br/>
+      Ce n'etait que l'un des nombreux kits-graphiques que je vendais sur ma propre platforme e-commerce.
       `
     },
     {
@@ -602,6 +628,13 @@ en polygones</li>
       Then, I powered the website using php mysql and javascript. It's a fully working ecommerce on which I used to sell web content I was making myself. A website selling websites.<br/>
       The payment method I integrated was Paypal.
       `,
+      descriptionFR : `
+      Ce projet est un site de vente de kits-graphiques que j'ai construit de zero en php.
+      J'ai d'abord realise le design sur photoshop puis integre en html/css<br/>
+      Le site fonctionne en php/mysql and javascript.
+      C'est un ecommerce sur lequel je vendais du contenu web que je realisais moi meme.<br/>
+      Le moyen de paiement integre est Paypal.
+      `,
       tech : "html,php,graphic"
     },
     {
@@ -613,6 +646,10 @@ en polygones</li>
       description : `
       This is a mini game I made from scratch. It was built using the C programming language and SDL. It's a multi threading application which goal was to study how threads work independantly to each other and how MUTEX affects them.<br/>
       I also made the graphic design for this mini-game using photoshop.
+      `,
+      descriptionFR : `
+      Ce projet est un programme C+SDL dans le but d'approfondir ma comprehension des applications multi thread et d'etudier la manniere dont les threads travaillent independemment les uns des autres et comment les MUTEX les affectent.<br/>
+      J'ai aussi realise le graphique design sur photoshop.
       `
     },
     {
@@ -623,6 +660,9 @@ en polygones</li>
       tech : "graphic",
       description : `
       This is a digital painting I made on photoshop. This painting was used as a background for an indie anime.
+      `,
+      descriptionFR : `
+      Peinture digitale realisee sur photoshop. Cette peinture a ete utilisee comme arriere plan dans un anime indie.
       `
     },/*
     {
