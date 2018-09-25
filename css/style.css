@@ -62,7 +62,7 @@ body {
 }
 .tab-content .project-description-container {
   overflow-y : scroll;
-  max-height : 200px;
+  max-height : 60vh;
 }
 
 #tab-footer {
@@ -132,7 +132,7 @@ body {
   font-family: 'News Cycle', sans-serif;
 }
 #tab-content #gallery { overflow-y: scroll;
-  max-height : 550px;
+  max-height : 30vh;
 }
 #tab-content #gallery a:hover .project-title{
   display : block
@@ -292,7 +292,7 @@ body {
   #tab-svg { margin-left : -3px ;}
 
   .tab-content .project-description-container {
-    max-height : 400px;
+    max-height : 70vh;
   }
 
   #tab-content #gallery .project-title{
