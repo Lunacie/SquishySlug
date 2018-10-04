@@ -182,8 +182,9 @@ function Map(player, characters)
         }
       // else draw image
       else if (tile.id) {
-        if (!tile.image.off)
+        if (!tile.image.off) {
           this._loadImage(tile, offColor);
+        }
         else {
           // on screen
           var element = tile.image.on;
@@ -211,8 +212,9 @@ function Map(player, characters)
     },
 
   _loadImage : function(tile, offColor) {
-      $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
+      //$.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         // offscreen
+        svgXml = tile.svgXml;
         offColor = tile.floor ? offColor : "#FFFFFF";
         tile.image.off = new Image();
         var str = (new XMLSerializer).serializeToString(svgXml);
@@ -224,7 +226,7 @@ function Map(player, characters)
           tile.image.off.loaded = true;
         }
         tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
-    });
+  //  });
   },
 
   _drawTilePoly: function(x, y, context) {

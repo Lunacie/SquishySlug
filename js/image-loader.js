@@ -3,27 +3,45 @@
 
    this.sprites = [
      [
-       "assets/vectors/char01_right.svg",
-       "assets/vectors/char01_left.svg",
-       "assets/vectors/char01_down.svg",
-       "assets/vectors/char01_up.svg"
+       {path : "assets/vectors/char01_right.svg",
+        loading : false},
+       {path : "assets/vectors/char01_left.svg",
+        loading : false},
+       {path : "assets/vectors/char01_down.svg",
+        loading : false},
+       {path : "assets/vectors/char01_up.svg",
+        loading : false}
      ],
      [
-       "assets/vectors/char01_right_walk.svg",
-       "assets/vectors/char01_left_walk.svg",
-       "assets/vectors/char01_down_walk.svg",
-       "assets/vectors/char01_up_walk.svg",
+       {path : "assets/vectors/char01_right_walk.svg",
+        loading : false},
+       {path : "assets/vectors/char01_left_walk.svg",
+        loading : false},
+       {path : "assets/vectors/char01_down_walk.svg",
+        loading : false},
+       {path : "assets/vectors/char01_up_walk.svg",
+        loading : false}
      ]
    ];
+   this.spritesXml = [ [], [] ];
+   this.staticsXml = [];
    this.statics = [
-     "assets/vectors/mail.svg",
-     "assets/vectors/slug.svg",
-     "assets/vectors/logo.svg",
-     "assets/vectors/telstra.svg",
-     "assets/vectors/d3qb.svg",
-     "assets/vectors/firegeeks.svg",
-     "assets/vectors/octopusroom.svg",
-     "assets/vectors/octopus.svg",
+     {path : "assets/vectors/mail.svg",
+      loading : false},
+     {path : "assets/vectors/slug.svg",
+      loading : false},
+     {path : "assets/vectors/logo.svg",
+      loading : false},
+     {path : "assets/vectors/telstra.svg",
+      loading : false},
+     {path : "assets/vectors/d3qb.svg",
+      loading : false},
+     {path : "assets/vectors/firegeeks.svg",
+      loading : false},
+     {path : "assets/vectors/octopusroom.svg",
+      loading : false},
+     {path : "assets/vectors/octopus.svg",
+      loading : false},
    ]
     this.speciesStr = [
       "BUNNY_x5F_", "CAT_x5F_", "ELEPHANT_x5F_", "INSECT_x5F_"
@@ -58,35 +76,63 @@
       "hip_x5F_front", "hip_x5F_back"
     ];
 
-     this.load = function (char, state, direction) {
-       var path = null;
-      if (!char._static) {
-        state = state || char.state;
-        direction = direction || char.direction;
-         path = this.sprites[state];
-         if (!path)
-           path = this.sprites[ACTION_STATE_IDLE];
-         path = path[direction];
+
+     this._loadCanvasImages = function(char, state, direction) {
+       if (char._static) {
+         this._svgXml = this.statics[char._species - 4].svgXml;
+       if (!char.images)
+         char.images = {};
+       if (!char.images.on)
+         this._loadOnCanvasImage(char, state, direction);
+       if (!char.images.off)
+         this._loadOffCanvasImage(char, state, direction);
        }
+
        else {
-         path = this.statics[char._species - 4];
-       }
-       var loader = this;
-       $.get(path, function(svgXml) {
-         loader._svgXml = svgXml;
-         if (!char._static)
-           char.images[state][direction] = {};
-         else
-           char.images = {};
-         loader._loadOnCanvasImage(char, state, direction);
-         loader._loadOffCanvasImage(char, state, direction);
-       });
+        this._svgXml = this.sprites[state][direction].svgXml;
+        if (!char.images)
+          char.images = [];
+          if (!char.images[state])
+            char.images[state] = [];
+        if (!char.images[state][direction])
+          char.images[state][direction] = {}
+        if (!char.images[state][direction].on)
+          this._loadOnCanvasImage(char, state, direction);
+        if (!char.images[state][direction].off)
+          this._loadOffCanvasImage(char, state, direction);
+      }
      }
 
+     this._loadXmlSvg = function() {
+       var loader = this;
+       for (let i = 0; i < this.sprites.length; i++) {
+         for (let j = 0; j < this.sprites[i].length; j++) {
+            $.get(loader.sprites[i][j].path, function(svgXml) {
+              loader.sprites[i][j].svgXml = svgXml;
+            });
+         }
+       }
+      for (let i = 0; i < this.statics.length; i++) {
+         $.get(loader.statics[i].path, function(svgXml) {
+           loader.statics[i].svgXml = svgXml;
+         });
+      }
+     }
+
+     this._clone = function(xmlSvg) {
+       console.log("clone");
+       var newDocument = xmlSvg.implementation.createDocument(
+         xmlSvg.namespaceURI, null, null);
+       var newNode = newDocument.importNode(
+         xmlSvg.documentElement, true);
+       newDocument.appendChild(newNode);
+       return newDocument;
+     }
 
 
      this._loadOnCanvasImage = function(char, state, direction) {
 
+       this._svgXml = this._clone(this._svgXml);
        // Character or NPC
        if (!char._static) {
        char.images[state][direction].on = new Image();
@@ -261,3 +307,5 @@
      }
 
  }
+
+let imageLoader = new ImageLoader();

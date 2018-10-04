@@ -494,7 +494,7 @@ function Character (x, y)
       // no image
       if ((!this._static && !this.images[this.state][this.direction]) ||
            this._static && !this.images){
-        (new ImageLoader).load(this);
+        //imageLoader.load(this);
       }
 
       // image ready to draw
@@ -530,7 +530,7 @@ function Character (x, y)
   }
 
   this.loadImage = function(action, direction) {
-      (new ImageLoader).load(this, action, direction);
+      imageLoader.load(this, action, direction);
   }
 
   this._getDisplacement = function (x, y) {
