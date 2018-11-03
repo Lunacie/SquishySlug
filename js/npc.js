@@ -28,6 +28,8 @@ function Npc(x, y, species, isStatic = false) // inherits Character
   else
     this._roaming = false;
 
+  this._roaming = false;
+
 
 
 

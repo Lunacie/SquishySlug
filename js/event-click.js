@@ -24,7 +24,8 @@ function eventCanvasClicked(event, element) {
 };
 
 function getClickEventNpc(val) {
-  var npc = fullMap.getCharacter(val - characterColorHex);
+  console.log((val - characterColorHex) / 2);
+  var npc = fullMap.getCharacter((val - characterColorHex) / 2);
   if (!npc)
     return null;
   return npc.getDestinationTriggerInteraction();

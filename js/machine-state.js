@@ -114,7 +114,7 @@ function MachineState(actor) {
       diffX = diffX < 0 ? diffX * -1 : diffX;
       var diffY = actor2.y - actor.y;
       diffY = diffY < 0 ? diffY * -1 : diffY;
-      if (diffX +  diffY > 2)
+      if (diffX +  diffY > 4)
         return true;
       return false;
     }

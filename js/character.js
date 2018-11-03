@@ -11,12 +11,15 @@ let ORDER_STATUS_RECEIVED = 1;
 let ORDER_STATUS_SUCCESS = 2;
 
 var characterColorHex = 0xF9C6F2;
+var hexCount = 0;
 var characterCount = 0;
 
 function Character (x, y)
 {
-  this.id = characterCount++;
-  this.hexColor = characterColorHex + this.id;
+  this.id = characterCount;
+  this.hexColor = characterColorHex + hexCount;
+  characterCount = characterCount += 1;
+  hexCount += 2;
 
   this.x = x;
   this.y = y;

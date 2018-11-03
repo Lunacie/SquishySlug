@@ -117,13 +117,13 @@ function UI(player) {
       ui._player.freeNpc(id);
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = id;
-      $('.tab-'+id+' li').addClass('selected');
       ui._closeTabAnimation();
       $("#loading").stop();
       $("#loading").fadeIn(200);
       ui._reopen = true;
       ui._tabToOpen = id;
       ui._prepareTab(id);
+      $('.tab-'+id+' li').addClass('selected');
       return ui._player.sendOrder(npc);
       //return ui._openTabAnimation(id);
   }
@@ -260,6 +260,8 @@ function UI(player) {
       ui._blurCanvas(10, 10);
       let width = TAB_WIDTH;
 
+
+      $('.tab-'+id+' li').addClass('selected');
       this._toggleSocials(true);
       $("#tab").animate({'width' : width + 'px', left : 0}, 1000);
       var element = $("#canvas");
@@ -344,7 +346,8 @@ function UI(player) {
         $(".nav.mobile").animate({"right" : "50px"}, 1000);
         $("#nav-overlay").animate({"width" : "500px"}, 1000);
       }
-      else {
+      else {    console.log("CLOSE TAB");
+
         $(".nav.mobile").hide();
         $("#nav-overlay").animate({"width" : "0px"}, 1000);
         $(".nav.mobile").animate({"right" : "-500px"}, 1000);

@@ -120,7 +120,6 @@
      }
 
      this._clone = function(xmlSvg) {
-       console.log("clone");
        var newDocument = xmlSvg.implementation.createDocument(
          xmlSvg.namespaceURI, null, null);
        var newNode = newDocument.importNode(
