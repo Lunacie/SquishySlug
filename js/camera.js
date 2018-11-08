@@ -1,14 +1,67 @@
 function Camera() {
 
+  this.findPosition  = function(center, element, width, height) {
+      let max = [249,198,242];
+
+      let data = ctxOff.getImageData(0, 0, width, height);
+      let rows = [];
+      let x, y = 0;
+      for (let i = 0; i < data.data.length; i += width * 4) {
+          let row = data.data.slice(i, i + width * 4);
+          for (let j = 0; j < row.length - 3; j += 4) {
+            if (row[j] < 249 &&
+                row[j + 1] <= 198 &&
+                row[j + 2] <= 242) {
+                let hex = this.rgbToHex(row[j]) + this.rgbToHex(row[j + 1]) + this.rgbToHex(row[j + 2]);
+                hex = parseInt(hex, 16);
+                y = i / 4 / width;
+                x = j / 4;
+                console.log("Position : ", getClickEventFloor(hex), "Hex : ", hex);
+                return {x : x, y : y};
+              }
+          }
+      }
+  }
+
+  this.getRemotePlayerPos = function() {
+    return {x : player.x, y : player.y };
+  }
+
+  this.rgbToHex = function (rgb) {
+    var hex = Number(rgb).toString(16);
+    if (hex.length < 2) {
+         hex = "0" + hex;
+    }
+    return hex;
+  };
+
   this.center = function() {
+
+
     let element = $("#offCanvas");
     let width = element.width();
     let height = element.height();
 
     let playerPos = this._getPlayerPosition(element, width, height);
-    if (!playerPos)
-      return {x : 0, y : 0}
     let center = this._getCanvasCenter(width, height);
+    if (!playerPos) {
+      playerPos = this.getRemotePlayerPos();
+      console.log("player postion : ", playerPos);
+      centerPos = this.findPosition(center, element, width, height);
+      console.log("ORIGINAL POSITION", player.x, player.y);
+      let x, y = 0;
+      x = playerPos.x < centerPos.x ? -1 : 1;
+      y = playerPos.y < centerPos.y ? -1 : 1;
+      let speed = 10;
+      x *= speed;
+      y *= speed;
+      console.log("NEW POSITION", player.x, player.y);
+      console.log(x, y);
+      return {x : x, y : y}
+    }/*
+    if (!playerPos) {
+      return {x : 0, y : 0}
+    }*/
 
     let x, y = 0;
     let speed = 10;

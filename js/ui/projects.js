@@ -703,7 +703,8 @@ en polygones</li>
       ui.sendOrder($(this).data('npc'));
     });
     $('.btn-back-projects').click(function() {
-        ui.sendOrder(SPECIES_INSECT);
+       ui.sendOrder(SPECIES_INSECT);
+      $("#tab-content-content").hide();
     });
     this._current = [];
     for (let i = 0; i < this._data.length; i++)

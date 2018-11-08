@@ -4,11 +4,11 @@
   var tileColorHex = 0x000000;
   var x2d = 0;
   var y2d = 0;
+  var speed = 1;
 
   var draw = function(characters, map, debugOv, timestamp)
   {
-    var speed = 10;
-    if (fps)
+     if (fps)
       speed *= (60 / fps);
 
     let pos = camera.center();

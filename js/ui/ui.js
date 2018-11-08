@@ -106,8 +106,8 @@ function UI(player) {
       ui._player.freeNpc(ui._tab);
       ui._tab = UI_TAB_NONE;
       ui._reopen = false;
-      $("#loading").stop();
-      $("#loading").fadeIn(200);
+      //$("#loading").stop();
+      //$("#loading").fadeIn(200);
       ui._loading = true;
       return ui._closeTabAnimation();
     }
@@ -118,8 +118,8 @@ function UI(player) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = id;
       ui._closeTabAnimation();
-      $("#loading").stop();
-      $("#loading").fadeIn(200);
+      //$("#loading").stop();
+      //$("#loading").fadeIn(200);
       ui._reopen = true;
       ui._tabToOpen = id;
       ui._prepareTab(id);
@@ -159,8 +159,8 @@ function UI(player) {
         ui._player.freeNpc(ui._tab);
         ui._tab = UI_TAB_NONE;
         ui._reopen = false;
-        $("#loading").stop();
-        $("#loading").fadeIn(200);
+        //$("#loading").stop();
+        //$("#loading").fadeIn(200);
         ui._loading = true;
         return ui._closeTabAnimation();
   }
@@ -223,11 +223,18 @@ function UI(player) {
       ui._blurCanvas(10, 0);
 
 
-      $("#tab").animate({'width' :  '0px', 'left' : '-64px'}, 1000);
+      $("#tab").animate({'width' :  '0px', 'left' : '-64px'},
+      {
+        duration : 1000,
+        'complete' : function() {
+        ui._blurCanvas(0, 0);
+        ui.resizeCanvas();
+       }
+      });
       this._toggleSocials(false);
       //var width = window.innerWidth;
       var width = this._initDimensions.width;
-      $("#canvas").animate({
+      /*$("#canvas").animate({
           'width' : width + 'px',
           'left' : '0px'
         }, {
@@ -236,7 +243,7 @@ function UI(player) {
             ui._blurCanvas(0, 0);
             ui.resizeCanvas();
            }
-        });
+        });*/
       //$("#header").fadeIn(1000);
     }
 
@@ -261,15 +268,29 @@ function UI(player) {
       let width = TAB_WIDTH;
 
 
+      $("#tab-content-content").show();
       $('.tab-'+id+' li').addClass('selected');
+      ui._tab = id;
       this._toggleSocials(true);
-      $("#tab").animate({'width' : width + 'px', left : 0}, 1000);
+      $("#tab").animate({'width' : width + 'px', left : 0},
+      {
+        duration : 1000,
+        'complete' : function() {
+          ui._blurCanvas(0, 0);
+          ui.resizeCanvas();
+        },
+        start : function () {
+          $(".tab-content").hide();
+          $('div[data-id="'+id+'"]').show();
+        }
+      });
       var element = $("#canvas");
       let left = width;
       let baseWidth = window.innerWidth;
       if (!reopen)
         baseWidth = element.width();
 
+      /*
       $("#canvas").animate({
           'width' : (baseWidth - width) + 'px',
           'left' : left + 'px'
@@ -283,7 +304,7 @@ function UI(player) {
             $(".tab-content").hide();
             $('div[data-id="'+id+'"]').show();
           }
-        });
+        });*/
       //$("#header").fadeOut(1000);
     }
 
@@ -297,11 +318,7 @@ function UI(player) {
       if (this._tab == UI_TAB_NONE)
         tabWidth = 0;
 
-/*
-      if (!this._initDimensions) {
-        alert(this._player);
-        location.reload();
-      }*/
+      /*
       canvas.width = this._initDimensions.width - tabWidth;
       canvas.height = this._initDimensions.height;
       offCanvas.width = this._initDimensions.width - tabWidth;
@@ -310,14 +327,15 @@ function UI(player) {
       debugCanvas.height = this._initDimensions.height;
 
       ui.resize(this._initDimensions.width, this._initDimensions.height);
+      */
 
       this._morphing = false;
-      $("#loading").stop();
-      $("#loading").delay(1000).fadeOut(2000);
+      //$("#loading").stop();
+      //$("#loading").delay(1000).fadeOut(2000);
 
 
      tiles.size = tiles.initSize;
-     ratio = canvas.width / canvas.height;
+     //ratio = canvas.width / canvas.height;
      if (canvas.height > 3000 || canvas.width > 3000)
        tiles.size *= 3;
      else if (ratio < 1)
@@ -381,8 +399,8 @@ function UI(player) {
 
   this._checkOrderStatus = function() {
     if (this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
-      $("#loading").stop();
-      $("#loading").fadeIn(200);
+      //$("#loading").stop();
+      //$("#loading").fadeIn(200);
       ui._loading = true;
       ui._openTabAnimation(this._tabToOpen);
     }
