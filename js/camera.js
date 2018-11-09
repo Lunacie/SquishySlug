@@ -43,7 +43,6 @@ this.center = function() {
   if (!loadManager.isComplete() || !map.drew)
     return {x : 0, y : 0}
 
-
   let playerPos = {x : player.block.x, y : player.block.y};
   let element = $("#canvas");
   let center = this._getCanvasCenter(element.width(), element.height());
@@ -53,15 +52,10 @@ this.center = function() {
   let x = ((playerPos.x - offsetX) / 2) * (tiles.size / 2);
   let y = (((playerPos.y - offsetY) / 2) * (tiles.size / 4)) * -1;
 
-console.log("start", x, y);
-
-
-  if (x < center.start.x || x > center.end.x)
-    x = center.start.x;
-  if (y < center.start.y || y > center.end.y)
-      y = center.start.y * -1;
-console.log(x, y);
-console.log(center);
+if (x < center.start.x || x > center.end.x)
+  x = center.start.x;
+if (y < center.start.y || y > center.end.y)
+    y = center.start.y * -1;
 
   return {x : x, y : y};
 }
