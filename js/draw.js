@@ -12,23 +12,25 @@
       speed *= (60 / fps);
 
     let pos = camera.center();
-
+    //let pos = {x : 0, y : 0};
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
     ctxDebug.clearRect(0, 0, canvas.width, canvas.height);
 
-    var x = x2d;
-    var y = y2d;
-    x += pos.x;
-    y += pos.y;
+    /*var x = x2d;
+    var y = y2d;*/
+    let x = pos.x;
+    let y = pos.y;
 
-    y2d = y;
-    x2d = x;
+    /*y2d = y;
+    x2d = x;*/
+    /*var x = 0;
+    var y = 0;*/
     //console.log(x, y);
-    map.draw(x , y - (tiles.size * 3));
+    map.draw(x , y /*- (tiles.size * 3)*/);
     if (DEBUG)
-      debugOv.draw(x, y - (tiles.size * 3));
+      debugOv.draw(x, y /*- (tiles.size * 3)*/);
   }
 
   /*

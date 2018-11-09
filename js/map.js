@@ -13,6 +13,8 @@ function Map(player, characters)
     _startY : 0,
     _startX : 0,
     _timestamp : 0,
+    lastHex : 0,
+    drew : false,
 
     update : function() {
       //console.log(this._startY);
@@ -72,6 +74,7 @@ function Map(player, characters)
       if (!loadManager.isComplete())
         return;
 
+      this.drew = false;
       var x = 0;
       var y = 0;
       var yr = 0;
@@ -86,6 +89,7 @@ function Map(player, characters)
         x -= tiles.size / 2;
         yr++;
       }
+      this.drew = true;
     },
 
     _drawCol : function(xo, yo, yr) {
@@ -184,6 +188,8 @@ function Map(player, characters)
       else if (tile.id) {
         if (!tile.image.off) {
           this._loadImage(tile, offColor);
+          if (offColor > this.lastHex)
+          this.lastHex = offColor;
         }
         else {
           // on screen
