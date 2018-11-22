@@ -3,9 +3,35 @@ html, body {
   position : fixed;
   overflow : hidden;
   width : 100%; height : 100%;
+  /*
+  TODO : 
+  font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif
+  */
 }
 body {
   background : #17BEC7;
+}
+
+#device {
+  font-size : 6em;
+  position : absolute;
+  top : 50px;
+  left : 50px;
+  z-index : 99;
+}
+#fps {
+  font-size : 6em;
+  position : absolute;
+  top : 150px;
+  left : 50px;
+  z-index : 99;
+}
+#device.success {
+  color : green;
+}
+
+#device.failure {
+  color : red;
 }
 
 .flag {

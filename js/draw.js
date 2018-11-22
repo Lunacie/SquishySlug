@@ -8,11 +8,12 @@
 
   var draw = function(characters, map, debugOv, timestamp)
   {
-     if (fps)
+     if (fps) {
       speed *= (60 / fps);
+      $("#fps").html(fps + " fps");
+    }
 
     let pos = camera.center();
-    //let pos = {x : 0, y : 0};
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);

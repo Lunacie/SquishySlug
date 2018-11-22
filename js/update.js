@@ -11,3 +11,9 @@ var update = function(characters, map, ui, loadManager, debugOv, time)
   //loadManager.isComplete()
   //restoreEvents();
 };
+
+
+var update_staticMode = function(ui, time)
+{
+  ui.update(null, time);
+};

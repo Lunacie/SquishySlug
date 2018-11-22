@@ -31,11 +31,15 @@ function UI(player) {
 
   this.init = function(player, canvas) {
 
-    this._player = player;
-    this._player.ui = this;
+    if (!staticMode) {
+      this._player = player;
+      this._player.ui = this;
+      this._initDimensions.width = $(canvas).width();
+      this._initDimensions.height = $(canvas).height();
+      $(window).resize(this.resizeCanvas);
+    }
     this.tabs.init();
-    this._initDimensions.width = $(canvas).width();
-    this._initDimensions.height = $(canvas).height();
+
     this._orderId = 0;
     this._screens = [
       $("#loading.screen"),
@@ -59,7 +63,6 @@ function UI(player) {
 
     $(".tab-content").hide();
 
-    $(window).resize(this.resizeCanvas);
     //window.addEventListener('resize', );
   }
 
@@ -82,7 +85,8 @@ function UI(player) {
   };
 
   this._openTab = function(event) {
-    if (ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
+    if (!staticMode &&
+        ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
       return ;
     }
     ui._lastTime = ui._elapsed
@@ -91,7 +95,6 @@ function UI(player) {
 
     if ($("#nav-overlay").width())
       ui._toggleMenu();
-
     if (event)
       var id = ui._getTabId(event.currentTarget.classList);
     else
@@ -103,7 +106,8 @@ function UI(player) {
     // Close tab
     if (id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
-      ui._player.freeNpc(ui._tab);
+      if (!staticMode)
+        ui._player.freeNpc(ui._tab);
       ui._tab = UI_TAB_NONE;
       ui._reopen = false;
       //$("#loading").stop();
@@ -114,7 +118,8 @@ function UI(player) {
     // Reopen tab
     else if ((ui._tab || $("#tab").width() > 0) &&
               id != ui._tab) {
-      ui._player.freeNpc(id);
+      if (!staticMode)
+        ui._player.freeNpc(id);
       $('.tab-'+ui._tab+' li').removeClass('selected');
       ui._tab = id;
       ui._closeTabAnimation();
@@ -124,8 +129,10 @@ function UI(player) {
       ui._tabToOpen = id;
       ui._prepareTab(id);
       $('.tab-'+id+' li').addClass('selected');
-      return ui._player.sendOrder(npc);
-      //return ui._openTabAnimation(id);
+      if (!staticMode)
+        return ui._player.sendOrder(npc);
+      else // todo : see if that works in static mode
+       return ui._openTabAnimation(id);
   }
 
     // Else, just open tab
@@ -134,8 +141,10 @@ function UI(player) {
     ui._prepareTab(id);
     ui._reopen = false;
     ui._tabToOpen = id;
-    ui._player.sendOrder(npc);
-    //ui._openTabAnimation(id);
+    if (!staticMode)
+      ui._player.sendOrder(npc);
+    else
+      ui._openTabAnimation(id);
   };
 
   this._prepareTab = function(id) {
@@ -145,7 +154,8 @@ function UI(player) {
   }
 
   this._closeTab = function() {
-      if (ui._elapsed - ui._lastTime < 2700 && ui._lastTime != 0) {
+      if (!staticMode &&
+          ui._elapsed - ui._lastTime < 2700 && ui._lastTime != 0) {
         return ;
       }
       ui._lastTime = ui._elapsed
@@ -156,7 +166,8 @@ function UI(player) {
         ui._toggleMenu();
 
         $('.tab-'+ui._tab+' li').removeClass('selected');
-        ui._player.freeNpc(ui._tab);
+        if (!staticMode)
+          ui._player.freeNpc(ui._tab);
         ui._tab = UI_TAB_NONE;
         ui._reopen = false;
         //$("#loading").stop();
@@ -364,8 +375,7 @@ function UI(player) {
         $(".nav.mobile").animate({"right" : "50px"}, 1000);
         $("#nav-overlay").animate({"width" : "500px"}, 1000);
       }
-      else {    console.log("CLOSE TAB");
-
+      else {
         $(".nav.mobile").hide();
         $("#nav-overlay").animate({"width" : "0px"}, 1000);
         $(".nav.mobile").animate({"right" : "-500px"}, 1000);
@@ -373,7 +383,6 @@ function UI(player) {
   }
 
   this.update = function(loadManager, time) {
-
     this.time = time;
     this._elapsed += time;
 
@@ -382,12 +391,15 @@ function UI(player) {
     else
       TAB_WIDTH = 740;
 
-    if (this._state == UI_STATE_LOADING &&
-        loadManager.isComplete()) {
+    if (this._state == UI_STATE_LOADING) {
+
+        if ((loadManager && loadManager.isComplete()) ||
+            staticMode) {
           this._removeScreen();
           this._state = UI_STATE_MAIN;
           this._displayScreen();
         }
+      }
 
     this._checkOrderStatus();
   }
@@ -398,11 +410,13 @@ function UI(player) {
   }
 
   this._checkOrderStatus = function() {
-    if (this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
+    if (staticMode ||
+        this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
       //$("#loading").stop();
       //$("#loading").fadeIn(200);
       ui._loading = true;
-      ui._openTabAnimation(this._tabToOpen);
+      if (this._tabToOpen)
+        ui._openTabAnimation(this._tabToOpen);
     }
   };
 

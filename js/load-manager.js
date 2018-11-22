@@ -53,15 +53,16 @@ function LoadManager(characters, tiles) {
 }
 
    this._xmlLoadingDone = function() {
-     var loader = imageLoader;
-     for (let i = 0; i < loader.sprites.length; i++) {
-       for (let j = 0; j < loader.sprites[i].length; j++) {
-            if (!loader.sprites[i][j].svgXml)
+     for (let i = 0; i < imageLoader.sprites.length; i++) {
+       for (let j = 0; j < imageLoader.sprites[i].length; j++) {
+            if (!imageLoader.sprites[i][j].svgXml ||
+                !typeof imageLoader.sprites[i][j].svgXml === 'objects')
               return false;
        }
      }
-    for (let i = 0; i < loader.statics[i].length; i++) {
-         if (!loader.statics[i].svgXml)
+    for (let i = 0; i < imageLoader.statics.length; i++) {
+         if (!imageLoader.statics[i].svgXml ||
+             !typeof imageLoader.statics[i].svgXml === 'objects')
           return false;
     }
     return true;
@@ -84,8 +85,7 @@ function LoadManager(characters, tiles) {
         return;
 
       this._loadCanvasImages();
-
-
+      
       for (var i = 0; i < this._characters.length; i++) {
         if (this._characters[i]._static) {
           var images = this._characters[i].images;
