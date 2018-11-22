@@ -37,6 +37,7 @@ function UI(player) {
       this._initDimensions.width = $(canvas).width();
       this._initDimensions.height = $(canvas).height();
       $(window).resize(this.resizeCanvas);
+      $("#background").hide();
     }
     this.tabs.init();
 
