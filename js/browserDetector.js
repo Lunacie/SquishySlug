@@ -4,6 +4,7 @@ function BrowserDetector() {
 
   this.allowed = false;
 
+  console.log(navigator.userAgent);
   this.checkBrowser = function() {
     if (this._isEdge() || this._isChrome())
       this.allowed = true;
@@ -24,12 +25,10 @@ function BrowserDetector() {
   }
 
   this._isChrome = function() {
-    var isChrome = !!window.chrome && !!window.chrome.webstore
-    if (!isChrome)
-      return false;
+    var isChrome = !!window.chrome && !!window.chrome.webstore;
     var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
     var version = raw ? parseInt(raw[2], 10) : false;
-    if (version < 55)
+    if (!version || version < 55)
       return false;
     return true;
   }
