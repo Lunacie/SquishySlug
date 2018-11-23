@@ -1,8 +1,12 @@
 const DEBUG = 0 ;
+const BROWSER_OTHER = 0;
+const BROWSER_CHROME = 1;
+const BROWSER_EDGE = 2;
 
 function BrowserDetector() {
 
   this.allowed = false;
+  this.browser = BROWSER_OTHER;
 
   console.log(navigator.userAgent);
   this.checkBrowser = function() {
@@ -21,6 +25,7 @@ function BrowserDetector() {
     var version = raw ? parseInt(raw[2], 10) : false;
     if (version < 17)
       return false;
+    this.browser = BROWSER_EDGE;
     return true;
   }
 
@@ -30,6 +35,7 @@ function BrowserDetector() {
     var version = raw ? parseInt(raw[2], 10) : false;
     if (!version || version < 55)
       return false;
+    this.browser = BROWSER_CHROME;
     return true;
   }
 };

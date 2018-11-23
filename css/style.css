@@ -289,6 +289,7 @@ body {
   color : white;
   font-size : 2rem;
 }
+#browserstack { width : 100px }
 
 .pull-left { float : left };
 .pull-right { float : right };
@@ -366,6 +367,7 @@ body {
     max-height : 4em;
   }
   .nav ul li .text { visibility : visible; }
+
 
   #footer p {
     font-size : 2rem;

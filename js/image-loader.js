@@ -103,6 +103,17 @@
       }
      }
 
+     this._removeAnimation = function(xml) {
+       //console.log(xml);
+       var indexStart = xml.indexOf("@-webkit-keyframes");
+       if (indexStart == -1)
+        return xml;
+       var start = xml.substring(0, indexStart);
+       var indexEnd = xml.indexOf("</style>");
+       var end = xml.substring(indexEnd, xml.length);
+       return start + end;
+     };
+
      this._loadXmlSvg = function() {
        var loader = this;
        for (let i = 0; i < this.sprites.length; i++) {
@@ -147,6 +158,9 @@
        //console.log(this._svgXml);
        var str = (new XMLSerializer).serializeToString(this._svgXml);
        str = str.replace(/#/g, "%23");
+       if (browser.browser == BROWSER_EDGE)
+         str = this._removeAnimation(str);
+
        this._serialized = str;
        char.images[state][direction].on.onload = function() {
         char.images[state][direction].on.loaded = true;
@@ -281,6 +295,8 @@
          char.images[state][direction].off = new Image();
          var off = this._serialized.replace(/fill(.*);/g,'fill:#' +
                    char.images.offHexColor.toString(16) + ';');
+          if (browser.browser == BROWSER_EDGE)
+            off = this._removeAnimation(off);
           //off = off.replace(/opacity(.*);/g,'opacity:1;');
 
          char.images[state][direction].off.onload = function() {
