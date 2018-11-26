@@ -10,7 +10,8 @@ function BrowserDetector() {
 
   console.log(navigator.userAgent);
   this.checkBrowser = function() {
-    if (this._isEdge() || this._isChrome())
+    if (this._isEdge() || this._isChrome() ||
+        this._isIphone())
       this.allowed = true;
 
     return this.allowed;
@@ -27,6 +28,13 @@ function BrowserDetector() {
       return false;
     this.browser = BROWSER_EDGE;
     return true;
+  }
+
+  this._isIphone = function() {
+    if(/CriOS/i.test(navigator.userAgent) &&
+    /iphone|ipod|ipad/i.test(navigator.userAgent))
+        return true;
+    return false;
   }
 
   this._isChrome = function() {

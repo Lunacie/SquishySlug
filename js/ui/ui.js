@@ -31,7 +31,7 @@ function UI(player) {
 
   this.init = function(player, canvas) {
 
-    $("#device").html(navigator.userAgent);
+    //$("#device").html(navigator.userAgent);
     if (!staticMode) {
       this._player = player;
       this._player.ui = this;
