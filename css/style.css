@@ -6,6 +6,9 @@ html, body {
   /*
   TODO :
   font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif
+  https://fonts.google.com/specimen/Heebo
+  https://fonts.google.com/specimen/Ubuntu
+  footer news cycle
   */
 }
 body {
@@ -164,7 +167,7 @@ body {
   color : #6D316C;
 }
 #tab-content p {
-  font-family: 'News Cycle', sans-serif;
+  font-family: 'Heebo', sans-serif;
 }
 #tab-content #gallery { overflow-y: scroll;
   max-height : 30vh;
