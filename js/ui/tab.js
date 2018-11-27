@@ -2,7 +2,7 @@
 function Tab() {
 
   this._tabs = [
-    null,
+    about_tab,
     null,
     projects_tab,
     null,

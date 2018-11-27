@@ -69,6 +69,21 @@ body {
   font-size : 1.1rem;
 }
 
+#tab-about h1 {
+  font-family: "Ubuntu",sans-serif;
+  font-size : 2.1rem;
+  color : #6D316C;
+}
+#tab-about h3 {
+  font-family: "Heebo",sans-serif;
+  font-size : 1.3rem;
+  color : #C47E3F;
+}
+#tab-about .link {
+  color : #6D316C;
+  cursor : pointer;
+}
+
 #tab-svg {
   position : absolute;
   left : -100px;

@@ -164,6 +164,7 @@ function UI(player) {
       if (ui._morphing)
         return;
 
+
       if ($("#nav-overlay").width())
         ui._toggleMenu();
 
@@ -236,6 +237,7 @@ function UI(player) {
       ui._blurCanvas(10, 0);
 
 
+      $(".logo-element").css("visibility", "visible");
       $("#tab").animate({'width' :  '0px', 'left' : '-64px'},
       {
         duration : 1000,
