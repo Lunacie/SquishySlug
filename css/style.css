@@ -19,7 +19,7 @@ body {
   width : 100%;
   height : 100vh;
   position : fixed;
-  background : url('../assets/images/background.jpg');
+  background : url('../imageimages/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -79,9 +79,27 @@ body {
   font-size : 1.3rem;
   color : #C47E3F;
 }
-#tab-about .link {
+#tab .link {
   color : #6D316C;
   cursor : pointer;
+}
+
+#tab-road .scrollable {
+  height : 80vh;
+  overflow-y : scroll;
+}
+#tab-road h3 {
+  color : #6D316C;
+  font-family : 'Ubuntu', sans-serif;
+  font-size : 1.5rem;
+  font-weight : 400;
+}
+#tab-road #portrait {
+  border : 10px solid white;
+  border-radius : 100px;
+}
+#tab-road p.en, #tab-road p.fr {
+  text-align : justify;
 }
 
 #tab-svg {
@@ -311,6 +329,7 @@ body {
 
 .pull-left { float : left };
 .pull-right { float : right };
+.scrollable { overflow-y : scroll; }
 
 
 
