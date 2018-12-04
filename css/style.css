@@ -86,7 +86,6 @@ body {
 
 #tab-road .scrollable {
   height : 80vh;
-  overflow-y : scroll;
 }
 #tab-road h3 {
   color : #6D316C;
@@ -235,6 +234,10 @@ body {
   color : #6D316C;
   font-size : 1.4em;
 }
+#tab-content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 #tab-content h2 {
   font-family: 'Ubuntu Mono', monospace;
   font-weight : bold;
@@ -243,7 +246,7 @@ body {
 #tab-content p {
   font-family: 'Heebo', sans-serif;
 }
-#tab-content #gallery { overflow-y: scroll;
+#tab-content #gallery {
   max-height : 30vh;
 }
 #tab-content #gallery a:hover .project-title{
@@ -370,7 +373,6 @@ body {
 
 .pull-left { float : left };
 .pull-right { float : right };
-.scrollable { overflow-y : scroll; }
 
 
 
