@@ -24,15 +24,15 @@ function Projects() {
       https://github.com/Lunacie/SquishySlug</a>
       `,
       descriptionFR : `
-      Le portfolio SquishySlug est un <b>mini jeu 2d isometrique</b> (toujours en alpha),
+      Le portfolio SquishySlug est un <b>mini jeu 2d isométrique</b> (toujours en alpha),
       dans lequel le joueur peut se ballader dans Squishyslug Island
-      et parler a ses habitants pour permettre la navigation.
-      Il tourne sur navigateur, et est construit en <b>js+jquery</b> et utilise <b>bootstrap4</b>
-      pour son IU. Il dessine des <b>svg animes via css</b> sur un <b>canvas</b>,
-      et utilise un canvas masque pour la detection des clicks.<br/>
+      et parler à ses habitants pour permettre la navigation.
+      Il tourne sur navigateur, est construit en <b>js+jquery</b> et utilise <b>bootstrap4</b>
+      pour son IU. Il dessine des <b>svg animés via css</b> sur un <b>canvas</b>,
+      et utilise un canvas masqué pour la détection des clicks.<br/>
       Chaque tile utilise son propre hexcode qui est ensuite traduit en une destination.<br/>
-      Tous les personnages ont des IAs qui utilisent un <b>algorithme de Dijkstra</b>
-      Ce qui leur permet de toujours trouver le chemin le plus court jusqu'a leur destination.<br/>
+      Tous les personnages ont des IAs qui utilisent un <b>algorithme de Dijkstra</b>,
+      ce qui leur permet de toujours trouver le chemin le plus court jusqu'a leur destination.<br/>
       Le projet est open source : <a target="_blank" href="https://github.com/Lunacie/SquishySlug/">
       https://github.com/Lunacie/SquishySlug</a>
       `
@@ -48,7 +48,7 @@ function Projects() {
       SquishySlug logo and its vectorization using <b>Illustrator</b>.
       `,
       descriptionFR : `
-      Ce projet se compose d'un <b>sketch</b> pour le logo
+      Ce projet se composé d'un <b>sketch</b> pour le logo
       de SquishySlug et de sa vectorization a l'aide <b>Illustrator</b>.
       `
     },
@@ -61,20 +61,25 @@ function Projects() {
       description : `
       I participated in the development of a dev portal for the
       Australian ISP <a href="https://www.telstra.com.au/" target="_blank">Telstra</a> with
-      Australian branding company <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
+      Australian branding company <a href="http://www.ebrands.com.au/" target="_blank">
+      Ebrands</a>.<br/>
       The project included building an authentification system using their
       <b>sms API</b>, as well as miscellaneous tasks.<br/>
       The whole project is built using the cms <b>Drupal</b>.<br/>
-      The site can be visited here : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
+      The site can be visited here : <a href="https://dev.telstra.com/" target="_blank">
+      https://dev.telstra.com/</a>
       `,
       descriptionFR : `
-      J'ai participe au developement d'un dev portal pour le FAI Australien
+      J'ai participé au developement d'un dev portal pour le fournisseur d'accès
+       internet/téléphonie Australien
       <a href="https://www.telstra.com.au/" target="_blank">Telstra</a> avec
-      la compagnie Australienne de branding <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
-      Le projet compronait l'implementation d'un system d'authentification a l'aide de leur
+      la compagnie Australienne de branding
+       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
+      Le projet comprenait l'implémentation d'un système d'authentification à
+       l'aide de leur
       <b>API de sms</b>, ainsi que diverses taches.<br/>
       Le projet entier est batit sur le cms <b>Drupal</b>.<br/>
-      Le site peut etre visite ici : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
+      Le site peut être visité ici : <a href="https://dev.telstra.com/" target="_blank">https://dev.telstra.com/</a>
       `
     },
     {
@@ -92,12 +97,15 @@ function Projects() {
       The project called d3qb was using <b>d3.js</b> to build advanced graphs.
       `,
       descriptionFR : `
-      J'ai participe a un projet avec la compagnie de branding Australienne
+      J'ai participé à un projet avec la compagnie de branding Australienne
       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>
       et <a href="https://github.com/apigeek" target="_blank">APIgeeks</a>
-      a la construction d'un system d'affichage de statistiques de crimes base sur les donnees issues du
-      <a href="https://www.nsw.gov.au/" target="_blank">gouvernement Australien de l'etat du NSW</a>.<br/>
-      Le projet s'appelait d3qb etait une surcouche de <b>d3.js</b> pour construire des graphiques avances.
+      à la construction d'un système d'affichage de statistiques de crimes basé
+       sur les données issues du
+      <a href="https://www.nsw.gov.au/" target="_blank">gouvernement Australien
+       de l'état du NSW</a>.<br/>
+      Le projet s'appelait d3qb était une surcouche de <b>d3.js</b> pour construire
+      des graphiques avancés.
       `
     },
     {
@@ -113,7 +121,7 @@ function Projects() {
       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.
       `,
       descriptionFR : `
-      A partir d'un design qui m'a ete fournit, j'ai realise l'integration de
+      A partir d'un design qui m'a été fournit, j'ai realisé l'integration de
       plusieurs pages du site FireGeeks en <b>html/css</b> et <b>Bootstrap4</b>.
       avec la compagnie de branding
       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.
@@ -131,8 +139,8 @@ function Projects() {
       and the textures and normal and specular maps using <b>Photoshop</b>.
       `,
       descriptionFR : `
-      Cette scene a ete realisee pour un jeu video indie.
-      Tous les modeles 3d ont ete realises sous <b>Blender</b>,
+      Cette scène a été realisée pour un jeu vidéo indie.
+      Tous les modeles 3d ont été realisés sous <b>Blender</b>,
       et les textures et maps normales et specular sous <b>Photoshop</b>.
       `
     },
@@ -149,9 +157,9 @@ function Projects() {
       on <b>Blender</b>.
       `,
       descriptionFR : `
-      Voici un projet de chara-design pour un jeu video indie.
-      J'ai realise un premier sketch des personnages sur <b>Photoshop</b>,
-      avant de realiser des modeles 3d avec squelettes et animations
+      Voici un projet de chara-design pour un jeu vidéo indie.
+      J'ai realisé un premier sketch des personnages sur <b>Photoshop</b>,
+      avant de réaliser des modèles 3d avec squelettes et animations de marche
       sur <b>Blender</b>.
       `
     },
@@ -170,12 +178,12 @@ function Projects() {
       implemented as a wordpress plugin.
       `,
       descriptionFR : `
-      Challenge consulting est un projet base sur le cms
-      <b>wordpress</b>. sur lequel j'ai travaille avec la compagnie de branding
+      Challenge consulting est un projet basé sur le cms
+      <b>wordpress</b>. sur lequel j'ai travaillé avec la compagnie de branding
       <a href="http://www.ebrands.com.au/" target="_blank">Ebrands</a>.<br/>
-      J'ai ecrit un script <b>python</b> qui utilise <b>l'API</b> de Mailgun
-      pour construire des groupes cibles que j'ai ensuite utilise dans un mailing system que
-      j'ai implemente en un plugin wordpress.
+      J'ai écrit un script <b>python</b> qui utilise <b>l'API</b> de Mailgun
+      pour construire des groupes cibles que j'ai ensuite utilisé dans un mailing system que
+      j'ai implementé sous la forme d'un plugin wordpress.
       `
     },
     {
@@ -198,10 +206,10 @@ function Projects() {
       `,
       descriptionFR : `
       Ce projet est un prototype pour un <b>moteur de recommendations</b> que
-      j'ai designe et implemente en <b>python</b> pour la startup Australienne Leezair.
-      Il recupere tout d'abbord des donnees de differentes sources, puis les serialize en features vectors.<br/>
-      J'ai ensuite utilise une <b>cosine similarities</b> pour faire des recommendations
-      bases sur les features vectors extraits des donnees des produits et servis
+      j'ai designé et implementé en <b>python</b> pour la startup Australienne Leezair.
+      Il récupere tout d'abord des données de différentes sources, puis les serialize en features vectors.<br/>
+      J'ai ensuite utilisé un algorithme de <b>cosine similarities</b> pour faire des recommendations
+      basées sur les features vectors extraits des données des produits et servis
       par une <b>API Django</b>.<br/>
       <a href="https://github.com/Lunacie/cos-similarity-recommendations" target="_blank">
       https://github.com/Lunacie/cos-similarity-recommendations
@@ -222,11 +230,11 @@ function Projects() {
       I then wrote a <b>node.js</b> script to make those data exploitable by the existing system.
       `,
       descriptionFR : `
-      J'ai travaille sur ce projet pour la startup de voyage Leezair.
-      Le projet consistait un inspecter de multiples potentielles sources de donnees,
-      telles que des <b>APIs XML et REST</b>. Extraction de certaines donnees necessitait du <b>data scrapping</b>
+      J'ai travaillé sur ce projet pour la startup de voyage Leezair.
+      Le projet consistait un inspecter de potentielles sources de données multiples,
+      telles que des <b>APIs XML et REST</b>. L'extraction de certaines données nécessitait du <b>data scrapping</b>
       .<br/>
-      J'ai ensuite ecrit un script <b>node.js</b> pour rendre ces donnees exploitable par les systeme existant.
+      J'ai ensuite ecrit un script <b>node.js</b> pour rendre ces données exploitable par les systèmes existants.
       `
     },
     {
@@ -243,7 +251,7 @@ function Projects() {
       `,
       descriptionFR : `
       Des designs <a href="https://www.invisionapp.com/" target="_blank">
-      Invision</a> m'ont ete fournis. Je les ai ensuite integres en plusieurs pages web <b>html, css avec
+      Invision</a> m'ont été fournis. Je les ais ensuite integrés en plusieurs pages web <b>html, css avec
       bootstrap3</b>.<br/>
       <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
       `
@@ -262,10 +270,10 @@ function Projects() {
       <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
       `,
       descriptionFR : `
-      J'ai construit le "list an experience" formflow pour la startup de voyages
-      Leezair en <b>javascript et Angular 1.5</b> Toutes les donnees etaient echangees avec une API existante.
-      J'ai egalement integres les <a href="https://www.invisionapp.com/" target="_blank">
-      designs Invisions</a> qui m'ont ete fournis en <b>html/css et bootstrap3</b>.<br/>
+      J'ai construis le "list an experience" formflow pour la startup de voyages
+      Leezair en <b>javascript et Angular 1.5</b> Toutes les données etaient echangées avec une API existante.
+      J'ai également integrés les <a href="https://www.invisionapp.com/" target="_blank">
+      designs Invisions</a> qui m'ont été fournis en <b>html/css et bootstrap3</b>.<br/>
       <a href="https://www.leezair.com/list-experience" target="_blank">https://www.leezair.com/list-experience</a>
       `
     },
@@ -285,7 +293,7 @@ function Projects() {
       descriptionFR : `
       Cette mission consistait en une migration de blog depuis le csm <b>drupal6</b> vers
       <b>SquareSpace</b>.<br/>
-      Cette mission comprennait egalement l'integration d'un design fournit sous la forme
+      Cette mission comprennait également l'integration d'un design fournit sous la forme
       d'un fichier psd, en une <b>template SquareSpace responsive html/css</b>.<br/>
       <a href="https://www.manageflitter.com/blog/">https://www.manageflitter.com/blog/</a>
       `
@@ -302,7 +310,7 @@ function Projects() {
       <a href="http://89n.com/" target="_blank">http://89n.com/</a>
       `,
       descriptionFR : `
-      On m'a fournit un fichier psd d'un design que j'ai ensuite integre en <b>html/css responsive</b>.<br/>
+      Il m'a été remit le fichier psd d'un design que j'ai ensuite integré en <b>html/css responsive</b>.<br/>
       <a href="http://89n.com/" target="_blank">http://89n.com/</a>
       `
     },
@@ -329,18 +337,18 @@ function Projects() {
     <a href="https://github.com/Lunacie/Worlds" target="_blank">https://github.com/Lunacie/Worlds</a>
   `,
   descriptionFR : `
-Ce projet en chantier est un jeu + <b>un moteur voxel 3d</b> qui render la carte au runtime.<br/>
+Ce projet en chantier est un jeu + <b>un moteur voxel 3d</b> qui fait le rendu de la carte au runtime.<br/>
 <ul>
-<li>Implementation d'un client graphique en utilisant <b>openGL</b></li>
-<li>Management des evenements claviers, souris, system et expose</li>
-<li>Parsing de fichier syntax .obj pour permettre l'affichage polygonal d'objets 3d complexes a l'aide de tris</li>
+<li>Implémentation d'un client graphique en utilisant <b>openGL</b></li>
+<li>Management des évènements claviers, souris, system et expose</li>
+<li>Parsing de fichier syntax .obj pour permettre l'affichage polygonal d'objets 3d complèxes à l'aide de tris</li>
 <li>Parsing de fichier au format .mtl pour permettre l'extraction de ressources telles que des textures 2D</li>
-<li>Parsing de format .tgv compresse et decompresse pour l'implementation de maps diffuse, spectrales, et
+<li>Parsing de format .tgv compresse et décompresse pour l'implémentation de maps diffuse, spectrales, et
 normales</li>
-<li>Implementation d'un moteur voxel graphique basique. Malgres le moteur voxel, les maps sont rendues
+<li>Implémentation d'un moteur voxel graphique basique. Malgrés le moteur voxel, les maps sont rendues
 en polygones</li>
-<li>Implementation d'un <b>algorithme de frustrum culling </b> pour optimiser le rendering et obtenir un fps plus eleve au runtime </li>
-<li>Implementation  d'<b>octree</b> pour optimiser le rendering et obtenir un fps plus eleve au runtime <br/></li>
+<li>Implémentation d'un <b>algorithme de frustrum culling </b> pour optimiser le rendering et obtenir un fps plus elevé au runtime </li>
+<li>Implémentation  d'<b>octree</b> pour optimiser le rendering et obtenir un fps plus elevé au runtime <br/></li>
 </ul>
 <a href="https://github.com/Lunacie/Worlds" target="_blank">https://github.com/Lunacie/Worlds</a>
 `
@@ -365,16 +373,16 @@ en polygones</li>
       </ul>
       `,
       descriptionFR : `
-      Ce projet est un web service wui permet aux utilisateurs de chercher et de comparer des recettes a l'aide d'un <b>crawler http</b><br/>
+      Ce projet est un web service qui permet aux utilisateurs de chercher et de comparer des recettes à l'aide d'un <b>crawler http</b><br/>
       <ul>
-      <li>Background Illustration : J'ai realise l'illustration de l'arriere plan sur <b>photoshop</b> en integrant diverses images de nourriture</li>
-      <li> Design de la template web sur <b>adobe Photoshop</b>. Integration depuis un .psd en <b>html et css</b></li>
-      <li>Implementation d'un <b>web crawler http qui tourne sur linux</b>, qui visite des sites de cuisine, a la recherches de differentes
-           version d'une recette specifique; Extraction des donnees a partir des pages html telles que les ingredients, instructions et
+      <li>Background Illustration : J'ai réalise l'illustration de l'arrière plan sur <b>photoshop</b> en intégrant diverses images de nourriture</li>
+      <li> Design de la template web sur <b>adobe Photoshop</b>. Intégration depuis un .psd en <b>html et css</b></li>
+      <li>Implémentation d'un <b>web crawler http qui tourne sur linux</b>, qui visite des sites de cuisine, à la recherches de différentes
+           version d'une recette spécifique; Extraction des données à partir des pages html telles que les ingrédients, instructions et
       photos</li>
-      <li>Implementation d'un projet web .so dumboServer qui fait tourner un processus de crawler http process et retourne
-      les donnees via http a un script <b>AJAX</b> appelle depuis l'une des pages de recherche.</li>
-      <li>Developement du front-end de FetchFood</li>
+      <li>Implémentation d'un projet web .so dumboServer qui fait tourner un processus de crawler http et retourne
+      les données via http à un script <b>AJAX</b> appellé depuis l'une des pages de recherche.</li>
+      <li>Dévelopement du front-end de FetchFood</li>
       </ul>
       `
     },
@@ -396,12 +404,12 @@ en polygones</li>
       template in <b>html/css</b>
       `,
       descriptionFR : `
-      J'ai adapte ce site a partir d'un site existant pour le rendre facilement duplicable.<br/>
-      C'est un site de voyage/locations qui fonctionne sur un systeme d'affiliations.
-      J'ai fait en sorte que le proprietaire du site puisse facilement changer ses donnees d'affiliation dan le panel admin
-      de facon a pouvoir gagner un revenu sur chaque vente. Les ventes sont gerees par les differents programmes
-      auquels le proprietaire du site est affilie.<br/>
-      J'ai egalement fait en sorte que les site soit 100% duplicable de maniere a ce qu'il puisse etre vendu de mutiples fois.<br/>
+      J'ai adapté ce site à partir d'un site existant pour le rendre facilement duplicable.<br/>
+      C'est un site de voyage/locations qui fonctionne sur un système d'affiliations.
+      J'ai fait en sorte que le propriétaire du site puisse facilement changer ses données d'affiliation dans le panel admin
+      de facon à pouvoir gagner un revenu sur chaque vente. Les ventes sont gerées par les differents programmes
+      auquels le propriétaire du site est affilié.<br/>
+      J'ai également fait en sorte que les site soit 100% duplicable de manière à ce qu'il puisse être vendu de mutiples fois.<br/>
       Chaque fois qu'un site etait vendu, j'en refaisais le design sur <b>photoshop</b> puis mettais a jour la
       template <b>html/css</b>
       `
@@ -440,26 +448,26 @@ en polygones</li>
       descriptionFR : `
       Ce projet est un site web e-commerce pour un vapostore Francais.<br/>
       <ul>
-        <li>Design de la template web sur  adobe Photoshop. Integration depuis un .psd en html/css</li>
+        <li>Design de la template web sur adobe Photoshop. Intégration depuis un .psd en html/css</li>
         <li>Design du logo sur adobe Illustrator</li>
         <li>Programming et compilation d'un .so (librarie dynamique) pour le projet</li>
-        <li>L'implementation de l'e-commerce comprend :</li>
+        <li>L'implémentation de l'e-commerce comprend :</li>
              <ul>
-             <li> L'affichage des items par categories, marques</li>
-             <li>Construction d'un menu "a branches" bases sur les relations parents/enfants des items du menu</li>
-             <li>L'integration des items, marques, stocks and categories a partir du logiciel de caisse “Artifact” comprennait :</li>
-                <ul><li>La synchronization des donnees par API via ftp</li>
-                    <li>Les items etaient exportes depuis le logiciel des caisse au format XML format, ce qui a requit
-        l'implementation d'un programme qui parsait le XML pour extraire les donnees et ensuite les formater en INSERT and or UPDATE sql requests.
+             <li> L'affichage des items par catégories, marques</li>
+             <li>Construction d'un menu "à branches" basés sur les relations parents/enfants des items du menu</li>
+             <li>L'intégration des items, marques, stocks and catégories à partir du logiciel de caisse “Artifact” comprennait :</li>
+                <ul><li>La synchronization des données par API via ftp</li>
+                    <li>Les items etaient exportés depuis le logiciel des caisse au format XML format, ce qui a requit
+        l'implémentation d'un programme qui parsait le XML pour extraire les données et ensuite les formater en INSERT and or UPDATE requetes sql.
         </li>
-                    <li>Automation de la sychronisation des fichier sql generes pour permettre la synchronisation des donnees entre le web server et le logiciel de caisse</li>
+                    <li>Automation de la sychronisation des fichier sql generés pour permettre la synchronisation des données entre le web server et le logiciel de caisse</li>
                 </ul>
-             <li>Systeme de caddie de caisse en utilisant des dumboServer cookies</li>
+             <li>Système de caddie de caisse en utilisant des dumboServer cookies</li>
              <li>Prise en charge des commandes en ligne</li>
              <li>Back office</li>
-             <li>Integration de methodes de paiement a l'aide de Paypal</li>
+             <li>Intégration de méthodes de paiement à l'aide de Paypal</li>
         </ul>
-        <li>Deploiement du project web sur un server Debian distant qui faisait tourner un dumboServer via ssh</li>
+        <li>Déploiement du project web sur un server Debian distant qui faisait tourner un dumboServer via ssh</li>
         </ul>
       `,
       tech : "html,php,graphic,js,c"
@@ -474,8 +482,8 @@ en polygones</li>
         Then I added features such as a contact and signup forms built in php.
       `,
       descriptionFR : `
-        Ce site a ete realise de zero en php pour une compagnie de coaching. J'ai d'abord realise le design sur photoshop, puis integre en html/css.<br/>
-        J'ai ensuite ajoute des fonctionnalites telles que des formulaires de contacte and d'inscription en php.
+        Ce site a été realisé en partant de zéro en php pour une compagnie de coaching. J'ai d'abord réalisé le design sur photoshop, puis intégré en html/css.<br/>
+        J'ai ensuite ajouté des fonctionnalités telles que des formulaires de contact et d'inscription en php.
       `,
       tech : "html,php,graphic"
     },
@@ -491,10 +499,10 @@ en polygones</li>
       I also made the design from scratch on photoshop and integrated it using html/css and jquery
       `,
       descriptionFR : `
-      Ceci est un site sur lequel les utilisateurs peuvent vendre des guides de voyages d'occasion en ecrivant simplement une annonce.
-      Les utilisateurs a la recherche d'un guide peuvent naviguer les annonces grace au systeme de recherche que j'ai implemente base sur de nombreux criteres.
-      Il y a egalement un gestion complete des comptes utilisateurs pour que chacun puisse gerer ses informations personnelles et ses annonces. L'administrateur peut manager les comptes et les annonces.
-      J'ai egalement realise le design sur  photoshop et integre en html/css et jquery.
+      Ceci est un site sur lequel les utilisateurs peuvent vendre des guides de voyages d'occasion en écrivant simplement une annonce.
+      Les utilisateurs à la recherche d'un guide peuvent naviguer les annonces grace au système de recherche que j'ai implementé basé sur de nombreux critères.
+      Il y a également un gestion complète des comptes utilisateurs pour que chacun puisse gérer ses informations personnelles et ses annonces. L'administrateur peut gérer les comptes et les annonces.
+      J'ai également réalise le design sur  photoshop et integré en html/css et jquery.
       `,
       tech : "html,php,graphic,js"
     },
@@ -513,13 +521,14 @@ en polygones</li>
       Then I powered it so that the content (images and text) is loaded from mysql databases.
       `,
       descriptionFR : `
-      Ceci est l'ancienne version de mon portfolio. Il a par la suite ete remplace par SquishySlug Island.<br/>
-      J'ai d'abord realise un paysage vertical sur photoshop en utilisant des technique des matte painting et de photomanipulation.
-           J'ai ensuite fait en sorte que le background defile quand l'utilisateur scroll. L'arriere plan ne defile pas aussi vite que le premier plan pour creer une reelle impression de profondeur. Le but etant de jouer avec le parallax d'une maniere interessante, pour une fois.
+      Ceci est l'ancienne version de mon portfolio. Il a par la suite été remplacé par SquishySlug Island.<br/>
+      J'ai d'abord realisé un paysage vertical sur photoshop en utilisant des technique des matte painting et de photomanipulation.
+           J'ai ensuite fait en sorte que le background défile quand l'utilisateur fait défiler la page.
+            L'arrière plan ne défile pas aussi vite que le premier plan pour créer une réelle impression de profondeur. Le but étant de jouer avec le parallax de manière intéressante, pour une fois.
       <br/>
-      L'arriere plan entier est visible a la droite de l'image.
+      L'arrière plan entier est visible à la droite de l'image.
       <br/>
-      J'ai ensuite fait en sorte que les contenu (images et texte) soit charge depuis des bases de donnees mysql.
+      J'ai ensuite fait en sorte que les contenu (images et texte) soit chargés depuis des bases de données mysql.
       `,
       tech : "graphic,html,js,php"
     },
@@ -535,8 +544,8 @@ en polygones</li>
      Then, I made a database and powered the page using php/mysql so that users could signup to the contest.
       `,
       descriptionFR :`
-     J'ai realise ce site pour une competition en ligne pour etudiants.<br/>
-     I made the background on Blender, un outil de modelisation 3D, ensuite j'ai realise le design graphique sur photoshop, une fois celui ci termine, j'ai integre la page en html/css<br/>
+     J'ai réalisé ce site pour une compétition en ligne pour étudiants.<br/>
+     J'ai créé l'arrière plan sur Blender, un outil de modélisation 3D, ensuite j'ai realisé le design graphique sur photoshop, une fois celui ci terminé, j'ai integré la page en html/css<br/>
       A l'aide de php/mysql j'ai fait en sorte que les utilisateurs puissent participer au concours.
       `,
       tech : "html,php,graphic,3d"
@@ -552,8 +561,8 @@ en polygones</li>
       from this place that only existed in my mind until then.
       `,
       descriptionFR : `
-      Ceci est une scene photomanipulee cree sur photoshop a partir d'une centaine
-      de photographies trouvees sur le web pour la realisation de cette piece qui jusque la,
+      Ceci est une scène photomanipulée crée sur photoshop à partir d'une centaine
+      de photographies trouvées sur le web pour la réalisation de cette pièce qui jusque la,
       n'existait que dans ma tete.
       `,
       tech : "graphic"
@@ -568,7 +577,7 @@ en polygones</li>
       This is a digital paiting I started of Kerrigan from Starcraft Heart of the Swarm using photoshop.
       `,
       descriptionFR : `
-      Une peinture digitale de Kerrigan, Starcraft Heart of the Swarm sur photoshop.
+      Une peinture digitale de Kerrigan, personnage de Starcraft Heart of the Swarm sur photoshop.
       `
     },
     {
@@ -581,8 +590,8 @@ en polygones</li>
        The admin can access the different files and accounts through the admin panel I built.
       `,
       descriptionFR :  `
-       J'ai realise ce site pour un concours en ligne. Il y a un systeme de compte ainsi qu'une multitude de pages de formulaires.<br/>
-       L'admin peut acceder aux differents fichiers et comptes a travers le panel d'administration que j'ai implemente.
+       J'ai realisé ce site pour un concours en ligne. Il y a un système de compte ainsi qu'une multitude de pages de formulaires.<br/>
+       L'admin peut accéder aux differents fichiers et comptes à travers le panel d'administration que j'ai implementé.
       `,
       tech : "html,php"
     },
@@ -612,10 +621,10 @@ en polygones</li>
       I used to sell it on my own web template e-commerce.
       `,
       descriptionFR : `
-      Un kit graphique leger et colore que j'ai realise pour un serveur Minecraft sur photoshop.<br/>
-      je l'ai ensuite integre en une page html/css et mit le produit finit dans une archive pour que
-      n'importe quelle personne cherchant a creer un site pour son serveur minecraft n'ai qu'a remplir le texte et avoir un site web fonctionnel.<br/>
-      Ce n'etait que l'un des nombreux kits-graphiques que je vendais sur ma propre platforme e-commerce.
+      Un kit graphique léger et coloré que j'ai realisé pour un serveur Minecraft sur photoshop.<br/>
+      je l'ai ensuite integré en une page html/css et mit le produit finit dans une archive pour que
+      n'importe quelle personne cherchant à créer un site pour son serveur minecraft n'ait qu'à remplir le texte et avoir un site web fonctionnel.<br/>
+      Ce n'était que l'un des nombreux kits-graphiques que je vendais sur ma propre platforme e-commerce.
       `
     },
     {
@@ -629,11 +638,11 @@ en polygones</li>
       The payment method I integrated was Paypal.
       `,
       descriptionFR : `
-      Ce projet est un site de vente de kits-graphiques que j'ai construit de zero en php.
-      J'ai d'abord realise le design sur photoshop puis integre en html/css<br/>
+      Ce projet est un site de vente de kits-graphiques que j'ai construit de zéro en php.
+      J'ai d'abord realisé le design sur photoshop puis intégré en html/css<br/>
       Le site fonctionne en php/mysql and javascript.
-      C'est un ecommerce sur lequel je vendais du contenu web que je realisais moi meme.<br/>
-      Le moyen de paiement integre est Paypal.
+      C'est un e-commerce sur lequel je vendais du contenu web que je réalisais moi meme.<br/>
+      Le moyen de paiement integré est Paypal.
       `,
       tech : "html,php,graphic"
     },
@@ -644,12 +653,14 @@ en polygones</li>
       title : "Mutex related project + design",
       tech : "software,c,graphic",
       description : `
-      This is a mini game I made from scratch. It was built using the C programming language and SDL. It's a multi threading application which goal was to study how threads work independantly to each other and how MUTEX affects them.<br/>
+      This is a mini game I made from scratch. It was built using the C programming language and SDL. It's a multi threading application which goal was to study how threads work independantly to each other and how mutex affects them.<br/>
       I also made the graphic design for this mini-game using photoshop.
       `,
       descriptionFR : `
-      Ce projet est un programme C+SDL dans le but d'approfondir ma comprehension des applications multi thread et d'etudier la manniere dont les threads travaillent independemment les uns des autres et comment les MUTEX les affectent.<br/>
-      J'ai aussi realise le graphique design sur photoshop.
+      Ce projet est un programme C+SDL dans le but d'approfondir ma compréhension des
+      applications multi thread et d'étudier la mannière dont les threads travaillent
+       indépendemment les uns des autres et comment les mutex les affectent.<br/>
+      J'ai aussi realisé le design graphique sur photoshop.
       `
     },
     {
@@ -662,7 +673,7 @@ en polygones</li>
       This is a digital painting I made on photoshop. This painting was used as a background for an indie anime.
       `,
       descriptionFR : `
-      Peinture digitale realisee sur photoshop. Cette peinture a ete utilisee comme arriere plan dans un anime indie.
+      Peinture digitale realisée sur photoshop. Cette peinture a été utilisée comme arrière plan dans un anime indie.
       `
     },/*
     {
