@@ -102,6 +102,47 @@ body {
   text-align : justify;
 }
 
+#tab-contact button {
+  border : none;
+  background : none;
+  display: inline-flex;
+}
+#tab-contact button img {
+  margin-bottom : -50%;
+  cursor : pointer;
+}
+#tab-contact input, #tab-contact textarea {
+  display : block;
+  background: #af6b78; /* Old browsers */
+  background: -moz-linear-gradient(top, #af6b78 0%, #994674 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #af6b78 0%,#994674 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #af6b78 0%,#994674 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af6b78', endColorstr='#994674',GradientType=0 ); /* IE6-9 */
+  border : 1px solid rgb(237, 209, 223);
+  color : white;
+}
+#tab-contact input::placeholder, #tab-contact textarea::placeholder {
+  color : white !important;
+}#tab-contact input, #tab-contact textarea {
+  color : white !important;
+  font-family : 'Ubuntu', sens-serif;
+  font-size : 0.8em;
+  font-weight : 700;
+  padding-top : 5px;
+  padding-bottom : 5px;
+}
+#tab-content input.optional {
+  font-weight : 300;
+}
+#tab-contact textarea {
+  min-height : 30vh;
+}
+/* Hidding anti spam input*/
+#tab-content #email2 {
+  display: none;
+}
+#tab-contact .alert { display : none }
+
 #tab-svg {
   position : absolute;
   left : -100px;

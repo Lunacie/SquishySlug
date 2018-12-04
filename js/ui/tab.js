@@ -5,7 +5,7 @@ function Tab() {
     about_tab,
     null,
     projects_tab,
-    null,
+    contact_tab,
     project_tab
   ]
 

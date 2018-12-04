@@ -38,8 +38,6 @@ document.addEventListener("keydown", function(event)
     }
   }
 
-  if (events.right || events.up || events.down || event.left)
-        event.preventDefault();
   //console.log(event);
   //console.log(events);
 });
