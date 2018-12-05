@@ -28,6 +28,13 @@ function Camera() {
     return {x : player.x, y : player.y };
   }
 
+  this.getPlayerPosition = function() {
+    return this.player;
+  }
+ this.getCanvasCenter = function() {
+    return this.canvasCenter;
+  }
+
   this.rgbToHex = function (rgb) {
     var hex = Number(rgb).toString(16);
     if (hex.length < 2) {
@@ -44,28 +51,48 @@ this.center = function() {
     return {x : 0, y : 0}
 
   let playerPos = {x : player.block.x, y : player.block.y};
+  //this._drawPlayerPos(playerPos);
   let element = $("#canvas");
   let center = this._getCanvasCenter(element.width(), element.height());
+  this.canvasCenter = center;
   let offsetX = map._startX;
   let offsetY = map._startY;
 //  console.log(offsetX, offsetY);
   let x = ((playerPos.x - offsetX) / 2) * (tiles.size / 2);
   let y = (((playerPos.y - offsetY) / 2) * (tiles.size / 4));
+  //this.player = {x : x, y : y}
 
-if (x < center.start.x || x > center.end.x)
-  x = center.start.x;
-if (y > center.end.y)
-    y += (center.start.y * 2);
-else if (y < center.start.y)
-    y += (center.start.y * 2);
 
-  return {x : x, y : y *-1};
+  if (camera.player) {
+
+    y = 0;
+    if (camera.player.y > center.start.y)
+      y = 10;
+    else if (camera.player.y < center.start.y)
+      y = -10;
+    if (camera.player.y - center.start.y <= 10)
+        y = 0;
+    x = 0;
+    if (camera.player.x < center.start.x)
+      x = 10;
+    else if (camera.player.y > center.start.x)
+      x = -10;
+    if (camera.player.x - center.start.x <= 10)
+        x = 0;
+
+  }
+
+
+
+
+  return {x : x, y : y*-1 };
 }
+
 
   this._getCanvasCenter = function(width, height) {
     return {
-      start : { x : width / 2 - 50,  y : (height / 2) - (height / 4) -100 },
-      end :   { x : width / 2, y : (height / 2) - (height / 4) - 100 }
+      start : { x : width / 2 ,  y : height / 2 },
+      end :   { x : width / 2 + 100,   y : height / 2  + 100 }
     };
   }
 

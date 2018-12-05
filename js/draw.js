@@ -19,20 +19,61 @@
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
     ctxDebug.clearRect(0, 0, canvas.width, canvas.height);
 
-    /*var x = x2d;
-    var y = y2d;*/
-    let x = pos.x;
-    let y = pos.y;
+    var x = this.x2d;
+    var y = this.y2d;
+    x += pos.x;
+    y += pos.y;
+    //x = pos.x;
+    //y = pos.y;
 
-    /*y2d = y;
-    x2d = x;*/
+    this.y2d = y;
+    this.x2d = x;
     /*var x = 0;
     var y = 0;*/
     //console.log(x, y);
     map.draw(x , y /*- (tiles.size * 3)*/);
-    if (DEBUG)
+
+    if (DEBUG) {
       debugOv.draw(x, y /*- (tiles.size * 3)*/);
+      if (camera.player) {
+        this._drawPlayerPos(camera.getPlayerPosition());
+        this._drawCanvasCenter(camera.getCanvasCenter());
+      }
+    }
   }
+
+    this._drawPlayerPos = function(pos) {
+      context = ctx;
+      ctx.fillStyle = "red";
+      context.beginPath();
+      context.moveTo(pos.x - pos.width / 2, pos.y + pos.height / 2);
+      context.lineTo(pos.x + pos.width,
+                 pos.y - pos.height / 2);
+      context.lineTo(pos.x + pos.width,
+                 pos.y + pos.height);
+      context.lineTo(pos.x,
+                 pos.y + pos.height);
+      context.closePath();
+      context.fill();
+      context.stroke();
+    }
+    this._drawCanvasCenter = function(pos) {
+      if (!pos)
+        return;
+    ctx.fillStyle = "blue";
+      context = ctx;
+      context.beginPath();
+      context.moveTo(pos.start.x, pos.start.y);
+      context.lineTo(pos.start.x + (pos.end.x - pos.start.x),
+                 pos.start.y);
+      context.lineTo(pos.start.x + (pos.end.x - pos.start.x),
+                 pos.start.y + (pos.end.y - pos.start.y));
+      context.lineTo(pos.start.x,
+                 pos.start.y + (pos.end.y - pos.start.y));
+      context.closePath();
+      context.fill();
+      context.stroke();
+    }
 
   /*
   var centerCamera = function() {

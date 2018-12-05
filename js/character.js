@@ -510,9 +510,12 @@ function Character (x, y)
         var height = tiles.size / 1.6;
         this.x2d = x;
         this.y2d = y;
-        if (element.loaded)
+        if (element.loaded) {
           ctx.drawImage(element,
                         x, y, width, height);
+          if (this.id == 0)
+          camera.player = {x: x, y : y, width : width, height : height}
+          }
         if (!this._static)
           this._drawProps(x, y, width, height);
 
