@@ -230,7 +230,7 @@ body {
 }
 
 #header, #logo-block {
-  max-height : 55px;
+  max-height : 60px;
   overflow-y : hidden;
 }
 
@@ -322,7 +322,7 @@ h2#title {
 .nav.mobile ul li .text {
   color : white;
   font-family: 'News Cycle', sans-serif;
-  font-size : 1em;
+  font-size : 3em;
   text-align: right;
 }
 .nav ul li .icon { width : 50px;}
