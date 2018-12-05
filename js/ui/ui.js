@@ -123,6 +123,7 @@ function UI(player) {
       if (!staticMode)
         ui._player.freeNpc(id);
       $('.tab-'+ui._tab+' li').removeClass('selected');
+      //$("div[data-id='"+ui._tabToOpen+"']").hide();
       ui._tab = id;
       ui._closeTabAnimation();
       //$("#loading").stop();
@@ -151,6 +152,9 @@ function UI(player) {
 
   this._prepareTab = function(id) {
     ui.tabs.update(id);
+  }
+
+  this._showTab = function(id) {
     let element = $('div[data-id="'+id+'"]');
     element.show();
   }
@@ -283,6 +287,7 @@ function UI(player) {
       let width = TAB_WIDTH;
 
 
+      this._showTab(id);
       $("#tab-content-content").show();
       $('.tab-'+id+' li').addClass('selected');
       ui._tab = id;
