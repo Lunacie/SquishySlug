@@ -269,12 +269,14 @@ function UI(player) {
     this._toggleSocials = function(open) {
       if (open) {
         let right = window.innerWidth - TAB_WIDTH;
-        $("#footer .social").fadeOut(1000);
+        $("#footer #socials").animate({ opacity: 0 })
+        $("#footer #credits").animate({ opacity: 0 })
         //$("#tab-svg").animate({'left' :  TAB_WIDTH - 100   + 'px'}, 1000);
         $("p.copy").delay(1000).css('color', '#6D316C');
       }
       else {
-        $("#footer .social").fadeIn(1000);
+        $("#footer #socials").animate({ opacity: 100 })
+        $("#footer #credits").animate({ opacity: 100 })
         $("p.copy").delay(1000).css('color', '#FFFFFF');
         //$("#tab-svg").animate({'left' : '-100px'}, 1000);
       }
