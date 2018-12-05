@@ -48,10 +48,11 @@ body {
 }
 
 .flag {
-  width : 40px;
+  width : 60px;
   cursor : pointer;
   z-index : 14;
 }
+#footer .flag{ width : 100px}
 #language {
   position : fixed !important;
   top : 0px;
@@ -354,7 +355,6 @@ h2#title {
 
 #footer {
   width: 100%;
-  height : 60px;
   position : fixed;
   bottom : 0;
   z-index : 4;
@@ -380,6 +380,13 @@ h2#title {
   color : white;
   font-size : 2rem;
 }
+
+
+
+#footer { background : red; }
+#footer #credits { background : yellow; }
+#footer #socials { background : green; }
+#footer #offset { background : black; }
 #browserstack { width : 100px }
 
 .pull-left { float : left };
