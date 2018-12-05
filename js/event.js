@@ -23,7 +23,7 @@ document.addEventListener("keydown", function(event)
   events.right = (event.keyCode == 68 || event.keyCode == 39) ?
                  true : false;
 
-  if (event.keyCode == 79 /* o */) {
+  if (event.keyCode == 79 /* o */ && DEBUG) {
     if (canvas.style.display == "none") {
       canvas.style.display = "inherit";
       offCanvas.style.display = "none";
