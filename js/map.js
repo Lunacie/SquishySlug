@@ -186,6 +186,8 @@ function Map(player, characters)
         }
       // else draw image
       else if (tile.id) {
+        if (!tile.image)
+          window.location.reload();
         if (!tile.image.off) {
           this._loadImage(tile, offColor);
           if (offColor > this.lastHex)
