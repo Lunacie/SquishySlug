@@ -5,6 +5,7 @@ function Contact() {
   this._e_name = false;
   this._e_website = false;
   this._e_message = false;
+  this._sent = false;
 
   this.init = function() {
     $("#contact-form").submit(this._submit);
@@ -58,8 +59,10 @@ function Contact() {
       'data': {'data' : JSON.stringify(data)},
        'success': function(res) {
        res = JSON.parse(res);
-       if (res.success && res.success == true)
+       if (res.success && res.success == true) {
         $('#send-mail-success').show();
+        contact_tab._sent = true;
+      }
        else
          $('#send-mail-error').show();
       },
@@ -69,6 +72,8 @@ function Contact() {
   }
 
   this._formCheck = function() {
+    if (contact_tab._sent == true)
+      return null;
     if ($("email2").val())
       return null;
 
