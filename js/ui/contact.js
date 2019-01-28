@@ -57,7 +57,7 @@ function Contact() {
       'ContentType': 'application/json',
       'data': {'data' : JSON.stringify(data)},
        'success': function(res) {
-       res = JSON.decode(res);
+       res = JSON.parse(res);
        if (res.success && res.success == true)
         $('#send-mail-success').show();
        else
