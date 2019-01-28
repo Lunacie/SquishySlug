@@ -1,6 +1,6 @@
 <?php
   function returnError($str) {
-    echo ("{success : false, message: '".$str."'}");
+    echo ("{'success' : false, 'message': '".$str."'}");
     return -1;
   }
 
@@ -36,7 +36,7 @@
 
   $rc = mail("contact@squishyslug.com", $subject, $msg, $headers);
   if ($rc)
-    echo ("{success : true}");
+    echo ("{'success' : true}");
   else
     return returnError("Couldn't send email");
 ?>
