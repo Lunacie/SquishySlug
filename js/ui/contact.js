@@ -50,16 +50,22 @@ function Contact() {
     let data = contact_tab._formCheck();
     if (!data)
       return;
-      
+
     $.ajax({
-      'url':'url',
+      'url':'/contact.php',
       'method':'POST',
-      'dataType': 'json',
-       processData: false,
-      'contentType': 'application/json',
-      'data':JSON.stringify(data),
-       'success': function(res) {}
-      });
+      'ContentType': 'application/json',
+      'data': {'data' : JSON.stringify(data)},
+       'success': function(res) {
+       let res = JSON.decode(res);
+       if (res.success && res.success == true)
+        $('#send-mail-success').show();
+       else
+         $('#send-mail-error').show();
+      },
+     'error': function(res) {
+        $('#send-mail-error').show();
+      }});
   }
 
   this._formCheck = function() {

@@ -142,7 +142,9 @@ body {
 #tab-content #email2 {
   display: none;
 }
-#tab-contact .alert { display : none }
+#tab-contact .row .alert { display : none }
+#send-mail-error, #send-mail-success { display : none }
+
 
 #tab-svg {
   position : absolute;
