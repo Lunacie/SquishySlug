@@ -230,8 +230,8 @@ function UI(player) {
         css['margin-top'] = '-'+margin+'px';
       }
       else if (!radius && !margin) {
-        css.width = (window.innerWidth - TAB_WIDTH) + 'px';
-        css.height = (window.innerHeight) + 'px';
+        css.width = (window.screen.width - TAB_WIDTH) + 'px';
+        css.height = (window.screen.height) + 'px';
       }
       return css;
     }
@@ -268,7 +268,7 @@ function UI(player) {
 
     this._toggleSocials = function(open) {
       if (open) {
-        let right = window.innerWidth - TAB_WIDTH;
+        let right = window.screen.width - TAB_WIDTH;
         $("#footer #socials").animate({ opacity: 0 })
         $("#footer #credits").animate({ opacity: 0 })
         //$("#tab-svg").animate({'left' :  TAB_WIDTH - 100   + 'px'}, 1000);
@@ -308,7 +308,7 @@ function UI(player) {
       });
       var element = $("#canvas");
       let left = width;
-      let baseWidth = window.innerWidth;
+      let baseWidth = window.screen.width;
       if (!reopen)
         baseWidth = element.width();
 
@@ -357,11 +357,12 @@ function UI(player) {
 
 
      tiles.size = tiles.initSize;
-     //ratio = canvas.width / canvas.height;
+     //ratio = canvas.width / canvas.height;//
+     /*
      if (canvas.height > 3000 || canvas.width > 3000)
        tiles.size *= 3;
      else if (ratio < 1)
-      tiles.size *= 1.7;
+      tiles.size *= 1.7;*/
   }
 
   this._toggleMenu = function() {
@@ -439,7 +440,7 @@ function UI(player) {
   }
 
   this._displayScreen = function() {
-      this.resize(window.innerWidth, window.innerHeight);
+      this.resize(window.screen.width, window.screen.height);
 
       var delay = 0;
       if (this._last == UI_STATE_LOADING) {

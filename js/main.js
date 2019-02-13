@@ -33,21 +33,21 @@ window.onload = function() {
 
 if (!staticMode) {
   var canvas = document.getElementById('canvas');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = window.screen.width;
+  canvas.height = window.screen.height;
   canvas.addEventListener("click", eventCanvasClicked);
 
   var offCanvas = document.getElementById('offCanvas');
-  offCanvas.width = window.innerWidth;
-  offCanvas.height = window.innerHeight;
+  offCanvas.width =window.screen.width;
+  offCanvas.height = window.screen.height;
 
   var debugCanvas = document.getElementById('debugCanvas');
-  debugCanvas.width = window.innerWidth;
-  debugCanvas.height = window.innerHeight;
+  debugCanvas.width = window.screen.width;
+  debugCanvas.height = window.screen.height;
   debugCanvas.addEventListener("click", eventCanvasClicked);
 
   ui.init(player, canvas);
-  ui.resize(window.innerWidth, window.innerHeight);
+  ui.resize(window.screen.width, window.screen.height);
 }
 else if (staticMode) {
     ui.init();
@@ -64,10 +64,11 @@ if (staticMode ||
     debugOverlay.setContext(ctxDebug);
 
     ratio = canvas.width / canvas.height;
+    /*
      if (canvas.height > 3000 || canvas.width > 3000)
        tiles.size *= 3;
      else if (ratio < 1)
-      tiles.size *= 1.7;
+      tiles.size *= 1.7;*/
  }
 
 
