@@ -293,12 +293,13 @@ h2#title {
 #nav-overlay {
   width : 0px;
   height : 100vh;
-  background : rgba(255, 255, 255, 0.2);
+  background : rgba(109, 49, 108, 0.2);
   position : absolute;
   top : 0;
   right : 0px;
   z-index: 3;
 }
+
 .nav.mobile {
   position : absolute;
   /*width : 200px;
@@ -323,9 +324,10 @@ h2#title {
 .nav.mobile ul li .text {
   color : white;
   font-family: 'News Cycle', sans-serif;
-  font-size : 3em;
+  font-size : 1.7em;
   text-align: right;
 }
+
 .nav ul li .icon { width : 50px;}
 .nav:not(.mobile) ul li span.text {
   color : #6D316C;
