@@ -53,7 +53,7 @@ body {
   z-index : 14;
   margin-left : 10px;
 }
-#footer .flag{ width : 100px}
+footer .flag{ width : 100px}
 #language {
   position : fixed !important;
   top : 0px;
@@ -368,35 +368,47 @@ h2#title {
 /*.nav.mobile ul li .text { visibility : hidden; }*/
 .nav ul li:hover .text, .nav ul li.selected .text { visibility : visible; }
 
-#footer {
-  width: 100%;
-  position : fixed;
+footer {
+  width: 100% !important;
+  position : fixed !important;
   bottom : 0;
   z-index : 4;
 }
-#footer p {
+footer p {
   color : white;
   font-family: 'News Cycle', sans-serif;
   font-size : 0.8em;
+  text-align : right;
 }
-#footer .credits img {
+footer .credits img {
   position : fixed;
   bottom : 0;
 }
-#footer p.copy {
-  position : absolute;
-  bottom : 0px;
+footer #browser-block {
+  max-height: 43px;
 }
-#footer .social {
+footer p.copy {
+  position : absolute;
+  bottom : 10px;
+}
+footer .social {
   z-index : 6;
 }
-#footer .social i {
+footer #socials p {
+  color : #6D316C;
+  font-weight : bold;
+}
+footer .social i {
   width : 30px;
   height : 30px;
   color : white;
   font-size : 2rem;
+  color : #6D316C;
 }
-#footer #flags {
+footer #socials #socials-icons {
+  text-align : right;
+}
+footer #flags {
   position : fixed;
   bottom : 30px;
   right : 0;
@@ -471,8 +483,11 @@ h2#title {
   #header #logo-block img {
     height : 95px;
   }
-  #footer #browserstack {
+  footer #browserstack {
     width : 200px;
+  }
+  footer p.copy {
+    bottom : 15px;
   }
 
   .nav {
@@ -492,16 +507,15 @@ h2#title {
   .nav ul li .text { visibility : visible; }
 
 
-  #footer p {
+  footer p {
     font-size : 2rem !important;
   }
-  #footer {
+  footer {
     height : 7em;
   }
-  #footer .social i {
+  footer .social i {
     width : 50px;
     height : 50px;
-    color : white;
     font-size : 2rem;
   }
 
@@ -517,13 +531,12 @@ h2#title {
   }
   .nav { top : 15%; }
   #tab { font-size : 2.3rem; }
-  #footer {
+  footer {
     height : 4.4em;
   }
-  #footer .social i {
+  footer .social i {
     width : 30px;
     height : 30px;
-    color : white;
     font-size : 2.3rem;
   }
   #loading img.big {

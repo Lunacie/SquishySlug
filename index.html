@@ -42,7 +42,6 @@
       <link rel="stylesheet" href="css/animation-menu.css"></link>
 
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
    </head>
 
@@ -55,8 +54,8 @@
            <div class="flex-item-4">
              <h1 >squishySlug</h1>
              <h2 id="title">
-               <span class="fr">Développement Web | Web Design</span>
-               <span class="en">Web Development | Web Design</span>
+               <span class="fr">Développement Web <span class="hidden-xs-down">|</span> Web Design</span>
+               <span class="en">Web Development <span class="hidden-xs-down">|</span> Web Design</span>
              </h2>
            </div>
 
@@ -69,20 +68,6 @@
        <div id="menu-block" class="nav flex-item-7 hidden-md-down row">
          <ul class="col-12 d-flex flex-row align-items-stretch">
 
-           <a href="#" class="open-tab-btn tab-3"><li class="row projects py-3">
-               <span class="icons col-2 p-0">
-                  <img class="icon on" src="assets/ui/nav-orbit.svg" alt="about"/>
-                 <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
-               </span>
-               <span class="text col-6 ml-1"><span class="en">Projects</span><span class="fr">Projets</span></span>
-           </li></a>
-           <a href="#" class="open-tab-btn tab-4"><li class="row contact py-3">
-               <span class="icons col-2 p-0">
-                  <img class="icon on" src="assets/ui/nav-sun.svg" alt="about"/>
-                 <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
-               </span>
-               <span class="text col-6 ml-1">Contact</span>
-           </li></a>
            <a href="#" class="open-tab-btn tab-1"><li class="row about py-3">
                <span class="icons col-2 p-0">
                   <img class="icon on" src="assets/ui/nav-planet.svg" alt="about"/>
@@ -90,13 +75,28 @@
                </span>
               <span class="text col-8 ml-1"> <span class="en">About</span><span class="fr">À Propos</span></span>
            </li></a>
-        <a href="#" class="open-tab-btn tab-2"><li class="row road py-3">
+           <a href="#" class="open-tab-btn tab-3"><li class="row projects py-3">
+               <span class="icons col-2 p-0">
+                  <img class="icon on" src="assets/ui/nav-orbit.svg" alt="about"/>
+                 <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
+               </span>
+               <span class="text col-6 ml-1"><span class="en">Projects</span><span class="fr">Projets</span></span>
+           </li></a>
+          <a href="#" class="open-tab-btn tab-2"><li class="row road py-3">
             <span class="icons col-2 p-0">
                <img class="icon on" src="assets/ui/nav-galaxy.svg" alt="about"/>
               <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
             </span>
             <span class="text col-8 ml-1"><span class="en">Behind the slug</span><span class="fr">Présentation</span></span>
         </li></a>
+        <a href="#" class="open-tab-btn tab-4"><li class="row contact py-3">
+            <span class="icons col-2 p-0">
+               <img class="icon on" src="assets/ui/nav-sun.svg" alt="about"/>
+              <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
+            </span>
+            <span class="text col-6 ml-1">Contact</span>
+        </li></a>
+
        </ul>
      </div> <!-- !menu -->
 
@@ -621,33 +621,32 @@
 
 
 
-            <div id="footer" class="container row px-3 mb-2">
+            <footer class="container d-flex flex-row px-3 mb-2">
 
-                <div id="credits" class="col-6 col-md-5 col-lg-8 row">
-                  <div class="col-12"><p class="copy p-0 m-0">© 2018 - 2019 squishySlug</p></div>
-                  <div class="col-12">
+                <div id="credits" class="w-100">
+                  <div class=""><p class="copy p-0 m-0">© 2018 - 2019 squishySlug</p></div>
+                  <div id="browser-block" class="">
                     <a href="https://www.browserstack.com/">
                       <img id="browserstack" src="assets/vectors/Browserstack-logo.svg"/>
                     </a>
                   </div>
                 </div>
 
-                <div id="offset" class="hidden-md-down col-2"></div>
-                <div id="socials" class="col-4 col-md-4 col-lg-2 row social">
-                    <div class="col-12"><p class="m-0 p-0">Follow the Slug</p></div>
-                    <div class="col-12">
+                <div id="socials" class="row social ml-auto flex-shrink-1">
+                    <div class="col-12"><p class="m-0 p-0  hidden-xs-down">Follow the Slug</p></div>
+                    <div id="socials-icons" class="col-12">
                       <a href="https://www.instagram.com/squishyslug.dev/"><i class="fab fa-instagram"></i></a>
                       <a href="https://github.com/Lunacie"><i class="fab fa-github"></i></a>
                       <a href="https://www.linkedin.com/in/leslie-roche-5974a0123/"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <div id="flags" class="hidden-xs-up col-3">
+              <!--  <div id="flags" class="hidden-xs-up col-3">
                   <img src="assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/>
                   <img src="assets/vectors/english.svg" class="flag flag-en float-right"/>
-              </div>
+              </div> -->
 
 
-            </div>
+            </footer>
 
 
 
