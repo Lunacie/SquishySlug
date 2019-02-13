@@ -53,7 +53,7 @@ body {
   z-index : 14;
   margin-left : 10px;
 }
-footer .flag{ width : 100px}
+footer .flag{ width : 50px}
 #language {
   position : fixed !important;
   top : 0px;
@@ -389,7 +389,7 @@ footer #browser-block {
 }
 footer p.copy {
   position : absolute;
-  bottom : 10px;
+  bottom : 20px;
 }
 footer .social {
   z-index : 6;
@@ -410,7 +410,7 @@ footer #socials #socials-icons {
 }
 footer #flags {
   position : fixed;
-  bottom : 30px;
+  bottom : 5px;
   right : 0;
 }
 

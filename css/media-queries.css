@@ -7,13 +7,17 @@
   #tab-close {
     margin-top : -200px !important;
   }
+  #menu-open {
+    width : 50px;
+    margin-top : -5px;
+  }
 }
 
 @media only screen and (max-width: 960px) {
   .flag {
     width : 80px;
   }
-  .flag.flag-en {margin-top : 4px;}
+  .flag.flag-en {}
 
   .tab-content {
     margin-top : -200px;
@@ -55,9 +59,6 @@
   footer #browserstack {
     width : 130px;
   }
-  footer p.copy {
-    bottom : 15px;
-  }
 
   .nav {
     width : 400px;
@@ -90,6 +91,11 @@
 
 }
 
+
+@media only screen and (max-width: 768px) {
+  #socials-icons { margin-top : -30px; }
+}
+
 @media only screen and (max-height: 576px) {
 
   .nav ul li .text { font-size : 3em; }
@@ -112,4 +118,11 @@
     top : 25%;
     left : 35%;
   }
+}
+
+
+@media only screen and (max-height: 350px) {
+  header { padding-left : 5px;}
+  footer #flags { bottom : 5px; }
+  #socials-icons { margin-top : -30px; }
 }
