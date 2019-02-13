@@ -19,7 +19,7 @@ function eventCanvasClicked(event, element) {
  }
  // clicked the floor
  else {
-   events.click = getClickEventFloor(val);
+   //events.click = getClickEventFloor(val);
  }
 };
 
