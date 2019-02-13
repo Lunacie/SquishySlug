@@ -373,6 +373,7 @@ footer {
   position : fixed !important;
   bottom : 0;
   z-index : 4;
+  max-height : 60px;
 }
 footer p {
   color : white;
@@ -389,7 +390,7 @@ footer #browser-block {
 }
 footer p.copy {
   position : absolute;
-  bottom : 20px;
+  bottom : 5px;
 }
 footer .social {
   z-index : 6;
