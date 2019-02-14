@@ -20,18 +20,11 @@
   }
   .flag.flag-en {}
 
-  #tab-content {
-    /*padding-top : 200px;*/
-  }
-
-  .tab-content button { font-size : 2.3rem}
-  #tab h2 { font-size : 4rem}
   #tab {
-    font-size : 2.3rem;
     padding-top : 100px;
   }
   #tab-close {
-    font-size : 4rem;
+    font-size : 2rem;
     max-height : 100px;
     height : auto;
   }
@@ -115,7 +108,6 @@
   }
   .nav { top : 15%; }
   .nav.mobile ul  { padding-right : 30px; }
-  #tab { font-size : 2.3rem; }
   footer {
     height : 4.4em;
   }

@@ -379,7 +379,7 @@ footer {
   width: 100% !important;
   position : fixed !important;
   bottom : 0;
-  z-index : 4;
+  z-index : 2;
   max-height : 60px;
 }
 footer p {
