@@ -51,6 +51,7 @@ if (!staticMode) {
 }
 else if (staticMode) {
     ui.init();
+    $(window).resize(ui.update);
 }
 
 

@@ -417,7 +417,8 @@ function UI(player) {
         }
       }
 
-    this._checkOrderStatus();
+    if (!staticMode)
+      this._checkOrderStatus();
   }
 
   this.setTabToOpen = function(id){
