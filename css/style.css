@@ -275,14 +275,14 @@ h2#title {
 #tab-content #gallery a:hover .project-title{
   display : block
 }
+#tab-content #gallery img { width : 100% }
 #tab-content #gallery .project-title{
     min-height: 50px;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     margin-top: -50px;
     z-index: 12;
-    position: absolute;
-    width: 90%;
+    width: 100%;
     padding-top: 10px;
     padding-left: 5px;
     display: none;

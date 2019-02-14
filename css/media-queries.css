@@ -26,7 +26,6 @@
   #tab-close {
     font-size : 2rem;
     max-height : 100px;
-    height : auto;
   }
   #tab-size-marker { width : 740px !important }
   #tab { width : 740px }

@@ -810,10 +810,10 @@ en polygones</li>
 
   this._getImage = function(i) {
     let tooltip = '<div class="project-title">' + this._data[this._current[i]].title + '</div>';
-    let image = '<img src="'+  this._path +
-                this._data[this._current[i]].image  + '"/>';
+    let image = '<div class="flex-shrink-0"><img src="'+  this._path +
+                this._data[this._current[i]].image  + '"/></div>';
     return '<a data-npc="'+this._data[this._current[i]].npc + '" ' +
-              'data-project="'+i+'" class="col-11 col-md-6 mb-3">' + image + tooltip + "</a>";
+              'data-project="'+i+'" class="col-12 col-sm-6 col-md-6 mb-3 d-flex flex-column">' + image + tooltip + "</a>";
   }
 }
 let projects_tab = new Projects();
