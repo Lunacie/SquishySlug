@@ -25,6 +25,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+video { height : 100vh; }
 #device {
   font-size : 6em;
   position : absolute;
@@ -259,7 +260,6 @@ h2#title {
 }
 #tab-content {
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 #tab-content h2 {
   font-family: 'Ubuntu Mono', monospace;
