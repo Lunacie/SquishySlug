@@ -10,8 +10,6 @@ var UI_TAB_PROJECTS = 3;
 var UI_TAB_PROJECT = 4;
 var UI_TAB_CONTACT = 5;
 
-var TAB_WIDTH = 840;
-
 function UI(player) {
   this.tabs = new Tab();
   this._state = UI_STATE_LOADING;
@@ -186,7 +184,7 @@ function UI(player) {
 
     this._blurCanvas = function(radius, margin) {
       var element = $("#canvas");
-      var width = TAB_WIDTH;
+      var width = $("#tab-size-marker").width();
       if (!margin)
         margin = 10;
 
@@ -230,7 +228,7 @@ function UI(player) {
         css['margin-top'] = '-'+margin+'px';
       }
       else if (!radius && !margin) {
-        css.width = (window.screen.width - TAB_WIDTH) + 'px';
+        css.width = (window.screen.width - $("#tab-size-marker").width()) + 'px';
         css.height = (window.screen.height) + 'px';
       }
       return css;
@@ -248,6 +246,7 @@ function UI(player) {
         'complete' : function() {
         ui._blurCanvas(0, 0);
         ui.resizeCanvas();
+        $('#tab').attr('style', 'width : 0px !important');
        }
       });
       this._toggleSocials(false);
@@ -268,7 +267,7 @@ function UI(player) {
 
     this._toggleSocials = function(open) {
       if (open) {
-        let right = window.screen.width - TAB_WIDTH;
+        let right = window.screen.width - $("#tab-size-marker").width();
         $("#footer #socials").animate({ opacity: 0 })
         $("#footer #credits").animate({ opacity: 0 })
         //$("#tab-svg").animate({'left' :  TAB_WIDTH - 100   + 'px'}, 1000);
@@ -286,7 +285,7 @@ function UI(player) {
       let reopen = this._reopen;
       ui._morphing = true;
       ui._blurCanvas(10, 10);
-      let width = TAB_WIDTH;
+      let width = $("#tab-size-marker").width();
 
 
       this._showTab(id);
@@ -398,10 +397,15 @@ function UI(player) {
     this.time = time;
     this._elapsed += time;
 
-    if (ratio < 1)
-      TAB_WIDTH = 840;
-    else
-      TAB_WIDTH = 740;
+
+    let width = $('#tab').width();
+    if (!isNaN(width) && width > 0 && !this._morphing) {
+      if (ui._tab == UI_TAB_NONE)
+        $('#tab').width(0);
+      else
+        $('#tab').width(($('#tab-size-marker').width()));
+    }
+
 
     if (this._state == UI_STATE_LOADING) {
 

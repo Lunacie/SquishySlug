@@ -4,14 +4,15 @@
     max-height : 63px !important;
   }
   #header h2 { margin-top : -20px }
-  #tab-close {
-    margin-top : -200px !important;
-  }
+
   #menu-open {
     width : 50px;
     margin-top : -5px;
   }
 }
+
+
+
 
 @media only screen and (max-width: 960px) {
   .flag {
@@ -19,16 +20,23 @@
   }
   .flag.flag-en {}
 
-  .tab-content {
-    margin-top : -200px;
+  #tab-content {
+    /*padding-top : 200px;*/
   }
+
   .tab-content button { font-size : 2.3rem}
   #tab h2 { font-size : 4rem}
-  #tab { font-size : 2.3rem; }
+  #tab {
+    font-size : 2.3rem;
+    padding-top : 100px;
+  }
   #tab-close {
     font-size : 4rem;
     max-height : 100px;
-    margin-top : 50px !important;}
+    height : auto;
+  }
+  #tab-size-marker { width : 740px !important }
+  #tab { width : 740px }
 
   #tab-svg { margin-left : -3px ;}
 
@@ -93,6 +101,8 @@
 
 @media only screen and (max-width: 768px) {
   #socials-icons { margin-top : -20px; }
+  #tab-size-marker { width : 100% !important }
+  #tab { width : 100% }
 }
 
 @media only screen and (max-width: 576px) {

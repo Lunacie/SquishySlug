@@ -68,6 +68,7 @@ footer .flag{ width : 50px}
   max-width : 840px;
   margin : 0;
   padding : 0;
+  padding-top : 50px;
   font-size : 1.1rem;
 }
 
@@ -145,7 +146,11 @@ footer .flag{ width : 50px}
 #tab-contact .row .alert { display : none }
 #send-mail-error, #send-mail-success { display : none }
 
-
+#tab-size-marker {
+  position : fixed;
+  display : block;
+  width : 840px !important;
+}
 #tab-svg {
   position : absolute;
   left : -100px;
@@ -154,7 +159,7 @@ footer .flag{ width : 50px}
 #tab-close {
   z-index : 3;
   width : auto;
-  height : auto;
+  height : 50px;
   max-width : 70px;
   font-weight: lighter;
   background: white;
