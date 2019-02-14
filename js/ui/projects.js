@@ -3,6 +3,21 @@ function Projects() {
   this._path = "assets/projects/thumbnails/";
   this._data = [
     {
+      image : "newgym.jpg",
+      year : 2019,
+      npc : 36,
+      title : "Web Design Mockup for a gym",
+      tech : "graphic",
+      description : `
+      This is a web design mockup I made for a gym opening up in Reims.<br/>
+      The mockup was made using Adobe Photoshop as well as Illustrator.
+      `,
+      descriptionFR : `
+      Maquette de web design realisée pour une salle de fitness sur le point d'ouvrir dans le centre-ville de Reims.
+      La maquette a été realisée à l'aide d'Adobe Illustrator et Photoshop.
+      `
+    },
+    {
       image : "squishyslug.jpg",
       title : "The SquishySlug Portfolio",
       year: 2018,
