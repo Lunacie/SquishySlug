@@ -37,6 +37,7 @@ function UI(player) {
       this._initDimensions.height = $(canvas).height();
       $(window).resize(this.resizeCanvas);
       $("#background").hide();
+      $("video").hide();
     }
     this.tabs.init();
 
@@ -48,7 +49,7 @@ function UI(player) {
     $("#footer").click(eventCanvasClicked);
     $("#menu-open").click(this._toggleMenu);
 
-    $(".fr").hide();
+    $(".fr").hide();/*
     $(".flag-fr").click(function() {
       $(".fr").show();
       $(".en").hide();
@@ -56,7 +57,7 @@ function UI(player) {
     $(".flag-en").click(function() {
       $(".en").show();
       $(".fr").hide();
-    });
+    });*/
 
     $(".open-tab-btn").click(this._openTab);
     $("#tab-close").click(this._closeTab);
@@ -262,7 +263,7 @@ function UI(player) {
             ui.resizeCanvas();
            }
         });*/
-      //$("#header").fadeIn(1000);
+      //$("header").fadeIn(1000);
     }
 
     this._toggleSocials = function(open) {
@@ -326,7 +327,7 @@ function UI(player) {
             $('div[data-id="'+id+'"]').show();
           }
         });*/
-      //$("#header").fadeOut(1000);
+      //$("header").fadeOut(1000);
     }
 
 
@@ -451,7 +452,7 @@ function UI(player) {
       if (this._last == UI_STATE_LOADING) {
         delay = 1000;
         $("#nav").delay(delay).fadeIn(500);
-          $("#header").delay(3000).fadeIn(3000);
+          $("header").delay(3000).fadeIn(3000);
       }
       this._screens[this._state].delay(delay).fadeIn(500);
   }

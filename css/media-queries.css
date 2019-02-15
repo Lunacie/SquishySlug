@@ -1,9 +1,9 @@
 
 @media only screen and (min-width: 960px) {
-  #header {
+  header {
     max-height : 63px !important;
   }
-  #header h2 { margin-top : -20px }
+  header h2 { margin-top : -20px }
 
   #menu-open {
     width : 50px;
@@ -21,7 +21,7 @@
   .flag.flag-en {}
 
   #tab {
-    padding-top : 100px;
+    /*padding-top : 100px;*/
   }
   #tab-close {
     font-size : 2rem;
@@ -42,18 +42,18 @@
       position : relative;
   }
 
-  #header {
+  header {
     min-height : 100px;
   }
 
 
-  #header h1 {
+  header h1 {
     line-height : 1.4em;
     font-size : 2em;
     margin-bottom : 0;
   }
-  #header h2 { font-size : 1.2em; }
-  #header #logo-block img {
+  header h2 { font-size : 1.2em; }
+  header #logo-block img {
     height : 95px;
   }
   footer #browserstack {

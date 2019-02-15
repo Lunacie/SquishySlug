@@ -25,7 +25,11 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
-video { height : 100vh; }
+video {
+  height : 100vh;
+  width : 100vw;
+  object-fit: cover;
+}
 #device {
   font-size : 6em;
   position : absolute;
@@ -69,7 +73,7 @@ footer .flag{ width : 50px}
   max-width : 840px;
   margin : 0;
   padding : 0;
-  padding-top : 50px;
+  /*padding-top : 50px;*/
   font-size : 1.1rem;
 }
 
@@ -228,10 +232,10 @@ footer .flag{ width : 50px}
 }
 
 #main { display : none; z-index: 1 }
-#main #header , #logo{
+#main header , #logo{
   background : white;
 }
-#header {
+header {
   z-index : 6;
   background : white;
   display: none;
@@ -239,13 +243,13 @@ footer .flag{ width : 50px}
   width : 100%;
 }
 
-#header, #logo-block {
+header, #logo-block {
 }
 
 
 
 
-#header  h1 {
+header  h1 {
   line-height : 2em;
   font-family: 'Ubuntu Mono', monospace;
   font-weight : bold;
@@ -294,7 +298,7 @@ h2#title {
 }
 #menu-open	#l1, #l2, #l3, #l4 { fill:#6D316C; }
 
-#header .nav ul a {display : inline}
+header .nav ul a {display : inline}
 #nav-overlay {
   width : 0px;
   height : 100vh;
