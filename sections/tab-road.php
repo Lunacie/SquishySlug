@@ -5,12 +5,18 @@
       width="200px" alt="Portrait"/>
 
   <h3 class="my-3">
-    <span class="en">Behind the slug</span>
-    <span class="fr">Présentation</span>
+    <?php
+      if ($lg == EN ) echo '<span class="en">Behind the slug</span>';
+      else echo '<span class="fr">Présentation</span>';
+    ?>
   </h2>
   <p>LinkedIn : <a class="link" href="https://www.linkedin.com/in/leslie-roche-5974a0123/">https://www.linkedin.com/in/leslie-roche-5974a0123/</a><br/>
-     Github : <a class="link" href="https://github.com/Lunacie">https://github.com/Lunacie</a>
-  </p>
+     Github : <a class="link" href="https://github.com/Lunacie">https://github.com/Lunacie</a><br/>
+     Instagram: <a class="link" href="https://www.instagram.com/squishyslug.dev">https://www.instagram.com/squishyslug.dev</a><br/>
+     Facebook: <a class="link" href="https://www.facebook.com/squishyslug/">https://www.facebook.com/squishyslug/</a>
+</p>
+
+<?php if ($lg == EN) { ?>
   <p class="en"><b>Curious about who's hiding behind the slug ?</b><br/>
     My name is Leslie.<br/> I am a France based Freelance Software Engineer (UTC+1)
   with a passion for independant work and programming ever since childhood.<br/>
@@ -135,7 +141,9 @@
 
 
 
-
+<?php }
+  else {
+?>
 
   <p class="fr"><b>Curieux/curieuse de savoir qui se cache derrière le slug ?</b><br/>
   Je m'appelle Leslie.<br/> Je suis une Software Engineer Freelance basée en France (UTC+1)
@@ -254,6 +262,6 @@
     <a href="https://openclassrooms.com/" target="_blank" class="link">OpenClassrooms</a>,
     tout en continuant mon activité d'auto-entrepreneuse.
     </p>
-
+<?php } ?>
 
 </div>

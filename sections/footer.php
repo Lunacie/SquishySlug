@@ -12,10 +12,11 @@
     <div id="socials" class="row social ml-auto flex-shrink-2">
         <div class="col-12"><p class="m-0 p-0  hidden-sm-down">Follow the Slug</p></div>
         <div id="socials-icons" class="col-12">
-          <a href="https://www.instagram.com/squishyslug.dev/"><i class="fab fa-instagram"></i></a>
-          <a href="https://github.com/Lunacie"><i class="fab fa-github mr-1"></i></a>
-          <a href="https://www.linkedin.com/in/leslie-roche-5974a0123/"><i class="fab fa-linkedin"></i></a>
-        </div>
+          <a href="https://www.instagram.com/squishyslug.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://github.com/Lunacie" target="_blank"><i class="fab fa-github mr-1"></i></a>
+          <a href="https://www.linkedin.com/company/13071905/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/squishyslug/" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
 
        <div id="flags" class="hidden-md-up col-12">
          <img src="assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/>

@@ -1,13 +1,22 @@
 
-  <h2 class="mt-5"><span class="en">Project</span><span class="fr">Projet</span> : <span class="project-name"></span></h2>
+  <h2 class="mt-5">
+    <?php
+      if ($lg == EN) echo '<span class="en">Project</span>';
+      else echo '<span class="fr">Projet</span>';
+    ?>
+      :<span class="project-name"></span></h2>
 
-  <button class="btn btn-primary btn-back-projects en">< Back to projects</button>
-  <button class="btn btn-primary btn-back-projects fr">< Retour aux projets</button>
+  <?php
+    if ($lg == EN) echo '<button class="btn btn-primary btn-back-projects en">< Back to projects</button>';
+    else echo '<button class="btn btn-primary btn-back-projects fr">< Retour aux projets</button>';
+  ?>
   <div class="project-description-container">
   <img class="col-12 project-image my-5">
 
   </img>
   <b class="project-year"></b>
-    <p class="project-description en"></p>
-    <p class="project-description fr"></p>
+    <?php
+      if ($lg == EN) echo '<p class="project-description en"></p>';
+      else echo '<p class="project-description fr"></p>';
+    ?>
   </div>

@@ -5,8 +5,12 @@
     <div class="flex-item-4">
       <h1 >squishySlug</h1>
       <h2 id="title">
+        <?php if ($lg == FR) { ?>
         <span class="fr">Développement Web <span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span> Web Design</span>
+        <?php }
+          else {  ?>
         <span class="en">Web Development <span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span> Web Design</span>
+        <?php } ?>
       </h2>
     </div>
 
@@ -14,12 +18,11 @@
  <div id="title-block" class="col-12 col-sm-12 col-md-4 row pl-3">
 
  </div>-->
-
 <?php include 'sections/navbar.php'; ?>
 
 <div id="lg-block" class="hidden-sm-down flex-item d-flex flex-column flex-lg-row mr-2">
-  <img src="assets/vectors/french.svg" class="flag flag-fr"/>
-  <img src="assets/vectors/english.svg" class="flag flag-en"/>
+  <a href="/fr"><img src="assets/vectors/french.svg" class="flag flag-fr"/></a>
+  <a href="/"><img src="assets/vectors/english.svg" class="flag flag-en"/></a>
 </div>
 
 

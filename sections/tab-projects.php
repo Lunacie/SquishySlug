@@ -1,9 +1,19 @@
 <div id="tab-content-content">
-  <h2 class="mt-5"><span class="en">Projects</span><span class="fr">Projets</span></h2>
+  <h2 class="mt-5">
+    <?php
+      if ($lg == EN) echo '<span class="en">Projects</span>';
+      else echo '<span class="fr">Projets</span>';
+    ?>
+  </h2>
   <div class="row hidden-sm-down">
 
     <div>
-    <p class="mt-5"><span class="en">Filter by Technology/Tools :</span><span class="fr">Filtrer par Technologie/Outils</span> </p>
+    <p class="mt-5">
+      <?php
+        if ($lg == EN) echo '<span class="en">Filter by Technology/Tools :</span>';
+        else echo '<span class="fr">Filtrer par Technologie/Outils</span>';
+      ?>
+    </p>
     <button type="button" class="btn btn-success tech" data-tech="html">hmtl/css</button>
     <button type="button" class="btn btn-success tech" data-tech="bootstrap">Bootstrap3/4</button>
     <button type="button" class="btn btn-success tech" data-tech="js">Javascript/Jquery</button>
@@ -20,7 +30,12 @@
   </div>
 
   <div class="my-3 mb-5">
-    <p><span class="en">Filter by Year :</span><span class="fr">Filtrer par Année</span> </p>
+    <p>
+      <?php
+        if ($lg == EN) echo '<span class="en">Filter by Year :</span>';
+        else echo '<span class="fr">Filtrer par Année</span>';
+      ?>
+    </p>
     <button type="button" class="btn btn-info year" data-year="2019">2019</button>
     <button type="button" class="btn btn-info year" data-year="2018">2018</button>
     <button type="button" class="btn btn-info year" data-year="2017">2017</button>

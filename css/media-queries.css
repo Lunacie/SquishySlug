@@ -15,7 +15,7 @@
 
 
 @media only screen and (max-width: 960px) {
-  .flag {
+  #lg-block a {
     width : 80px;
   }
   .flag.flag-en {}

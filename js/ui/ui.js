@@ -49,7 +49,8 @@ function UI(player) {
     $("#footer").click(eventCanvasClicked);
     $("#menu-open").click(this._toggleMenu);
 
-    $(".fr").hide();/*
+
+    /*$(".fr").hide();
     $(".flag-fr").click(function() {
       $(".fr").show();
       $(".en").hide();

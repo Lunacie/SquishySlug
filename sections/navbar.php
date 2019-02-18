@@ -8,21 +8,36 @@
            <img class="icon on" src="assets/ui/nav-planet.svg" alt="about"/>
           <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
         </span>
-       <span class="text col-8 ml-1"> <span class="en">About</span><span class="fr">À Propos</span></span>
+       <span class="text col-8 ml-1">
+         <?php
+         if ($lg == EN) echo ('<span class="en">About</span>');
+         else echo ('<span class="fr">À Propos</span>');
+         ?>
+       </span>
     </li></a>
     <a href="#" class="open-tab-btn tab-3"><li class="row projects py-3">
         <span class="icons col-2 p-0">
            <img class="icon on" src="assets/ui/nav-orbit.svg" alt="about"/>
           <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
         </span>
-        <span class="text col-6 ml-1"><span class="en">Projects</span><span class="fr">Projets</span></span>
+        <span class="text col-6 ml-1">
+          <?php
+          if ($lg == EN) echo ('<span class="en">Projects</span>');
+          else echo ('<span class="fr">Projets</span>');
+          ?>
+        </span>
     </li></a>
    <a href="#" class="open-tab-btn tab-2"><li class="row road py-3">
      <span class="icons col-2 p-0">
         <img class="icon on" src="assets/ui/nav-galaxy.svg" alt="about"/>
        <img class="icon off" src="assets/ui/nav.svg" alt="about"/>
      </span>
-     <span class="text col-8 ml-1"><span class="en">Behind the slug</span><span class="fr">Présentation</span></span>
+     <span class="text col-8 ml-1">
+       <?php
+       if ($lg == EN) echo ('<span class="en">Behind the slug</span>');
+       else echo ('<span class="fr">Présentation</span>');
+       ?>
+     </span>
  </li></a>
  <a href="#" class="open-tab-btn tab-4"><li class="row contact py-3">
      <span class="icons col-2 p-0">

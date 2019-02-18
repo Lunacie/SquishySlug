@@ -52,10 +52,10 @@ video {
   color : red;
 }
 
-.flag {
+#lg-block a {
   width : 50px;
-  cursor : pointer;
   z-index : 14;
+  margin : auto;
   margin-left : 10px;
 }
 footer .flag{ width : 50px}
@@ -73,6 +73,7 @@ footer .flag{ width : 50px}
   max-width : 840px;
   margin : 0;
   padding : 0;
+  background : white;
   /*padding-top : 50px;*/
   font-size : 1.1rem;
 }
@@ -186,7 +187,6 @@ footer .flag{ width : 50px}
   margin-top : -70px;
 }
 .tab-content .project-description-container {
-  overflow-y : scroll;
   max-height : 60vh;
 }
 
@@ -264,6 +264,7 @@ h2#title {
 }
 #tab-content {
   overflow-y: scroll;
+  margin-bottom : 100px;
 }
 #tab-content h2 {
   font-family: 'Ubuntu Mono', monospace;
