@@ -128,7 +128,7 @@
 
         <?php include '/sections/sidebar.php'; ?>
 
-        <?php include '/sections/footer.php'; ?>
+        <?php include('/sections/footer.php'); ?>
 
 
         </div>
