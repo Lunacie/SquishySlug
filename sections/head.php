@@ -1,9 +1,9 @@
 <?php
-  define("EN", 0);
-  define("FR", 1);
-  $lg = EN;
-  if (isset($_GET['lg']) && $_GET['lg'] == "fr")
-    $lg = FR;
+       define("EN", 0);
+       define("FR", 1);
+       $lg = EN;
+       if (isset($_GET['lg']) && $_GET['lg'] == "fr")
+         $lg = FR;
 ?>
 
 <title>Squishy Slug - Web Development | Web Design</title>

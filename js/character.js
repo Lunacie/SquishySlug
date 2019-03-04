@@ -156,7 +156,7 @@ function Character (x, y)
         }
       };
       if (npc._species >= STATIC_SLUG)
-        projects_tab.setProject(npc._species - STATIC_SLUG);
+        projects_tab.setProject(npc._species - STATIC_SLUG + 1);
       return destination;
   };
 
@@ -166,6 +166,10 @@ function Character (x, y)
     let target = characters[id];
     //console.log(target);
     //target.interupt();
+    if (!target) {
+      this._orderStatus = ORDER_STATUS_SUCCESS
+      return null;
+    }
     this._roaming = false;
     this.setDestination(target.getDestinationTriggerInteraction());
   };

@@ -2,7 +2,11 @@
    "http://www.w3.org/TR/html5/strict.dtd">
 <html>
    <head>
-       <?php include '/sections/head.php'; ?>
+       <?php
+       ini_set('display_errors',1);
+       error_reporting(-1);
+
+       include 'sections/head.php'; ?>
 
       <link href="https://fonts.googleapis.com/css?family=Heebo:300|News+Cycle|Ubuntu:700|Ubuntu:400|Ubuntu+Mono" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -50,7 +54,7 @@
 
    <body id="body" class="m-0">
 
-    <?php include '/sections/header.php' ?>
+    <?php include 'sections/header.php' ?>
 
      <div id="main" class="screen container row m-0">
      </div>
@@ -70,11 +74,11 @@
           </div>
 
           <div id="tab-about" class="tab-content  col-11" data-id="1">
-           <?php include '/sections/tab-about.php'; ?>
+           <?php include 'sections/tab-about.php'; ?>
           </div>
 
            <div id="tab-road" class="tab-content col-12  mx-auto" data-id="2">
-             <?php include '/sections/tab-road.php'; ?>
+             <?php include 'sections/tab-road.php'; ?>
            </div>
 
            <div class="tab-content col-12 px-0 px-sm-5" data-id="3">
@@ -86,7 +90,7 @@
            </div>
 
            <div class="tab-content  col-12" data-id="5">
-             <?php include '/sections/tab-project.php'; ?>
+             <?php include 'sections/tab-project.php'; ?>
            </div>
 
 
@@ -126,9 +130,9 @@
             <img src="assets/ui/loading.svg" class="hidden-lg-up big" width="25%"/>
         </div>
 
-        <?php include '/sections/sidebar.php'; ?>
+        <?php include 'sections/sidebar.php'; ?>
 
-        <?php include('/sections/footer.php'); ?>
+        <?php include 'sections/footer.php'; ?>
 
 
         </div>

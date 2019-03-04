@@ -88,7 +88,7 @@ function UI(player) {
 
   this._openTab = function(event) {
     if (!staticMode &&
-        ui._elapsed - ui._lastTime < 4000 && ui._lastTime != 0) {
+        ui._elapsed - ui._lastTime < 2500 && ui._lastTime != 0) {
       return ;
     }
     ui._lastTime = ui._elapsed
@@ -106,19 +106,20 @@ function UI(player) {
       id = 5;
     }
     // Close tab
-    if (id == ui._tab) {
+    if (ui._tabIsClosed() &&  id == ui._tab) {
       $('.tab-'+ui._tab+' li').removeClass('selected');
       if (!staticMode)
         ui._player.freeNpc(ui._tab);
       ui._tab = UI_TAB_NONE;
       ui._reopen = false;
+      ui._morphing = true;
       //$("#loading").stop();
       //$("#loading").fadeIn(200);
       ui._loading = true;
       return ui._closeTabAnimation();
     }
     // Reopen tab
-    else if ((ui._tab || $("#tab").width() > 0) &&
+    else if ((ui._tab || ui._tabIsClosed()) &&
               id != ui._tab) {
       if (!staticMode)
         ui._player.freeNpc(id);
@@ -129,10 +130,11 @@ function UI(player) {
       //$("#loading").stop();
       //$("#loading").fadeIn(200);
       ui._reopen = true;
+      ui._morphing = false;
       ui._tabToOpen = id;
       ui._prepareTab(id);
       $('.tab-'+id+' li').addClass('selected');
-      if (!staticMode)
+      if (!staticMode && npc < characters.length)
         return ui._player.sendOrder(npc);
       else // todo : see if that works in static mode
        return ui._openTabAnimation(id);
@@ -144,6 +146,7 @@ function UI(player) {
     ui._prepareTab(id);
     ui._reopen = false;
     ui._tabToOpen = id;
+    ui._morphing = true;
     if (!staticMode)
       ui._player.sendOrder(npc);
     else
@@ -273,12 +276,10 @@ function UI(player) {
         $("#footer #socials").animate({ opacity: 0 })
         $("#footer #credits").animate({ opacity: 0 })
         //$("#tab-svg").animate({'left' :  TAB_WIDTH - 100   + 'px'}, 1000);
-        $("p.copy").delay(1000).css('color', '#6D316C');
       }
       else {
         $("#footer #socials").animate({ opacity: 100 })
         $("#footer #credits").animate({ opacity: 100 })
-        $("p.copy").delay(1000).css('color', '#FFFFFF');
         //$("#tab-svg").animate({'left' : '-100px'}, 1000);
       }
     };
@@ -295,7 +296,8 @@ function UI(player) {
       $('.tab-'+id+' li').addClass('selected');
       ui._tab = id;
       this._toggleSocials(true);
-      $("#tab").animate({'width' : width + 'px', left : 0},
+      $("#tab").show();
+      $("#tab").stop().animate({'width' : $("#tab-size-marker").width() + 'px', left : 0},
       {
         duration : 1000,
         'complete' : function() {
@@ -395,13 +397,18 @@ function UI(player) {
       }
   }
 
+  this._tabIsClosed = function() {
+    let width = $('#tab').width();
+    return !isNaN(width) && width > 0;
+  }
+
   this.update = function(loadManager, time) {
     this.time = time;
     this._elapsed += time;
 
 
     let width = $('#tab').width();
-    if (!isNaN(width) && width > 0 && !this._morphing) {
+    if (ui._tabIsClosed() && !this._morphing) {
       if (ui._tab == UI_TAB_NONE)
         $('#tab').width(0);
       else

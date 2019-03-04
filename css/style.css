@@ -74,6 +74,7 @@ footer .flag{ width : 50px}
   margin : 0;
   padding : 0;
   background : white;
+  display : none;
   /*padding-top : 50px;*/
   font-size : 1.1rem;
 }

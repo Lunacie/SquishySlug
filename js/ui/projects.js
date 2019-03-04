@@ -741,8 +741,8 @@ en polygones</li>
     this.projectId = id;
     project_tab._id = id;
   }
-  this.getProject = function(id) {
-    return this._data[id];
+  this.getProject = function() {
+    return this._data[this.projectId];
   }
 
   this._refresh = function() {

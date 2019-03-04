@@ -7,7 +7,7 @@ function Project() {
   this._path = "assets/projects/";
 
   this.update = function() {
-    this._project = this._projects.getProject(this._id);
+    this._project = this._projects.getProject();
     $(".project-name").html(this._project.title);
     $(".project-image").attr("src", this._path + this._project.image);
     $(".project-description.en").html(this._project.description);
