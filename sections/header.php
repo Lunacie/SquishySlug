@@ -6,10 +6,10 @@
       <h1 >squishySlug</h1>
       <h2 id="title">
         <?php if ($lg == FR) { ?>
-        <span class="fr">DÃ©veloppement Web <span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span> Web Design</span>
+        <span class="fr">Ingénierie logicielle<span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span>Indie Game Development</span>
         <?php }
           else {  ?>
-        <span class="en">Web Development <span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span> Web Design</span>
+        <span class="en">Software Engineering<span class="hidden-xs-down">|</span><span class="visible-xs-down hidden-sm-up"><br/></span> Indie Game Development</span>
         <?php } ?>
       </h2>
     </div>

@@ -1,4 +1,4 @@
-<div id="tab-content-content">
+<div id="tab-content-content" class="scrollable">
   <h2 class="mt-5">
     <?php
       if ($lg == EN) echo '<span class="en">Projects</span>';

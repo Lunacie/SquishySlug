@@ -1,4 +1,4 @@
-
+<div class="scrollable">
   <h2 class="mt-5">
     <?php
       if ($lg == EN) echo '<span class="en">Project</span>';
@@ -20,3 +20,4 @@
       else echo '<p class="project-description fr"></p>';
     ?>
   </div>
+</div>

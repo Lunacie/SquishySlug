@@ -4,12 +4,24 @@
        $lg = EN;
        if (isset($_GET['lg']) && $_GET['lg'] == "fr")
          $lg = FR;
-?>
 
-<title>Squishy Slug - Web Development | Web Design</title>
-<meta name="og:title" property="og:title" content="Squishy Slug - Web Development | Web Design">
+
+  if ($lg == EN) {
+?>
+<title>Squishy Slug - Software Engineering | Game Development</title>
+<meta name="og:title" property="og:title" content="Squishy Slug - Software Engineering | Indie Game Development">
 <meta name="description" content="SquishySlug is building software solutions
- by putting its wildly creative and analytical thinking to the test.
- It’s about using outstanding problem solving skills to produce robust and
- efficient code, while its vidid imagination and fresh outlook allow for a
- unique approach on technical challenges.">
+ by putting its wildly creative and analytical thinking to the test.<br/>
+ Originality at the service of those who actually want to stand out">
+<?php
+  }
+  else {
+?>
+<title>Squishy Slug - Ing�nierie logicielle | Indie Game Development</title>
+<meta name="og:title" property="og:title" content="Squishy Slug - Ing�nierie logicielle | Indie Game Development">
+<meta name="description" content="SquishySlug implémente des solutions logicielles en mettant
+ tous les jours à l'épreuve son esprit créatif et analytique.<br/>
+ L'originalité au service de ceux qui souhaitent réellement se démarquer.">
+<?php
+  }
+?>

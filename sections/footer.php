@@ -19,8 +19,8 @@
       </div>
 
        <div id="flags" class="hidden-md-up col-12">
-         <img src="assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/>
-         <img src="assets/vectors/english.svg" class="flag flag-en float-right"/>
+         <a href="/fr"><img src="assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/></a>
+         <a href="/"><img src="assets/vectors/english.svg" class="flag flag-en float-right"/></a>
        </div>
     </div>
 

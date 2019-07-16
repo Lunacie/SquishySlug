@@ -94,8 +94,8 @@ footer .flag{ width : 50px}
   cursor : pointer;
 }
 
-#tab-road .scrollable {
-  height : 80vh;
+#tab-road .scrollable, #tab-about .scrollable {
+  height : 70vh;
 }
 #tab-road h3 {
   color : #6D316C;
@@ -433,6 +433,10 @@ footer #flags {
 
 .pull-left { float : left };
 .pull-right { float : right };
+.scrollable-y {
+  overflow-y : scroll;
+  overflow-x : hidden;
+}
 .flex-item {  flex-grow : 1; }
 .flex-item-2 {  flex-grow : 2; }
 .flex-item-3 {  flex-grow : 3; }

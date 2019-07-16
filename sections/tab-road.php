@@ -1,4 +1,4 @@
- <div class="scrollable px-5">
+<div class="scrollable">
 
  <img id="portrait" class="d-block mx-auto"
       src="assets/images/portrait.jpg"

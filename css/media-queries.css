@@ -126,4 +126,14 @@
 @media only screen and (max-width: 350px) {
   header { padding-left : 5px;}
   footer #flags { bottom : 5px; }
+  footer .flag { width : 40px;}
+  .nav.mobile ul {
+    padding-right : 5px;
+    padding-left : 0px;
+  }
+  .nav.mobile ul li .text {font-size : 1.3em;}
+  #menu-open {
+    margin-left : 5px;
+    width : 50px;
+  }
 }
