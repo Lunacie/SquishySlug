@@ -7,9 +7,10 @@ var update = function(characters, map, ui, loadManager, debugOv, time)
   }
   map.update();
   debugOv.update();
-  ui.update(loadManager, time);
-  //loadManager.isComplete()
-  //restoreEvents();
+  //ui.update(loadManager, time);
+
+  ////loadManager.isComplete()
+  ////restoreEvents();
 };
 
 

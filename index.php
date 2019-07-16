@@ -119,9 +119,12 @@
 
 
      <div>
+          <!--
           <canvas id="offCanvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="canvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="debugCanvas" class="canvas" width="1000" height="600"></canvas>
+          -->
+          <div id="canvas"></div>
           <div id="background">
             <video autoplay muted loop id="video">
               <source src="assets/videos/background.mp4" type="video/mp4">

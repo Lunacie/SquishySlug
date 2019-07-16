@@ -1,87 +1,51 @@
 
-function Map(player, characters)
-{
-  map = {
-    width : 10,
-    height : 10,
+class Map {
+    constructor(player, characters) {
 
-    _player : player,
-    _characters : characters,
-    _hexMap : [],
-    _data : [],
-    _layers : [],
-    _startY : 0,
-    _startX : 0,
-    _timestamp : 0,
-    lastHex : 0,
-    drew : false,
+      this._player = player;
+      this._characters = characters;
+      this._hexMap = [];
+      this._data = [];
+      this._layers = [];
+      this._startY = 0;
+      this._startX = 0;
+      this._timestamp = 0;
+      this.lastHex = 0;
+      this.drew = false;
 
-    update : function() {
+      this.fullMap = new FullMap();
+      this.height = this.fullMap.height;
+      this.width = this.fullMap.width;
+      this._player.map = this;
+
+      document.getElementById("canvas").style.width = this.width * tiles.size + "px";
+      document.getElementById("canvas").style.height = this.height * tiles.size + "px";
+    }
+
+    update() {
       //console.log(this._startY);
 
-      var updated = this.updateRatio();
+      // Move map block if need be depending on player position
 
-      var half = (this.height / 2);
-      var top = half - half.toFixed(0) ? half.toFixed(0) : half;
+    }
 
-      half = (this.width / 2);
-      var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      var offset = 3;
-      if (ratio < 1)
-        offset = 2
-      if (updated ||/*
-          ((this._player.block.y - 1 <= this._startY ) ||
-          (this._player.block.x -1 <= this._startX ) ||
-          (this._player.block.y + 1 >= this._startY + this.height ) ||
-          (this._player.block.x + 1 >= this._startX + this.width))) { */
-          ((this._player.block.y - 1 - this._startY < this.height / offset ) ||
-          (this._player.block.x -1 - this._startX < this.width / offset ) ||
-          (this._player.block.y + 1 - this._startY > this.height - (this.height / offset)) ||
-          (this._player.block.x + 1 - this._startX > this.width - (this.width / offset )))) {
-        this._startX = parseInt(this._player.x) - left;
-        this._startY = parseInt(this._player.y) - top;
-        this._fillMap();
-      }
-    },
+    getRandomDestination() {
+      return this.fullMap.getRandomDestination();
+    }
 
-    updateRatio : function() {
-      var oldX = this.width;
-      var oldY = this.height;
-
-      if (ratio < 1) {
-      this.height = (canvas.height / (tiles.size)) * 3;
-      this.height = parseInt(this.height);
-      this.width = this.height;
-      }
-      else {
-      this.width = (canvas.width / (tiles.size )) * 3;
-      this.width = parseInt(this.width);
-      this.height = this.width;
-      }
-      this.width = this.width > fullMap.width ? fullMap.width : this.width;
-      this.height = this.height > fullMap.height ? fullMap.height : this.height;
-
-      return oldX != this.width || oldY != this.height ? true : false;
-    },
-
-    getRandomDestination : function() {
-      return fullMap.getRandomDestination();
-    },
-
-    draw : function(ox, oy) {
+    draw(ox, oy) {
 
       if (!loadManager.isComplete())
         return;
 
       this.drew = false;
-      var x = 0;
-      var y = 0;
-      var yr = 0;
+      let x = 0;
+      let y = 0;
+      let yr = 0;
       //ox += tiles.size;
       //oy += tiles.size;
 
-      tileColorHex = 0x000000;
       for (var i = 0; i < this.height; i++)
       {
         this._drawCol(ox + x, oy + y, yr);
@@ -90,9 +54,9 @@ function Map(player, characters)
         yr++;
       }
       this.drew = true;
-    },
+    }
 
-    _drawCol : function(xo, yo, yr) {
+    _drawCol(xo, yo, yr) {
         var x = 0;
         var y = 0;
         var xr = 0;
@@ -103,7 +67,7 @@ function Map(player, characters)
             this._drawTile(xo + x, yo + y, yr, xr, l);
           }
 
-          var tileMap = this._buildTileMap(xr, yr);
+        /*  var tileMap = this._buildTileMap(xr, yr);
           var xt = 0;
           var yt = 0;
           for (yt = 0; yt < 10; yt++) {
@@ -112,20 +76,20 @@ function Map(player, characters)
                   tileMap[yt][xt][i].draw(xo + x, yo + y);
                 }
             }
-          }
+          }*/
 
           x += tiles.size / 2;
           y += tiles.size / 4;
           xr += 1;
         }
-    },
+    }
 
-    _buildTileMap : function(xr, yr) {
+/*    _buildTileMap(xr, yr) {
       var tileMap = [];
 
       var realX = xr + this._startX;
       var realY = yr + this._startY;
-      var characters = fullMap.getCharacters(realX, realY);
+      var characters = this.fullMap.getCharacters(realX, realY);
       var xt = 0;
       var yt = 0;
       for (yt = 0; yt < 10; yt++) {
@@ -144,9 +108,9 @@ function Map(player, characters)
         }
       }
       return tileMap;
-    },
+    }*/
 
-    _drawTile : function(x, y, yr, xr, layer) {
+    _drawTile(x, y, yr, xr, layer) {
       var tile = tiles.data[this._data[layer][yr][xr]];
       if (!tile)
         return;
@@ -217,9 +181,9 @@ function Map(player, characters)
       }
       if (layer == 0)
         tileColorHex += 0x000001;
-    },
+    }
 
-  _loadImage : function(tile, offColor) {
+  _loadImage(tile, offColor) {
       //$.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         // offscreen
         svgXml = tile.svgXml;
@@ -235,9 +199,9 @@ function Map(player, characters)
         }
         tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
   //  });
-  },
+  }
 
-  _drawTilePoly: function(x, y, context) {
+  _drawTilePoly(x, y, context) {
     context.beginPath();
     context.moveTo(x + tiles.size / 2,
                y + tiles.size / 2);
@@ -250,61 +214,18 @@ function Map(player, characters)
     context.closePath();
     context.fill();
     context.stroke();
-  },
-
-
-
-  _fillMap : function() {
-
-  // init fullMap first time
-  if (!fullMap.height) {
-    fullMap.height = fullMap.data[0].length;
-    fullMap.width = fullMap.data[0][0].length;
   }
 
-  // fill map
-  for (z = 0; z < fullMap.nbLayers; z++) {
-    var y2 = this._startY;
-      this._data[z] = this._data[z] ? this._data[z] : [];
-      for (y = 0; y < this.height; y++) {
-        var x2 = this._startX;
-        this._data[z][y] = this._data[z][y] ? this._data[z][y] : [];
-        for (x = 0; x < this.width; x++) {
-          if (y2 < 0 || x2 < 0)
-            this._data[z][y][x] = 0;
-          else if (y2 >= fullMap.height || x2 >= fullMap.width)
-            this._data[z][y][x] = 0;
-          else
-            {
-                // Auto-top blocks
-                if (z > 0 && tiles.data[this._data[z - 1][y][x]].top)
-                  this._data[z][y][x] = tiles.data[this._data[z - 1][y][x]].top;
-                // No auto top available
-                else if (z > 0)
-                  this._data[z][y][x] = 0;
-                // any other block + base layer
-                else
-                  this._data[z][y][x] = fullMap.data[z][y2][x2];
-            }
-          x2++;
-        }
-        y2++;
-      }
-    }
-  },
 
-  hasCollision : function (x, y) {
+
+
+  hasCollision(x, y) {
     x = parseInt(x);
     y = parseInt(y);
     if (y < 0 || x < 0 ||
-        y >= fullMap.height || x >= fullMap.width)
+        y >= this.fullMap.height || x >= this.fullMap.width)
       return true;
-    return tiles.data[fullMap.data[0][y][x]].collision;
-  },
+    return tiles.data[this.fullMap.data[0][y][x]].collision;
+  }
 
-  };
-
-  map._fillMap();
-  map._player.map = map;
-  return map;
 };

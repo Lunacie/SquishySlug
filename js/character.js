@@ -63,7 +63,7 @@ function Character (x, y)
       if (!loadManager.isComplete())
         return;
 
-      fullMap.removeCharacter(this.id, this.block.x, this.block.y);
+      this.map.fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
           if (!this._path) {
@@ -88,7 +88,7 @@ function Character (x, y)
       this.state = this._machineState.update(time);
 
 
-      fullMap.addCharacter(this, this.block.x, this.block.y);
+      this.map.fullMap.addCharacter(this, this.block.x, this.block.y);
   }
 
   this.interupt = function() {
@@ -175,7 +175,7 @@ function Character (x, y)
   };
 
   this.freeNpc = function(id) {
-    let target = fullMap.getCharacter(id);
+    let target = this.map.fullMap.getCharacter(id);
     if (!target)
       return;
     target._machineState.removeState(ACTION_STATE_CONVERSATION);
@@ -317,7 +317,7 @@ function Character (x, y)
       this.y = this.initBlock.y;
       return;
     }
-    let node = fullMap.data[0][block.y][block.x];
+    let node = this.map.fullMap.data[0][block.y][block.x];
     if (!node || tiles.data[node].collision == true) {
       this.block.x = this.initBlock.x;
       this.block.y = this.initBlock.y;
@@ -357,9 +357,9 @@ function Character (x, y)
       this.destination.y == this.block.y)
       return null;
 
-    fullMap.clear();
-    //console.log(fullMap);
-    var current = fullMap.getNode(this.block.x, this.block.y);
+    this.map.fullMap.clear();
+    //console.log(this.map.fullMap);
+    var current = this.map.fullMap.getNode(this.block.x, this.block.y);
     // failsafe for when npcs are being idiots
     if (this._characterIsBlocked(current))
       return null;
@@ -422,12 +422,12 @@ function Character (x, y)
 
   this._backtrackPath = function(neighbour) {
       var path = [];
-      var copy = fullMap.getNode(neighbour.x, neighbour.y);
+      var copy = this.map.fullMap.getNode(neighbour.x, neighbour.y);
       path.unshift(copy);
       do {
         if (!copy.prev)
           break;
-        copy = fullMap.getNode(copy.prev.x, copy.prev.y);
+        copy = this.map.fullMap.getNode(copy.prev.x, copy.prev.y);
         path.unshift(copy);
       } while (copy);
 

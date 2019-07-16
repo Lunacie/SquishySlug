@@ -8,7 +8,7 @@ var ui = new UI();
 if (!staticMode) {
   var player = new Player(10, 10);
   var characters = [];
-  characters.push(player);
+  characters.push(player);/*
   characters.push(new Npc(10, 11, SPECIES_CAT));
   characters.push(new Npc(12, 10, SPECIES_ELEPHANT));
   characters.push(new Npc(10, 7, SPECIES_INSECT));
@@ -18,20 +18,22 @@ if (!staticMode) {
   characters.push(new Npc(6, 11, STATIC_TELSTRA, true));
   characters.push(new Npc(6, 3, STATIC_D3QB, true));
   characters.push(new Npc(4, 12, STATIC_FIREGEEKS, true));
-  characters.push(new Npc(13, 13, STATIC_OCTOPUSROOM, true));
+  characters.push(new Npc(13, 13, STATIC_OCTOPUSROOM, true));*/
   //characters.push(new Npc(13, 13, STATIC_OCTOPUS, true));
 
   var loadManager = new LoadManager(characters, tiles);
   loadManager.load();
 
-  var map = Map(player, characters);
-var debugOverlay = new DebugOverlay(map, player, characters);
+  var map = new Map(player, characters);
+  var debugOverlay = new DebugOverlay(map, player, characters);
 }
 
 
 window.onload = function() {
 
 if (!staticMode) {
+  let canvas = document.getElementById('canvas');
+  /*
   var canvas = document.getElementById('canvas');
   canvas.width = window.screen.width;
   canvas.height = window.screen.height;
@@ -45,9 +47,10 @@ if (!staticMode) {
   debugCanvas.width = window.screen.width;
   debugCanvas.height = window.screen.height;
   debugCanvas.addEventListener("click", eventCanvasClicked);
+  */
 
-  ui.init(player, canvas);
-  ui.resize(window.screen.width, window.screen.height);
+  //ui.init(player, canvas);
+  //ui.resize(window.screen.width, window.screen.height);
 }
 else if (staticMode) {
     ui.init();
@@ -55,14 +58,14 @@ else if (staticMode) {
 }
 
 
-if (staticMode ||
-    (canvas && canvas.getContext))
+if (staticMode || canvas)
 {
   if (!staticMode) {
+    /*
     ctx = canvas.getContext('2d');
     ctxOff = offCanvas.getContext('2d');
     ctxDebug = debugCanvas.getContext('2d');
-    debugOverlay.setContext(ctxDebug);
+    debugOverlay.setContext(ctxDebug);*/
 
     ratio = canvas.width / canvas.height;
     /*
