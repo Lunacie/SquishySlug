@@ -1,7 +1,7 @@
 # SquishySlug
 A small js/canvas based 2d isometric game
 
-Preview : https://rawgit.com/Lunacie/SquishySlug/master/index.html
+Preview : https://squishySlug.com
 
 The squishySlug portfolio is js browser based 2d isometric game. Talking with the NPCs and interacting with the various in-game objects allow for navigation within the UI.
 
