@@ -47,6 +47,8 @@ function Camera() {
 
 this.center = function() {
 
+  return;
+
   if (!loadManager.isComplete() || !map.drew)
     return {x : 0, y : 0}
 

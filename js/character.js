@@ -43,6 +43,7 @@ function Character (x, y)
     x : 0,
     y : 0
   };
+  this.changedBlock = false;
   this.state = ACTION_STATE_IDLE;
   this._machineState = new MachineState(this);
   this.destination = null;
@@ -63,6 +64,14 @@ function Character (x, y)
       if (!loadManager.isComplete())
         return;
 
+        if (this.latestPosition)
+          console.log(this.latestPosition, this.x, this.y);
+
+      if (this.latestPostion &&
+          this.latestPostion.x != this.block.x &&
+          this.latestPostion.y != this.block.y)
+        alert("changed block");
+
       this.map.fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
@@ -80,6 +89,7 @@ function Character (x, y)
 
           if (this._path && this._steps)
             this._automate();
+
       }
 
       this._updateOrderStatus();
@@ -89,6 +99,7 @@ function Character (x, y)
 
 
       this.map.fullMap.addCharacter(this, this.block.x, this.block.y);
+
   }
 
   this.interupt = function() {
@@ -332,10 +343,23 @@ function Character (x, y)
       this._collisionBump();
       return;
     }
+    if (this.latestPosition)
+      console.log(this.latestPosition, this.x, this.y);
+
+    let oldX = this.x;
+    let oldY = this.y;
+
     this.x += (this.walkUnit.x * this._walkPaceScale);
     this.y += (this.walkUnit.y * this._walkPaceScale);
+
+
     this.block.x = parseInt(this.x);
     this.block.y = parseInt(this.y);
+
+    if (parseInt(oldY) != this.block.y ||
+        parseInt(oldX) != this.block.x)
+          this.changedBlock = true;
+
     this.walkUnit.x = 0;
     this.walkUnit.y = 0;
     this.internalBlock = {
@@ -343,6 +367,7 @@ function Character (x, y)
       y : (this.y - this.block.y) * 10
     };
   }
+
   this._buildPath = function() {
     var path = [];
     var queue = [];
@@ -515,21 +540,59 @@ function Character (x, y)
         this.x2d = x;
         this.y2d = y;
         if (element.loaded) {
+
+
+          if (!this.element)
+            this.element = [];
+          if (!this.element[this.state])
+             this.element[this.state] = [];
+         if (!this.element[this.state][this.direction]) {
+            element = element.cloneNode();
+            element.classList.add("player");
+            element.classList.add("tile");
+            this.element[this.state][this.direction] = element;
+            this.map.canvas.append(element);
+          }
+
+          if (this.element["last"])
+            this.element["last"].style.display = "none";
+
+          element = this.element[this.state][this.direction];
+          this.element["last"] = element;
+
+
+          element.style.display = "block";
+          element.style.width = width + "px";
+          element.style.height = height + "px";
+          element.style["z-index"] = 10;
+
+          if (this.changedBlock) {
+            map.characterOcclusion(this, element);
+            this.changedBlock = false;
+          }
+
+          //console.log("Player : "+ x+"px", y+"px");
+          element.style.left = x+"px";
+          element.style.top = y+"px";
+
+
+          /*
           ctx.drawImage(element,
-                        x, y, width, height);
+                        x, y, width, height);*/
           if (this.id == 0)
           camera.player = {x: x, y : y, width : width, height : height}
           }
         if (!this._static)
           this._drawProps(x, y, width, height);
 
+        /*
         if (this._static)
           element = this.images.off;
         else
           element = this.images[this.state][this.direction].off;
         if (element.loaded)
           ctxOff.drawImage(element,
-                        x, y, width, height);
+                        x, y, width, height);*/
         }
     };
 

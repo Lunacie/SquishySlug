@@ -32,6 +32,7 @@ function Player(x, y) // inherits Character
           diff = this.y - parseInt(this.y);
           this.walkUnit.y = this.walkUnitSize ;
           walking = true;
+          //this.map.updateCharacter();
         }
 
         else if (events.left) {
@@ -47,6 +48,7 @@ function Player(x, y) // inherits Character
           walking = true;
           this.walkUnit.x = this.walkUnitSize;
         }
+
 
         events.up = false;
         events.down = false;

@@ -12,6 +12,7 @@ class Map {
       this._timestamp = 0;
       this.lastHex = 0;
       this.drew = false;
+      this.elements;
       this.canvas = document.getElementById("canvas");
 
       this.fullMap = new FullMap();
@@ -40,12 +41,10 @@ class Map {
 
       if (!loadManager.isComplete())
         return;
-      if (this.drew)
-        return;
 
-      this.canvas.innerHTML = '';
+      if (!this.drew)
+        this.canvas.innerHTML = '';
 
-      this.drew = false;
       let x = parseInt(this.canvas.style.width) / 2;
       let y = 0;
       let yr = 0;
@@ -67,13 +66,15 @@ class Map {
         var y = 0;
         var xr = 0;
 
-        for (var j = 0; j < this.width; j++)
-        {
-          for (var l = 0; l < this.fullMap.data[0][yr].length; l++) {
-            this._drawTile(xo + x, yo + y, yr, xr, l);
-          }
 
-        /*  var tileMap = this._buildTileMap(xr, yr);
+          for (var j = 0; j < this.width; j++)
+          {
+            for (var l = 0; l < this.fullMap.data[0][yr].length; l++) {
+              this._drawTile(xo + x, yo + y, yr, xr, l);
+            }
+
+
+       var tileMap = this._buildTileMap(xr, yr);
           var xt = 0;
           var yt = 0;
           for (yt = 0; yt < 10; yt++) {
@@ -82,7 +83,7 @@ class Map {
                   tileMap[yt][xt][i].draw(xo + x, yo + y);
                 }
             }
-          }*/
+          }
 
           x += tiles.size / 2;
           y += tiles.size / 4;
@@ -90,7 +91,8 @@ class Map {
         }
     }
 
-/*    _buildTileMap(xr, yr) {
+
+    _buildTileMap(xr, yr) {
       var tileMap = [];
 
       var realX = xr + this._startX;
@@ -114,10 +116,10 @@ class Map {
         }
       }
       return tileMap;
-    }*/
+    }
 
     _drawTile(x, y, yr, xr, layer) {
-    if (layer > this.fullMap.nbLayers)
+    if (this.drew || layer > this.fullMap.nbLayers)
       return;
     /*console.log(layer, yr, xr);
     console.log(this.fullMap.data[layer]);
@@ -132,12 +134,12 @@ class Map {
 //      var fmX = fullMap._startX >= 0 ? fullMap._startX + xr : xr;
 //      var fmY = fullMap._startY >= 0 ? fullMap._startY + yr : yr;
 
-      var fmX = xr;
+      /*var fmX = xr;
       var fmY = yr;
       if (this._startX) {
         fmX += this._startX;
         fmY += this._startY;
-      }
+      }*/
       //var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
       //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
       //var offColor = "000000" + tileColorHex.toString(16);
@@ -166,16 +168,32 @@ class Map {
 
           var element = tile.image.on;
           element = element.cloneNode();
+
+          if (!this.elements)
+            this.elements = [];
+          if (!this.elements[layer])
+            this.elements[layer] = [];
+          if (!this.elements[layer][yr])
+            this.elements[layer][yr] = [];
+          if (!this.elements[layer][yr][xr])
+            this.elements[layer][yr][xr] = element;
+
+
           element.classList.add("tile");
+
+          element.dataset.x = xr;
+          element.dataset.y = yr;
+
           element.style.width = tiles.size+ "px";
           element.style.height = tiles.size + "px";
 
-          console.log(x+"px", y+"px");
+
           element.style.left = x+"px";
           element.style.top = y+"px";
+          //element.style["z-index"] = (yr * this.height) + xr;
           //if (element.loaded) {
             //console.log(element);
-            this.canvas.append(element);
+          this.canvas.append(element);
             /*ctx.drawImage(element,
                       x, y, tiles.size, tiles.size);*/
             //}
@@ -193,25 +211,56 @@ class Map {
           }*/
         }
 
-      if (layer == 0)
-        tileColorHex += 0x000001;
+    /*  if (layer == 0)
+        tileColorHex += 0x000001;*/
     }
+
+  characterOcclusion(character, element) {
+
+    let xMin = character.block.x - 5 < 0 ? 0 : character.block.x - 5;
+    let xMax = character.block.x + 5 >= this.width ?
+               this.width - 1 :character.block.x + 5;
+    let yMin = character.block.y - 5 < 0 ? 0 : character.block.y - 5;
+    let yMax = character.block.y + 5 >= this.height ?
+               this.height - 1 : character.block.y + 5;
+
+    for (let yr = yMin; yr < yMax; yr++) {
+      for (let xr = xMin; xr < xMax; xr++) {
+          for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
+            if (this.elements[lr] &&
+                this.elements[lr][yr] &&
+                this.elements[lr][yr][xr]) {
+
+              this.elements[lr][yr][xr].style["z-index"] =
+                                        element.style["z-index"] - 1;
+              if (yr > character.y || xr > character.x &&
+                  (lr > 0 ||
+                  tiles.data[this.fullMap.data[lr][yr][xr]].occlusion)) {
+                this.elements[lr][yr][xr].style["z-index"] =
+                                          element.style["z-index"] + 1;
+              }
+            }
+         }
+      }
+
+    }
+  }
 
   _loadImage(tile, offColor) {
       //$.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         // offscreen
         svgXml = tile.svgXml;
-        offColor = tile.floor ? offColor : "#FFFFFF";
-        tile.image.off = new Image();
+        //offColor = tile.floor ? offColor : "#FFFFFF";
+      //  tile.image.off = new Image();
         var str = (new XMLSerializer).serializeToString(svgXml);
-        var off = str.replace(/fill(.*);/g,'fill:'+offColor+';');
+        /*var off = str.replace(/fill(.*);/g,'fill:'+offColor+';');
         off = off.replace(/stroke(.*);/g,'stroke:'+offColor+';');
         off = off.replace(/fill-opacity(.*);/g,'fill-opacity:'+offColor+';');
         off = off.replace(/opacity(.*);/g,'opacity:1;');
         tile.image.off.onload = function() {
           tile.image.off.loaded = true;
         }
-        tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
+        tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;*/
   //  });
   }
 
