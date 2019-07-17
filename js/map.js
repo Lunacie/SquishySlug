@@ -12,14 +12,15 @@ class Map {
       this._timestamp = 0;
       this.lastHex = 0;
       this.drew = false;
+      this.canvas = document.getElementById("canvas");
 
       this.fullMap = new FullMap();
       this.height = this.fullMap.height;
       this.width = this.fullMap.width;
       this._player.map = this;
 
-      document.getElementById("canvas").style.width = this.width * tiles.size + "px";
-      document.getElementById("canvas").style.height = this.height * tiles.size + "px";
+      this.canvas.style.width = this.width * (tiles.size) + "px";
+      this.canvas.style.height = this.height * (tiles.size / 4) + "px";
     }
 
     update() {
@@ -34,13 +35,18 @@ class Map {
       return this.fullMap.getRandomDestination();
     }
 
+
     draw(ox, oy) {
 
       if (!loadManager.isComplete())
         return;
+      if (this.drew)
+        return;
+
+      this.canvas.innerHTML = '';
 
       this.drew = false;
-      let x = 0;
+      let x = parseInt(this.canvas.style.width) / 2;
       let y = 0;
       let yr = 0;
       //ox += tiles.size;
@@ -63,7 +69,7 @@ class Map {
 
         for (var j = 0; j < this.width; j++)
         {
-          for (var l = 0; l < this._data.length; l++) {
+          for (var l = 0; l < this.fullMap.data[0][yr].length; l++) {
             this._drawTile(xo + x, yo + y, yr, xr, l);
           }
 
@@ -111,7 +117,13 @@ class Map {
     }*/
 
     _drawTile(x, y, yr, xr, layer) {
-      var tile = tiles.data[this._data[layer][yr][xr]];
+    if (layer > this.fullMap.nbLayers)
+      return;
+    /*console.log(layer, yr, xr);
+    console.log(this.fullMap.data[layer]);
+    console.log(this.fullMap.data[layer][yr]);
+    console.log(this.fullMap.data[layer][yr][xr]);*/
+      var tile = tiles.data[this.fullMap.data[layer][yr][xr]];
       if (!tile)
         return;
       if (layer > 0)
@@ -126,49 +138,51 @@ class Map {
         fmX += this._startX;
         fmY += this._startY;
       }
-      var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
+      //var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
       //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
       //var offColor = "000000" + tileColorHex.toString(16);
-      offColor = "#" + offColor.slice(-6);
+      //offColor = "#" + offColor.slice(-6);
 
       if (!tile.style && !tile.id)
         return;
-
       // if has no image, draw simple tile
       else if (tile.style) {
           // on screen
-          ctx.fillStyle = tile.style;
-          ctx.strokeStyle = tile.style;
-          this._drawTilePoly(x, y, ctx);
+          this._drawTilePoly(x, y);
 
-          // off screen
-          offColor = tile.floor ? offColor : "#FFFFFF";
-          ctxOff.fillStyle = offColor;
-          ctxOff.strokeStyle = ctxOff.fillStyle;
-          this._drawTilePoly(x, y, ctxOff);
           debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
         }
       // else draw image
       else if (tile.id) {
         if (!tile.image)
           window.location.reload();
-        if (!tile.image.off) {
+        /*if (!tile.image.off) {
           this._loadImage(tile, offColor);
           if (offColor > this.lastHex)
           this.lastHex = offColor;
         }
-        else {
+        else {*/
           // on screen
+
           var element = tile.image.on;
-          if (element.loaded)
-            ctx.drawImage(element,
-                      x, y, tiles.size, tiles.size);
+          element = element.cloneNode();
+          element.classList.add("tile");
+          element.style.width = tiles.size+ "px";
+          element.style.height = tiles.size + "px";
+
+          console.log(x+"px", y+"px");
+          element.style.left = x+"px";
+          element.style.top = y+"px";
+          //if (element.loaded) {
+            //console.log(element);
+            this.canvas.append(element);
+            /*ctx.drawImage(element,
+                      x, y, tiles.size, tiles.size);*/
+            //}
 
           // off screen
+          /*
           if (tile.floor) {
-            ctxOff.fillStyle = offColor;
-            ctxOff.strokeStyle = ctxOff.fillStyle;
-            this._drawTilePoly(x, y, ctxOff);
             debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
           }
           else {
@@ -176,9 +190,9 @@ class Map {
           if (element.loaded)
             ctxOff.drawImage(element,
                         x, y, tiles.size, tiles.size);
-          }
+          }*/
         }
-      }
+
       if (layer == 0)
         tileColorHex += 0x000001;
     }
@@ -201,7 +215,7 @@ class Map {
   //  });
   }
 
-  _drawTilePoly(x, y, context) {
+  _drawTilePoly(x, y) {
     context.beginPath();
     context.moveTo(x + tiles.size / 2,
                y + tiles.size / 2);

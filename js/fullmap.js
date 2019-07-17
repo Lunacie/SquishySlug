@@ -31,9 +31,28 @@ class FullMap {
     this.width = this.data[0][0].length;
     this.nbLayers = 2;
 
+    this._buildLayerMap();
     this._buildGraph();
   }
 
+
+  _buildLayerMap() {
+    for (let i = 1; i <= this.nbLayers; i++) {
+      this.data[i] = [];
+      for (let y = 0; y < this.height; y++) {
+        this.data[i][y] = [];
+        for (let x = 0; x < this.width; x++) {
+          /*console.log(this.data[1]);
+          console.log(i - 1, y, x);
+          console.log(tiles.data[this.data[i - 1][y][x]]);*/
+          if (tiles.data[this.data[i - 1][y][x]].top)
+            this.data[i][y][x] = tiles.data[this.data[i - 1][y][x]].top;
+          else
+            this.data[i][y][x] = 0;
+        }
+      }
+    }
+  }
 
   _buildGraph() {
     this._graph = [];
