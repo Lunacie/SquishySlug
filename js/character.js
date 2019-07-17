@@ -535,8 +535,13 @@ function Character (x, y)
           var element = this.images.on;
         else
           var element = this.images[this.state][this.direction].on;
-        var width = (tiles.size / 3) * -1;
+
+        var width = (tiles.size / 3);
         var height = tiles.size / 1.6;
+        /*if (this.state == ACTION_STATE_IDLE &&
+            this.direction == DIRECTION_LEFT)
+          height = tiles.size * 2;*/
+
         this.x2d = x;
         this.y2d = y;
         if (element.loaded) {
