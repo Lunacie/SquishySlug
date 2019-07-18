@@ -297,6 +297,8 @@ function Character (x, y)
     if (this._steps[0] == DIRECTION_RIGHT)
       this.walkUnit.x = this.walkUnitSize;
 
+
+
     if (SHOW_DIJKSTRA_DEBUG) {
       console.log("current : ", this.block.x, this.block.y);
       console.log(this._path[0]);
@@ -317,8 +319,9 @@ function Character (x, y)
 
 
   this._scaleWalkPace = function() {
-    if (fps)
-      this._walkPaceScale = 60 / fps;
+    if (fps) {
+      this._walkPaceScale = (1 - ((fps * 1) / 60)) / 100;
+    }
   };
 
   this._characterIsBlocked = function(block) {
@@ -350,8 +353,10 @@ function Character (x, y)
     let oldX = this.x;
     let oldY = this.y;
 
-    this.x += (this.walkUnit.x * this._walkPaceScale);
-    this.y += (this.walkUnit.y * this._walkPaceScale);
+    if (this.walkUnit.x != 0)
+      this.x += (this.walkUnit.x /*+ this._walkPaceScale*/);
+    if (this.walkUnit.y != 0)
+    this.y += (this.walkUnit.y /*+ this._walkPaceScale*/);
 
 
     this.block.x = parseInt(this.x);

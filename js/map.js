@@ -60,8 +60,92 @@ class Map {
         x -= tiles.size / 2;
         yr++;
       }
+      if (!this.drew)
+        this._sortElements();
       this.drew = true;
     }
+
+    _sortElements() {
+      let count = 1;
+      let y = 0;
+      let x = 0;
+      let run = true;
+      let j = 0;
+      let index = 1;
+      let offset = this._characters.length;
+
+
+      for (j = 0; j <= this.fullMap.height -1; j++) {
+        x = j;
+        y = 0;
+        while (x >= 0) {
+
+            for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
+              if (this.elements[lr] && this.elements[lr][y] &&
+                this.elements[lr][y][x]) {
+                this.elements[lr][y][x].style["z-index"] = index;
+            }
+          }
+          index += offset;
+          //console.log(y, x);
+          x--;
+          y++;
+        }
+        //console.log("");
+      }
+
+
+
+
+     //console.log("=============================");
+
+     // n == width
+     // m == heiht
+
+      for (j = 1; j <= this.fullMap.height - 1; j++) {
+        x = this.fullMap.width - 1;
+        y = j;
+        while (y <= this.fullMap.height - 1) {
+          //console.log(y, x);
+          for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
+            if (this.elements[lr] && this.elements[lr][y] &&
+              this.elements[lr][y][x]) {
+              this.elements[lr][y][x].style["z-index"] = index;
+            }
+          }
+          index += offset;
+          x--;
+          y++;
+        }
+        //console.log(" ");
+      }
+
+
+      /*
+        count = j;
+        for (y = j; y >= 0; y--) {
+          for (x = 0; x < this.fullMap.width && x < count; x++) {
+            console.log(y, x);
+            //this.elements[0][y][x].style.display = "none";
+          }
+          console.log(" ");
+          count++;
+        }*/
+
+        /*
+          for (y = this.fullMap.height - 1 ; y >= 0 ; y--) {
+           for (x = j; x < this.fullMap.width && x < count; x++) {
+
+             this.elements[0][y][x].style.display = "none";
+            //console.log(y, x);
+          }
+          j++;
+          count--;
+        }*/
+
+
+
+      }
 
     _drawCol(xo, yo, yr) {
         var x = 0;
@@ -125,7 +209,7 @@ class Map {
     getCharacterPositionOnTile(character) {
       let x = character.block.x;
       let y = character.block.y;
-      let zIndex = this.elements[0][y][x].style["z-index"];
+      let zIndex = parseInt(this.elements[0][y][x].style["z-index"]);
 
       let tileMap = this._buildTileMap(x, y);
       return zIndex + character.indexOnTile;
@@ -203,8 +287,8 @@ class Map {
 
           element.style.left = x+"px";
           element.style.top = y+"px";
-          element.style["z-index"] = (yr * this.height) +
-                                     (xr * this._characters.length);
+          //element.style["z-index"] = (yr * this.height) +
+          //                           (xr + this._characters.length);
           //if (element.loaded) {
             //console.log(element);
           this.canvas.append(element);
