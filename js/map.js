@@ -19,6 +19,8 @@ class Map {
       this.height = this.fullMap.height;
       this.width = this.fullMap.width;
       this._player.map = this;
+      for (let i = 0; i < characters.length; i++)
+        characters[i].map = this;
 
       this.canvas.style.width = this.width * (tiles.size) + "px";
       this.canvas.style.height = this.height * (tiles.size / 4) + "px";
@@ -94,7 +96,7 @@ class Map {
 
     _buildTileMap(xr, yr) {
       var tileMap = [];
-
+      let j = 0;
       var realX = xr + this._startX;
       var realY = yr + this._startY;
       var characters = this.fullMap.getCharacters(realX, realY);
@@ -110,12 +112,23 @@ class Map {
                   characters[i].internalBlock.y >= yt &&
                   characters[i].internalBlock.y < yt + 1)
                   {
-                tileMap[yt][xt].push(characters[i]);
+                  tileMap[yt][xt].push(characters[i]);
+                  characters[i].indexOnTile = j;
+                j++;
               }
             }
         }
       }
       return tileMap;
+    }
+
+    getCharacterPositionOnTile(character) {
+      let x = character.block.x;
+      let y = character.block.y;
+      let zIndex = this.elements[0][y][x].style["z-index"];
+
+      let tileMap = this._buildTileMap(x, y);
+      return zIndex + character.indexOnTile;
     }
 
     _drawTile(x, y, yr, xr, layer) {
@@ -190,7 +203,8 @@ class Map {
 
           element.style.left = x+"px";
           element.style.top = y+"px";
-          //element.style["z-index"] = (yr * this.height) + xr;
+          element.style["z-index"] = (yr * this.height) +
+                                     (xr * this._characters.length);
           //if (element.loaded) {
             //console.log(element);
           this.canvas.append(element);
@@ -214,37 +228,6 @@ class Map {
     /*  if (layer == 0)
         tileColorHex += 0x000001;*/
     }
-
-  characterOcclusion(character, element) {
-
-    let xMin = character.block.x - 5 < 0 ? 0 : character.block.x - 5;
-    let xMax = character.block.x + 5 >= this.width ?
-               this.width - 1 :character.block.x + 5;
-    let yMin = character.block.y - 5 < 0 ? 0 : character.block.y - 5;
-    let yMax = character.block.y + 5 >= this.height ?
-               this.height - 1 : character.block.y + 5;
-
-    for (let yr = yMin; yr < yMax; yr++) {
-      for (let xr = xMin; xr < xMax; xr++) {
-          for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
-            if (this.elements[lr] &&
-                this.elements[lr][yr] &&
-                this.elements[lr][yr][xr]) {
-
-              this.elements[lr][yr][xr].style["z-index"] =
-                                        element.style["z-index"] - 1;
-              if (yr > character.y || xr > character.x &&
-                  (lr > 0 ||
-                  tiles.data[this.fullMap.data[lr][yr][xr]].occlusion)) {
-                this.elements[lr][yr][xr].style["z-index"] =
-                                          element.style["z-index"] + 1;
-              }
-            }
-         }
-      }
-
-    }
-  }
 
   _loadImage(tile, offColor) {
       //$.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {

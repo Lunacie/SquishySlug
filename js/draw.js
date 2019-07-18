@@ -10,6 +10,7 @@
      if (fps) {
       speed *= (60 / fps);
       $("#fps").html(fps + " fps");
+      console.log(fps);
     }
 
     //let pos = camera.center();

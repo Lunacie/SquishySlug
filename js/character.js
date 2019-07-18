@@ -50,6 +50,7 @@ function Character (x, y)
   this.direction = DIRECTION_RIGHT;
   this._path = null;
   this._steps = null;
+  this.indexOnTile = 0;
   this._props = [];
   this._orderStatus = ORDER_STATUS_NONE;
   this.ui = null;
@@ -72,7 +73,7 @@ function Character (x, y)
           this.latestPostion.y != this.block.y)
         alert("changed block");
 
-      this.map.fullMap.removeCharacter(this.id, this.block.x, this.block.y);
+      map.fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
           if (!this._path) {
@@ -569,12 +570,10 @@ function Character (x, y)
           element.style.display = "block";
           element.style.width = width + "px";
           element.style.height = height + "px";
-          element.style["z-index"] = 10;
+          element.style["z-index"] =
+             this.map.getCharacterPositionOnTile(this);
+            //this.map.elements[0][this.block.y][this.block.x].style["z-index"];
 
-          if (this.changedBlock) {
-            map.characterOcclusion(this, element);
-            this.changedBlock = false;
-          }
 
           //console.log("Player : "+ x+"px", y+"px");
           element.style.left = x+"px";

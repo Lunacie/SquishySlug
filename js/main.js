@@ -8,7 +8,7 @@ var ui = new UI();
 if (!staticMode) {
   var player = new Player(10, 10);
   var characters = [];
-  characters.push(player);/*
+  characters.push(player);
   characters.push(new Npc(10, 11, SPECIES_CAT));
   characters.push(new Npc(12, 10, SPECIES_ELEPHANT));
   characters.push(new Npc(10, 7, SPECIES_INSECT));
@@ -18,7 +18,7 @@ if (!staticMode) {
   characters.push(new Npc(6, 11, STATIC_TELSTRA, true));
   characters.push(new Npc(6, 3, STATIC_D3QB, true));
   characters.push(new Npc(4, 12, STATIC_FIREGEEKS, true));
-  characters.push(new Npc(13, 13, STATIC_OCTOPUSROOM, true));*/
+  characters.push(new Npc(13, 13, STATIC_OCTOPUSROOM, true));
   //characters.push(new Npc(13, 13, STATIC_OCTOPUS, true));
 
   var loadManager = new LoadManager(characters, tiles);

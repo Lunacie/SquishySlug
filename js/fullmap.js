@@ -84,7 +84,8 @@ class FullMap {
 
   getRandomDestination() {
     let collision = true;
-    let x = y = 0;
+    let x = 0;
+    let y = 0;
     do {
       let width = this._graph[0].length;
       let height = this._graph.length;
