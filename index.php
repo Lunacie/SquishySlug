@@ -41,6 +41,7 @@
       <script type="text/javascript" src="js/update.js"></script>
 
       <link rel="stylesheet" href="css/style.css"></link>
+      <link rel="stylesheet" href="css/style-tiles.css"></link>
       <link rel="stylesheet" href="css/media-queries.css"></link>
       <link rel="stylesheet" href="css/animations.css"></link>
       <link rel="stylesheet" href="css/animation-menu.css"></link>

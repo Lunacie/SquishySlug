@@ -121,29 +121,6 @@ class Map {
       }
 
 
-      /*
-        count = j;
-        for (y = j; y >= 0; y--) {
-          for (x = 0; x < this.fullMap.width && x < count; x++) {
-            console.log(y, x);
-            //this.elements[0][y][x].style.display = "none";
-          }
-          console.log(" ");
-          count++;
-        }*/
-
-        /*
-          for (y = this.fullMap.height - 1 ; y >= 0 ; y--) {
-           for (x = j; x < this.fullMap.width && x < count; x++) {
-
-             this.elements[0][y][x].style.display = "none";
-            //console.log(y, x);
-          }
-          j++;
-          count--;
-        }*/
-
-
 
       }
 
@@ -216,6 +193,7 @@ class Map {
     }
 
     _drawTile(x, y, yr, xr, layer) {
+
     if (this.drew || layer > this.fullMap.nbLayers)
       return;
     /*console.log(layer, yr, xr);
@@ -264,7 +242,13 @@ class Map {
           // on screen
 
           var element = tile.image.on;
-          element = element.cloneNode();
+
+
+
+          element = tile.svgXml.documentElement;
+          element = element.cloneNode(true);
+          if (!element)
+            return;
 
           if (!this.elements)
             this.elements = [];
@@ -276,7 +260,9 @@ class Map {
             this.elements[layer][yr][xr] = element;
 
 
+          element.id = "Layer_" + yr+"_"+xr;
           element.classList.add("tile");
+          element.classList.add(tile.id);
 
           element.dataset.x = xr;
           element.dataset.y = yr;
@@ -284,11 +270,9 @@ class Map {
           element.style.width = tiles.size+ "px";
           element.style.height = tiles.size + "px";
 
-
           element.style.left = x+"px";
           element.style.top = y+"px";
-          //element.style["z-index"] = (yr * this.height) +
-          //                           (xr + this._characters.length);
+
           //if (element.loaded) {
             //console.log(element);
           this.canvas.append(element);

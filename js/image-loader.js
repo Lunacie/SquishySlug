@@ -171,14 +171,29 @@
 
         // Static object
         else {
-           char.images.on = new Image();
+           /*char.images.on = new Image();
            var str = (new XMLSerializer).serializeToString(this._svgXml);
            str = str.replace(/#/g, "%23");
            this._serialized = str;
            char.images.on.onload = function() {
             char.images.on.loaded = true;
            }
-           char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;
+           char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;*/
+
+
+            char.images.on = new Image();
+            var str = (new XMLSerializer).serializeToString(this._svgXml);
+            str = str.replace(/#/g, "%23");
+            this._serialized = str;
+            //var oParser = new DOMParser();
+            //var oDOM = oParser.parseFromString(str, "application/xml");
+
+            //char.images.on = oDOM.documentElement;
+
+            char.images.on.onload = function() {
+             char.images.on.loaded = true;
+            }
+            char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;
         }
      }
 

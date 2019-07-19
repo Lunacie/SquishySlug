@@ -537,8 +537,12 @@ function Character (x, y)
 
       // image ready to draw
       else {
-        if (this._static)
+        if (this._static) {
           var element = this.images.on;
+          element.classList.add("static-npc");
+          //console.log(element);
+          //console.log(this.images.on);
+        }
         else
           var element = this.images[this.state][this.direction].on;
 
@@ -551,6 +555,7 @@ function Character (x, y)
         this.x2d = x;
         this.y2d = y;
         if (element.loaded) {
+
 
 
           if (!this.element)
@@ -570,6 +575,7 @@ function Character (x, y)
 
           element = this.element[this.state][this.direction];
           this.element["last"] = element;
+
 
 
           element.style.display = "block";
@@ -603,6 +609,9 @@ function Character (x, y)
           ctxOff.drawImage(element,
                         x, y, width, height);*/
         }
+
+      if (element.classList.contains("static-ncp"))
+       console.log("static");
     };
 
   this._drawProps = function(x, y, width, height) {
