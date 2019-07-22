@@ -1,38 +1,46 @@
 
 var CLICK_EVENT_DEBUG = false;
 
-function eventCanvasClicked(event, element) {
 
-  var eventLocation = getEventLocation(this, event);
-  var pixelData = ctxOff.getImageData(eventLocation.x, eventLocation.y,
-                                      1, 1).data;
-  var val = 000000 + rgbToHex(pixelData[0],
-                                pixelData[1],
-                                pixelData[2]);
+function hasParentClass(element, classname) {
+  if (!element.classList) return false;
+  console.log(element.classList);
+  if (element.classList.contains(classname)) return true;
+  return element.parentNode && hasParentClass(element.parentNode, classname);
+}
 
- // clicked a static object
- if (val == 0xFFFFFF)
-    return;
- // clicked a npc
- else if (val > characterColorHex) {
-   events.click = getClickEventNpc(val);
- }
- // clicked the floor
- else {
-   //events.click = getClickEventFloor(val);
- }
-};
+function setClickListeners(canvas) {
+
+  const useEventType = (typeof window.PointerEvent === 'function') ?
+                        'pointer' : 'mouse';
+  const listeners = ['click','touchstart','touchend'/*,
+                     'touchmove',`${useEventType}enter`,
+                     `${useEventType}leave`, `${useEventType}move`*/];
+
+
+  const pointerHandler = (event) => {
+    event.preventDefault();
+    if (hasParentClass(event.target, 'floor'))
+      console.log("click");
+  }
+
+  listeners.map((etype) => {
+      canvas.addEventListener(etype, pointerHandler);
+    });
+
+}
+
 
 function getClickEventNpc(val) {
-//  console.log((val - characterColorHex) / 2);
-  var npc = fullMap.getCharacter((val - characterColorHex) / 2);
+/*  var npc = fullMap.getCharacter((val - characterColorHex) / 2);
   if (!npc)
     return null;
-  return npc.getDestinationTriggerInteraction();
+  return npc.getDestinationTriggerInteraction();*/
 }
 
 function getClickEventFloor(val) {
 
+/*
   if (CLICK_EVENT_DEBUG)
     console.log("EVENT val", val);
   var row = 0;
@@ -43,8 +51,6 @@ function getClickEventFloor(val) {
   if (map._startX <= 0)
     width = map.width + map._startX;
   width = fullMap.width;
-  //else if (map._startX > 0)
-  //  var width = map.width - map._startX;
   if (CLICK_EVENT_DEBUG)
     console.log("EVENT revised map width",  width);
   for (var rest = val; rest - width  >= 0; rest -= (width))
@@ -65,15 +71,5 @@ function getClickEventFloor(val) {
     console.log("EVENT", events.click);
     console.log("EVENT ------------");
   }
-  return events.click;
-}
-
-function getEventLocation(element, event) {
-  return {
-    x : event.pageX -  ui.getTabWidth(), y : event.pageY
-  }
-}
-
-function rgbToHex(r, g, b) {
-    return ((r << 16) | (g << 8) | b);
+  return events.click;*/
 }

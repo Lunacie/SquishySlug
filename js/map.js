@@ -194,107 +194,109 @@ class Map {
 
     _drawTile(x, y, yr, xr, layer) {
 
-    if (this.drew || layer > this.fullMap.nbLayers)
-      return;
-    /*console.log(layer, yr, xr);
-    console.log(this.fullMap.data[layer]);
-    console.log(this.fullMap.data[layer][yr]);
-    console.log(this.fullMap.data[layer][yr][xr]);*/
-      var tile = tiles.data[this.fullMap.data[layer][yr][xr]];
-      if (!tile)
+      if (this.drew || layer > this.fullMap.nbLayers)
         return;
-      if (layer > 0)
-        y -= (layer * tiles.size) / 2;
+      /*console.log(layer, yr, xr);
+      console.log(this.fullMap.data[layer]);
+      console.log(this.fullMap.data[layer][yr]);
+      console.log(this.fullMap.data[layer][yr][xr]);*/
+        var tile = tiles.data[this.fullMap.data[layer][yr][xr]];
+        if (!tile)
+          return;
+        if (layer > 0)
+          y -= (layer * tiles.size) / 2;
 
-//      var fmX = fullMap._startX >= 0 ? fullMap._startX + xr : xr;
-//      var fmY = fullMap._startY >= 0 ? fullMap._startY + yr : yr;
+  //      var fmX = fullMap._startX >= 0 ? fullMap._startX + xr : xr;
+  //      var fmY = fullMap._startY >= 0 ? fullMap._startY + yr : yr;
 
-      /*var fmX = xr;
-      var fmY = yr;
-      if (this._startX) {
-        fmX += this._startX;
-        fmY += this._startY;
-      }*/
-      //var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
-      //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
-      //var offColor = "000000" + tileColorHex.toString(16);
-      //offColor = "#" + offColor.slice(-6);
+        /*var fmX = xr;
+        var fmY = yr;
+        if (this._startX) {
+          fmX += this._startX;
+          fmY += this._startY;
+        }*/
+        //var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
+        //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
+        //var offColor = "000000" + tileColorHex.toString(16);
+        //offColor = "#" + offColor.slice(-6);
 
-      if (!tile.style && !tile.id)
-        return;
-      // if has no image, draw simple tile
-      else if (tile.style) {
-          // on screen
-          this._drawTilePoly(x, y);
+        if (!tile.style && !tile.id)
+          return;
+        // if has no image, draw simple tile
+        else if (tile.style) {
+            // on screen
+            this._drawTilePoly(x, y);
 
-          debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
-        }
-      // else draw image
-      else if (tile.id) {
-        if (!tile.image)
-          window.location.reload();
-        /*if (!tile.image.off) {
-          this._loadImage(tile, offColor);
-          if (offColor > this.lastHex)
-          this.lastHex = offColor;
-        }
-        else {*/
-          // on screen
-
-          var element = tile.image.on;
-
-
-
-          element = tile.svgXml.documentElement;
-          element = element.cloneNode(true);
-          if (!element)
-            return;
-
-          if (!this.elements)
-            this.elements = [];
-          if (!this.elements[layer])
-            this.elements[layer] = [];
-          if (!this.elements[layer][yr])
-            this.elements[layer][yr] = [];
-          if (!this.elements[layer][yr][xr])
-            this.elements[layer][yr][xr] = element;
-
-
-          element.id = "Layer_" + yr+"_"+xr;
-          element.classList.add("tile");
-          element.classList.add(tile.id);
-
-          element.dataset.x = xr;
-          element.dataset.y = yr;
-
-          element.style.width = tiles.size+ "px";
-          element.style.height = tiles.size + "px";
-
-          element.style.left = x+"px";
-          element.style.top = y+"px";
-
-          //if (element.loaded) {
-            //console.log(element);
-          this.canvas.append(element);
-            /*ctx.drawImage(element,
-                      x, y, tiles.size, tiles.size);*/
-            //}
-
-          // off screen
-          /*
-          if (tile.floor) {
             debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
           }
-          else {
-          element = tile.image.off;
-          if (element.loaded)
-            ctxOff.drawImage(element,
-                        x, y, tiles.size, tiles.size);
-          }*/
-        }
+        // else draw image
+        else if (tile.id) {
+          if (!tile.image)
+            window.location.reload();
+          /*if (!tile.image.off) {
+            this._loadImage(tile, offColor);
+            if (offColor > this.lastHex)
+            this.lastHex = offColor;
+          }
+          else {*/
+            // on screen
 
-    /*  if (layer == 0)
-        tileColorHex += 0x000001;*/
+            var element = tile.image.on;
+
+
+
+            element = tile.svgXml.documentElement;
+            element = element.cloneNode(true);
+            if (!element)
+              return;
+
+            if (!this.elements)
+              this.elements = [];
+            if (!this.elements[layer])
+              this.elements[layer] = [];
+            if (!this.elements[layer][yr])
+              this.elements[layer][yr] = [];
+            if (!this.elements[layer][yr][xr])
+              this.elements[layer][yr][xr] = element;
+
+
+            element.id = "Layer_" + yr+"_"+xr;
+            element.classList.add("tile");
+            if (tile.floor)
+              element.classList.add("floor");
+            element.classList.add(tile.id);
+
+            element.dataset.x = xr;
+            element.dataset.y = yr;
+
+            element.style.width = tiles.size+ "px";
+            element.style.height = tiles.size + "px";
+
+            element.style.left = x+"px";
+            element.style.top = y+"px";
+
+            //if (element.loaded) {
+              //console.log(element);
+            this.canvas.append(element);
+              /*ctx.drawImage(element,
+                        x, y, tiles.size, tiles.size);*/
+              //}
+
+            // off screen
+            /*
+            if (tile.floor) {
+              debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
+            }
+            else {
+            element = tile.image.off;
+            if (element.loaded)
+              ctxOff.drawImage(element,
+                          x, y, tiles.size, tiles.size);
+            }*/
+          }
+
+      /*  if (layer == 0)
+          tileColorHex += 0x000001;*/
     }
 
   _loadImage(tile, offColor) {

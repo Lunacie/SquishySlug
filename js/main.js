@@ -33,6 +33,7 @@ window.onload = function() {
 
 if (!staticMode) {
   let canvas = document.getElementById('canvas');
+  setClickListeners(canvas);
   /*
   var canvas = document.getElementById('canvas');
   canvas.width = window.screen.width;

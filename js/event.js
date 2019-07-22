@@ -12,6 +12,8 @@ var restoreEvents = function()
 }
 restoreEvents();
 
+
+
 document.addEventListener("keydown", function(event)
 {
   events.up = (event.keyCode == 87 || event.keyCode == 38 ||
@@ -25,12 +27,14 @@ document.addEventListener("keydown", function(event)
   events.right = (event.keyCode == 68 || event.keyCode == 39) ?
                  true : false;
 
+
   window.addEventListener("keydown", function(e) {
     // space and arrow keys
     if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
   }, false);
+
 
   if (event.keyCode == 79 /* o */ && DEBUG) {
     if (canvas.style.display == "none") {
