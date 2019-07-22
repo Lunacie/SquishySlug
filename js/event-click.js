@@ -3,9 +3,8 @@ var CLICK_EVENT_DEBUG = false;
 
 
 function hasParentClass(element, classname) {
-  if (!element.classList) return false;
-  console.log(element.classList);
-  if (element.classList.contains(classname)) return true;
+  if (!element.classList) return null;
+  if (element.classList.contains(classname)) return element;
   return element.parentNode && hasParentClass(element.parentNode, classname);
 }
 
@@ -20,8 +19,9 @@ function setClickListeners(canvas) {
 
   const pointerHandler = (event) => {
     event.preventDefault();
-    if (hasParentClass(event.target, 'floor'))
-      console.log("click");
+    let element = hasParentClass(event.target, 'floor');
+    if (element)
+      getClickEventFloor(element);
   }
 
   listeners.map((etype) => {
@@ -38,7 +38,12 @@ function getClickEventNpc(val) {
   return npc.getDestinationTriggerInteraction();*/
 }
 
-function getClickEventFloor(val) {
+function getClickEventFloor(element) {
+
+  events.click = {
+    x : element.dataset.x,
+    y : element.dataset.y,
+  };
 
 /*
   if (CLICK_EVENT_DEBUG)
