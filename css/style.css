@@ -15,7 +15,7 @@ body {
   background : #17BEC7;
 }
 
-.tile {
+.tile, .character, .static-npc {
   position : absolute;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 
-/* WIP 
+/* WIP
 #wip {
   position : fixed;
   background : #6D316C;

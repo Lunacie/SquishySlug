@@ -526,6 +526,35 @@ function Character (x, y)
       var disp = this._getDisplacement(x, y);
       x = disp.x;
       y = disp.y;
+      var width = (tiles.size / 3);
+      var height = tiles.size / 1.6;
+
+      let element;
+
+
+      if (this._static && ! this._drawn) {
+          this._drawn = true;
+          element = this.images.svgXml.documentElement;
+          element.classList.add("static-npc");
+          element.loaded = true;
+
+          element = element.cloneNode(true);
+          this.element = element;
+          this.element.id  = "character_" + this.id;
+          this.element.style.display = "block";
+          width = tiles.size / 2.5 ;
+          height = tiles.size;
+          this.element.style.width = width + "px";
+          this.element.style.height = height + "px";
+          this.element.style.left = x+"px";
+          this.element.style.top = y+"px";
+          this.map.canvas.append(this.element);
+      }
+      if (this._static && this.element) {
+          this.element.style["z-index"] =
+             this.map.getCharacterPositionOnTile(this);
+        return;
+      }
 
       if (!this._static)
         this.images[this.state] = this.images[this.state] || [];
@@ -537,65 +566,65 @@ function Character (x, y)
 
       // image ready to draw
       else {
-        if (this._static) {
-          var element = this.images.on;
-          element.classList.add("static-npc");
-          //console.log(element);
-          //console.log(this.images.on);
-        }
-        else
-          var element = this.images[this.state][this.direction].on;
+          if (this._static) {
+            //console.log(element);
+            //console.log(this.images.on);
+          }
+          else
+            element = this.images[this.state][this.direction].on;
 
-        var width = (tiles.size / 3);
-        var height = tiles.size / 1.6;
         /*if (this.state == ACTION_STATE_IDLE &&
             this.direction == DIRECTION_LEFT)
           height = tiles.size * 2;*/
 
         this.x2d = x;
         this.y2d = y;
-        if (element.loaded) {
+        if (!this._static && element.loaded) {
+
+
+              if (!this.element)
+                this.element = [];
+              if (!this.element[this.state])
+                 this.element[this.state] = [];
+             if (!this._static && !this.element[this.state][this.direction]) {
+                element = element.cloneNode();
+                element.classList.add("character");
+                if (this.id == 0)
+                  element.classList.add("player");
+                else
+                  element.classList.add("npc");
+                this.element[this.state][this.direction] = element;
+                this.map.canvas.append(element);
+              }
+
+              if (!this._static) {
+                if (this.element["last"])
+                  this.element["last"].style.display = "none";
+
+                element = this.element[this.state][this.direction];
+                this.element["last"] = element;
+              }
 
 
 
-          if (!this.element)
-            this.element = [];
-          if (!this.element[this.state])
-             this.element[this.state] = [];
-         if (!this.element[this.state][this.direction]) {
-            element = element.cloneNode();
-            element.classList.add("player");
-            element.classList.add("tile");
-            this.element[this.state][this.direction] = element;
-            this.map.canvas.append(element);
-          }
-
-          if (this.element["last"])
-            this.element["last"].style.display = "none";
-
-          element = this.element[this.state][this.direction];
-          this.element["last"] = element;
+              element.style.display = "block";
+              element.style.width = width + "px";
+              element.style.height = height + "px";
+              element.style["z-index"] =
+                 this.map.getCharacterPositionOnTile(this);
+                //this.map.elements[0][this.block.y][this.block.x].style["z-index"];
 
 
-
-          element.style.display = "block";
-          element.style.width = width + "px";
-          element.style.height = height + "px";
-          element.style["z-index"] =
-             this.map.getCharacterPositionOnTile(this);
-            //this.map.elements[0][this.block.y][this.block.x].style["z-index"];
+              //console.log("Player : "+ x+"px", y+"px");
+              element.style.left = x+"px";
+              element.style.top = y+"px";
 
 
-          //console.log("Player : "+ x+"px", y+"px");
-          element.style.left = x+"px";
-          element.style.top = y+"px";
-
-
-          /*
-          ctx.drawImage(element,
-                        x, y, width, height);*/
-          if (this.id == 0)
-          camera.player = {x: x, y : y, width : width, height : height}
+              /*
+              ctx.drawImage(element,
+                            x, y, width, height);*/
+              if (this.id == 0)
+              camera.player = {x: x, y : y, width : width, height : height}
           }
         if (!this._static)
           this._drawProps(x, y, width, height);
@@ -609,9 +638,6 @@ function Character (x, y)
           ctxOff.drawImage(element,
                         x, y, width, height);*/
         }
-
-      if (element.classList.contains("static-ncp"))
-       console.log("static");
     };
 
   this._drawProps = function(x, y, width, height) {

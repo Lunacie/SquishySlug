@@ -80,7 +80,7 @@ function LoadManager(characters, tiles) {
       for (var i = 0; i < this._characters.length; i++) {
         if (this._characters[i]._static) {
           var images = this._characters[i].images;
-          if (!images.on || !images.off)
+          if (!images.on /*|| !images.off*/)
             return false;
         }
         else {
@@ -88,7 +88,7 @@ function LoadManager(characters, tiles) {
           var images = this._characters[i].images;
           for (i = 0; i < 2; i++) {
             for (j = 0; j < 4; j++) {
-              if (!images[i][j].on || !images[i][j].off)
+              if (!images[i][j].on /*|| !images[i][j].off*/)
                 return false;
             }
           }

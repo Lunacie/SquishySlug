@@ -84,8 +84,8 @@
          char.images = {};
        if (!char.images.on)
          this._loadOnCanvasImage(char, state, direction);
-       if (!char.images.off)
-         this._loadOffCanvasImage(char, state, direction);
+       //if (!char.images.off)
+        // this._loadOffCanvasImage(char, state, direction);
        }
 
        else {
@@ -124,6 +124,7 @@
          }
        }
       for (let i = 0; i < this.statics.length; i++) {
+        console.log(loader.statics[i].path);
          $.get(loader.statics[i].path, function(svgXml) {
            loader.statics[i].svgXml = svgXml;
          });
@@ -181,19 +182,23 @@
            char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;*/
 
 
-            char.images.on = new Image();
+            //char.images.on = new Image();
             var str = (new XMLSerializer).serializeToString(this._svgXml);
-            str = str.replace(/#/g, "%23");
+            //str = str.replace(/#/g, "%23");
             this._serialized = str;
+            char.images = { on : { loaded : true }};
+            char.images.svgXml = this._svgXml;
             //var oParser = new DOMParser();
             //var oDOM = oParser.parseFromString(str, "application/xml");
 
             //char.images.on = oDOM.documentElement;
 
+            /*
             char.images.on.onload = function() {
              char.images.on.loaded = true;
             }
             char.images.on.src = "data:image/svg+xml;charset=utf-8," + str;
+            */
         }
      }
 
