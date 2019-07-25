@@ -519,8 +519,8 @@ function Character (x, y)
   };
 
 
-    this.draw = function(ox, oy)
-    {
+  this.draw = function(ox, oy)
+  {
       var y = oy;
       var x = ox + tiles.size / 1.5;
       var disp = this._getDisplacement(x, y);
@@ -532,29 +532,8 @@ function Character (x, y)
       let element;
 
 
-      if (this._static && ! this._drawn) {
-          this._drawn = true;
-          element = this.images.svgXml.documentElement;
-          element.classList.add("static-npc");
-          element.loaded = true;
-
-          element = element.cloneNode(true);
-          this.element = element;
-          this.element.id  = "character_" + this.id;
-          this.element.style.display = "block";
-          width = tiles.size / 2.5 ;
-          height = tiles.size;
-          this.element.style.width = width + "px";
-          this.element.style.height = height + "px";
-          this.element.style.left = x+"px";
-          this.element.style.top = y+"px";
-          this.map.canvas.append(this.element);
-      }
-      if (this._static && this.element) {
-          this.element.style["z-index"] =
-             this.map.getCharacterPositionOnTile(this);
-        return;
-      }
+      if (this._static || (this._static && !this._drawn))
+        return this.drawStaticNpc(element, width, height, x, y);
 
       if (!this._static)
         this.images[this.state] = this.images[this.state] || [];
@@ -566,12 +545,7 @@ function Character (x, y)
 
       // image ready to draw
       else {
-          if (this._static) {
-            //console.log(element);
-            //console.log(this.images.on);
-          }
-          else
-            element = this.images[this.state][this.direction].on;
+        element = this.images[this.state][this.direction].svgXml.documentElement;
 
         /*if (this.state == ACTION_STATE_IDLE &&
             this.direction == DIRECTION_LEFT)
@@ -579,16 +553,17 @@ function Character (x, y)
 
         this.x2d = x;
         this.y2d = y;
-        if (!this._static && element.loaded) {
-
-
-              if (!this.element)
+        if (!element.drawn) {
+            element._drawn = true;
+            if (!this.element)
                 this.element = [];
               if (!this.element[this.state])
                  this.element[this.state] = [];
              if (!this._static && !this.element[this.state][this.direction]) {
-                element = element.cloneNode();
+                element = element.cloneNode(true);
                 element.classList.add("character");
+                element.classList.add("state_" + this.state);
+                element.classList.add("direction_" + this.direction);
                 if (this.id == 0)
                   element.classList.add("player");
                 else
@@ -596,14 +571,12 @@ function Character (x, y)
                 this.element[this.state][this.direction] = element;
                 this.map.canvas.append(element);
               }
+            if (this.element["last"])
+              this.element["last"].style.display = "none";
 
-              if (!this._static) {
-                if (this.element["last"])
-                  this.element["last"].style.display = "none";
+            element = this.element[this.state][this.direction];
+            this.element["last"] = element;
 
-                element = this.element[this.state][this.direction];
-                this.element["last"] = element;
-              }
 
 
 
@@ -626,19 +599,37 @@ function Character (x, y)
               if (this.id == 0)
               camera.player = {x: x, y : y, width : width, height : height}
           }
-        if (!this._static)
-          this._drawProps(x, y, width, height);
+        this._drawProps(x, y, width, height);
+      }
 
-        /*
-        if (this._static)
-          element = this.images.off;
-        else
-          element = this.images[this.state][this.direction].off;
-        if (element.loaded)
-          ctxOff.drawImage(element,
-                        x, y, width, height);*/
-        }
-    };
+  };
+
+  this.drawStaticNpc = function(element, width, height, x, y) {
+
+    if (!this._drawn) {
+      this._drawn = true;
+      element = this.images.svgXml.documentElement;
+      element.classList.add("static-npc");
+      element.loaded = true;
+      element = element.cloneNode(true);
+      this.element = element;
+      this.element.id  = "character_" + this.id;
+      this.element.style.display = "block";
+      width = tiles.size / 2.5 ;
+      height = tiles.size;
+      this.element.style.width = width + "px";
+      this.element.style.height = height + "px";
+      this.element.style.left = x+"px";
+      this.element.style.top = y+"px";
+      this.map.canvas.append(this.element);
+    }
+
+
+    if (this.element) {
+        this.element.style["z-index"] =
+           this.map.getCharacterPositionOnTile(this);
+    }
+  };
 
   this._drawProps = function(x, y, width, height) {
     for (var i = 0; i < this._props.length; i++) {

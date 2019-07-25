@@ -124,7 +124,6 @@
          }
        }
       for (let i = 0; i < this.statics.length; i++) {
-        console.log(loader.statics[i].path);
          $.get(loader.statics[i].path, function(svgXml) {
            loader.statics[i].svgXml = svgXml;
          });
@@ -146,7 +145,7 @@
        this._svgXml = this._clone(this._svgXml);
        // Character or NPC
        if (!char._static) {
-       char.images[state][direction].on = new Image();
+       //char.images[state][direction].on = new Image();
 
        this._clearDefault();
        this._normalizeSpecies(char._species);
@@ -163,13 +162,16 @@
          str = this._removeAnimation(str);
 
        this._serialized = str;
-       char.images[state][direction].on.onload = function() {
+       /*char.images[state][direction].on.onload = function() {
         char.images[state][direction].on.loaded = true;
        }
        char.images[state][direction].on.src =
                               "data:image/svg+xml;charset=utf-8," + str;
-        }
+        }*/
 
+      char.images[state][direction] = { on : { loaded : true }};
+      char.images[state][direction].svgXml = this._svgXml;
+      }
         // Static object
         else {
            /*char.images.on = new Image();

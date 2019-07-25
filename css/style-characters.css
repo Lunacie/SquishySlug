@@ -1,3 +1,267 @@
+
+/* ******************/
+/* CHARACTERS (idle)
+/* ******************/
+
+/* --- UP ---- */
+.direction_3.state_0	.st0{fill:#D68A69;}
+.direction_3.state_0	.st1{fill:#171D49;}
+.direction_3.state_0	.st2{fill:#333333;}
+.direction_3.state_0	.st3{fill:#48626B;}
+.direction_3.state_0	.st4{fill:#506A75;}
+.direction_3.state_0	.st5{fill:#FFFFFF;}
+.direction_3.state_0	.st6{fill:#3A4D57;}
+.direction_3.state_0	.st7{fill:#281406;}
+.direction_3.state_0	.st8{fill:#E29E4B;}
+.direction_3.state_0	.st9{fill:#493033;}
+.direction_3.state_0	.st10{fill:#966E53;}
+.direction_3.state_0	.st11{fill:#634246;}
+.direction_3.state_0	.st12{fill:#5B3B3E;}
+.direction_3.state_0	.st13{fill:#8C654B;}
+.direction_3.state_0	.st14{fill:#513A40;}
+.direction_3.state_0	.st15{fill:#E0A053;}
+.direction_3.state_0	.st16{fill:#F4BB76;}
+.direction_3.state_0	.st17{fill:#F2B361;}
+.direction_3.state_0	.st18{fill:#FA8B65;}
+.direction_3.state_0	.st19{fill:#A57951;}
+.direction_3.state_0	.st20{fill:#D68162;}
+.direction_3.state_0	.st21{fill:#9B6249;}
+.direction_3.state_0	.st22{fill:#A36955;}
+.direction_3.state_0	.st23{fill:#4A3A56;}
+.direction_3.state_0	.st24{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_0	.st25{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_0	.st26{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_0	.st27{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_0	.st28{fill:#513F5E;}
+
+/* ---- RIGHT ------ */
+.direction_0.state_0	.st0{fill:#E29E4B;}
+.direction_0.state_0 .st1{fill:#D68A69;}
+.direction_0.state_0 .st2{fill:#171D49;}
+.direction_0.state_0 .st3{fill:#48626B;}
+.direction_0.state_0 .st4{fill:#333333;}
+.direction_0.state_0 .st5{fill:#506A75;}
+.direction_0.state_0 .st6{fill:#FFFFFF;}
+.direction_0.state_0 .st7{opacity:0.3;fill:#E8B9A0;enable-background:new    ;}
+.direction_0.state_0 .st8{fill:#3A4D57;}
+.direction_0.state_0 .st9{fill:#562809;}
+.direction_0.state_0 .st10{fill:#281406;}
+.direction_0.state_0 .st11{fill:none;stroke:#331908;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_0 .st12{fill:none;stroke:#231307;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_0 .st13{fill:#4F2508;stroke:#5E2B08;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_0 .st14{fill:#5B3B3E;}
+.direction_0.state_0 .st15{fill:#E0A053;}
+.direction_0.state_0 .st16{fill:#F4BB76;}
+.direction_0.state_0 .st17{fill:#493033;}
+.direction_0.state_0 .st18{fill:#966E53;}
+.direction_0.state_0 .st19{fill:#8C654B;}
+.direction_0.state_0 .st20{fill:#6C61AF;}
+.direction_0.state_0 .st21{fill:#F2B361;}
+.direction_0.state_0 .st22{fill:#513A40;}
+.direction_0.state_0 .st23{fill:#3A262B;}
+.direction_0.state_0 .st24{fill:#E6E8A7;}
+.direction_0.state_0 .st25{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_0 .st26{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_0 .st27{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_0 .st28{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_0 .st29{fill:#A57951;}
+.direction_0.state_0 .st30{fill:#D68162;}
+.direction_0.state_0 .st31{fill:#9B6249;}
+.direction_0.state_0 .st32{fill:#A36955;}
+.direction_0.state_0 .st33{fill:#4A3A56;}
+.direction_0.state_0 .st34{fill:#FA8B65;}
+.direction_0.state_0 .st35{fill:#936C4D;}
+.direction_0.state_0 .st36{fill:#513F5E;}
+
+/* ---- Bottom ---- */
+.direction_2.state_0	.st0{fill:#D68A69;}
+.direction_2.state_0	.st1{fill:#E29E4B;}
+.direction_2.state_0	.st2{fill:#171D49;}
+.direction_2.state_0	.st3{fill:#333333;}
+.direction_2.state_0	.st4{fill:#48626B;}
+.direction_2.state_0	.st5{fill:#506A75;}
+.direction_2.state_0	.st6{fill:#FFFFFF;}
+.direction_2.state_0	.st7{opacity:0.3;fill:#E8B9A0;enable-background:new    ;}
+.direction_2.state_0	.st8{fill:#3A4D57;}
+.direction_2.state_0	.st9{fill:#562809;}
+.direction_2.state_0	.st10{fill:#281406;}
+.direction_2.state_0	.st11{fill:none;stroke:#331908;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_0	.st12{fill:none;stroke:#231307;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_0	.st13{fill:#4F2508;stroke:#5E2B08;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_0	.st14{fill:#5B3B3E;}
+.direction_2.state_0	.st15{fill:#E0A053;}
+.direction_2.state_0	.st16{fill:#F4BB76;}
+.direction_2.state_0	.st17{fill:#493033;}
+.direction_2.state_0	.st18{fill:#966E53;}
+.direction_2.state_0	.st19{fill:#8C654B;}
+.direction_2.state_0	.st20{fill:#6C61AF;}
+.direction_2.state_0	.st21{fill:#F2B361;}
+.direction_2.state_0	.st22{fill:#513A40;}
+.direction_2.state_0	.st23{fill:#3A262B;}
+.direction_2.state_0	.st24{fill:#E6E8A7;}
+.direction_2.state_0	.st25{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_0	.st26{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_0	.st27{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_0	.st28{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_0	.st29{fill:#A57951;}
+.direction_2.state_0	.st30{fill:#D68162;}
+.direction_2.state_0	.st31{fill:#9B6249;}
+.direction_2.state_0	.st32{fill:#A36955;}
+.direction_2.state_0	.st33{fill:#4A3A56;}
+.direction_2.state_0	.st34{fill:#FA8B65;}
+.direction_2.state_0	.st35{fill:#936C4D;}
+.direction_2.state_0	.st36{fill:#513F5E;}
+
+
+/* ********************/
+/* CHARACTERS (animated)
+/* ********************/
+
+/* ----- TOP ----- */
+.direction_3.state_1 .st0{fill:#D68A69;}
+.direction_3.state_1 .st1{fill:#171D49;}
+.direction_3.state_1 .st2{fill:#333333;}
+.direction_3.state_1 .st3{fill:#48626B;}
+.direction_3.state_1 .st4{fill:#506A75;}
+.direction_3.state_1 .st5{fill:#FFFFFF;}
+.direction_3.state_1 .st6{fill:#3A4D57;}
+.direction_3.state_1 .st7{fill:#281406;}
+.direction_3.state_1 .st8{fill:#E29E4B;}
+.direction_3.state_1 .st9{fill:#493033;}
+.direction_3.state_1 .st10{fill:#966E53;}
+.direction_3.state_1 .st11{fill:#634246;}
+.direction_3.state_1 .st12{fill:#5B3B3E;}
+.direction_3.state_1 .st13{fill:#8C654B;}
+.direction_3.state_1 .st14{fill:#513A40;}
+.direction_3.state_1 .st15{fill:#E0A053;}
+.direction_3.state_1 .st16{fill:#F4BB76;}
+.direction_3.state_1 .st17{fill:#F2B361;}
+.direction_3.state_1 .st18{fill:#FA8B65;}
+.direction_3.state_1 .st19{fill:#A57951;}
+.direction_3.state_1 .st20{fill:#D68162;}
+.direction_3.state_1 .st21{fill:#9B6249;}
+.direction_3.state_1 .st22{fill:#A36955;}
+.direction_3.state_1 .st23{fill:#4A3A56;}
+.direction_3.state_1 .st24{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_1 .st25{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_1 .st26{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_1 .st27{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_3.state_1 .st28{fill:#513F5E;}
+
+/* ----- RIGTH ---- */
+.direction_0.state_1 .st0{fill:#281406;}
+.direction_0.state_1 .st1{fill:#E29E4B;}
+.direction_0.state_1 .st2{fill:#D68A69;}
+.direction_0.state_1 .st3{fill:#171D49;}
+.direction_0.state_1 .st4{fill:#333333;}
+.direction_0.state_1 .st5{fill:#48626B;}
+.direction_0.state_1 .st6{fill:#506A75;}
+.direction_0.state_1 .st7{fill:#FFFFFF;}
+.direction_0.state_1 .st8{fill:#3A4D57;}
+.direction_0.state_1 .st9{opacity:0.3;fill:#E8B9A0;enable-background:new    ;}
+.direction_0.state_1 .st10{fill:#562809;}
+.direction_0.state_1 .st11{fill:none;stroke:#331908;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_1 .st12{fill:none;stroke:#231307;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_1 .st13{fill:#4F2508;stroke:#5E2B08;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_0.state_1 .st14{fill:#5B3B3E;}
+.direction_0.state_1 .st15{fill:#E0A053;}
+.direction_0.state_1 .st16{fill:#F4BB76;}
+.direction_0.state_1 .st17{fill:#493033;}
+.direction_0.state_1 .st18{fill:#966E53;}
+.direction_0.state_1 .st19{fill:#8C654B;}
+.direction_0.state_1 .st20{fill:#6C61AF;}
+.direction_0.state_1 .st21{fill:#F2B361;}
+.direction_0.state_1 .st22{fill:#513A40;}
+.direction_0.state_1 .st23{fill:#3A262B;}
+.direction_0.state_1 .st24{fill:#E6E8A7;}
+.direction_0.state_1 .st25{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_1 .st26{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_1 .st27{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_1 .st28{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_0.state_1 .st29{fill:#A57951;}
+.direction_0.state_1 .st30{fill:#D68162;}
+.direction_0.state_1 .st31{fill:#9B6249;}
+.direction_0.state_1 .st32{fill:#A36955;}
+.direction_0.state_1 .st33{fill:#4A3A56;}
+.direction_0.state_1 .st34{fill:#FA8B65;}
+.direction_0.state_1 .st35{fill:#936C4D;}
+.direction_0.state_1 .st36{fill:#513F5E;}
+
+/* ----- BOT ------ */
+.direction_2.state_1 .st0{fill:#281406;}
+.direction_2.state_1 .st1{fill:#E29E4B;}
+.direction_2.state_1 .st2{fill:#D68A69;}
+.direction_2.state_1 .st3{fill:#171D49;}
+.direction_2.state_1 .st4{fill:#333333;}
+.direction_2.state_1 .st5{fill:#48626B;}
+.direction_2.state_1 .st6{fill:#506A75;}
+.direction_2.state_1 .st7{fill:#FFFFFF;}
+.direction_2.state_1 .st8{opacity:0.3;fill:#E8B9A0;enable-background:new    ;}
+.direction_2.state_1 .st9{fill:#3A4D57;}
+.direction_2.state_1 .st10{fill:#562809;}
+.direction_2.state_1 .st11{fill:none;stroke:#231307;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_1 .st12{fill:none;stroke:#331908;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_1 .st13{fill:#4F2508;stroke:#5E2B08;stroke-width:0.5;stroke-miterlimit:10;}
+.direction_2.state_1 .st14{fill:#5B3B3E;}
+.direction_2.state_1 .st15{fill:#E0A053;}
+.direction_2.state_1 .st16{fill:#F4BB76;}
+.direction_2.state_1 .st17{fill:#493033;}
+.direction_2.state_1 .st18{fill:#966E53;}
+.direction_2.state_1 .st19{fill:#8C654B;}
+.direction_2.state_1 .st20{fill:#6C61AF;}
+.direction_2.state_1 .st21{fill:#F2B361;}
+.direction_2.state_1 .st22{fill:#513A40;}
+.direction_2.state_1 .st23{fill:#3A262B;}
+.direction_2.state_1 .st24{fill:#E6E8A7;}
+.direction_2.state_1 .st25{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_1 .st26{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_1 .st27{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_1 .st28{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_2.state_1 .st29{fill:#A57951;}
+.direction_2.state_1 .st30{fill:#D68162;}
+.direction_2.state_1 .st31{fill:#9B6249;}
+.direction_2.state_1 .st32{fill:#A36955;}
+.direction_2.state_1 .st33{fill:#4A3A56;}
+.direction_2.state_1 .st34{fill:#FA8B65;}
+.direction_2.state_1 .st35{fill:#936C4D;}
+.direction_2.state_1 .st36{fill:#513F5E;}
+
+/* --- LEFT ----- */
+.direction_1.state_1	.st0{fill:#D68A69;}
+.direction_1.state_1	.st1{fill:#171D49;}
+.direction_1.state_1	.st2{fill:#48626B;}
+.direction_1.state_1	.st3{fill:#333333;}
+.direction_1.state_1	.st4{fill:#506A75;}
+.direction_1.state_1	.st5{fill:#FFFFFF;}
+.direction_1.state_1	.st6{fill:#3A4D57;}
+.direction_1.state_1	.st7{fill:#281406;}
+.direction_1.state_1	.st8{fill:#E29E4B;}
+.direction_1.state_1	.st9{fill:#493033;}
+.direction_1.state_1	.st10{fill:#966E53;}
+.direction_1.state_1	.st11{fill:#634246;}
+.direction_1.state_1	.st12{fill:#5B3B3E;}
+.direction_1.state_1	.st13{fill:#8C654B;}
+.direction_1.state_1	.st14{fill:#513A40;}
+.direction_1.state_1	.st15{fill:#E0A053;}
+.direction_1.state_1	.st16{fill:#F4BB76;}
+.direction_1.state_1	.st17{fill:#F2B361;}
+.direction_1.state_1	.st18{fill:#FA8B65;}
+.direction_1.state_1	.st19{fill:#A57951;}
+.direction_1.state_1	.st20{fill:#D68162;}
+.direction_1.state_1	.st21{fill:#9B6249;}
+.direction_1.state_1	.st22{fill:#A36955;}
+.direction_1.state_1	.st23{fill:#4A3A56;}
+.direction_1.state_1	.st24{opacity:0.58;fill:#513F5E;enable-background:new    ;}
+.direction_1.state_1	.st25{opacity:0.74;fill:#513F5E;enable-background:new    ;}
+.direction_1.state_1	.st26{opacity:0.42;fill:#513F5E;enable-background:new    ;}
+.direction_1.state_1	.st27{opacity:0.72;fill:#513F5E;enable-background:new    ;}
+.direction_1.state_1	.st28{fill:#513F5E;}
+
+
+/* ******************/
+/* STATIC NPCS
+/* ******************/
+
 #character_4.static-npc .st0{enable-background:new    ;}
 #character_4.static-npc .st1{fill:#6DAD48;}
 #character_4.static-npc .st2{fill:#5DA73C;}
