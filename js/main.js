@@ -3,7 +3,8 @@ var ratio = 1;
 var ratioW = 1;
 var ratioH = 1;
 
-var ui = new UI();
+//var ui = new UI();
+staticMode = false;
 
 if (!staticMode) {
   var player = new Player(10, 10);
@@ -54,8 +55,8 @@ if (!staticMode) {
   //ui.resize(window.screen.width, window.screen.height);
 }
 else if (staticMode) {
-    ui.init();
-    $(window).resize(ui.update);
+  //  ui.init();
+  //  $(window).resize(ui.update);
 }
 
 
@@ -88,11 +89,11 @@ if (staticMode || canvas)
     elapsed += diff;
     frames += 1;
     if (!staticMode) {
-    update(characters, map, ui, loadManager, debugOverlay, diff);
+    update(characters, map, /*ui*/null, loadManager, debugOverlay, diff);
     draw(characters, map, debugOverlay);
    }
    else if (staticMode) {
-     update_staticMode(ui, diff);
+     update_staticMode(/*ui*/ null, diff);
    }
 
 

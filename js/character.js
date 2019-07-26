@@ -564,6 +564,7 @@ function Character (x, y)
                 element.classList.add("character");
                 element.classList.add("state_" + this.state);
                 element.classList.add("direction_" + this.direction);
+                element.dataset.id = this.id;
                 if (this.id == 0)
                   element.classList.add("player");
                 else
@@ -610,6 +611,8 @@ function Character (x, y)
       this._drawn = true;
       element = this.images.svgXml.documentElement;
       element.classList.add("static-npc");
+      element.classList.add("npc");
+      element.dataset.id = this.id;
       element.loaded = true;
       element = element.cloneNode(true);
       this.element = element;

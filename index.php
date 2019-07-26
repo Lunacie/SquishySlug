@@ -30,12 +30,12 @@
       <script type="text/javascript" src="js/map.js"></script>
       <script type="text/javascript" src="js/load-manager.js"></script>
       <script type="text/javascript" src="js/debug-overlay.js"></script>
-      <script type="text/javascript" src="js/ui/projects.js"></script>
+      <!--<script type="text/javascript" src="js/ui/projects.js"></script>
       <script type="text/javascript" src="js/ui/project.js"></script>
       <script type="text/javascript" src="js/ui/about.js"></script>
       <script type="text/javascript" src="js/ui/contact.js"></script>
       <script type="text/javascript" src="js/ui/tab.js"></script>
-      <script type="text/javascript" src="js/ui/ui.js"></script>
+      <script type="text/javascript" src="js/ui/ui.js"></script>-->
       <script type="text/javascript" src="js/camera.js"></script>
       <script type="text/javascript" src="js/draw.js"></script>
       <script type="text/javascript" src="js/update.js"></script>

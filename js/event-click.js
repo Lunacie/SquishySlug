@@ -1,11 +1,19 @@
 
 var CLICK_EVENT_DEBUG = false;
+let clickClass = null;
 
 
-function hasParentClass(element, classname) {
+function hasParentClass(element, className) {
+  let classes = /(floor)|(npc)/;
+
   if (!element.classList) return null;
-  if (element.classList.contains(classname)) return element;
-  return element.parentNode && hasParentClass(element.parentNode, classname);
+  if (!className) {
+    for (let i = 0; i < element.classList.length; i++)
+      if (classes.test(element.classList[i])) return element;
+  }
+  else if (className && element.classList.contains(className)) return element;
+  else if (className) return null;
+  return element.parentNode && hasParentClass(element.parentNode, className);
 }
 
 function setClickListeners(canvas) {
@@ -19,9 +27,13 @@ function setClickListeners(canvas) {
 
   const pointerHandler = (event) => {
     event.preventDefault();
-    let element = hasParentClass(event.target, 'floor');
-    if (element)
-      getClickEventFloor(element);
+    let element = null;
+    if (element = hasParentClass(event.target)) {
+      if (hasParentClass(element, "floor"))
+        return getClickEventFloor(element);
+      if (hasParentClass(element, "npc"))
+        return getClickEventNpc(element);
+    }
   }
 
   listeners.map((etype) => {
@@ -31,50 +43,16 @@ function setClickListeners(canvas) {
 }
 
 
-function getClickEventNpc(val) {
-/*  var npc = fullMap.getCharacter((val - characterColorHex) / 2);
+function getClickEventNpc(element) {
+  var npc = map.fullMap.getCharacter(element.dataset.id);
   if (!npc)
     return null;
-  return npc.getDestinationTriggerInteraction();*/
+  events.click = npc.getDestinationTriggerInteraction();
 }
 
 function getClickEventFloor(element) {
-
   events.click = {
     x : element.dataset.x,
     y : element.dataset.y,
   };
-
-/*
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT val", val);
-  var row = 0;
-  var col = 0;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT map width",  map.width);
-  var width = map.width;
-  if (map._startX <= 0)
-    width = map.width + map._startX;
-  width = fullMap.width;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT revised map width",  width);
-  for (var rest = val; rest - width  >= 0; rest -= (width))
-    row += 1;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT rest",  rest);
-  col = val % width;
-
-
-  events.click = {
-    x : col,
-    y : row,
-  };
-
-  if (CLICK_EVENT_DEBUG) {
-    console.log("EVENT offset",  map._startX,  map._startY);
-    console.log("EVENT col/row", col, row);
-    console.log("EVENT", events.click);
-    console.log("EVENT ------------");
-  }
-  return events.click;*/
 }
