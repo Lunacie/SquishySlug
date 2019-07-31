@@ -19,12 +19,23 @@ body {
   position : absolute;
 }
 
-#loading {display : none }
+#box {
+  z-index : 9999;
+  position : absolute;
+}
+
 #canvas {
   background : #17BEC7;
   min-width : 100vw;
+  position : absolute;
+  left : 0;
+  top : 0;
   min-height : 100vh;
-  margin-top : 100px;
+}
+
+header {
+  display : block;
+  z-index : 9999;
 }
 
 
@@ -55,8 +66,6 @@ body {
 
 
 
-
-#header {display : none !important;}
 
 
 

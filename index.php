@@ -30,12 +30,12 @@
       <script type="text/javascript" src="js/map.js"></script>
       <script type="text/javascript" src="js/load-manager.js"></script>
       <script type="text/javascript" src="js/debug-overlay.js"></script>
-      <!--<script type="text/javascript" src="js/ui/projects.js"></script>
+      <script type="text/javascript" src="js/ui/projects.js"></script>
       <script type="text/javascript" src="js/ui/project.js"></script>
       <script type="text/javascript" src="js/ui/about.js"></script>
       <script type="text/javascript" src="js/ui/contact.js"></script>
       <script type="text/javascript" src="js/ui/tab.js"></script>
-      <script type="text/javascript" src="js/ui/ui.js"></script>-->
+      <script type="text/javascript" src="js/ui/ui.js"></script>
       <script type="text/javascript" src="js/camera.js"></script>
       <script type="text/javascript" src="js/draw.js"></script>
       <script type="text/javascript" src="js/update.js"></script>
@@ -126,6 +126,7 @@
           <canvas id="debugCanvas" class="canvas" width="1000" height="600"></canvas>
           -->
           <div id="canvas"></div>
+          <div id="box"></div>
           <div id="background">
             <video autoplay muted loop id="video">
               <source src="assets/videos/background.mp4" type="video/mp4">

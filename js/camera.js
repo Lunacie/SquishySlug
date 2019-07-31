@@ -1,217 +1,72 @@
 function Camera() {
 
-  this.findPosition  = function(center, element, width, height) {
-      let max = [249,198,242];
-      //console.log(map.lastHex);
-
-      let data = ctxOff.getImageData(0, 0, width, height);
-      let rows = [];
-      let x, y = 0;
-      for (let i = 0; i < data.data.length; i += width * 4) {
-          let row = data.data.slice(i, i + width * 4);
-          for (let j = 0; j < row.length - 3; j += 4) {
-            if (row[j] < 249 &&
-                row[j + 1] <= 198 &&
-                row[j + 2] <= 242) {
-                let hex = this.rgbToHex(row[j]) + this.rgbToHex(row[j + 1]) + this.rgbToHex(row[j + 2]);
-                hex = parseInt(hex, 16);
-                y = i / 4 / width;
-                x = j / 4;
-                //console.log("Position : ", getClickEventFloor(hex), "Hex : ", hex);
-                return {x : x, y : y};
-              }
-          }
-      }
-  }
-
-  this.getRemotePlayerPos = function() {
-    return {x : player.x, y : player.y };
-  }
-
-  this.getPlayerPosition = function() {
-    return this.player;
-  }
- this.getCanvasCenter = function() {
-    return this.canvasCenter;
-  }
-
-  this.rgbToHex = function (rgb) {
-    var hex = Number(rgb).toString(16);
-    if (hex.length < 2) {
-         hex = "0" + hex;
-    }
-    return hex;
-  };
 
 
+this.moveCameraY = function(val) {
+  let top = parseInt($("#canvas").css('top'));
+  $("#canvas").css("top", (top + val) + "px");
+}
+
+this.moveCameraX = function(val) {
+  let left = parseInt($("#canvas").css('left'));
+  $("#canvas").css("left", (left + val) + "px");
+}
 
 this.center = function() {
 
-  return;
-
-  if (!loadManager.isComplete() || !map.drew)
+  if (!loadManager.isComplete() /*|| !map.drew*/)
     return {x : 0, y : 0}
 
-  let playerPos = {x : player.block.x, y : player.block.y};
-  //this._drawPlayerPos(playerPos);
-  let element = $("#canvas");
-  let center = this._getCanvasCenter(element.width(), element.height());
-  this.canvasCenter = center;
-  let offsetX = map._startX;
-  let offsetY = map._startY;
-//  console.log(offsetX, offsetY);
-  let x = ((playerPos.x - offsetX) / 2) * (tiles.size / 2);
-  let y = (((playerPos.y - offsetY) / 2) * (tiles.size / 4));
-  //this.player = {x : x, y : y}
+  let characterEl = $('.player:visible');
+  let left = parseInt($("#canvas").css('left'));
+  let top = parseInt($("#canvas").css('top'));
+  //console.log(left);
+  //console.log((parseInt(characterEl.css("left"))),  left, (parseInt(characterEl.css("left") + left)));
 
-
-  if (camera.player) {
-
-    y = 0;
-    if (camera.player.y > center.start.y)
-      y = 10;
-    else if (camera.player.y < center.start.y)
-      y = -10;
-    if (camera.player.y - center.start.y <= 10)
-        y = 0;
-    x = 0;
-    if (camera.player.x < center.start.x)
-      x = 10;
-    else if (camera.player.y > center.start.x)
-      x = -10;
-    if (camera.player.x - center.start.x <= 10)
-        x = 0;
-
+  character = {left : (parseInt(characterEl.css("left")) + left),
+               top : (parseInt(characterEl.css("top")) + top)};
+  let win = { width : $(window).width(), height : $(window).height() };
+  let pos = {
+    minX : win.width / 2 - characterEl.width() / 2,
+    maxX : win.width / 2 + characterEl.width() / 2,
+    minY : win.height / 2 - characterEl.height() / 2,
+    maxY : win.height / 2 + characterEl.height() / 2
   }
 
 
+  //console.log(character.left , pos.minX);
+
+  /*let box = $("#box");
+  box.css("top", pos.minY + "px");
+  box.css("left", pos.minX + "px");
+  box.css("width", pos.maxX - pos.minX + "px");
+  box.css("height", pos.maxY - pos.minY + "px");*/
 
 
-  return {x : x, y : y*-1 };
+  //console.log(pos.maxX , character.left + characterEl.width() / 2);
+  //console.log("left : " + left, "pos.minX : " + (pos.minX ), "char : " + character.left,  "res" + (left + (pos.minX - character.left)));
+
+  if (pos.minX > (character.left * 2.5) ||
+      pos.maxX < (character.left + characterEl.width()) - (characterEl.width() * 2.5)  ) {
+    $("#canvas").css("left", (left + (pos.minX - character.left)) + "px");
+  }
+
+    if (pos.minY > (character.top * 2.5) ||
+      pos.maxY < (character.top + characterEl.height()) - (characterEl.width() * 2.5)) {
+    $("#canvas").css("top", (top + (pos.minY - character.top)) + "px");
+  }
+
+
+  /*if (character.left > pos.maxX + 10)
+    $("#canvas").css("left", (left - (character.left - pos.minX)) + "px");/*
+  else if (character.left < pos.minX - 10)
+    $("#canvas").css("left", (left + (pos.maxX - character.left)) + "px");*/
+
+  //console.log($("#canvas").css("left"));
+
+    //$("#canvas").css("left", (left + (pos.minX - character.left )) + "px");
 }
 
 
-  this._getCanvasCenter = function(width, height) {
-    return {
-      start : { x : width / 2 ,  y : height / 2 },
-      end :   { x : width / 2 + 100,   y : height / 2  + 100 }
-    };
-  }
-
-
-  this._getPlayerPosition = function(element, width, height) {
-
-    var player = characters[0];
-    //let color = player.hexColor.toString(16);
-    //console.log(color);
-    /*
-    hex = hex.replace('#','');
-     r = parseInt(hex.substring(0, hex.length/3), 16);
-     g = parseInt(hex.substring(hex.length/3, 2*hex.length/3), 16);
-     b = parseInt(hex.substring(2*hex.length/3, 3*hex.length/3), 16);
-  */
-      let rgb = [249,198,242];
-
-      let data = ctxOff.getImageData(0, 0, width, height);
-      let rows = [];
-      let x, y = 0;
-      for (let i = 0; i < data.data.length; i += width * 4) {
-          let row = data.data.slice(i, i + width * 4);
-          for (let j = 0; j < row.length - 3; j += 4) {
-            if (row[j] == 249 &&
-                row[j + 1] == 198 &&
-                row[j + 2] == 242) {
-                y = i / 4 / width;
-                x = j / 4;
-                return {x : x, y : y};
-              }
-          }
-      }
-
-      /*
-      for (let i = 0; i < data.data.length - 3; i+=4) {
-        if (data.data[i] == 249 &&
-            data.data[i + 1] == 198 &&
-            data.data[i + 2] == 242) {
-              let y = i / 4 / width;
-            console.log((i / 4) % width);
-            return;
-          }
-      }*/
-  }
-
 };
 var camera = new Camera();
-
-
-
-
-
-
-/*
-  this.center = function(x2d, y2d) {
-
-    if (!loadManager.isComplete() || !map.drew)
-      return {x : 0, y : 0}
-
-
-    let playerPos = {x : player.x2d, y : player.y2d};
-    let center = {x : x2d, y : y2d };
-    console.log("player:" , playerPos);
-    console.log("camera:" , center);
-
-
-    let x, y = 0;
-    let speed = 10;
-    if (playerPos.x < center.x)
-      x = -speed;
-    else if (playerPos.y > center.y)
-      y = speed;
-    x = x ? x : 0;
-    return {x : x, y : y};
-  }
-*/
-
-/*
-  this.center = function(x2d, y2d) {
-
-    console.log(x2d, y2d);
-    if (!loadManager.isComplete() || !map.drew)
-      return {x : 0, y : 0}
-
-    let element = $("#offCanvas");
-    let width = element.width();
-    let height = element.height();
-
-    let playerPos = this._getPlayerPosition(element, width, height);
-    let center = this._getCanvasCenter(width, height);
-    if (!playerPos) {
-      playerPos = this.getRemotePlayerPos();
-      //console.log("player postion : ", playerPos);
-      centerPos = this.findPosition(center, element, width, height);
-      //console.log("ORIGINAL POSITION", player.x, player.y);
-      let x, y = 0;
-      x = playerPos.x < centerPos.x ? -1 : 1;
-      y = playerPos.y < centerPos.y ? -1 : 1;
-      let speed = 10;
-      x *= speed;
-      y *= speed;
-      //console.log("NEW POSITION", player.x, player.y);
-      //console.log(x, y);
-      return {x : x, y : y}
-    }
-
-    let x, y = 0;
-    let speed = 10;
-    if (playerPos.x < center.start.x)
-      x = speed;
-    else if (playerPos.x > center.end.x)
-      x = -speed;
-    if (playerPos.y < center.start.y)
-      y = speed;
-    else if (playerPos.y > center.end.y)
-      y = -speed;
-    x = x ? x : 0;
-    return {x : x, y : y};
-  }
-*/

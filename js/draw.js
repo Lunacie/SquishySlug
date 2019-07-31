@@ -13,7 +13,7 @@
       //console.log(fps);
     }
 
-    //let pos = camera.center();
+    let pos = camera.center();
 
     /*ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
