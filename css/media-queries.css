@@ -107,6 +107,10 @@
   }
   .nav { top : 15%; }
   .nav.mobile ul  { padding-right : 30px; }
+
+  #tab-content {
+    max-height : 80vh;
+  }
   footer {
     height : 4.4em;
   }

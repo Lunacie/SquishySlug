@@ -1,87 +1,58 @@
 
-function Map(player, characters)
-{
-  map = {
-    width : 10,
-    height : 10,
+class Map {
+    constructor(player, characters) {
 
-    _player : player,
-    _characters : characters,
-    _hexMap : [],
-    _data : [],
-    _layers : [],
-    _startY : 0,
-    _startX : 0,
-    _timestamp : 0,
-    lastHex : 0,
-    drew : false,
+      this._player = player;
+      this._characters = characters;
+      this._hexMap = [];
+      this._data = [];
+      this._layers = [];
+      this._startY = 0;
+      this._startX = 0;
+      this._timestamp = 0;
+      this.lastHex = 0;
+      this.drew = false;
+      this.elements;
+      this.canvas = document.getElementById("canvas");
 
-    update : function() {
+      this.fullMap = new FullMap();
+      this.height = this.fullMap.height;
+      this.width = this.fullMap.width;
+      this._player.map = this;
+      for (let i = 0; i < characters.length; i++)
+        characters[i].map = this;
+
+      this.canvas.style.width = this.width * (tiles.size) + "px";
+      this.canvas.style.height = this.height * (tiles.size / 4) + "px";
+    }
+
+    update() {
       //console.log(this._startY);
 
-      var updated = this.updateRatio();
+      // Move map block if need be depending on player position
 
-      var half = (this.height / 2);
-      var top = half - half.toFixed(0) ? half.toFixed(0) : half;
+    }
 
-      half = (this.width / 2);
-      var left = half - half.toFixed(0) ? half.toFixed(0) : half;
 
-      var offset = 3;
-      if (ratio < 1)
-        offset = 2
-      if (updated ||/*
-          ((this._player.block.y - 1 <= this._startY ) ||
-          (this._player.block.x -1 <= this._startX ) ||
-          (this._player.block.y + 1 >= this._startY + this.height ) ||
-          (this._player.block.x + 1 >= this._startX + this.width))) { */
-          ((this._player.block.y - 1 - this._startY < this.height / offset ) ||
-          (this._player.block.x -1 - this._startX < this.width / offset ) ||
-          (this._player.block.y + 1 - this._startY > this.height - (this.height / offset)) ||
-          (this._player.block.x + 1 - this._startX > this.width - (this.width / offset )))) {
-        this._startX = parseInt(this._player.x) - left;
-        this._startY = parseInt(this._player.y) - top;
-        this._fillMap();
-      }
-    },
+    getRandomDestination() {
+      return this.fullMap.getRandomDestination();
+    }
 
-    updateRatio : function() {
-      var oldX = this.width;
-      var oldY = this.height;
 
-      if (ratio < 1) {
-      this.height = (canvas.height / (tiles.size)) * 3;
-      this.height = parseInt(this.height);
-      this.width = this.height;
-      }
-      else {
-      this.width = (canvas.width / (tiles.size )) * 3;
-      this.width = parseInt(this.width);
-      this.height = this.width;
-      }
-      this.width = this.width > fullMap.width ? fullMap.width : this.width;
-      this.height = this.height > fullMap.height ? fullMap.height : this.height;
-
-      return oldX != this.width || oldY != this.height ? true : false;
-    },
-
-    getRandomDestination : function() {
-      return fullMap.getRandomDestination();
-    },
-
-    draw : function(ox, oy) {
+    draw(ox, oy) {
 
       if (!loadManager.isComplete())
         return;
 
-      this.drew = false;
-      var x = 0;
-      var y = 0;
-      var yr = 0;
+      if (!this.drew)
+        this.canvas.innerHTML = '';
+
+      let x = parseInt(this.canvas.style.width) / 2;
+      let y = 0;
+      let yr = 0;
       //ox += tiles.size;
       //oy += tiles.size;
 
-      tileColorHex = 0x000000;
       for (var i = 0; i < this.height; i++)
       {
         this._drawCol(ox + x, oy + y, yr);
@@ -89,21 +60,84 @@ function Map(player, characters)
         x -= tiles.size / 2;
         yr++;
       }
+      if (!this.drew)
+        this._sortElements();
       this.drew = true;
-    },
+    }
 
-    _drawCol : function(xo, yo, yr) {
+    _sortElements() {
+      let count = 1;
+      let y = 0;
+      let x = 0;
+      let run = true;
+      let j = 0;
+      let index = 1;
+      let offset = this._characters.length;
+
+
+      for (j = 0; j <= this.fullMap.height -1; j++) {
+        x = j;
+        y = 0;
+        while (x >= 0) {
+
+            for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
+              if (this.elements[lr] && this.elements[lr][y] &&
+                this.elements[lr][y][x]) {
+                this.elements[lr][y][x].style["z-index"] = index;
+            }
+          }
+          index += offset;
+          //console.log(y, x);
+          x--;
+          y++;
+        }
+        //console.log("");
+      }
+
+
+
+
+     //console.log("=============================");
+
+     // n == width
+     // m == heiht
+
+      for (j = 1; j <= this.fullMap.height - 1; j++) {
+        x = this.fullMap.width - 1;
+        y = j;
+        while (y <= this.fullMap.height - 1) {
+          //console.log(y, x);
+          for (let lr = 0; lr < this.fullMap.nbLayers; lr++) {
+            if (this.elements[lr] && this.elements[lr][y] &&
+              this.elements[lr][y][x]) {
+              this.elements[lr][y][x].style["z-index"] = index;
+            }
+          }
+          index += offset;
+          x--;
+          y++;
+        }
+        //console.log(" ");
+      }
+
+
+
+      }
+
+    _drawCol(xo, yo, yr) {
         var x = 0;
         var y = 0;
         var xr = 0;
 
-        for (var j = 0; j < this.width; j++)
-        {
-          for (var l = 0; l < this._data.length; l++) {
-            this._drawTile(xo + x, yo + y, yr, xr, l);
-          }
 
-          var tileMap = this._buildTileMap(xr, yr);
+          for (var j = 0; j < this.width; j++)
+          {
+            for (var l = 0; l < this.fullMap.data[0][yr].length; l++) {
+              this._drawTile(xo + x, yo + y, yr, xr, l);
+            }
+
+
+       var tileMap = this._buildTileMap(xr, yr);
           var xt = 0;
           var yt = 0;
           for (yt = 0; yt < 10; yt++) {
@@ -118,14 +152,15 @@ function Map(player, characters)
           y += tiles.size / 4;
           xr += 1;
         }
-    },
+    }
 
-    _buildTileMap : function(xr, yr) {
+
+    _buildTileMap(xr, yr) {
       var tileMap = [];
-
+      let j = 0;
       var realX = xr + this._startX;
       var realY = yr + this._startY;
-      var characters = fullMap.getCharacters(realX, realY);
+      var characters = this.fullMap.getCharacters(realX, realY);
       var xt = 0;
       var yt = 0;
       for (yt = 0; yt < 10; yt++) {
@@ -138,106 +173,151 @@ function Map(player, characters)
                   characters[i].internalBlock.y >= yt &&
                   characters[i].internalBlock.y < yt + 1)
                   {
-                tileMap[yt][xt].push(characters[i]);
+                  tileMap[yt][xt].push(characters[i]);
+                  characters[i].indexOnTile = j;
+                j++;
               }
             }
         }
       }
       return tileMap;
-    },
+    }
 
-    _drawTile : function(x, y, yr, xr, layer) {
-      var tile = tiles.data[this._data[layer][yr][xr]];
-      if (!tile)
+    getCharacterPositionOnTile(character) {
+      let x = character.block.x;
+      let y = character.block.y;
+      let zIndex = parseInt(this.elements[0][y][x].style["z-index"]);
+
+      let tileMap = this._buildTileMap(x, y);
+      return zIndex + character.indexOnTile + 1;
+    }
+
+    _drawTile(x, y, yr, xr, layer) {
+
+      if (this.drew || layer > this.fullMap.nbLayers)
         return;
-      if (layer > 0)
-        y -= (layer * tiles.size) / 2;
+      /*console.log(layer, yr, xr);
+      console.log(this.fullMap.data[layer]);
+      console.log(this.fullMap.data[layer][yr]);
+      console.log(this.fullMap.data[layer][yr][xr]);*/
+        var tile = tiles.data[this.fullMap.data[layer][yr][xr]];
+        if (!tile)
+          return;
+        if (layer > 0)
+          y -= (layer * tiles.size) / 2;
 
-//      var fmX = fullMap._startX >= 0 ? fullMap._startX + xr : xr;
-//      var fmY = fullMap._startY >= 0 ? fullMap._startY + yr : yr;
+  //      var fmX = fullMap._startX >= 0 ? fullMap._startX + xr : xr;
+  //      var fmY = fullMap._startY >= 0 ? fullMap._startY + yr : yr;
 
-      var fmX = xr;
-      var fmY = yr;
-      if (this._startX) {
-        fmX += this._startX;
-        fmY += this._startY;
-      }
-      var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
-      //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
-      //var offColor = "000000" + tileColorHex.toString(16);
-      offColor = "#" + offColor.slice(-6);
+        /*var fmX = xr;
+        var fmY = yr;
+        if (this._startX) {
+          fmX += this._startX;
+          fmY += this._startY;
+        }*/
+        //var offColor = "000000" + fullMap.getHex(fmY, fmX).toString(16);
+        //var offColor = "000000" + ((fmY * fullMap.width) + fmX).toString(16);
+        //var offColor = "000000" + tileColorHex.toString(16);
+        //offColor = "#" + offColor.slice(-6);
 
-      if (!tile.style && !tile.id)
-        return;
+        if (!tile.style && !tile.id)
+          return;
+        // if has no image, draw simple tile
+        else if (tile.style) {
+            // on screen
+            this._drawTilePoly(x, y);
 
-      // if has no image, draw simple tile
-      else if (tile.style) {
-          // on screen
-          ctx.fillStyle = tile.style;
-          ctx.strokeStyle = tile.style;
-          this._drawTilePoly(x, y, ctx);
-
-          // off screen
-          offColor = tile.floor ? offColor : "#FFFFFF";
-          ctxOff.fillStyle = offColor;
-          ctxOff.strokeStyle = ctxOff.fillStyle;
-          this._drawTilePoly(x, y, ctxOff);
-          debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
-        }
-      // else draw image
-      else if (tile.id) {
-        if (!tile.image)
-          window.location.reload();
-        if (!tile.image.off) {
-          this._loadImage(tile, offColor);
-          if (offColor > this.lastHex)
-          this.lastHex = offColor;
-        }
-        else {
-          // on screen
-          var element = tile.image.on;
-          if (element.loaded)
-            ctx.drawImage(element,
-                      x, y, tiles.size, tiles.size);
-
-          // off screen
-          if (tile.floor) {
-            ctxOff.fillStyle = offColor;
-            ctxOff.strokeStyle = ctxOff.fillStyle;
-            this._drawTilePoly(x, y, ctxOff);
             debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
           }
-          else {
-          element = tile.image.off;
-          if (element.loaded)
-            ctxOff.drawImage(element,
-                        x, y, tiles.size, tiles.size);
+        // else draw image
+        else if (tile.id) {
+          if (!tile.image)
+            window.location.reload();
+          /*if (!tile.image.off) {
+            this._loadImage(tile, offColor);
+            if (offColor > this.lastHex)
+            this.lastHex = offColor;
           }
-        }
-      }
-      if (layer == 0)
-        tileColorHex += 0x000001;
-    },
+          else {*/
+            // on screen
 
-  _loadImage : function(tile, offColor) {
+            var element = tile.image.on;
+
+
+
+            element = tile.svgXml.documentElement;
+            element = element.cloneNode(true);
+            if (!element)
+              return;
+
+            if (!this.elements)
+              this.elements = [];
+            if (!this.elements[layer])
+              this.elements[layer] = [];
+            if (!this.elements[layer][yr])
+              this.elements[layer][yr] = [];
+            if (!this.elements[layer][yr][xr])
+              this.elements[layer][yr][xr] = element;
+
+
+            element.id = "Layer_" + yr+"_"+xr;
+            element.classList.add("tile");
+            if (tile.floor)
+              element.classList.add("floor");
+            element.classList.add(tile.id);
+
+            element.dataset.x = xr;
+            element.dataset.y = yr;
+
+            element.style.width = tiles.size+ "px";
+            element.style.height = tiles.size + "px";
+
+            element.style.left = x+"px";
+            element.style.top = y+"px";
+
+            //if (element.loaded) {
+              //console.log(element);
+            this.canvas.append(element);
+              /*ctx.drawImage(element,
+                        x, y, tiles.size, tiles.size);*/
+              //}
+
+            // off screen
+            /*
+            if (tile.floor) {
+              debugOverlay.drawCoords(x, y, fmX, fmY, offColor);
+            }
+            else {
+            element = tile.image.off;
+            if (element.loaded)
+              ctxOff.drawImage(element,
+                          x, y, tiles.size, tiles.size);
+            }*/
+          }
+
+      /*  if (layer == 0)
+          tileColorHex += 0x000001;*/
+    }
+
+  _loadImage(tile, offColor) {
       //$.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
         // offscreen
         svgXml = tile.svgXml;
-        offColor = tile.floor ? offColor : "#FFFFFF";
-        tile.image.off = new Image();
+        //offColor = tile.floor ? offColor : "#FFFFFF";
+      //  tile.image.off = new Image();
         var str = (new XMLSerializer).serializeToString(svgXml);
-        var off = str.replace(/fill(.*);/g,'fill:'+offColor+';');
+        /*var off = str.replace(/fill(.*);/g,'fill:'+offColor+';');
         off = off.replace(/stroke(.*);/g,'stroke:'+offColor+';');
         off = off.replace(/fill-opacity(.*);/g,'fill-opacity:'+offColor+';');
         off = off.replace(/opacity(.*);/g,'opacity:1;');
         tile.image.off.onload = function() {
           tile.image.off.loaded = true;
         }
-        tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;
+        tile.image.off.src = "data:image/svg+xml;charset=utf-8," + off;*/
   //  });
-  },
+  }
 
-  _drawTilePoly: function(x, y, context) {
+  _drawTilePoly(x, y) {
     context.beginPath();
     context.moveTo(x + tiles.size / 2,
                y + tiles.size / 2);
@@ -250,61 +330,18 @@ function Map(player, characters)
     context.closePath();
     context.fill();
     context.stroke();
-  },
-
-
-
-  _fillMap : function() {
-
-  // init fullMap first time
-  if (!fullMap.height) {
-    fullMap.height = fullMap.data[0].length;
-    fullMap.width = fullMap.data[0][0].length;
   }
 
-  // fill map
-  for (z = 0; z < fullMap.nbLayers; z++) {
-    var y2 = this._startY;
-      this._data[z] = this._data[z] ? this._data[z] : [];
-      for (y = 0; y < this.height; y++) {
-        var x2 = this._startX;
-        this._data[z][y] = this._data[z][y] ? this._data[z][y] : [];
-        for (x = 0; x < this.width; x++) {
-          if (y2 < 0 || x2 < 0)
-            this._data[z][y][x] = 0;
-          else if (y2 >= fullMap.height || x2 >= fullMap.width)
-            this._data[z][y][x] = 0;
-          else
-            {
-                // Auto-top blocks
-                if (z > 0 && tiles.data[this._data[z - 1][y][x]].top)
-                  this._data[z][y][x] = tiles.data[this._data[z - 1][y][x]].top;
-                // No auto top available
-                else if (z > 0)
-                  this._data[z][y][x] = 0;
-                // any other block + base layer
-                else
-                  this._data[z][y][x] = fullMap.data[z][y2][x2];
-            }
-          x2++;
-        }
-        y2++;
-      }
-    }
-  },
 
-  hasCollision : function (x, y) {
+
+
+  hasCollision(x, y) {
     x = parseInt(x);
     y = parseInt(y);
     if (y < 0 || x < 0 ||
-        y >= fullMap.height || x >= fullMap.width)
+        y >= this.fullMap.height || x >= this.fullMap.width)
       return true;
-    return tiles.data[fullMap.data[0][y][x]].collision;
-  },
+    return tiles.data[this.fullMap.data[0][y][x]].collision;
+  }
 
-  };
-
-  map._fillMap();
-  map._player.map = map;
-  return map;
 };

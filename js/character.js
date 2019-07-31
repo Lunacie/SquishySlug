@@ -36,19 +36,21 @@ function Character (x, y)
   this.direction = 0;
   this.images = [];
   //this.walkUnitSize = 0.015;
-  this.walkUnitSize = 0.025;
+  this.walkUnitSize = 0.045;
   //this.walkUnitSize = 0.045;
   this._walkPaceScale = 1;
   this.walkUnit = {
     x : 0,
     y : 0
   };
+  this.changedBlock = false;
   this.state = ACTION_STATE_IDLE;
   this._machineState = new MachineState(this);
   this.destination = null;
   this.direction = DIRECTION_RIGHT;
   this._path = null;
   this._steps = null;
+  this.indexOnTile = 0;
   this._props = [];
   this._orderStatus = ORDER_STATUS_NONE;
   this.ui = null;
@@ -63,7 +65,15 @@ function Character (x, y)
       if (!loadManager.isComplete())
         return;
 
-      fullMap.removeCharacter(this.id, this.block.x, this.block.y);
+        if (this.latestPosition)
+          console.log(this.latestPosition, this.x, this.y);
+
+      if (this.latestPostion &&
+          this.latestPostion.x != this.block.x &&
+          this.latestPostion.y != this.block.y)
+        alert("changed block");
+
+      map.fullMap.removeCharacter(this.id, this.block.x, this.block.y);
 
       if (this.destination) {
           if (!this._path) {
@@ -80,6 +90,7 @@ function Character (x, y)
 
           if (this._path && this._steps)
             this._automate();
+
       }
 
       this._updateOrderStatus();
@@ -88,7 +99,8 @@ function Character (x, y)
       this.state = this._machineState.update(time);
 
 
-      fullMap.addCharacter(this, this.block.x, this.block.y);
+      this.map.fullMap.addCharacter(this, this.block.x, this.block.y);
+
   }
 
   this.interupt = function() {
@@ -175,7 +187,7 @@ function Character (x, y)
   };
 
   this.freeNpc = function(id) {
-    let target = fullMap.getCharacter(id);
+    let target = this.map.fullMap.getCharacter(id);
     if (!target)
       return;
     target._machineState.removeState(ACTION_STATE_CONVERSATION);
@@ -285,6 +297,8 @@ function Character (x, y)
     if (this._steps[0] == DIRECTION_RIGHT)
       this.walkUnit.x = this.walkUnitSize;
 
+
+
     if (SHOW_DIJKSTRA_DEBUG) {
       console.log("current : ", this.block.x, this.block.y);
       console.log(this._path[0]);
@@ -305,8 +319,9 @@ function Character (x, y)
 
 
   this._scaleWalkPace = function() {
-    if (fps)
-      this._walkPaceScale = 60 / fps;
+    if (fps) {
+      this._walkPaceScale = (1 - ((fps * 1) / 60)) / 100;
+    }
   };
 
   this._characterIsBlocked = function(block) {
@@ -317,7 +332,7 @@ function Character (x, y)
       this.y = this.initBlock.y;
       return;
     }
-    let node = fullMap.data[0][block.y][block.x];
+    let node = this.map.fullMap.data[0][block.y][block.x];
     if (!node || tiles.data[node].collision == true) {
       this.block.x = this.initBlock.x;
       this.block.y = this.initBlock.y;
@@ -332,10 +347,25 @@ function Character (x, y)
       this._collisionBump();
       return;
     }
-    this.x += (this.walkUnit.x * this._walkPaceScale);
-    this.y += (this.walkUnit.y * this._walkPaceScale);
+    if (this.latestPosition)
+      console.log(this.latestPosition, this.x, this.y);
+
+    let oldX = this.x;
+    let oldY = this.y;
+
+    if (this.walkUnit.x != 0)
+      this.x += (this.walkUnit.x /*+ this._walkPaceScale*/);
+    if (this.walkUnit.y != 0)
+    this.y += (this.walkUnit.y /*+ this._walkPaceScale*/);
+
+
     this.block.x = parseInt(this.x);
     this.block.y = parseInt(this.y);
+
+    if (parseInt(oldY) != this.block.y ||
+        parseInt(oldX) != this.block.x)
+          this.changedBlock = true;
+
     this.walkUnit.x = 0;
     this.walkUnit.y = 0;
     this.internalBlock = {
@@ -343,6 +373,7 @@ function Character (x, y)
       y : (this.y - this.block.y) * 10
     };
   }
+
   this._buildPath = function() {
     var path = [];
     var queue = [];
@@ -357,9 +388,9 @@ function Character (x, y)
       this.destination.y == this.block.y)
       return null;
 
-    fullMap.clear();
-    //console.log(fullMap);
-    var current = fullMap.getNode(this.block.x, this.block.y);
+    this.map.fullMap.clear();
+    //console.log(this.map.fullMap);
+    var current = this.map.fullMap.getNode(this.block.x, this.block.y);
     // failsafe for when npcs are being idiots
     if (this._characterIsBlocked(current))
       return null;
@@ -422,12 +453,12 @@ function Character (x, y)
 
   this._backtrackPath = function(neighbour) {
       var path = [];
-      var copy = fullMap.getNode(neighbour.x, neighbour.y);
+      var copy = this.map.fullMap.getNode(neighbour.x, neighbour.y);
       path.unshift(copy);
       do {
         if (!copy.prev)
           break;
-        copy = fullMap.getNode(copy.prev.x, copy.prev.y);
+        copy = this.map.fullMap.getNode(copy.prev.x, copy.prev.y);
         path.unshift(copy);
       } while (copy);
 
@@ -488,13 +519,21 @@ function Character (x, y)
   };
 
 
-    this.draw = function(ox, oy)
-    {
+  this.draw = function(ox, oy)
+  {
       var y = oy;
       var x = ox + tiles.size / 1.5;
       var disp = this._getDisplacement(x, y);
       x = disp.x;
       y = disp.y;
+      var width = (tiles.size / 3);
+      var height = tiles.size / 1.6;
+
+      let element;
+
+
+      if (this._static || (this._static && !this._drawn))
+        return this.drawStaticNpc(element, width, height, x, y);
 
       if (!this._static)
         this.images[this.state] = this.images[this.state] || [];
@@ -506,32 +545,94 @@ function Character (x, y)
 
       // image ready to draw
       else {
-        if (this._static)
-          var element = this.images.on;
-        else
-          var element = this.images[this.state][this.direction].on;
-        var width = (tiles.size / 3) * -1;
-        var height = tiles.size / 1.6;
+        element = this.images[this.state][this.direction].svgXml.documentElement;
+
+        /*if (this.state == ACTION_STATE_IDLE &&
+            this.direction == DIRECTION_LEFT)
+          height = tiles.size * 2;*/
+
         this.x2d = x;
         this.y2d = y;
-        if (element.loaded) {
-          ctx.drawImage(element,
-                        x, y, width, height);
-          if (this.id == 0)
-          camera.player = {x: x, y : y, width : width, height : height}
-          }
-        if (!this._static)
-          this._drawProps(x, y, width, height);
+        if (!element.drawn) {
+            element._drawn = true;
+            if (!this.element)
+                this.element = [];
+              if (!this.element[this.state])
+                 this.element[this.state] = [];
+             if (!this._static && !this.element[this.state][this.direction]) {
+                element = element.cloneNode(true);
+                element.classList.add("character");
+                element.classList.add("state_" + this.state);
+                element.classList.add("direction_" + this.direction);
+                element.dataset.id = this.id;
+                if (this.id == 0)
+                  element.classList.add("player");
+                else
+                  element.classList.add("npc");
+                this.element[this.state][this.direction] = element;
+                this.map.canvas.append(element);
+              }
+            if (this.element["last"])
+              this.element["last"].style.display = "none";
 
-        if (this._static)
-          element = this.images.off;
-        else
-          element = this.images[this.state][this.direction].off;
-        if (element.loaded)
-          ctxOff.drawImage(element,
-                        x, y, width, height);
-        }
-    };
+            element = this.element[this.state][this.direction];
+            this.element["last"] = element;
+
+
+
+
+              element.style.display = "block";
+              element.style.width = width + "px";
+              element.style.height = height + "px";
+              element.style["z-index"] =
+                 this.map.getCharacterPositionOnTile(this);
+                //this.map.elements[0][this.block.y][this.block.x].style["z-index"];
+
+
+              //console.log("Player : "+ x+"px", y+"px");
+              element.style.left = x+"px";
+              element.style.top = y+"px";
+
+
+              /*
+              ctx.drawImage(element,
+                            x, y, width, height);*/
+              if (this.id == 0)
+              camera.player = {x: x, y : y, width : width, height : height}
+          }
+        //this._drawProps(x, y, width, height);
+      }
+
+  };
+
+  this.drawStaticNpc = function(element, width, height, x, y) {
+
+    if (!this._drawn) {
+      this._drawn = true;
+      element = this.images.svgXml.documentElement;
+      element.classList.add("static-npc");
+      element.classList.add("npc");
+      element.dataset.id = this.id;
+      element.loaded = true;
+      element = element.cloneNode(true);
+      this.element = element;
+      this.element.id  = "character_" + this.id;
+      this.element.style.display = "block";
+      width = tiles.size / 2.5 ;
+      height = tiles.size;
+      this.element.style.width = width + "px";
+      this.element.style.height = height + "px";
+      this.element.style.left = x+"px";
+      this.element.style.top = y+"px";
+      this.map.canvas.append(this.element);
+    }
+
+
+    if (this.element) {
+        this.element.style["z-index"] =
+           this.map.getCharacterPositionOnTile(this);
+    }
+  };
 
   this._drawProps = function(x, y, width, height) {
     for (var i = 0; i < this._props.length; i++) {

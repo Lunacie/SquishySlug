@@ -1,36 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#5E3A19;stroke:#313528;stroke-miterlimit:10;}
-	.st1{opacity:0.5;}
-	.st2{fill:#63AA34;}
-	.st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
-	.st4{display:none;}
-	.st5{display:inline;fill:#808080;}
-	.st6{fill:#A6A8AB;}
-	.st7{fill:#5E3A19;}
-	.st8{fill:#938787;}
-	.st9{fill:#C6B8A3;}
-	.st10{fill:#AA9E91;}
-	.st11{fill:#B7A68A;}
-	.st12{fill:#A08D70;}
-	.st13{fill:#9B9494;}
-	.st14{fill:#7F7574;}
-	.st15{fill:#D6C8B4;}
-	.st16{fill:#E2D4C3;}
-	.st17{fill:#776A68;}
-</style>
-<polygon class="st0" points="250,187.5 126.6,250 0.4,187.5 125.2,125 "/>
+	 viewBox="0 0 250 250" pointer-events="none" style="enable-background:new 0 0 250 250;" xml:space="preserve">
+
+<polygon cursor="pointer"  pointer-events="none" class="st0" points="250,187.5 126.6,250 0.4,187.5 125.2,125 "/>
 <g>
 	<g class="st1">
-		<polygon class="st2" points="105.4,147.2 124,156.6 105.4,165.9 86.8,156.5 		"/>
-		<polygon class="st2" points="61,176.1 72.1,181.6 60.9,187.3 49.8,181.6 		"/>
-		<polygon class="st2" points="145.9,156.4 157,162 145.9,167.5 134.8,162 		"/>
-		<polygon class="st2" points="212.8,180.2 224.1,185.7 212.8,191.3 201.7,185.7 		"/>
-		<polygon class="st2" points="130.8,226.3 141.8,231.9 130.6,237.4 119.5,231.9 		"/>
-		<polygon class="st3" points="127.7,196.9 135.9,201 127.7,205 119.5,201 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st2" points="105.4,147.2 124,156.6 105.4,165.9 86.8,156.5 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st2" points="61,176.1 72.1,181.6 60.9,187.3 49.8,181.6 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st2" points="145.9,156.4 157,162 145.9,167.5 134.8,162 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st2" points="212.8,180.2 224.1,185.7 212.8,191.3 201.7,185.7 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st2" points="130.8,226.3 141.8,231.9 130.6,237.4 119.5,231.9 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  class="st3" points="127.7,196.9 135.9,201 127.7,205 119.5,201 		"/>
 	</g>
 </g>
 <g class="st4">
@@ -39,42 +20,42 @@
 </g>
 <g id="XMLID_468_">
 	<g id="XMLID_306_">
-		<polygon id="XMLID_307_" class="st6" points="112.8,214.2 79.2,214.2 45.6,227.9 112.8,227.9 		"/>
+		<polygon cursor="pointer" pointer-events="visible"  id="XMLID_307_" class="st6" points="112.8,214.2 79.2,214.2 45.6,227.9 112.8,227.9 		"/>
 		<path id="XMLID_308_" class="st7" d="M212.2,163.8c-23.6-25.5-47.1-51-70.7-76.5l55.2,97.6l-177.7-2.8L-15,203.6h191l-27.5,24.6
 			L112.9,250c20.8-5.3,41.8-10.6,62.6-15.9c24.9-12.5,49.7-25.1,74.5-37.6C237.4,185.5,224.8,174.6,212.2,163.8z"/>
 	</g>
-	<polygon id="XMLID_282_" class="st8" points="209.3,44.8 211.8,97.6 185.5,140.2 154.9,160.6 125.2,245.3 184.8,217.5 207.1,189.7 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_282_" class="st8" points="209.3,44.8 211.8,97.6 185.5,140.2 154.9,160.6 125.2,245.3 184.8,217.5 207.1,189.7
 		225,198.7 244.3,189.7 244.3,140.2 230.5,121.4 230.5,69.6 	"/>
-	<polygon id="XMLID_283_" class="st9" points="-15,203.6 17.1,164.4 67,137 115.1,78.2 144,65.7 172.7,38 209.3,44.8 211.8,97.6 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_283_" class="st9" points="-15,203.6 17.1,164.4 67,137 115.1,78.2 144,65.7 172.7,38 209.3,44.8 211.8,97.6
 		185.5,140.2 154.9,160.6 125.2,245.3 81.5,224.8 45.6,227.9 67,200.4 33.7,202.5 21.9,196.6 	"/>
-	<polygon id="XMLID_284_" class="st10" points="209.3,44.8 218.3,71.7 230.5,121.4 230.5,148.8 244.3,189.7 244.3,140.2 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_284_" class="st10" points="209.3,44.8 218.3,71.7 230.5,121.4 230.5,148.8 244.3,189.7 244.3,140.2
 		230.5,121.4 230.5,69.6 	"/>
-	<polygon id="XMLID_285_" class="st11" points="-15,203.6 62.2,177.9 77.4,150.7 116.4,117.2 134.3,127.8 67,200.4 33.7,202.5 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_285_" class="st11" points="-15,203.6 62.2,177.9 77.4,150.7 116.4,117.2 134.3,127.8 67,200.4 33.7,202.5
 		21.9,196.6 	"/>
-	<polygon id="XMLID_286_" class="st12" points="45.6,227.9 94.9,198.9 134.3,127.8 109.6,203.6 81.5,224.8 	"/>
-	<polygon id="XMLID_287_" class="st13" points="185.5,140.2 156.9,192.7 168.5,225.1 125.2,245.3 154.9,160.6 	"/>
-	<polygon id="XMLID_288_" class="st14" points="184.8,217.5 207.1,166 207.1,189.7 	"/>
-	<polygon id="XMLID_275_" class="st14" points="244.3,189.7 230.5,148.8 222.3,163.5 225,198.7 	"/>
-	<polygon id="XMLID_291_" class="st11" points="71.5,192.7 77.4,150.7 134.3,127.8 94.9,198.9 	"/>
-	<polygon id="XMLID_290_" class="st15" points="67,137 17.1,164.4 77.4,150.7 116.4,117.2 115.1,78.2 	"/>
-	<polygon id="XMLID_292_" class="st12" points="62.2,177.9 67,200.4 71.5,195.5 77.4,150.7 	"/>
-	<polygon id="XMLID_293_" class="st9" points="109.6,203.6 135.9,214.8 125.2,245.3 112.8,250 81.5,224.8 	"/>
-	<polygon id="XMLID_289_" class="st11" points="154.9,160.6 126.1,153 109.6,203.6 123,209.3 112.8,250 125.2,245.3 	"/>
-	<polygon id="XMLID_294_" class="st12" points="141.5,198.9 123,209.3 112.8,250 125.2,245.3 	"/>
-	<polygon id="XMLID_69_" class="st9" points="144,65.7 188,70.8 201.4,41.1 172.7,38 	"/>
-	<polygon id="XMLID_298_" class="st16" points="115.1,78.2 127.2,114.4 149.8,133.9 134.3,127.8 116.4,117.2 	"/>
-	<polygon id="XMLID_295_" class="st16" points="149.8,133.9 132.3,154.6 109.6,203.6 134.3,127.8 	"/>
-	<polygon id="XMLID_300_" class="st16" points="116.4,117.2 77.4,150.7 45.6,157.9 80.9,140.2 115.9,100.2 	"/>
-	<polygon id="XMLID_299_" class="st17" points="156.9,192.7 160.1,201.5 168.5,225.1 173.8,222.6 167.2,187 180.3,160.4 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_286_" class="st12" points="45.6,227.9 94.9,198.9 134.3,127.8 109.6,203.6 81.5,224.8 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_287_" class="st13" points="185.5,140.2 156.9,192.7 168.5,225.1 125.2,245.3 154.9,160.6 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_288_" class="st14" points="184.8,217.5 207.1,166 207.1,189.7 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_275_" class="st14" points="244.3,189.7 230.5,148.8 222.3,163.5 225,198.7 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_291_" class="st11" points="71.5,192.7 77.4,150.7 134.3,127.8 94.9,198.9 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_290_" class="st15" points="67,137 17.1,164.4 77.4,150.7 116.4,117.2 115.1,78.2 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_292_" class="st12" points="62.2,177.9 67,200.4 71.5,195.5 77.4,150.7 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_293_" class="st9" points="109.6,203.6 135.9,214.8 125.2,245.3 112.8,250 81.5,224.8 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_289_" class="st11" points="154.9,160.6 126.1,153 109.6,203.6 123,209.3 112.8,250 125.2,245.3 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_294_" class="st12" points="141.5,198.9 123,209.3 112.8,250 125.2,245.3 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_69_" class="st9" points="144,65.7 188,70.8 201.4,41.1 172.7,38 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_298_" class="st16" points="115.1,78.2 127.2,114.4 149.8,133.9 134.3,127.8 116.4,117.2 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_295_" class="st16" points="149.8,133.9 132.3,154.6 109.6,203.6 134.3,127.8 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_300_" class="st16" points="116.4,117.2 77.4,150.7 45.6,157.9 80.9,140.2 115.9,100.2 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_299_" class="st17" points="156.9,192.7 160.1,201.5 168.5,225.1 173.8,222.6 167.2,187 180.3,160.4
 		207.1,129.1 211.8,97.6 185.5,140.2 	"/>
-	<polygon id="XMLID_311_" class="st17" points="125.2,245.3 135.9,240.3 149.8,207.9 154.9,160.6 	"/>
-	<polygon id="XMLID_296_" class="st13" points="188,70.8 201,43.2 209.3,44.8 211.8,97.6 201.4,129.1 185.5,140.2 154.9,160.6 
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_311_" class="st17" points="125.2,245.3 135.9,240.3 149.8,207.9 154.9,160.6 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_296_" class="st13" points="188,70.8 201,43.2 209.3,44.8 211.8,97.6 201.4,129.1 185.5,140.2 154.9,160.6
 		163.7,148.8 164.3,138.4 192.3,111 191.2,77 	"/>
-	<polygon id="XMLID_297_" class="st12" points="146.3,103.7 153.2,78.2 188,70.8 	"/>
-	<polygon id="XMLID_301_" class="st16" points="188,34.8 180.1,61.5 153.2,78.2 188,70.8 201.4,41.1 	"/>
-	<polygon id="XMLID_302_" class="st17" points="146.3,103.7 185.5,90.7 196,65.6 201.4,41.1 188,70.8 	"/>
-	<polygon id="XMLID_312_" class="st11" points="192.3,111 156.9,133.9 154.9,160.6 163.7,148.8 180,133.9 	"/>
-	<polygon id="XMLID_316_" class="st16" points="191.2,77 192.3,111 156.9,133.9 184.3,106.1 185.5,90.7 	"/>
-	<polygon id="XMLID_317_" class="st10" points="211.8,97.6 185.5,140.2 201.4,129.1 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_297_" class="st12" points="146.3,103.7 153.2,78.2 188,70.8 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_301_" class="st16" points="188,34.8 180.1,61.5 153.2,78.2 188,70.8 201.4,41.1 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_302_" class="st17" points="146.3,103.7 185.5,90.7 196,65.6 201.4,41.1 188,70.8 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_312_" class="st11" points="192.3,111 156.9,133.9 154.9,160.6 163.7,148.8 180,133.9 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_316_" class="st16" points="191.2,77 192.3,111 156.9,133.9 184.3,106.1 185.5,90.7 	"/>
+	<polygon cursor="pointer" pointer-events="visible"  id="XMLID_317_" class="st10" points="211.8,97.6 185.5,140.2 201.4,129.1 	"/>
 </g>
 </svg>

@@ -15,6 +15,54 @@ body {
   background : #17BEC7;
 }
 
+.tile, .character, .static-npc {
+  position : absolute;
+}
+
+#box {
+  z-index : 9999;
+  position : absolute;
+}
+
+#canvas {
+  background : #17BEC7;
+  min-width : 100vw;
+  position : absolute;
+  left : 0;
+  top : 100px;
+  min-height : 100vh;
+}
+
+
+/* WIP
+#wip {
+  position : fixed;
+  background : #6D316C;
+  width: 100% !important; height : 100vh !important;
+  z-index : 999999;
+}
+#wip img {
+  width : 250px;
+}
+#wip p{
+  text-align : center;
+  font-size : 2rem;
+  color : white;
+  font-family: "Josefin Sans", "Proxima Nova", Helvetica, Corbel, sans-serif;
+}
+#wip #p2{
+  font-size : 1.5rem;
+  font-family: 'Heebo';
+}
+body {
+  overflow : hidden;
+}*/
+
+
+
+
+
+
 
 #background {
   width : 100%;
@@ -67,7 +115,7 @@ footer .flag{ width : 50px}
 #tab {
   width: 0px;
   height : 100vh;
-  z-index : 3;
+  z-index : 9998;
   position : absolute;
   overflow : hidden;
   max-width : 840px;
@@ -184,7 +232,7 @@ footer .flag{ width : 50px}
 }
 
 .tab-content {
-  min-height : 70vh;
+  min-height : 80vh;
   margin-top : -70px;
 }
 .tab-content .project-description-container {
@@ -232,12 +280,15 @@ footer .flag{ width : 50px}
   left : 35%;
 }
 
-#main { display : none; z-index: 1 }
+#main { display : none;
+   z-index: 1;
+   width : 0px !important;
+  }
 #main header , #logo{
   background : white;
 }
 header {
-  z-index : 6;
+  z-index : 9999;
   background : white;
   display: none;
   position : absolute;
@@ -266,6 +317,7 @@ h2#title {
 #tab-content {
   overflow-y: scroll;
   margin-bottom : 100px;
+  max-height : 90vh;
 }
 #tab-content h2 {
   font-family: 'Ubuntu Mono', monospace;
@@ -308,7 +360,7 @@ header .nav ul a {display : inline}
   position : absolute;
   top : 0;
   right : 0px;
-  z-index: 3;
+  z-index: 9998;
 }
 
 .nav.mobile {
@@ -318,7 +370,7 @@ header .nav ul a {display : inline}
   top : 40%;*/
   right : 60px;
   display : none;
-  z-index : 4;
+  z-index : 9998;
 }
 .nav.mobile ul {
   list-style : none;
@@ -385,7 +437,7 @@ footer {
   width: 100% !important;
   position : fixed !important;
   bottom : 0;
-  z-index : 2;
+  z-index : 9997;
   max-height : 60px;
 }
 footer p {

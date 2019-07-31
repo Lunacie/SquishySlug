@@ -44,9 +44,9 @@ function UI(player) {
     this._orderId = 0;
     this._screens = [
       $("#loading.screen"),
-      $("#main.screen").click(eventCanvasClicked)
+      $("#main.screen")/*.click(eventCanvasClicked)*/
     ];
-    $("#footer").click(eventCanvasClicked);
+    //$("#footer").click(eventCanvasClicked);
     $("#menu-open").click(this._toggleMenu);
 
 
@@ -54,6 +54,7 @@ function UI(player) {
     $(".flag-fr").click(function() {
       $(".fr").show();
       $(".en").hide();
+
     });
     $(".flag-en").click(function() {
       $(".en").show();
@@ -154,6 +155,8 @@ function UI(player) {
   };
 
   this._prepareTab = function(id) {
+    $("#tab").scrollTop(0);
+    $("#tab-content").scrollTop(0);
     ui.tabs.update(id);
   }
 

@@ -1,31 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 180.3 208" style="enable-background:new 0 0 180.3 208;"  width="250px" height="250px" preserveAspectRatio="none" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#87AE32;stroke:#87AE32;stroke-miterlimit:10;}
-	.st1{opacity:0.5;}
-	.st2{fill:#63AA34;}
-	.st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
-	.st4{fill-opacity:0.3;}
-	.st5{fill:#754C29;}
-	.st6{fill:#8B5E3C;}
-	.st7{enable-background:new;}
-	.st8{display:none;fill:#8B5E3C;}
-	.st9{display:none;}
-	.st10{display:inline;}
-	.st11{fill:#808080;}
-</style>
+	 viewBox="0 0 180.3 208" pointer-events="none" style="enable-background:new 0 0 180.3 208;"  width="250px" height="250px" preserveAspectRatio="none" xml:space="preserve">
+
 <g id="Layer_1_1_">
-	<polygon class="st0" points="180.3,156 91.3,208 0.3,156 90.3,104 	"/>
+	<polygon cursor="pointer" pointer-events="visible" class="st0" points="180.3,156 91.3,208 0.3,156 90.3,104 	"/>
 	<g>
 		<g class="st1">
-			<polygon class="st2" points="76,122.5 89.4,130.3 76,138 62.6,130.2 			"/>
-			<polygon class="st2" points="44,146.5 52,151.1 43.9,155.8 35.9,151.1 			"/>
-			<polygon class="st2" points="105.2,130.1 113.2,134.8 105.2,139.4 97.2,134.8 			"/>
-			<polygon class="st2" points="153.5,149.9 161.6,154.5 153.5,159.2 145.5,154.5 			"/>
-			<polygon class="st2" points="94.3,188.3 102.3,192.9 94.2,197.5 86.2,192.9 			"/>
-			<polygon class="st3" points="92.1,163.8 98,167.2 92.1,170.6 86.2,167.2 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st2" points="76,122.5 89.4,130.3 76,138 62.6,130.2 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st2" points="44,146.5 52,151.1 43.9,155.8 35.9,151.1 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st2" points="105.2,130.1 113.2,134.8 105.2,139.4 97.2,134.8 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st2" points="153.5,149.9 161.6,154.5 153.5,159.2 145.5,154.5 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st2" points="94.3,188.3 102.3,192.9 94.2,197.5 86.2,192.9 			"/>
+			<polygon cursor="pointer" pointer-events="visible" class="st3" points="92.1,163.8 98,167.2 92.1,170.6 86.2,167.2 			"/>
 		</g>
 	</g>
 </g>
@@ -33,35 +20,35 @@
 	<g>
 		<g>
 			<g>
-				<path class="st4" d="M0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208z"/>
-				<path class="st4" d="M145.7,136.2c-5.6-3.2-13.5-4.3-20.7-3.3c-10.6-4.4-23.6-6.1-36-5c-12.1-5.4-29.4-4.9-40.4,1.5
+				<path cursor="pointer" pointer-events="visible" class="st4" d="M0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208L0,208z"/>
+				<path cursor="pointer" pointer-events="visible" class="st4" d="M145.7,136.2c-5.6-3.2-13.5-4.3-20.7-3.3c-10.6-4.4-23.6-6.1-36-5c-12.1-5.4-29.4-4.9-40.4,1.5
 					c-11.4,6.6-11.8,17.1-1.6,24.1c-1,0.4-2,0.9-2.9,1.4c-8.5,4.9-8.4,12.9,0.1,17.8c3.2,1.8,7,3,11.1,3.4c0.7,2.5,2.7,4.9,6.1,6.8
 					c7.6,4.4,19.3,4.8,27.8,1.4c15,1.3,30.7-1.4,42.2-8c10.5-6.1,15.2-14.2,14.2-22.2c0.1,0,0.2-0.1,0.2-0.1
 					C154.3,149.1,154.2,141.1,145.7,136.2z"/>
 				<g>
 					<g>
-						<polygon class="st5" points="0,208 0,208 0,208 0,208 0,208 0,208 0,208 0,208 0,208 						"/>
-						<path class="st5" d="M97.1,103.7c1.2-0.6,2.2-1.6,2.8-3c0-0.1,0.2-0.2,0.3-0.4c0.1-0.1,0.2-0.3,0.4-0.5c0.3-0.3,0.5-0.6,0.8-1
+						<polygon cursor="pointer" pointer-events="visible" class="st5" points="0,208 0,208 0,208 0,208 0,208 0,208 0,208 0,208 0,208 						"/>
+						<path cursor="pointer" pointer-events="visible" class="st5" d="M97.1,103.7c1.2-0.6,2.2-1.6,2.8-3c0-0.1,0.2-0.2,0.3-0.4c0.1-0.1,0.2-0.3,0.4-0.5c0.3-0.3,0.5-0.6,0.8-1
 							c0.5-0.6,1.2-1.3,1.8-1.9c0,0,0,0,0,0c0,0-1.3,0.8-2.7,1.7c-1.6,1-3.4,2.1-3.4,2.1V103.7z"/>
-						<polygon class="st5" points="0,208 0,208 0,208 0,208 0,208 0,208 0,208 						"/>
-						<path class="st5" d="M135.7,79l3-0.7c1-0.3,2.1-0.6,3.1-1c2-0.8,3.9-1.8,5.8-2.9c1.8-1.2,3.4-2.6,4.9-4.2
+						<polygon cursor="pointer" pointer-events="visible" class="st5" points="0,208 0,208 0,208 0,208 0,208 0,208 0,208 						"/>
+						<path cursor="pointer" pointer-events="visible" class="st5" d="M135.7,79l3-0.7c1-0.3,2.1-0.6,3.1-1c2-0.8,3.9-1.8,5.8-2.9c1.8-1.2,3.4-2.6,4.9-4.2
 							c0.8-0.9,1.6-1.9,2.2-2.9l-21.8,12.4C133.8,79.5,134.8,79.2,135.7,79z"/>
-						<polygon class="st6" points="0,208 0,208 0,208 0,208 						"/>
-						<path class="st6" d="M139.4,76c0,0,0.1,0,0.1,0c2-0.8,3.9-1.8,5.8-2.9c0.8-0.6,1.6-1.2,2.4-1.8L139.4,76z"/>
+						<polygon cursor="pointer" pointer-events="visible" class="st6" points="0,208 0,208 0,208 0,208 						"/>
+						<path cursor="pointer" pointer-events="visible" class="st6" d="M139.4,76c0,0,0.1,0,0.1,0c2-0.8,3.9-1.8,5.8-2.9c0.8-0.6,1.6-1.2,2.4-1.8L139.4,76z"/>
 					</g>
 					<g>
 						<g>
 							<g>
 								<g class="st7">
 									<g>
-										<polygon class="st8" points="100.2,98.9 98.1,-39.5 90.4,-39.5 88.1,102.1 91.3,104 										"/>
-										<path class="st6" d="M101.1,158.5l-0.9-59.6l-8.9,1.6l-3.2-0.4l-0.9,58.4c-0.1,0.9,0.6,1.9,1.9,2.7
+										<polygon cursor="pointer" pointer-events="visible" class="st8" points="100.2,98.9 98.1,-39.5 90.4,-39.5 88.1,102.1 91.3,104 										"/>
+										<path cursor="pointer" pointer-events="visible" class="st6" d="M101.1,158.5l-0.9-59.6l-8.9,1.6l-3.2-0.4l-0.9,58.4c-0.1,0.9,0.6,1.9,1.9,2.7
 											c2.8,1.6,7.4,1.6,10.2,0C100.6,160.4,101.2,159.4,101.1,158.5z"/>
 									</g>
 								</g>
-								<polygon class="st5" points="0,208 0,208 0,208 0,208 								"/>
-								<polygon class="st5" points="0,208 0,208 0,208 0,208 0,208 								"/>
-								<path class="st5" d="M94.2,101.8l0,60.6c1.8,0,3.7-0.4,5-1.2c1.3-0.7,1.9-1.7,1.9-2.7l-0.9-59.9L94.2,101.8z"/>
+								<polygon cursor="pointer" pointer-events="visible" class="st5" points="0,208 0,208 0,208 0,208 								"/>
+								<polygon cursor="pointer" pointer-events="visible" class="st5" points="0,208 0,208 0,208 0,208 0,208 								"/>
+								<path cursor="pointer" pointer-events="visible" class="st5" d="M94.2,101.8l0,60.6c1.8,0,3.7-0.4,5-1.2c1.3-0.7,1.9-1.7,1.9-2.7l-0.9-59.9L94.2,101.8z"/>
 							</g>
 						</g>
 					</g>
@@ -72,11 +59,11 @@
 </g>
 <g id="grid" class="st9">
 	<g class="st10">
-		<path class="st11" d="M91.3,1.3l89,51.4v102.8l-89,51.4l-89-51.4V52.7L91.3,1.3 M91.3,0.1l-90,52V156l90,52l90-52V52.1L91.3,0.1
+		<path cursor="pointer" pointer-events="visible" class="st11" d="M91.3,1.3l89,51.4v102.8l-89,51.4l-89-51.4V52.7L91.3,1.3 M91.3,0.1l-90,52V156l90,52l90-52V52.1L91.3,0.1
 			L91.3,0.1z"/>
 	</g>
 	<g class="st10">
-		<path class="st11" d="M91.3-102.7l89,51.4V51.4l-89,51.4l-89-51.4V-51.3L91.3-102.7 M91.3-103.9l-90,52V52l90,52l90-52V-51.9
+		<path cursor="pointer" pointer-events="visible" class="st11" d="M91.3-102.7l89,51.4V51.4l-89,51.4l-89-51.4V-51.3L91.3-102.7 M91.3-103.9l-90,52V52l90,52l90-52V-51.9
 			L91.3-103.9L91.3-103.9z"/>
 	</g>
 </g>

@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html5/strict.dtd">
+<!DOCTYPE html>
 <html>
    <head>
        <?php
@@ -42,6 +41,8 @@
       <script type="text/javascript" src="js/update.js"></script>
 
       <link rel="stylesheet" href="css/style.css"></link>
+      <link rel="stylesheet" href="css/style-tiles.css"></link>
+      <link rel="stylesheet" href="css/style-characters.css"></link>
       <link rel="stylesheet" href="css/media-queries.css"></link>
       <link rel="stylesheet" href="css/animations.css"></link>
       <link rel="stylesheet" href="css/animation-menu.css"></link>
@@ -119,9 +120,13 @@
 
 
      <div>
+          <!--
           <canvas id="offCanvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="canvas" class="canvas" width="1000" height="600"></canvas>
           <canvas id="debugCanvas" class="canvas" width="1000" height="600"></canvas>
+          -->
+          <div id="canvas"></div>
+          <div id="box"></div>
           <div id="background">
             <video autoplay muted loop id="video">
               <source src="assets/videos/background.mp4" type="video/mp4">

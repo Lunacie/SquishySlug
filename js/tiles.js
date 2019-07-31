@@ -23,10 +23,12 @@
       /* 4 */ {
       id : "stone",
       collision : true,
+      occlusion : true,
       },
       /* 5 */ {
       id : "stone_2",
       collision : true,
+      occlusion : true,
       },
       /* 6*/ {
       id : "water",

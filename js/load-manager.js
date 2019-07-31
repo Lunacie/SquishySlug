@@ -37,17 +37,8 @@ function LoadManager(characters, tiles) {
     for (let i = 0; i < tiles.data.length; i++) {
       let tile = tiles.data[i];
         $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
-
-            tile.image = {};
+            tile.image = { on : { loaded : true }};
             tile.svgXml = svgXml;
-            // on screen
-            tile.image.on = new Image();
-            var str = (new XMLSerializer).serializeToString(svgXml);
-            str = str.replace(/#/g, "%23");
-            tile.image.on.onload = function() {
-              tile.image.on.loaded = true;
-            }
-            tile.image.on.src = "data:image/svg+xml;charset=utf-8," + str;
         });
   }
 }
@@ -85,11 +76,11 @@ function LoadManager(characters, tiles) {
         return;
 
       this._loadCanvasImages();
-      
+
       for (var i = 0; i < this._characters.length; i++) {
         if (this._characters[i]._static) {
           var images = this._characters[i].images;
-          if (!images.on || !images.off)
+          if (!images.on /*|| !images.off*/)
             return false;
         }
         else {
@@ -97,7 +88,7 @@ function LoadManager(characters, tiles) {
           var images = this._characters[i].images;
           for (i = 0; i < 2; i++) {
             for (j = 0; j < 4; j++) {
-              if (!images[i][j].on || !images[i][j].off)
+              if (!images[i][j].on /*|| !images[i][j].off*/)
                 return false;
             }
           }

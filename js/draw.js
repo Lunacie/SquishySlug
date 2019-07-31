@@ -1,5 +1,4 @@
 
-  var ctx = null;
   var fps = 0;
   var tileColorHex = 0x000000;
   var x2d = 0;
@@ -11,23 +10,26 @@
      if (fps) {
       speed *= (60 / fps);
       $("#fps").html(fps + " fps");
+      //console.log(fps);
     }
 
     let pos = camera.center();
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    /*ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
-    ctxDebug.clearRect(0, 0, canvas.width, canvas.height);
+    ctxDebug.clearRect(0, 0, canvas.width, canvas.height);*/
 
     var x = this.x2d;
-    var y = this.y2d;
+    var y = this.y2d;/*
     x += pos.x;
-    y += pos.y;
+    y += pos.y;*/
+
     //x = pos.x;
     //y = pos.y;
 
-    this.y2d = y;
-    this.x2d = x;
+  //  this.y2d = y;
+  //  this.x2d = x;
+
     /*var x = 0;
     var y = 0;*/
     //console.log(x, y);

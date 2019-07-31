@@ -6,6 +6,7 @@ function Player(x, y) // inherits Character
 
     this.map = {};
     this.elapsed = 0;
+    this.walkUnitSize = 0.065;
 
     this.update = function(time)
     {
@@ -23,21 +24,22 @@ function Player(x, y) // inherits Character
         if (events.up){
           this.setDestination(null, 3);
           diff = this.y - parseInt(this.y);
-          this.walkUnit.y = this.walkUnitSize * -1;
+          this.walkUnit.y = (this.walkUnitSize) * -1;
           walking = true;
           }
 
         else if (events.down) {
           this.setDestination(null, 2);
           diff = this.y - parseInt(this.y);
-          this.walkUnit.y = this.walkUnitSize ;
+          this.walkUnit.y = (this.walkUnitSize) ;
           walking = true;
+          //this.map.updateCharacter();
         }
 
         else if (events.left) {
           this.setDestination(null, 1);
           diff = this.x - parseInt(this.x);
-          this.walkUnit.x = this.walkUnitSize * -1 ;
+          this.walkUnit.x = (this.walkUnitSize) * -1 ;
           walking = true;
         }
 
@@ -45,8 +47,9 @@ function Player(x, y) // inherits Character
           this.setDestination(null, 0);
           diff = this.x - parseInt(this.x);
           walking = true;
-          this.walkUnit.x = this.walkUnitSize;
+          this.walkUnit.x = (this.walkUnitSize);
         }
+
 
         events.up = false;
         events.down = false;

@@ -1,79 +1,59 @@
 
 var CLICK_EVENT_DEBUG = false;
+let clickClass = null;
 
-function eventCanvasClicked(event, element) {
 
-  var eventLocation = getEventLocation(this, event);
-  var pixelData = ctxOff.getImageData(eventLocation.x, eventLocation.y,
-                                      1, 1).data;
-  var val = 000000 + rgbToHex(pixelData[0],
-                                pixelData[1],
-                                pixelData[2]);
 
- // clicked a static object
- if (val == 0xFFFFFF)
-    return;
- // clicked a npc
- else if (val > characterColorHex) {
-   events.click = getClickEventNpc(val);
- }
- // clicked the floor
- else {
-   //events.click = getClickEventFloor(val);
- }
-};
+function hasParentClass(element, className) {
+  let classes = /(floor)|(npc)/;
 
-function getClickEventNpc(val) {
-//  console.log((val - characterColorHex) / 2);
-  var npc = fullMap.getCharacter((val - characterColorHex) / 2);
+  if (!element.classList) return null;
+  if (!className) {
+    for (let i = 0; i < element.classList.length; i++)
+      if (classes.test(element.classList[i])) return element;
+  }
+  else if (className && element.classList.contains(className)) return element;
+  else if (className) return null;
+  return element.parentNode && hasParentClass(element.parentNode, className);
+}
+
+function setClickListeners(canvas) {
+
+  const useEventType = (typeof window.PointerEvent === 'function') ?
+                        'pointer' : 'mouse';
+  const listeners = ['click','touchstart','touchend'/*,
+                     'touchmove',`${useEventType}enter`,
+                     `${useEventType}leave`, `${useEventType}move`*/];
+
+
+  const pointerHandler = (event) => {
+    event.preventDefault();
+    let element = null;
+    if (element = hasParentClass(event.target)) {
+      if (hasParentClass(element, "floor"))
+        return getClickEventFloor(element);
+      if (hasParentClass(element, "npc"))
+        return getClickEventNpc(element);
+    }
+  }
+
+  listeners.map((etype) => {
+      canvas.addEventListener(etype, pointerHandler);
+    });
+
+}
+
+
+function getClickEventNpc(element) {
+  var npc = map.fullMap.getCharacter(element.dataset.id);
   if (!npc)
     return null;
-  return npc.getDestinationTriggerInteraction();
+  events.click = npc.getDestinationTriggerInteraction();
 }
 
-function getClickEventFloor(val) {
-
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT val", val);
-  var row = 0;
-  var col = 0;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT map width",  map.width);
-  var width = map.width;
-  if (map._startX <= 0)
-    width = map.width + map._startX;
-  width = fullMap.width;
-  //else if (map._startX > 0)
-  //  var width = map.width - map._startX;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT revised map width",  width);
-  for (var rest = val; rest - width  >= 0; rest -= (width))
-    row += 1;
-  if (CLICK_EVENT_DEBUG)
-    console.log("EVENT rest",  rest);
-  col = val % width;
-
-
+function getClickEventFloor(element) {
   events.click = {
-    x : col,
-    y : row,
+    x : element.dataset.x,
+    y : element.dataset.y,
   };
-
-  if (CLICK_EVENT_DEBUG) {
-    console.log("EVENT offset",  map._startX,  map._startY);
-    console.log("EVENT col/row", col, row);
-    console.log("EVENT", events.click);
-    console.log("EVENT ------------");
-  }
-  return events.click;
-}
-
-function getEventLocation(element, event) {
-  return {
-    x : event.pageX -  ui.getTabWidth(), y : event.pageY
-  }
-}
-
-function rgbToHex(r, g, b) {
-    return ((r << 16) | (g << 8) | b);
 }

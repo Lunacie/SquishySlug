@@ -1,0 +1,122 @@
+
+
+.tile.water .st0{fill:#87AE32;stroke:#87AE32;stroke-miterlimit:10;}
+.tile.water .st1{opacity:0.5;}
+.tile.water .st2{fill:#63AA34;}
+.tile.water .st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
+.tile.water .st4{display:none;}
+.tile.water .st5{display:inline;fill:#808080;}
+.tile.water .st6{fill:#17BEC7;}
+.tile.water .st7{opacity:0.53;fill:#30E2E2;}
+.tile.water .st8{fill:#30E2E2;}
+
+
+.tile.floor_grass .st0{fill:#87AE32;stroke:#87AE32;stroke-miterlimit:10;}
+.tile.floor_grass .st1{opacity:0.5;}
+.tile.floor_grass .st2{fill:#63AA34;}
+.tile.floor_grass .st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
+.tile.floor_grass .st4{display:none;}
+.tile.floor_grass .st5{display:inline;fill:#808080;}
+
+
+.tile.floor_sand .st0{display:none;}
+.tile.floor_sand .st1{display:inline;fill:#808080;}
+.tile.floor_sand .st2{fill:#FFEB66;stroke:#FFEB66;stroke-miterlimit:10;}
+.tile.floor_sand .st3{fill:#FFD04E;}
+.tile.floor_sand .st4{fill:#FCDF5F;}
+
+.tile.tree_01_l00 .st0{fill:#87AE32;stroke:#87AE32;stroke-miterlimit:10;}
+.tile.tree_01_l00 .st1{opacity:0.5;}
+.tile.tree_01_l00 .st2{fill:#63AA34;}
+.tile.tree_01_l00 .st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
+.tile.tree_01_l00 .st4{fill-opacity:0.3;}
+.tile.tree_01_l00 .st5{fill:#754C29;}
+.tile.tree_01_l00 .st6{fill:#8B5E3C;}
+.tile.tree_01_l00 .st7{enable-background:new;}
+.tile.tree_01_l00 .st8{display:none;fill:#8B5E3C;}
+.tile.tree_01_l00 .st9{display:none;}
+.tile.tree_01_l00 .st10{display:inline;}
+.tile.tree_01_l00 .st11{fill:#808080;}
+
+.tile.stone .st0{fill:#5E3A19;stroke:#313528;stroke-miterlimit:10; }
+.tile.stone .st1{opacity:0.5; }
+.tile.stone .st2{fill:#63AA34; }
+.tile.stone .st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10; }
+.tile.stone .st4{display:none; }
+.tile.stone .st5{display:inline;fill:#808080; }
+.tile.stone .st6{fill:#A6A8AB; }
+.tile.stone .st7{fill:#5E3A19; }
+.tile.stone .st8{fill:#938787; }
+.tile.stone .st9{fill:#C6B8A3; }
+.tile.stone .st10{fill:#AA9E91; }
+.tile.stone .st11{fill:#B7A68A; }
+.tile.stone .st12{fill:#A08D70; }
+.tile.stone .st13{fill:#9B9494; }
+.tile.stone .st14{fill:#7F7574; }
+.tile.stone .st15{fill:#D6C8B4; }
+.tile.stone .st16{fill:#E2D4C3; }
+.tile.stone .st17{fill:#776A68; }
+
+.tile.stone_2 .st0{fill:#54371A;stroke:#4C3A15;stroke-miterlimit:10;}
+.tile.stone_2 .st1{opacity:0.5;}
+.tile.stone_2 .st2{fill:#63AA34;}
+.tile.stone_2 .st3{fill:#63AA34;stroke:#63AA34;stroke-miterlimit:10;}
+.tile.stone_2 .st4{display:none;}
+.tile.stone_2 .st5{display:inline;fill:#808080;}
+.tile.stone_2 .st6{fill:#929497;}
+.tile.stone_2 .st7{fill:#C6B8A3;}
+.tile.stone_2 .st8{fill:#938787;}
+.tile.stone_2 .st9{fill:#7F7574;}
+.tile.stone_2 .st10{fill:#B7A68A;}
+.tile.stone_2 .st11{fill:#A08D70;}
+.tile.stone_2 .st12{fill:#B2A79A;}
+.tile.stone_2 .st13{fill:#9B9494;}
+.tile.stone_2 .st14{fill:#D6C8B4;}
+.tile.stone_2 .st15{fill:#AA9E91;}
+.tile.stone_2 .st16{fill:#E2D4C3;}
+.tile.stone_2 .st17{fill:#776A68;}
+
+.tile.tree_01_l01 .st0{fill:#754C29;}
+.tile.tree_01_l01 .st1{fill:#8B5E3C;}
+.tile.tree_01_l01 .st2{enable-background:new;}
+.tile.tree_01_l01 .st3{display:none;fill:#8B5E3C;}
+.tile.tree_01_l01 .st4{fill:#93CC2E;}
+.tile.tree_01_l01 .st5{fill:#86BA2A;}
+.tile.tree_01_l01 .st6{display:none;}
+.tile.tree_01_l01 .st7{display:inline;}
+.tile.tree_01_l01 .st8{fill:#808080;}
+
+.tile.floor_sand_water_SE .st0{display:none;}
+.tile.floor_sand_water_SE .st2{fill:#FFEB66;stroke:#FFEB66;stroke-miterlimit:10;}
+.tile.floor_sand_water_SE .st3{fill:#FFD04E;}
+.tile.floor_sand_water_SE .st4{fill:#FCDF5F;}
+.tile.floor_sand_water_SE .st5{opacity:0.38;fill-rule:evenodd;clip-rule:evenodd;fill:#26A2C4;}
+
+.tile.water_shallow_SE .st0{display:none;}
+.tile.water_shallow_SE .st1{display:inline;fill:#808080;}
+.tile.water_shallow_SE .st2{fill:#FFEB66;stroke:#FFEB66;stroke-miterlimit:10;}
+.tile.water_shallow_SE .st3{fill:#FFD04E;}
+.tile.water_shallow_SE .st4{fill:#FCDF5F;}
+.tile.water_shallow_SE .st5{fill:url(#SVGID_1_);}
+.tile.water_shallow_SE .st6{opacity:0.53;fill:#30E2E2;}
+.tile.water_shallow_SE .st7{fill:#30E2E2;}
+
+.tile.water_shallow_SW .st0{display:none;}
+.tile.water_shallow_SW .st1{display:inline;fill:#808080;}
+.tile.water_shallow_SW .st2{fill:#FFEB66;stroke:#FFEB66;stroke-miterlimit:10;}
+.tile.water_shallow_SW .st3{fill:#FFD04E;}
+.tile.water_shallow_SW .st4{fill:#FCDF5F;}
+.tile.water_shallow_SW .st5{fill:url(#SVGID_2_);}
+.tile.water_shallow_SW .st6{opacity:0.53;fill:#30E2E2;enable-background:new    ;}
+.tile.water_shallow_SW .st7{fill:#30E2E2;}
+
+.tile.floor_sand_water_SW .st0{display:none;}
+.tile.floor_sand_water_SW .st1{display:inline;fill:#808080;}
+.tile.floor_sand_water_SW .st2{fill:#FFEB66;stroke:#FFEB66;stroke-miterlimit:10;}
+.tile.floor_sand_water_SW .st3{fill:#FFD04E;}
+.tile.floor_sand_water_SW .st4{fill:#FCDF5F;}
+.tile.floor_sand_water_SW .st5{opacity:0.38;fill:#26A2C4;enable-background:new    ;}
+
+
+.tile * { cursor: default !important; }
+.tile.floor * { cursor: crosshair !important;  }
