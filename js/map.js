@@ -189,7 +189,7 @@ class Map {
       let zIndex = parseInt(this.elements[0][y][x].style["z-index"]);
 
       let tileMap = this._buildTileMap(x, y);
-      return zIndex + character.indexOnTile;
+      return zIndex + character.indexOnTile + 1;
     }
 
     _drawTile(x, y, yr, xr, layer) {

@@ -6,7 +6,7 @@ function Player(x, y) // inherits Character
 
     this.map = {};
     this.elapsed = 0;
-    this.walkUnitSize = 0.055;
+    this.walkUnitSize = 0.065;
 
     this.update = function(time)
     {
