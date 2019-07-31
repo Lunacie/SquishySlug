@@ -600,7 +600,7 @@ function Character (x, y)
               if (this.id == 0)
               camera.player = {x: x, y : y, width : width, height : height}
           }
-        this._drawProps(x, y, width, height);
+        //this._drawProps(x, y, width, height);
       }
 
   };

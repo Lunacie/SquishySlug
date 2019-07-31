@@ -3,6 +3,7 @@ var CLICK_EVENT_DEBUG = false;
 let clickClass = null;
 
 
+
 function hasParentClass(element, className) {
   let classes = /(floor)|(npc)/;
 

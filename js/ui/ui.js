@@ -155,6 +155,8 @@ function UI(player) {
   };
 
   this._prepareTab = function(id) {
+    $("#tab").scrollTop(0);
+    $("#tab-content").scrollTop(0);
     ui.tabs.update(id);
   }
 
