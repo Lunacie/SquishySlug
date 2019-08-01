@@ -439,6 +439,7 @@ footer {
   bottom : 0;
   z-index : 9997;
   max-height : 60px;
+  pointer-events : none;
 }
 footer p {
   color : white;
@@ -459,6 +460,7 @@ footer p.copy {
 }
 footer .social {
   z-index : 6;
+  pointer-events : auto;
 }
 footer #socials p {
   color : #6D316C;
