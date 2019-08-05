@@ -46,16 +46,20 @@ this.center = function() {
   //console.log(pos.maxX , character.left + characterEl.width() / 2);
   //console.log("left : " + left, "pos.minX : " + (pos.minX ), "char : " + character.left,  "res" + (left + (pos.minX - character.left)));
 
+  let moved = false;
   if (pos.minX > (character.left * 2.5) ||
       pos.maxX < (character.left + characterEl.width()) - (characterEl.width() * 2.5)  ) {
     $("#canvas").css("left", (left + (pos.minX - character.left)) + "px");
+    moved = true;
   }
 
     if (pos.minY > (character.top * 2.5) ||
       pos.maxY < (character.top + characterEl.height()) - (characterEl.width() * 2.5)) {
     $("#canvas").css("top", (top + (pos.minY - character.top)) + "px");
+    moved = true;
   }
 
+  return moved;
 
   /*if (character.left > pos.maxX + 10)
     $("#canvas").css("left", (left - (character.left - pos.minX)) + "px");/*
