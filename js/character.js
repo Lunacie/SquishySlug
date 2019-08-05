@@ -354,9 +354,9 @@ function Character (x, y)
     let oldY = this.y;
 
     if (this.walkUnit.x != 0)
-      this.x += (this.walkUnit.x /*+ this._walkPaceScale*/);
+      this.x += (this.walkUnit.x + this._walkPaceScale);
     if (this.walkUnit.y != 0)
-    this.y += (this.walkUnit.y /*+ this._walkPaceScale*/);
+    this.y += (this.walkUnit.y + this._walkPaceScale);
 
 
     this.block.x = parseInt(this.x);
