@@ -13,7 +13,7 @@
       //console.log(fps);
     }
 
-    let pos = camera.center();
+    let moved = camera.center();
 
     /*ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctxOff.clearRect(0, 0, canvas.width, canvas.height);
@@ -33,7 +33,7 @@
     /*var x = 0;
     var y = 0;*/
     //console.log(x, y);
-    map.draw(x , y /*- (tiles.size * 3)*/);
+    map.draw(x , y /*- (tiles.size * 3)*/, moved);
 
     if (DEBUG) {
       debugOv.draw(x, y /*- (tiles.size * 3)*/);
