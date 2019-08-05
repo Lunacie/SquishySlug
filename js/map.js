@@ -65,10 +65,8 @@ class Map {
         x -= tiles.size / 2;
         yr++;
       }
-      if (!this.drew) {
+      if (!this.drew)
         this._sortElements();
-        console.log(this.fullMap._graph);
-      }
       this._moved = false;
       this.drew = true;
     }
@@ -194,6 +192,7 @@ class Map {
           let element = this.elements[layer][yr][xr];
           this.canvas.append(element);
         }
+      //console.log($(".tile").length);
     }
 
   }

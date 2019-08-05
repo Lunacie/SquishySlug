@@ -1,7 +1,6 @@
 function Camera() {
 
 
-
 this.moveCameraY = function(val) {
   let top = parseInt($("#canvas").css('top'));
   $("#canvas").css("top", (top + val) + "px");
@@ -14,8 +13,8 @@ this.moveCameraX = function(val) {
 
 this.center = function() {
 
-  if (!loadManager.isComplete() /*|| !map.drew*/)
-    return {x : 0, y : 0}
+  if (!loadManager.isComplete() || !map.drew)
+    return false;
 
   let characterEl = $('.player:visible');
   let left = parseInt($("#canvas").css('left'));
@@ -58,6 +57,12 @@ this.center = function() {
     $("#canvas").css("top", (top + (pos.minY - character.top)) + "px");
     moved = true;
   }
+
+  if (win.width != this._lastWidth || win.height != this._lastHeight)
+    moved = true;
+
+  this._lastWidth = win.width;
+  this._lastHeight = win.height;
 
   return moved;
 
