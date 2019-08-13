@@ -18,5 +18,5 @@ var update = function(characters, map, ui, loadManager, debugOv, time)
 
 var update_staticMode = function(ui, time)
 {
-  //ui.update(null, time);
+  ui.update(null, time);
 };

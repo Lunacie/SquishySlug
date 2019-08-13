@@ -74,7 +74,7 @@
 
      <!--
      <h1 id="device" class="success">DEVICE ACCEPTED</h1>
-     <h1 id="fps">0 fps</h1>
+     <h1 id="fps" style="z-index:9999">0 fps</h1>
      -->
 
      <div id="tab" class="row">

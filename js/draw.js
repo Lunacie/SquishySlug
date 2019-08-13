@@ -9,7 +9,7 @@
   {
      if (fps) {
       speed *= (60 / fps);
-      $("#fps").html(fps + " fps");
+      //$("#fps").html(fps + " fps");
       //console.log(fps);
     }
 

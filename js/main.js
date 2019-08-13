@@ -4,7 +4,7 @@ var ratioW = 1;
 var ratioH = 1;
 
 var ui = new UI();
-staticMode = false;
+staticMode = true;
 
 if (!staticMode) {
   var player = new Player(10, 10);
@@ -35,21 +35,6 @@ window.onload = function() {
 if (!staticMode) {
   let canvas = document.getElementById('canvas');
   setClickListeners(canvas);
-  /*
-  var canvas = document.getElementById('canvas');
-  canvas.width = window.screen.width;
-  canvas.height = window.screen.height;
-  canvas.addEventListener("click", eventCanvasClicked);
-
-  var offCanvas = document.getElementById('offCanvas');
-  offCanvas.width =window.screen.width;
-  offCanvas.height = window.screen.height;
-
-  var debugCanvas = document.getElementById('debugCanvas');
-  debugCanvas.width = window.screen.width;
-  debugCanvas.height = window.screen.height;
-  debugCanvas.addEventListener("click", eventCanvasClicked);
-  */
 
   ui.init(player, canvas);
   //ui.resize(window.screen.width, window.screen.height);
@@ -63,18 +48,7 @@ else if (staticMode) {
 if (staticMode || canvas)
 {
   if (!staticMode) {
-    /*
-    ctx = canvas.getContext('2d');
-    ctxOff = offCanvas.getContext('2d');
-    ctxDebug = debugCanvas.getContext('2d');
-    debugOverlay.setContext(ctxDebug);*/
-
     ratio = canvas.width / canvas.height;
-    /*
-     if (canvas.height > 3000 || canvas.width > 3000)
-       tiles.size *= 3;
-     else if (ratio < 1)
-      tiles.size *= 1.7;*/
  }
 
 
