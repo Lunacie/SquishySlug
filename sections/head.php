@@ -17,8 +17,8 @@
   }
   else {
 ?>
-<title>Squishy Slug - Ing�nierie logicielle | Indie Game Development</title>
-<meta name="og:title" property="og:title" content="Squishy Slug - Ing�nierie logicielle | Indie Game Development">
+<title>Squishy Slug - Ing&eacute;nierie logicielle | Indie Game Development</title>
+<meta name="og:title" property="og:title" content="Squishy Slug - Ing�nierie logicielle | Indie Game Development">
 <meta name="description" content="SquishySlug implémente des solutions logicielles en mettant
  tous les jours à l'épreuve son esprit créatif et analytique.<br/>
  L'originalité au service de ceux qui souhaitent réellement se démarquer.">

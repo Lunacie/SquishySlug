@@ -4,7 +4,7 @@
       <div class=""><p class="copy p-0 m-0">© 2018 - 2019 squishySlug</p></div>
       <div id="browser-block" class="">
         <a href="https://www.browserstack.com/">
-          <img id="browserstack" src="assets/vectors/Browserstack-logo.svg"/>
+          <img id="browserstack" src="/assets/vectors/Browserstack-logo.svg"/>
         </a>
       </div>
     </div>
@@ -19,8 +19,8 @@
       </div>
 
        <div id="flags" class="hidden-md-up col-12">
-         <a href="/fr"><img src="assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/></a>
-         <a href="/"><img src="assets/vectors/english.svg" class="flag flag-en float-right"/></a>
+         <a href="/fr"><img src="/assets/vectors/french.svg" class="flag flag-fr mb-1 ml-1 float-right"/></a>
+         <a href="/"><img src="/assets/vectors/english.svg" class="flag flag-en float-right"/></a>
        </div>
     </div>
 

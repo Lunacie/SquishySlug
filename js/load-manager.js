@@ -36,7 +36,7 @@ function LoadManager(characters, tiles) {
   this._loadTiles = function() {
     for (let i = 0; i < tiles.data.length; i++) {
       let tile = tiles.data[i];
-        $.get("assets/vectors/" + tile.id + ".svg", function(svgXml) {
+        $.get("/assets/vectors/" + tile.id + ".svg", function(svgXml) {
             tile.image = { on : { loaded : true }};
             tile.svgXml = svgXml;
         });

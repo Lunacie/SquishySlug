@@ -1,7 +1,7 @@
 <div class="scrollable">
 
  <img id="portrait" class="d-block mx-auto"
-      src="assets/images/portrait.jpg"
+      src="/assets/images/portrait.jpg"
       width="200px" alt="Portrait"/>
 
   <h3 class="my-3">

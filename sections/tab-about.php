@@ -1,5 +1,5 @@
 <div class="scrollable">
-    <img class="mx-auto d-block" src="assets/ui/logo-slug.svg" alt="squishySlug" width="" height="125px"/>
+    <img class="mx-auto d-block" src="/assets/ui/logo-slug.svg" alt="squishySlug" width="" height="125px"/>
 
    <h1 class="text-center">squishySlug</h1>
    <h3 class="text-center">&ltStudio&gt</h3>

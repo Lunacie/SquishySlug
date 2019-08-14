@@ -14,38 +14,38 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-      <script type="text/javascript" src="js/browserDetector.js"></script>
-      <script type="text/javascript" src="js/props.js"></script>
-      <script type="text/javascript" src="js/machine-state.js"></script>
-      <script type="text/javascript" src="js/image-loader.js"></script>
-      <script type="text/javascript" src="js/character.js"></script>
-      <script type="text/javascript" src="js/npc-data.js"></script>
-      <script type="text/javascript" src="js/npc.js"></script>
-      <script type="text/javascript" src="js/player.js"></script>
-      <script type="text/javascript" src="js/breakpoints.js"></script>
-      <script type="text/javascript" src="js/event.js"></script>
-      <script type="text/javascript" src="js/event-click.js"></script>
-      <script type="text/javascript" src="js/tiles.js"></script>
-      <script type="text/javascript" src="js/fullmap.js"></script>
-      <script type="text/javascript" src="js/map.js"></script>
-      <script type="text/javascript" src="js/load-manager.js"></script>
-      <script type="text/javascript" src="js/debug-overlay.js"></script>
-      <script type="text/javascript" src="js/ui/projects.js"></script>
-      <script type="text/javascript" src="js/ui/project.js"></script>
-      <script type="text/javascript" src="js/ui/about.js"></script>
-      <script type="text/javascript" src="js/ui/contact.js"></script>
-      <script type="text/javascript" src="js/ui/tab.js"></script>
-      <script type="text/javascript" src="js/ui/ui.js"></script>
-      <script type="text/javascript" src="js/camera.js"></script>
-      <script type="text/javascript" src="js/draw.js"></script>
-      <script type="text/javascript" src="js/update.js"></script>
+      <script type="text/javascript" src="/js/browserDetector.js"></script>
+      <script type="text/javascript" src="/js/props.js"></script>
+      <script type="text/javascript" src="/js/machine-state.js"></script>
+      <script type="text/javascript" src="/js/image-loader.js"></script>
+      <script type="text/javascript" src="/js/character.js"></script>
+      <script type="text/javascript" src="/js/npc-data.js"></script>
+      <script type="text/javascript" src="/js/npc.js"></script>
+      <script type="text/javascript" src="/js/player.js"></script>
+      <script type="text/javascript" src="/js/breakpoints.js"></script>
+      <script type="text/javascript" src="/js/event.js"></script>
+      <script type="text/javascript" src="/js/event-click.js"></script>
+      <script type="text/javascript" src="/js/tiles.js"></script>
+      <script type="text/javascript" src="/js/fullmap.js"></script>
+      <script type="text/javascript" src="/js/map.js"></script>
+      <script type="text/javascript" src="/js/load-manager.js"></script>
+      <script type="text/javascript" src="/js/debug-overlay.js"></script>
+      <script type="text/javascript" src="/js/ui/projects.js"></script>
+      <script type="text/javascript" src="/js/ui/project.js"></script>
+      <script type="text/javascript" src="/js/ui/about.js"></script>
+      <script type="text/javascript" src="/js/ui/contact.js"></script>
+      <script type="text/javascript" src="/js/ui/tab.js"></script>
+      <script type="text/javascript" src="/js/ui/ui.js"></script>
+      <script type="text/javascript" src="/js/camera.js"></script>
+      <script type="text/javascript" src="/js/draw.js"></script>
+      <script type="text/javascript" src="/js/update.js"></script>
 
-      <link rel="stylesheet" href="css/style.css"></link>
-      <link rel="stylesheet" href="css/style-tiles.css"></link>
-      <link rel="stylesheet" href="css/style-characters.css"></link>
-      <link rel="stylesheet" href="css/media-queries.css"></link>
-      <link rel="stylesheet" href="css/animations.css"></link>
-      <link rel="stylesheet" href="css/animation-menu.css"></link>
+      <link rel="stylesheet" href="/css/style.css"></link>
+      <link rel="stylesheet" href="/css/style-tiles.css"></link>
+      <link rel="stylesheet" href="/css/style-characters.css"></link>
+      <link rel="stylesheet" href="/css/media-queries.css"></link>
+      <link rel="stylesheet" href="/css/animations.css"></link>
+      <link rel="stylesheet" href="/css/animation-menu.css"></link>
 
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -137,14 +137,14 @@
           <div id="box"></div>
           <div id="background">
             <video autoplay muted loop id="video">
-              <source src="assets/videos/background.mp4" type="video/mp4">
+              <source src="/assets/videos/background.mp4" type="video/mp4">
             </video>
           </div>
 
 
         <div id="loading" class="screen container">
-            <img src="assets/ui/loading.svg" class="hidden-md-down small" width="10%"/>
-            <img src="assets/ui/loading.svg" class="hidden-lg-up big" width="25%"/>
+            <img src="/assets/ui/loading.svg" class="hidden-md-down small" width="10%"/>
+            <img src="/assets/ui/loading.svg" class="hidden-lg-up big" width="25%"/>
         </div>
 
         <?php include 'sections/sidebar.php'; ?>
@@ -154,8 +154,8 @@
 
         </div>
 
-        <script type="text/javascript" src="js/init.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="/js/init.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
         </body>
 
 </html>

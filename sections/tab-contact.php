@@ -60,7 +60,7 @@ if ($lg == EN) echo'<p class="en">Write something nice</p>';
    else echo '<textarea placeholder="Votre message ici..." name="msg-fr" resize="none" class="col-7 col-lg-5 fr"></textarea>';
    ?>
     <button type="submit" class="px-0 py-0 col-3">
-    <img src="assets/vectors/submit.svg" width="150px" alt="Submit"/>
+    <img src="/assets/vectors/submit.svg" width="150px" alt="Submit"/>
   </button>
 </div>
 </form>

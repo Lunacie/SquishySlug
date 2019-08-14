@@ -1,6 +1,6 @@
 
 function Projects() {
-  this._path = "assets/projects/thumbnails/";
+  this._path = "/assets/projects/thumbnails/";
   this._data = [
     {
       image : "newgym.jpg",

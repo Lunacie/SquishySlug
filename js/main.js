@@ -4,7 +4,7 @@ var ratioW = 1;
 var ratioH = 1;
 
 var ui = new UI();
-staticMode = true;
+//staticMode = true;
 
 if (!staticMode) {
   var player = new Player(10, 10);

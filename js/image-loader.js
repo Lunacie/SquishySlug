@@ -118,13 +118,13 @@
        var loader = this;
        for (let i = 0; i < this.sprites.length; i++) {
          for (let j = 0; j < this.sprites[i].length; j++) {
-            $.get(loader.sprites[i][j].path, function(svgXml) {
+            $.get("/" + loader.sprites[i][j].path, function(svgXml) {
               loader.sprites[i][j].svgXml = svgXml;
             });
          }
        }
       for (let i = 0; i < this.statics.length; i++) {
-         $.get(loader.statics[i].path, function(svgXml) {
+         $.get("/" + loader.statics[i].path, function(svgXml) {
            loader.statics[i].svgXml = svgXml;
          });
       }
