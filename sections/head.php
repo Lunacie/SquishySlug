@@ -8,20 +8,18 @@
 
   if ($lg == EN) {
 ?>
-<title>Squishy Slug - Software Engineering | Game Development</title>
-<meta name="og:title" property="og:title" content="Squishy Slug - Software Engineering | Indie Game Development">
-<meta name="description" content="SquishySlug is building software solutions
- by putting its wildly creative and analytical thinking to the test.<br/>
- Originality at the service of those who actually want to stand out">
+<title>Squishy Slug - Game Development Studio</title>
+<meta name="og:title" property="og:title" content="Squishy Slug - Game Development Studio">
+<meta name="description" content="SquishySlug is building games for Desktop and mobile platforms
+ as well as Unity, CryEngine and Unreal Engine Extensions.">
 <?php
   }
   else {
 ?>
-<title>Squishy Slug - Ing&eacute;nierie logicielle | Indie Game Development</title>
-<meta name="og:title" property="og:title" content="Squishy Slug - Ing�nierie logicielle | Indie Game Development">
-<meta name="description" content="SquishySlug implémente des solutions logicielles en mettant
- tous les jours à l'épreuve son esprit créatif et analytique.<br/>
- L'originalité au service de ceux qui souhaitent réellement se démarquer.">
+<title>Squishy Slug - Game Development Studio</title>
+<meta name="og:title" property="og:title" content="Squishy Slug - Game Development Studio">
+<meta name="description" content="SquishySlug développe des jeux videos pour les plateformes
+desktop et mobiles ainsi que des extensions pour le moteurs Unity, CryEngine et Unreal Engine.">
 <?php
   }
 ?>

@@ -22,8 +22,8 @@
         </span>
         <span class="text col-6 ml-1">
           <?php
-          if ($lg == EN) echo ('<span class="en">Projects</span>');
-          else echo ('<span class="fr">Projets</span>');
+          if ($lg == EN) echo ('<span class="en">Titles</span>');
+          else echo ('<span class="fr">Titres</span>');
           ?>
         </span>
     </li></a>

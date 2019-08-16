@@ -137,6 +137,16 @@ footer .flag{ width : 50px}
   font-size : 1.3rem;
   color : #C47E3F;
 }
+#tab-about #engine-logos img {
+  width : 50px;
+  margin-right : 5px
+}
+#tab-about #about-socials i {
+  font-size : 2rem;
+  color : #6D316C;
+  margin-right : 5px
+}
+
 #tab .link {
   color : #6D316C;
   cursor : pointer;

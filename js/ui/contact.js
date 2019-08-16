@@ -53,7 +53,7 @@ function Contact() {
       return;
 
     $.ajax({
-      'url':'/contact.php',
+      'url':'/contactEndpoint.php',
       'method':'POST',
       'ContentType': 'application/json',
       'data': {'data' : JSON.stringify(data)},

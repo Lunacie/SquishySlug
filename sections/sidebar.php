@@ -23,8 +23,8 @@
       </li></a>
       <a href="#" class="open-tab-btn tab-3"><li class="row projects my-5">
           <span class="text col-10">
-            <?php if ($lg == EN) echo '<span class="en">Projects</span>';
-            else echo '<span class="fr">Projets</span>'; ?>
+            <?php if ($lg == EN) echo '<span class="en">Titles</span>';
+            else echo '<span class="fr">Titres</span>'; ?>
           </span>
           <span class="icons col-2">
              <img class="icon on" src="/assets/ui/nav-orbit-mobile.svg" alt="about"/>

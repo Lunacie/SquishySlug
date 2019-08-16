@@ -5,35 +5,43 @@
    <h3 class="text-center">&ltStudio&gt</h3>
 
    <?php if ($lg == EN) { ?>
-     <p class="en text-center px-5 mt-3">SquishySlug is building software solutions
-        by putting its wildly creative and analytical thinking
-        to the test everyday.
-        <br/>It’s about using outstanding problem solving skills
-        to produce robust and efficient code, while its vidid
-        imagination and fresh
-        outlook allow for a unique approach on technical challenges.
+     <p class="en text-center px-5 mt-3">SquishySlug is a game developement
+       studio that builds games for both desktop and IOS devices.
+        <br/>
+        SquishySlug also specializes in plugin and extension development
+        for game egines such as Unity, CryEngine and UnrealEngine.
       </p>
-      <p class="en px-5">
-        Bulding a project ?<br/>
-        SquishySlug is always on the lookout for
-        <a class="link">its next challenge</a>.
-     </p>
 <?php }
 
 else { ?>
-<p class="fr text-center px-5 mt-3">SquishySlug implémente
-  des solutions logicielles en mettant tous les jours à
-  l'épreuve son esprit créatif et analytique.
-  <br/>Squishyslug produit du code robuste et efficace
-  à l'aide de ses capacités de résolutions de problèmes
-  hors du commun, tandis que son imagination débordante
-  et son regard neuf permettent une approche unique sur
-  les challenges techniques.
-</p>
-<p class="fr px-5">
-  Vous avez un projet ?<br/>
-  SquishySlug est toujours à la recherche de
-  <a class="link">son prochain challenge</a>.
-</p>
+    <p class="fr text-center px-5 mt-3">SquishySlug est un studio de dévelopment
+      de jeux videos pour les plateformes <b>desktop</b> et <b>iOS</b>.
+      <br/>SquishySlug se spécialise également dans le développement de plugin et
+      d'extensions pour les moteurs de jeux tels que <b>Unity</b>, <b>CryEngine</b> et <b>UnrealEngine</b>.
+    </p>
 <?php } ?>
+
+<div id="engine-logos" class="row col-12 col-md-6 offset-md-3">
+  <div class="m-auto">
+    <img src="/assets/ui/cry-logo.svg" alt="Logo CryEngine"/>
+    <img src="/assets/ui/unreal-logo.svg" alt="Logo UnrealEngine"/>
+    <img src="/assets/ui/unity-logo.svg" alt="Logo Unity"/>
+  </div>
+</div>
+
+<div id="about-socials" class="mt-3 row m-auto">
+  <p class="text-center px-5 mt-3 d-block w-100">
+  <?php if ($lg == FR) { ?>
+      Suivez l'actualité de squishySlug sur les réseau sociaux :
+    <?php } else { ?>
+      Follow SquishySlug on social media keep up with our latest
+      releases posts :
+<?php } ?>
+  </p>
+  <div class="row d-block m-auto">
+    <?php include 'sections/socials.php'; ?>
+  </div>
+</div>
+
+
 </div>

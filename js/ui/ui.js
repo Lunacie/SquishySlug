@@ -429,7 +429,7 @@ function UI(player) {
         }
       }
 
-    if (!staticMode)
+    //if (!staticMode)
       this._checkOrderStatus();
   }
 
@@ -440,20 +440,25 @@ function UI(player) {
 
   this._getQueryParameter = function() {
     let params = [
-      "about", "presentation", "projects", "contact"
+      "about", "presentation", "titles", "contact"
     ];
     let url = window.location.pathname.split('/');
     return params.indexOf(url[url.length - 1]) + 1;
   }
 
   this._checkOrderStatus = function() {
+
     if (!this._loadOrder) {
       this._loadOrder = true;
       let param = this._getQueryParameter();
       if (!param)
         return null;
-      this._player.sendOrder(param);
+      if (!staticMode)
+        this._player.sendOrder(param);
+      else
+        ui._openTabAnimation(param);
     }
+
     if (staticMode ||
         this._player.checkOrderStatus() == ORDER_STATUS_SUCCESS) {
       //$("#loading").stop();

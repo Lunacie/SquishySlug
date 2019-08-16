@@ -12,10 +12,7 @@
     <div id="socials" class="row social ml-auto flex-shrink-2">
         <div class="col-12"><p class="m-0 p-0  hidden-sm-down">Follow the Slug</p></div>
         <div id="socials-icons" class="col-12">
-          <a href="https://www.instagram.com/squishyslug.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://github.com/Lunacie" target="_blank"><i class="fab fa-github mr-1"></i></a>
-          <a href="https://www.linkedin.com/company/13071905/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.facebook.com/squishyslug/" target="_blank"><i class="fab fa-facebook"></i></a>
+          <?php include 'sections/socials.php'; ?>
       </div>
 
        <div id="flags" class="hidden-md-up col-12">
