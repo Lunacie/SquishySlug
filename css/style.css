@@ -127,7 +127,7 @@ footer .flag{ width : 50px}
   font-size : 1.1rem;
 }
 
-#tab-about h1 {
+#tab-about h2 {
   font-family: "Ubuntu",sans-serif;
   font-size : 2.1rem;
   color : #6D316C;
@@ -145,6 +145,17 @@ footer .flag{ width : 50px}
   font-size : 2rem;
   color : #6D316C;
   margin-right : 5px
+}
+#tab-projects .btn {
+  background: #86ae32;
+  border-color: #73ab33;
+}
+#tab-projects h3 {
+  font-family: 'Heebo', monospace;
+  color : #d39d5e;
+  text-transform: uppercase;
+  font-size : 1em;
+  font-weight : bold;
 }
 
 #tab .link {

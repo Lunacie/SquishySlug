@@ -94,7 +94,7 @@
              <?php include 'sections/tab-road.php'; ?>
            </div>
 
-           <div class="tab-content col-12 px-0 px-sm-5" data-id="3">
+           <div id="tab-projects" class="tab-content col-12 px-0 px-sm-5" data-id="3">
              <?php include 'sections/tab-projects.php'; ?>
           </div>
 
