@@ -11,7 +11,7 @@
             <img class="icon off" src="/assets/ui/nav-mobile.svg" alt="about"/>
           </span>
       </li></a>
-      <a href="#" class="open-tab-btn tab-2"><li class="row road my-5">
+    <!--  <a href="#" class="open-tab-btn tab-2"><li class="row road my-5">
           <span class="text col-10">
             <?php if ($lg == EN) echo '<span class="en">Behind the slug</span>';
             else echo '<span class="fr">Présentation</span>'; ?>
@@ -20,7 +20,7 @@
              <img class="icon on" src="/assets/ui/nav-galaxy-mobile.svg" alt="about"/>
             <img class="icon off" src="/assets/ui/nav-mobile.svg" alt="about"/>
           </span>
-      </li></a>
+      </li></a>-->
       <a href="#" class="open-tab-btn tab-3"><li class="row projects my-5">
           <span class="text col-10">
             <?php if ($lg == EN) echo '<span class="en">Titles</span>';

@@ -19,38 +19,6 @@
   </div>
 
 
-  <div id="" class="row col-11 col-lg-12 px-0 mx-0 my-4 mb-5">
-    <h3 class=" mb-3">Wrong Planet, Right Plane</h3>
-
-    <div class="row title-item text-center text-md-left">
-      <div class="col-12 col-md-6 col-lg-5">
-        <img src="/assets/projects/thumbnails/wprp.jpg" alt="rpwp"></img>
-      </div>
-      <p class="col-12 col-md-6 col-lg-7 text-jusitfy">
-        <?php if ($lg == EN) { ?>
-        Wrong planet, Right Plane is a working title for a sci-fi
-        RPG/Adventure game running on PC.<br/>
-        It's about a utterly confused character who ends up against their own
-        will on a planet light years away from earth, surrounded by creatures
-        who's language they dont understand. Yet, they still have to find a
-        way to make themselves useful and help with the development of
-        a colony they never asked to be a part of, in the first place...<br/>
-        <!--<button class="btn btn-primary btn-sm mt-3">Read more</button>-->
-      <?php } else { ?>
-        Wrong planet, Right Plane est un jeu sci-fi
-        RPG/Adventure pour PC.<br/>
-        Il relate l'histoire d'un personnage complètement perdu qui se retrouve
-        embarqué pour une planète à des années lumière de la Terre,
-        entouré de créatures dont iel ne comprend pas la langue
-        et doit malgrés tout trouver le moyen de se rendre utiler et d'aider
-        au développement d'une colonie dont iel n'a jamais souhaité faire
-        partie...<br/>
-        <!--<button class="btn btn-primary btn-sm mt-3">En Savoir +</button>-->
-      <?php } ?>
-      </p>
-    </div>
-  </div>
-
 
   <div id="" class="row col-11 col-lg-12 px-0 mx-0 my-4 mb-5">
     <h3 class=" mb-3">SquishyHair</h3>
@@ -91,6 +59,76 @@
       </div>
     </div>
   </div>
+
+  <div id="" class="row col-11 col-lg-12 px-0 mx-0 my-4 mb-5">
+    <h3 class=" mb-3">Wrong Planet, Right Plane</h3>
+
+    <div class="row title-item text-center text-md-left">
+      <div class="col-12 col-md-6 col-lg-5">
+        <img src="/assets/projects/thumbnails/wprp.gif" alt="rpwp"></img>
+      </div>
+      <p class="col-12 col-md-6 col-lg-7 text-jusitfy">
+        <?php if ($lg == EN) { ?>
+        Wrong planet, Right Plane is a working title for a sci-fi
+        RPG/Adventure game running on PC.<br/>
+        It's about a utterly confused character who ends up against their own
+        will on a planet light years away from earth, surrounded by creatures
+        who's language they dont understand. Yet, they still have to find a
+        way to make themselves useful and help with the development of
+        a colony they never asked to be a part of, in the first place...<br/>
+        <!--<button class="btn btn-primary btn-sm mt-3">Read more</button>-->
+      <?php } else { ?>
+        Wrong planet, Right Plane est un jeu sci-fi
+        RPG/Adventure pour PC.<br/>
+        Il relate l'histoire d'un personnage complètement perdu qui se retrouve
+        embarqué pour une planète à des années lumière de la Terre,
+        entouré de créatures dont iel ne comprend pas la langue
+        et doit malgrés tout trouver le moyen de se rendre utiler et d'aider
+        au développement d'une colonie dont iel n'a jamais souhaité faire
+        partie...<br/>
+        <!--<button class="btn btn-primary btn-sm mt-3">En Savoir +</button>-->
+      <?php } ?>
+      </p>
+    </div>
+  </div>
+
+
+    <div id="" class="row col-11 col-lg-12 px-0 mx-0 my-4 mb-5">
+      <h3 class=" mb-3">SquishySlug Island</h3>
+
+      <div class="row title-item text-center text-md-left">
+        <p class="col-12 col-md-6 col-lg-7 text-jusitfy">
+          <?php if ($lg == EN) { ?>
+          The SquishySlug portfolio is a 2d isometric minigame,
+           in which the player can walk around Squishyslug Island and talk
+         to its inhabitant as a mean of navigation.<br/>
+         It is browser based,
+         built in js+jquery and uses bootstrap4 for its UI.
+         It works by adding css animated svg as DOM element.
+         It removes tiles that are not curently
+         visible on the screen and adds those that are and not yet present.<br/>
+        All characters have AIs that uses a Dijkstra algorithm which allow
+         them to always find the closest path to their destination...<br/>
+          <!--<button class="btn btn-primary btn-sm mt-3">Read more</button>-->
+        <?php } else { ?>
+          Le portfolio SquishySlug est un mini jeu 2d isométrique,
+           dans lequel le joueur peut se ballader dans Squishyslug Island
+            et parler à ses habitants pour permettre la navigation.<br/>
+             Il tourne sur navigateur, est construit en js+jquery
+              et utilise bootstrap4 pour son IU.
+             Il fonctionne en ajoutant des svg animés via css en tant qu'elément DOM.<br/>
+          Tous les personnages ont des IAs qui utilisent un algorithme de
+           Dijkstra, ce qui leur permet de toujours trouver le chemin le plus
+            court jusqu'a leur destination...<br/>
+          <!--<button class="btn btn-primary btn-sm mt-3">En Savoir +</button>-->
+        <?php } ?>
+        </p>
+
+        <div class="col-12 col-md-6 col-lg-5">
+          <img src="/assets/projects/thumbnails/squishyslug-island.gif" alt="rpwp"></img>
+        </div>
+      </div>
+    </div>
 
 
 

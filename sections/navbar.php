@@ -27,7 +27,7 @@
           ?>
         </span>
     </li></a>
-   <a href="#" class="open-tab-btn tab-2"><li class="row road py-3">
+   <!--<a href="#" class="open-tab-btn tab-2"><li class="row road py-3">
      <span class="icons col-2 p-0">
         <img class="icon on" src="/assets/ui/nav-galaxy.svg" alt="about"/>
        <img class="icon off" src="/assets/ui/nav.svg" alt="about"/>
@@ -38,7 +38,7 @@
        else echo ('<span class="fr">Présentation</span>');
        ?>
      </span>
- </li></a>
+ </li></a>-->
  <a href="#" class="open-tab-btn tab-4"><li class="row contact py-3">
      <span class="icons col-2 p-0">
         <img class="icon on" src="/assets/ui/nav-sun.svg" alt="about"/>
